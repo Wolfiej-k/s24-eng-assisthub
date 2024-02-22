@@ -14,6 +14,7 @@ import HomePage from "./pages"
 import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
+import AnalyticsPage from "./pages/analytics"
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
                   </ThemedLayoutV2>
                 }
               />
+              <Route path="analytics" element={<AnalyticsPage />} />
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="forgot" element={<ForgotPage />} />
