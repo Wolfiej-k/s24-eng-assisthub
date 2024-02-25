@@ -1,6 +1,6 @@
 import dotenv from "dotenv"
 import express, { NextFunction, Request, Response } from "express"
-import cases from "./routes/cases.js"
+import cases from "./api/cases.js"
 
 dotenv.config()
 
