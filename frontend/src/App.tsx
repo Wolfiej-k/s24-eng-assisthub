@@ -14,6 +14,7 @@ import HomePage from "./pages"
 import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
+import DashboardPage from "./pages/dashboard"
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="forgot" element={<ForgotPage />} />
+              <Route path="dashboard" element={<DashboardPage />} />
             </Routes>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
