@@ -6,7 +6,7 @@ export default function LoginPage() {
   const { data } = useIsAuthenticated()
 
   if (data?.authenticated) {
-    go({ to: "/" })
+    go({ to: "/dashboard" })
   }
 
   return <AuthPage type="login" />
