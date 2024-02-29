@@ -4,7 +4,7 @@ import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from 
 
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
-import routerBindings, { DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
+import routerProvider, { NavigateToResource, DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { authProvider } from "./authProvider"
@@ -14,9 +14,9 @@ import HomePage from "./pages"
 import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
-import DashboardPage from "./pages/dashboard"
+import { EventList } from "./pages/dashboard"
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <ColorModeContextProvider>
@@ -26,8 +26,14 @@ function App() {
           <Refine
             dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
             notificationProvider={useNotificationProvider}
-            routerProvider={routerBindings}
+            routerProvider={routerProvider}
             authProvider={authProvider}
+            resources={[
+              {
+                name: "events",
+                list: "/"
+              },
+            ]}
             options={{
               syncWithLocation: true,
               warnWhenUnsavedChanges: true,
@@ -37,7 +43,6 @@ function App() {
           >
             <Routes>
               <Route
-                index
                 element={
                   <ThemedLayoutV2
                     Title={({ collapsed }) => (
@@ -48,13 +53,19 @@ function App() {
                     )}
                   >
                     <HomePage />
+                    <EventList />
+
                   </ThemedLayoutV2>
                 }
-              />
+                >
+                  <Route
+                  index
+                    element={<NavigateToResource resource="events" />}
+                  />
+              </Route>
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="forgot" element={<ForgotPage />} />
-              <Route path="dashboard" element={<DashboardPage />} />
             </Routes>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
@@ -62,7 +73,7 @@ function App() {
         </RefineSnackbarProvider>
       </ColorModeContextProvider>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
