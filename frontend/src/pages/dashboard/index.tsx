@@ -1,7 +1,10 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { Option, useSelect } from "@refinedev/core";
+
 import { useDataGrid, List } from "@refinedev/mui";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueFormatterParams, } from "@mui/x-data-grid";
+
+//const API_URL = "https://api.fake-rest.refine.dev";
 
 interface IEvent {
   id: number;
@@ -10,35 +13,30 @@ interface IEvent {
   type: "error" | "warning" | "success";
 }
 
-export const DashboardPage: React.FC = () => {
-  const [events, setEvents] = useState<IEvent[]>([]);
-  const { dataGridProps } = useDataGrid<IEvent>();
+export const EventList: React.FC = () => {
+  /*const { data: events } = useList<IEvent[]>({
+    resource: "events",
+    dataProviderName: "default",
+  });*/
+
+  const { dataGridProps } = useDataGrid<IEvent>({
+    initialCurrent: 1,
+    initialPageSize: 10,
+    initialSorter: [
+      {
+        field: "ID",
+        order: "asc",
+      },
+    ],
+    syncWithLocation: true,
+  });
+
   const {
-    paginationMode,
-    paginationModel,
-    onPaginationModelChange,
-    ...restDataGridProps
-  } = dataGridProps;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/events");
-        const data = await response.json() as IEvent[];
-
-        const eventsWithParsedDate = data.map((event: IEvent) => ({
-          ...event,
-          date: new Date(event.date),
-        }));
-
-        setEvents(eventsWithParsedDate);
-        } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    void fetchData();
-  }, []);
+    options,
+    queryResult: { isLoading },
+  } = useSelect<IEvent>({
+    resource: "events",
+  });
 
   const columns = React.useMemo<GridColDef<IEvent>[]>(
     () => [
@@ -52,18 +50,18 @@ export const DashboardPage: React.FC = () => {
           <span>{(params.value as Date).toLocaleString()}</span>
         ),
       },
-      { field: "type", headerName: "Type", minWidth: 200 },
+      { field: "type", headerName: "Type", minWidth: 200, type: "singleSelect",
+      valueOptions: ["error", "warning", "success"], },
     ],
-    []
+    [options, isLoading]
   );
 
   return (
     <List>
-      <DataGrid {...dataGridProps} columns={columns} {...restDataGridProps} rows={events} paginationMode={paginationMode}
-        paginationModel={paginationModel}
-        onPaginationModelChange={onPaginationModelChange} autoHeight />
+      <DataGrid {...dataGridProps} columns={columns} autoHeight
+        pageSizeOptions={[10, 20, 30, 50, 100]} />
     </List>
   );
 };
 
-  export default DashboardPage;
+export default EventList;
