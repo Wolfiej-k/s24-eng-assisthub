@@ -9,8 +9,14 @@ import { DataGrid, GridColDef, GridValueFormatterParams, } from "@mui/x-data-gri
 interface IEvent {
   id: number;
   title: string;
-  date: Date;
-  type: "error" | "warning" | "success";
+  content: string;
+  hit: number;
+  categoryID: number;
+  userID: number;
+  status: "draft" | "rejected" | "published";
+  createdAt: Date;
+  publishedAt: Date;
+  language: number;
 }
 
 export const EventList: React.FC = () => {
@@ -41,17 +47,27 @@ export const EventList: React.FC = () => {
   const columns = React.useMemo<GridColDef<IEvent>[]>(
     () => [
       { field: "id", headerName: "ID", type: "number", width: 75 },
-      { field: "title", headerName: "Title", minWidth: 200, flex: 1 },
+      { field: "title", headerName: "Title", width: 100, flex: 1 },
+      { field: "content", headerName: "Content", minWidth: 200, flex: 1 },
       {
-        field: "date",
-        headerName: "Date",
-        minWidth: 200,
+        field: "createdAt",
+        headerName: "Date created",
+        minWidth: 100,
         renderCell: (params) => (
           <span>{(params.value as Date).toLocaleString()}</span>
         ),
       },
-      { field: "type", headerName: "Type", minWidth: 200, type: "singleSelect",
-      valueOptions: ["error", "warning", "success"], },
+      {
+        field: "publishedAt",
+        headerName: "Date published",
+        minWidth: 100,
+        renderCell: (params) => (
+          <span>{(params.value as Date).toLocaleString()}</span>
+        ),
+      },
+      { field: "status", headerName: "Status", width: 100, align: "center", type: "singleSelect",
+      valueOptions: ["draft", "rejected", "published"],
+      },
     ],
     [options, isLoading]
   );
