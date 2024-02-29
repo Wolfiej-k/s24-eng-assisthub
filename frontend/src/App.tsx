@@ -30,7 +30,7 @@ const App: React.FC = () => {
             authProvider={authProvider}
             resources={[
               {
-                name: "events",
+                name: "posts",
                 list: "/"
               },
             ]}
@@ -60,7 +60,7 @@ const App: React.FC = () => {
                 >
                   <Route
                   index
-                    element={<NavigateToResource resource="events" />}
+                    element={<NavigateToResource resource="posts" />}
                   />
               </Route>
               <Route path="login" element={<LoginPage />} />
