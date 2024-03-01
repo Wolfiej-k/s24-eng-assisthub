@@ -1,66 +1,116 @@
 import { useList } from "@refinedev/core";
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import { DataGrid } from '@mui/x-data-grid';
+import { ScatterChart, } from '@mui/x-charts/ScatterChart';
+import { LineChart } from '@mui/x-charts';
+import { PieChart } from '@mui/x-charts/PieChart';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import { BarChart } from '@mui/x-charts/BarChart';
 
-interface Product {
-  id: number;
+interface ScatterValueType {
+  id: number ;
   name: string;
   material: string;
   price: number;
 }
 
 export default function AnalyticsPage() {
-  // Product used for
-  const { data, isLoading, error } = useList<Product>({
-    resource: "products",
-  });
+  const { data, isLoading, error } = useList<ScatterValueType>({ resource: "products" });
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [selectedPlot, setSelectedPlot] = React.useState<string | null>(null);
+  const open = Boolean(anchorEl);
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = (plot?: string) => {
+    setAnchorEl(null);
+    if (plot) {
+      setSelectedPlot(plot);
+    }
+  };
 
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
   const product = data?.data;
 
- // So like each field is by defined by id which is displayed on the table with ID, each column is specific to the product table
- // So id, name, description are fields in the products record
-  const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
-    { field: 'name', headerName: 'Name', width: 200 },
-    { field: 'price', headerName: 'Price', type: 'number', width: 110 },
-    { field: 'material', headerName: 'Material', width: 180 },
-  ];
-  // So the rows are the data that is displayed in the table
-  // simple list.map function to map the data to the table
-  const rows = product?.map((product) => ({
-    id: product.id,
-    name: product.name,
-    price: product.price,
-    material: product.material,
-  })) || [];
-
-
   return (
-    <Box sx={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: 5,
-            },
-          },
-        }}
-        pageSizeOptions={[5]}
-        checkboxSelection
-        disableRowSelectionOnClick
-      />
-    </Box>
-);
-}
+    // from mui
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop : "20px" }}>
+        <Button
+          id="basic-button"
+          aria-controls={open ? 'basic-menu' : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined}
+          onClick={handleClick}
+        >
+          Choose Plot
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={() => handleClose()}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+        >
+          <MenuItem onClick={() => handleClose('scatter')}>Scatter Chart</MenuItem>
+          <MenuItem onClick={() => handleClose('line')}>Line Chart</MenuItem>
+          <MenuItem onClick={() => handleClose('pie')}>Pie Chart</MenuItem>
+          <MenuItem onClick={() => handleClose('bar')}>Bar Chart</MenuItem>
+        </Menu>
 
+        {selectedPlot === 'scatter' && (
+          <ScatterChart
+            width={600}
+            height={300}
+            series={[{ label: 'Products', data: product.map(v => ({ x: v.id, y: v.price })) }]}
+          />
+        )}
+
+        {selectedPlot === 'line' && (
+          <LineChart
+            width={600}
+            height={300}
+            area={true}
+            series={[{ label: 'Products', data: product.map(v => ({ x: v.id, y: v.price })) }]}
+          />
+        )}
+
+        {selectedPlot === 'pie' && (
+          <PieChart
+            // colors={['red', 'blue', 'green']}
+            width={600}
+            height={600}
+            series={[{data: product.map(v => ({ id: v.id, value: v.price, })), arcLabel: (product) => `${product.id} (${product.value})`, }]}
+          />
+        )}
+
+        {selectedPlot === 'bar' && (
+        <BarChart
+        series={[
+          {
+            data: product.map(p => p.price)
+          }
+        ]}
+        height={290}
+        xAxis={[
+          {
+            data: product.map(p => p.name),
+            scaleType: 'band'
+          }
+        ]}
+        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+      />)}
+    </div>
+  );
+}
