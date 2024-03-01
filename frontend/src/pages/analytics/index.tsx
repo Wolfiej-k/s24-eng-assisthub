@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { BarChart } from '@mui/x-charts/BarChart';
+import { Authenticated } from "@refinedev/core";
 
 interface ScatterValueType {
   id: number ;
@@ -44,6 +45,7 @@ export default function AnalyticsPage() {
 
   return (
     // from mui
+    <Authenticated key="dashboard">
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop : "20px" }}>
         <Button
           id="basic-button"
@@ -112,5 +114,6 @@ export default function AnalyticsPage() {
         margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
       />)}
     </div>
+    </Authenticated>
   );
 }

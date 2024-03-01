@@ -48,6 +48,7 @@ function App() {
                     )}
                   >
                     <HomePage />
+                    <AnalyticsPage/>
                   </ThemedLayoutV2>
                 }
               />
