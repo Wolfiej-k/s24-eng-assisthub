@@ -47,12 +47,12 @@ export const EventList: React.FC = () => {
   const columns = React.useMemo<GridColDef<IEvent>[]>(
     () => [
       { field: "id", headerName: "ID", type: "number", width: 75 },
-      { field: "title", headerName: "Title", width: 100, flex: 1 },
+      { field: "title", headerName: "Title", width: 75, flex: 0.5 },
       { field: "content", headerName: "Content", minWidth: 200, flex: 1 },
       {
         field: "createdAt",
         headerName: "Date created",
-        minWidth: 100,
+        width: 150,
         renderCell: (params) => (
           <span>{(params.value as Date).toLocaleString()}</span>
         ),
@@ -60,7 +60,7 @@ export const EventList: React.FC = () => {
       {
         field: "publishedAt",
         headerName: "Date published",
-        minWidth: 100,
+        width: 150,
         renderCell: (params) => (
           <span>{(params.value as Date).toLocaleString()}</span>
         ),
