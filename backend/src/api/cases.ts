@@ -32,12 +32,13 @@ router.get("/", (req, res, next) => {
 })
 
 async function create(newCase: Case){
-  const result = await db.query(
-    `INSERT INTO cases
-    (id, client_id, status, unemployment, dependent, housing, insurance, education, benefit)
-    VALUES
-    ('${newCase.id}, ${newCase.client_id}, ${newCase.start_time}, ${newCase.end_time}, ${newCase.status}, ${newCase.unemployment}, ${newCase.dependent}, ${newCase.housing}, ${newCase.insurance},  ${newCase.education},  ${newCase.benefit})`
-  );
+  // const result = await db.query(
+  //   `INSERT INTO cases
+  //   (id, client_id, status, unemployment, dependent, housing, insurance, education, benefit)
+  //   VALUES
+  //   ('${newCase.id}, ${newCase.client_id}, ${newCase.start_time}, ${newCase.end_time}, ${newCase.status}, ${newCase.unemployment}, ${newCase.dependent}, ${newCase.housing}, ${newCase.insurance},  ${newCase.education},  ${newCase.benefit})`
+  // );
+  cases.push(newCase)
 
   let message = 'Error in creating case';
 
@@ -45,9 +46,8 @@ async function create(newCase: Case){
     message = 'Case created successfully';
   }
 
-  cases.push(newCase);
-
-  return {message};
+  //return {message};
+  return {"added case to list"}
 }
 
 router.post("", (req, res, next) => {
@@ -67,11 +67,17 @@ router.post("", (req, res, next) => {
 })
 
 async function update(id, updateCase: Case){
-  const result = await db.query(
-    `UPDATE cases
-    SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
-    WHERE id=${id}`
-  );
+  // const result = await db.query(
+  //   `UPDATE cases
+  //   SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
+  //   WHERE id=${id}`
+  // );
+
+  cases.forEach( (i) => {
+    if (i.id == updateCase.id) {
+      i = updateCase
+    }
+  })
 
   let message = 'Error in updating case';
 
@@ -79,22 +85,25 @@ async function update(id, updateCase: Case){
     message = 'Case updated successfully';
   }
 
-  return {message};
+  //return {message};
+  return {"case edited"}
 }
 
 router.put('/:id', async function(req, res, next) {
   try {
-    res.json(await cases.update(req.params.id, req.body));
+    res.json(await update(req.params.id, req.body));
   } catch (err) {
     console.error(`Error while updating case`, err.message);
     next(err);
   }
 });
 
-async function remove(id, removeCase: Case){
-  const result = await db.query(
-    `DELETE FROM cases WHERE id=${id}`
-  );
+async function remove(id){
+  // const result = await db.query(
+  //   `DELETE FROM cases WHERE id=${id}`
+  // );
+
+  delete cases[cases.findIndex(item => item.id == id)];
 
   let message = 'Error in deleting cases';
 
@@ -102,12 +111,13 @@ async function remove(id, removeCase: Case){
     message = 'Case deleted successfully';
   }
 
-  return {message};
+  //return {message};
+  return {"Case deleted"}
 }
 
 router.delete('/:id', async function(req, res, next) {
   try {
-    res.json(await cases.remove(req.params.id));
+    res.json(await remove(req.params.id));
   } catch (err) {
     console.error(`Error while deleting case`, err.message);
     next(err);
