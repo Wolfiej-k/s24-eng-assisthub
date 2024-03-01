@@ -109,7 +109,7 @@ async function remove(id){
 
 router.delete('/:id', async function(req, res, next) {
   try {
-    res.json(await programmingLanguages.remove(req.params.id));
+    res.json(await cases.remove(req.params.id));
   } catch (err) {
     console.error(`Error while deleting case`, err.message);
     next(err);
