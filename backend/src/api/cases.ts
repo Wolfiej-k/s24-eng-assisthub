@@ -1,7 +1,5 @@
 import { Router } from "express"
 
-const db = require('./db');
-const programmingLanguages = require('../services/cases');
 const router = Router()
 
 interface Case {
@@ -93,7 +91,7 @@ router.put('/:id', async function(req, res, next) {
   }
 });
 
-async function remove(id){
+async function remove(id, removeCase: Case){
   const result = await db.query(
     `DELETE FROM cases WHERE id=${id}`
   );
