@@ -1,37 +1,15 @@
 import { Router } from "express"
+import { type Case, type CaseItem } from "../schemas/case"
 
 const router = Router()
 
-interface Case {
-  id?: string;
-  client_id?: number;
-  status: string;
-  start_time?: string;
-  end_time?: string;
-  unemployment: boolean;
-  dependent: boolean;
-  housing: string;
-  insurance: boolean,
-  education: string,
-  benefit: string
-}
-
-interface Coach {
-  id: number,
-  name: string,
-  phone: number,
-  email: string
-  language: string,
-  zipcode: number
-}
-
-let cases: Case[] = [];
+const cases: CaseItem[] = []
 
 router.get("/", (req, res, next) => {
   return res.send("Cases API")
 })
 
-async function create(newCase: Case){
+async function create(newCase: Case) {
   // const result = await db.query(
   //   `INSERT INTO cases
   //   (id, client_id, status, unemployment, dependent, housing, insurance, education, benefit)
@@ -47,11 +25,12 @@ async function create(newCase: Case){
   // }
 
   //return {message};
-  return ("added case to list")
+  return "added case to list"
 }
 
 router.post("", (req, res, next) => {
-  const { status, unemployment, dependent, housing, insurance, education, benefit } = req.body;
+  const { status, unemployment, dependent, housing, insurance, education, benefit } = req.body
+
   const c: Case = {
     status: status,
     unemployment: unemployment,
@@ -59,21 +38,20 @@ router.post("", (req, res, next) => {
     housing: housing,
     insurance: insurance,
     education: education,
-    benefit: benefit
-  };
-  create(c);
-  return res.send(c);
-
+    benefit: benefit,
+  }
+  create(c)
+  return res.send(c)
 })
 
-async function update(id: string, updateCase: Case){
+async function update(id: string, updateCase: Case) {
   // const result = await db.query(
   //   `UPDATE cases
   //   SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
   //   WHERE id=${id}`
   // );
 
-  cases.forEach( (i) => {
+  cases.forEach((i) => {
     if (i.id == updateCase.id) {
       i = updateCase
     }
@@ -86,24 +64,24 @@ async function update(id: string, updateCase: Case){
   // }
 
   //return {message};
-  return ("case edited")
+  return "case edited"
 }
 
-router.put('/:id', async function(req, res, next) {
+router.put("/:id", async function (req, res, next) {
   try {
-    res.json(await update(req.params.id, req.body));
+    res.json(await update(req.params.id, req.body))
   } catch (error: any) {
-    console.error(`Error while updating case`, error.message);
-    next(error);
+    console.error(`Error while updating case`, error.message)
+    next(error)
   }
-});
+})
 
-async function remove(id: string){
+async function remove(id: string) {
   // const result = await db.query(
   //   `DELETE FROM cases WHERE id=${id}`
   // );
 
-  delete cases[cases.findIndex(item => item.id == id)];
+  delete cases[cases.findIndex((item) => item.id == id)]
 
   // let message = 'Error in deleting cases';
 
@@ -112,16 +90,16 @@ async function remove(id: string){
   // }
 
   //return {message};
-  return ("Case deleted")
+  return "Case deleted"
 }
 
-router.delete('/:id', async function(req, res, next) {
+router.delete("/:id", async function (req, res, next) {
   try {
-    res.json(await remove(req.params.id));
+    res.json(await remove(req.params.id))
   } catch (error: any) {
-    console.error(`Error while deleting case`, error.message);
-    next(error);
+    console.error(`Error while deleting case`, error.message)
+    next(error)
   }
-});
+})
 
 export default router
