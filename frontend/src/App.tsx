@@ -1,17 +1,16 @@
-import { Refine } from "@refinedev/core"
-
-import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
-
+import { useAuth0 } from "@auth0/auth0-react"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
+import { Refine, type AuthBindings } from "@refinedev/core"
+import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
   DocumentTitleHandler,
   NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
+import axios from "axios"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { authProvider } from "./authProvider"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 
 import HomePage from "./pages"
@@ -20,6 +19,81 @@ import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
 
 export default function App() {
+  const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
+
+  if (isLoading) {
+    return <span>Loading...</span>
+  }
+
+  const authProvider: AuthBindings = {
+    login: () => {
+      return Promise.resolve({
+        success: true,
+      })
+    },
+    logout: () => {
+      void logout({ logoutParams: { returnTo: window.location.origin } })
+      return Promise.resolve({
+        success: true,
+      })
+    },
+    onError: (error: string) => {
+      return Promise.resolve({
+        logout: true,
+        redirectTo: "/login",
+        error: new Error(error),
+      })
+    },
+    check: async () => {
+      try {
+        const token = await getIdTokenClaims()
+        if (token) {
+          axios.defaults.headers.common = {
+            Authorization: `Bearer ${token.__raw}`,
+          }
+          return {
+            authenticated: true,
+          }
+        } else {
+          return {
+            authenticated: false,
+            error: {
+              message: "Check failed",
+              name: "Token not found",
+            },
+            redirectTo: "/login",
+            logout: true,
+          }
+        }
+      } catch (error: unknown) {
+        return {
+          authenticated: false,
+          error: new Error("Unknown error"),
+          redirectTo: "/login",
+          logout: true,
+        }
+      }
+    },
+    getPermissions: () => Promise.resolve(null),
+    getIdentity: async () => {
+      if (user) {
+        return Promise.resolve({
+          ...user,
+          avatar: user.picture,
+        })
+      }
+      return Promise.resolve(null)
+    },
+  }
+
+  void getIdTokenClaims().then((token) => {
+    if (token) {
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${token.__raw}`,
+      }
+    }
+  })
+
   return (
     <BrowserRouter>
       <ColorModeContextProvider>
@@ -27,7 +101,7 @@ export default function App() {
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
         <RefineSnackbarProvider>
           <Refine
-            dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+            dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
             notificationProvider={useNotificationProvider}
             routerProvider={routerProvider}
             authProvider={authProvider}
