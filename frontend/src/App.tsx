@@ -3,7 +3,11 @@ import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { Refine, type AuthBindings } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
-import routerBindings, { DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
+import routerProvider, {
+  DocumentTitleHandler,
+  NavigateToResource,
+  UnsavedChangesNotifier,
+} from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
@@ -14,7 +18,7 @@ import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
 
-function App() {
+export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
 
   if (isLoading) {
@@ -99,8 +103,14 @@ function App() {
           <Refine
             dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
             notificationProvider={useNotificationProvider}
-            routerProvider={routerBindings}
+            routerProvider={routerProvider}
             authProvider={authProvider}
+            resources={[
+              {
+                name: "posts",
+                list: "/",
+              },
+            ]}
             options={{
               syncWithLocation: true,
               warnWhenUnsavedChanges: true,
@@ -110,7 +120,6 @@ function App() {
           >
             <Routes>
               <Route
-                index
                 element={
                   <ThemedLayoutV2
                     Title={({ collapsed }) => (
@@ -123,7 +132,9 @@ function App() {
                     <HomePage />
                   </ThemedLayoutV2>
                 }
-              />
+              >
+                <Route index element={<NavigateToResource resource="posts" />} />
+              </Route>
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="forgot" element={<ForgotPage />} />
@@ -136,5 +147,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App
