@@ -7,34 +7,20 @@ jobs:
   test:
     name: Format source code and check for linting errors
     runs-on: ubuntu-latest
+    strategy:
+      matrix: { dir: ['frontend', 'backend'] }
     steps:
       - uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - name: Check frontend
-        run: cd frontend
-      - name: Install packages
-        run: npm ci
-      - name: Format with Prettier
-        run: npm run prettier:fix
+      - name: Check ${{ matrix.dir }}
+        working-directory: ${{ matrix.dir }}
+        run: |
+          npm ci
+          npm run prettier:fix
+          npm run lint:fix
       - name: Commit formatting changes with Prettier
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply formatting changes
+          commit_message: Apply formatting changes for ${{ matrix.dir }}
           branch: ${{ github.head_ref }}
-      - name: Lint with eslint
-        run: npm run lint:fix
-      - run: cd ..
-      - name: Check backend
-        run: cd backend
-      - name: Install packages
-        run: npm ci
-      - name: Format with Prettier
-        run: npm run prettier:fix
-      - name: Commit formatting changes with Prettier
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply formatting changes
-          branch: ${{ github.head_ref }}
-      - name: Lint with eslint
-        run: npm run lint:fix
