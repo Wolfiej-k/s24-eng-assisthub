@@ -14,7 +14,7 @@ app.get("/", (req: Request, res: Response) => {
   res.send("AssistHub Backend")
 })
 
-app.use("/api/cases", cases);
+app.use("/api/cases", cases)
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   console.error(err.message, err.stack)
