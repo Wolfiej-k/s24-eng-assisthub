@@ -1,12 +1,38 @@
 import { Router } from "express"
-import { type Case, type CaseItem } from "../schemas/case"
+import { validateCase, type CaseItem } from "../schemas/case.js"
 
 const router = Router()
 
-const cases: CaseItem[] = []
+let idCount = 3
+const cases: CaseItem[] = [
+  {
+    id: 1,
+    client: {
+      name: "John Doe",
+      email: "john.doe@example.com",
+      phone: "123-456-7890",
+      zip: "02138",
+    },
+    startTime: new Date("2024-02-29"),
+    language: "English",
+    benefits: "CalFresh",
+  },
+  {
+    id: 2,
+    client: {
+      name: "Jane Smith",
+      email: "jane.smith@example.com",
+      phone: "098-765-4321",
+      zip: "01237",
+    },
+    startTime: new Date("2005-01-01"),
+    language: "Spanish",
+    benefits: "Section 8/Housing",
+  },
+]
 
-router.get("/", (req, res, next) => {
-  return res.send("Cases API")
+router.get("/", (_req, res) => {
+  return res.status(201).json(cases)
 })
 
 async function create(newCase: Case) {
@@ -28,20 +54,15 @@ async function create(newCase: Case) {
   return "added case to list"
 }
 
-router.post("", (req, res, next) => {
-  const { status, unemployment, dependent, housing, insurance, education, benefit } = req.body
+router.post("/", (req, res) => {
+  if (validateCase(req.body)) {
+    const item: CaseItem = { id: idCount++, startTime: new Date(), ...req.body }
+    cases.push(item)
 
-  const c: Case = {
-    status: status,
-    unemployment: unemployment,
-    dependent: dependent,
-    housing: housing,
-    insurance: insurance,
-    education: education,
-    benefit: benefit,
+    res.status(201).json(item)
+  } else {
+    res.status(500).send(validateCase.errors)
   }
-  create(c)
-  return res.send(c)
 })
 
 async function update(id: string, updateCase: Case) {
