@@ -3,7 +3,7 @@ import { Router } from "express"
 const router = Router()
 
 interface Case {
-  id?: number;
+  id?: string;
   client_id?: number;
   status: string;
   start_time?: string;
@@ -40,14 +40,14 @@ async function create(newCase: Case){
   // );
   cases.push(newCase)
 
-  let message = 'Error in creating case';
+  // let message = 'Error in creating case';
 
-  if (result.affectedRows) {
-    message = 'Case created successfully';
-  }
+  // if (result.affectedRows) {
+  //   message = 'Case created successfully';
+  // }
 
   //return {message};
-  return {"added case to list"}
+  return ("added case to list")
 }
 
 router.post("", (req, res, next) => {
@@ -66,7 +66,7 @@ router.post("", (req, res, next) => {
 
 })
 
-async function update(id, updateCase: Case){
+async function update(id: string, updateCase: Case){
   // const result = await db.query(
   //   `UPDATE cases
   //   SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
@@ -79,48 +79,48 @@ async function update(id, updateCase: Case){
     }
   })
 
-  let message = 'Error in updating case';
+  // let message = 'Error in updating case';
 
-  if (result.affectedRows) {
-    message = 'Case updated successfully';
-  }
+  // if (result.affectedRows) {
+  //   message = 'Case updated successfully';
+  // }
 
   //return {message};
-  return {"case edited"}
+  return ("case edited")
 }
 
 router.put('/:id', async function(req, res, next) {
   try {
     res.json(await update(req.params.id, req.body));
-  } catch (err) {
-    console.error(`Error while updating case`, err.message);
-    next(err);
+  } catch (error: any) {
+    console.error(`Error while updating case`, error.message);
+    next(error);
   }
 });
 
-async function remove(id){
+async function remove(id: string){
   // const result = await db.query(
   //   `DELETE FROM cases WHERE id=${id}`
   // );
 
   delete cases[cases.findIndex(item => item.id == id)];
 
-  let message = 'Error in deleting cases';
+  // let message = 'Error in deleting cases';
 
-  if (result.affectedRows) {
-    message = 'Case deleted successfully';
-  }
+  // if (result.affectedRows) {
+  //   message = 'Case deleted successfully';
+  // }
 
   //return {message};
-  return {"Case deleted"}
+  return ("Case deleted")
 }
 
 router.delete('/:id', async function(req, res, next) {
   try {
     res.json(await remove(req.params.id));
-  } catch (err) {
-    console.error(`Error while deleting case`, err.message);
-    next(err);
+  } catch (error: any) {
+    console.error(`Error while deleting case`, error.message);
+    next(error);
   }
 });
 
