@@ -1,6 +1,6 @@
 import { Authenticated } from "@refinedev/core"
 
-import EventGrid from "./dashboard"
+import EventGrid from "./event-grid"
 
 export default function HomePage() {
   return (
