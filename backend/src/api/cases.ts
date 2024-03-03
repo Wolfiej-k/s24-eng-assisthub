@@ -2,7 +2,7 @@ import { Router } from "express"
 
 const router = Router()
 
-router.get("/", (_, res, __) => {
+router.get("/", (req, res, next) => {
   res.send("Cases API")
 })
 
