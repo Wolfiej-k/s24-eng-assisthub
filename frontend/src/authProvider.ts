@@ -18,13 +18,13 @@ export const authProvider: AuthBindings = {
       }
     }
 
-    return {
+    return Promise.resolve({
       success: false,
       error: {
         name: "LoginError",
         message: "Invalid username or password",
       },
-    }
+    })
   },
   register: async ({ username, email, password }) => {
     if ((username || email) && password) {
@@ -33,54 +33,57 @@ export const authProvider: AuthBindings = {
         password: password as string,
       })
 
-      return {
+      return Promise.resolve({
         success: true,
         redirectTo: "/login",
-      }
+      })
     }
 
-    return {
+    return Promise.resolve({
       success: false,
       error: {
         name: "RegisterError",
         message: "Invalid username or password",
       },
-    }
+    })
   },
   logout: async () => {
     localStorage.removeItem(STORAGE_KEY)
-    return {
+    return Promise.resolve({
       success: true,
       redirectTo: "/login",
-    }
+    })
   },
   check: async () => {
     const token = localStorage.getItem(STORAGE_KEY)
     if (token) {
-      return {
+      return Promise.resolve({
         authenticated: true,
-      }
+      })
     }
 
-    return {
+    return Promise.resolve({
       authenticated: false,
       redirectTo: "/login",
-    }
+    })
   },
-  getPermissions: async () => null,
+  getPermissions: async () => Promise.resolve(null),
   getIdentity: async () => {
     const token = localStorage.getItem(STORAGE_KEY)
     if (token) {
-      return {
+      return Promise.resolve({
         id: 1,
         name: "John Doe",
         avatar: "https://i.pravatar.cc/300",
-      }
+      })
     }
-    return null
+    return Promise.resolve(null)
   },
   onError: async (error) => {
-    console.error(error)
-    return { error }
+    return Promise.resolve({
+      logout: true,
+      redirectTo: "/login",
+      error: new Error(error as string),
+    })
   },
 }
