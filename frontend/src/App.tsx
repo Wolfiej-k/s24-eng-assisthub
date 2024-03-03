@@ -4,7 +4,11 @@ import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from 
 
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
-import routerProvider, { NavigateToResource, DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
+import routerProvider, {
+  DocumentTitleHandler,
+  NavigateToResource,
+  UnsavedChangesNotifier,
+} from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { authProvider } from "./authProvider"
@@ -14,9 +18,8 @@ import HomePage from "./pages"
 import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
-import { EventList } from "./pages/dashboard"
 
-const App: React.FC = () => {
+export default function App() {
   return (
     <BrowserRouter>
       <ColorModeContextProvider>
@@ -31,7 +34,7 @@ const App: React.FC = () => {
             resources={[
               {
                 name: "posts",
-                list: "/"
+                list: "/",
               },
             ]}
             options={{
@@ -53,15 +56,10 @@ const App: React.FC = () => {
                     )}
                   >
                     <HomePage />
-                    <EventList />
-
                   </ThemedLayoutV2>
                 }
-                >
-                  <Route
-                  index
-                    element={<NavigateToResource resource="posts" />}
-                  />
+              >
+                <Route index element={<NavigateToResource resource="posts" />} />
               </Route>
               <Route path="login" element={<LoginPage />} />
               <Route path="register" element={<RegisterPage />} />
@@ -73,7 +71,5 @@ const App: React.FC = () => {
         </RefineSnackbarProvider>
       </ColorModeContextProvider>
     </BrowserRouter>
-  );
-};
-
-export default App;
+  )
+}
