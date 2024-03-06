@@ -65,7 +65,7 @@ router.post("/", (req, res) => {
   }
 })
 
-async function update(id: string, updateCase: Case) {
+async function update(id: number, updateCase: Case) {
   // const result = await db.query(
   //   `UPDATE cases
   //   SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
@@ -90,14 +90,19 @@ async function update(id: string, updateCase: Case) {
 
 router.put("/:id", async function (req, res, next) {
   try {
-    res.json(await update(req.params.id, req.body))
+    //res.json(await update(req.params.id, req.body))
+    cases.forEach((i) => {
+      if (i.id == (req.params.id as unknown) as number) {
+        const item: CaseItem = { id: req.params.id, startTime: new Date(), ...req.body }
+      }
+    })
   } catch (error: any) {
     console.error(`Error while updating case`, error.message)
     next(error)
   }
 })
 
-async function remove(id: string) {
+async function remove(id: number) {
   // const result = await db.query(
   //   `DELETE FROM cases WHERE id=${id}`
   // );
@@ -116,7 +121,12 @@ async function remove(id: string) {
 
 router.delete("/:id", async function (req, res, next) {
   try {
-    res.json(await remove(req.params.id))
+    //res.json(await remove(req.params.id))
+    cases.forEach((i) => {
+      if (i.id == (req.params.id as unknown) as number){
+        cases.splice(cases.indexOf(i))
+      }
+    })
   } catch (error: any) {
     console.error(`Error while deleting case`, error.message)
     next(error)
