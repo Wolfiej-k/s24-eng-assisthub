@@ -2,11 +2,11 @@ import { useAuth0 } from "@auth0/auth0-react"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Refine, type AuthBindings } from "@refinedev/core"
+import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
+  CatchAllNavigate,
   DocumentTitleHandler,
-  NavigateToResource,
   UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
@@ -16,9 +16,8 @@ import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
 import HomePage from "./pages"
-import ForgotPage from "./pages/forgot"
+import AnalyticsPage from "./pages/analytics"
 import LoginPage from "./pages/login"
-import RegisterPage from "./pages/register"
 
 export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
@@ -119,29 +118,24 @@ export default function App() {
               projectId: "7nmKip-7xeawJ-mdyZ6f",
             }}
           >
-            <ThemeProvider theme={theme}>
-              <Routes>
-                <Route
-                  element={
-                    <ThemedLayoutV2
-                      Title={({ collapsed }) => (
-                        <>
-                          {collapsed && <span>AH</span>}
-                          {!collapsed && <span>AssistHub</span>}
-                        </>
-                      )}
-                    >
-                      <HomePage />
-                    </ThemedLayoutV2>
-                  }
+            <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+              <ThemeProvider theme={theme}>
+                <ThemedLayoutV2
+                  Title={({ collapsed }) => (
+                    <>
+                      {collapsed && <span>AH</span>}
+                      {!collapsed && <span>AssistHub</span>}
+                    </>
+                  )}
                 >
-                  <Route index element={<NavigateToResource resource="posts" />} />
-                </Route>
-                <Route path="login" element={<LoginPage />} />
-                <Route path="register" element={<RegisterPage />} />
-                <Route path="forgot" element={<ForgotPage />} />
-              </Routes>
-            </ThemeProvider>
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/analytics" element={<AnalyticsPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                  </Routes>
+                </ThemedLayoutV2>
+              </ThemeProvider>
+            </Authenticated>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
           </Refine>
