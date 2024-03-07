@@ -35,22 +35,8 @@ router.get("/", (_req, res) => {
   return res.status(201).json(cases)
 })
 
-async function create(newCase: Case) {
-  // const result = await db.query(
-  //   `INSERT INTO cases
-  //   (id, client_id, status, unemployment, dependent, housing, insurance, education, benefit)
-  //   VALUES
-  //   ('${newCase.id}, ${newCase.client_id}, ${newCase.start_time}, ${newCase.end_time}, ${newCase.status}, ${newCase.unemployment}, ${newCase.dependent}, ${newCase.housing}, ${newCase.insurance},  ${newCase.education},  ${newCase.benefit})`
-  // );
+async function create(newCase: CaseItem) {
   cases.push(newCase)
-
-  // let message = 'Error in creating case';
-
-  // if (result.affectedRows) {
-  //   message = 'Case created successfully';
-  // }
-
-  //return {message};
   return "added case to list"
 }
 
@@ -65,71 +51,45 @@ router.post("/", (req, res) => {
   }
 })
 
-async function update(id: number, updateCase: Case) {
-  // const result = await db.query(
-  //   `UPDATE cases
-  //   SET status="${updateCase.status}", unemployment="${updateCase.unemployment}", dependent=="${updateCase.dependent}", housing="${updateCase.housing}", insurance="${updateCase.insurance}", education="${updateCase.education}", benefit="${updateCase.benefit}"
-  //   WHERE id=${id}`
-  // );
+async function update(id: number, updateCase: CaseItem) {
 
   cases.forEach((i) => {
     if (i.id == updateCase.id) {
       i = updateCase
     }
   })
-
-  // let message = 'Error in updating case';
-
-  // if (result.affectedRows) {
-  //   message = 'Case updated successfully';
-  // }
-
-  //return {message};
   return "case edited"
 }
 
 router.put("/:id", async function (req, res, next) {
-  try {
-    //res.json(await update(req.params.id, req.body))
+  if (validateCase(req.body)) {
     cases.forEach((i) => {
       if (i.id == (req.params.id as unknown) as number) {
         const item: CaseItem = { id: req.params.id, startTime: new Date(), ...req.body }
+        res.status(201).json(item)
       }
     })
-  } catch (error: any) {
-    console.error(`Error while updating case`, error.message)
-    next(error)
+  } else {
+    res.status(500).send(validateCase.errors)
   }
 })
 
 async function remove(id: number) {
-  // const result = await db.query(
-  //   `DELETE FROM cases WHERE id=${id}`
-  // );
 
   delete cases[cases.findIndex((item) => item.id == id)]
-
-  // let message = 'Error in deleting cases';
-
-  // if (result.affectedRows) {
-  //   message = 'Case deleted successfully';
-  // }
-
-  //return {message};
   return "Case deleted"
 }
 
 router.delete("/:id", async function (req, res, next) {
-  try {
-    //res.json(await remove(req.params.id))
+  if (validateCase(req.body)) {
     cases.forEach((i) => {
       if (i.id == (req.params.id as unknown) as number){
+        res.status(201).json(i)
         cases.splice(cases.indexOf(i))
       }
     })
-  } catch (error: any) {
-    console.error(`Error while deleting case`, error.message)
-    next(error)
+  } else {
+    res.status(500).send(validateCase.errors)
   }
 })
 
