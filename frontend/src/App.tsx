@@ -97,30 +97,29 @@ export default function App() {
   })
 
   return (
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <ColorModeContextProvider>
-          <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
-          <RefineSnackbarProvider>
-            <Refine
-              dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
-              notificationProvider={useNotificationProvider}
-              routerProvider={routerProvider}
-              authProvider={authProvider}
-              resources={[
-                {
-                  name: "posts",
-                  list: "/",
-                },
-              ]}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                useNewQueryKeys: true,
-                projectId: "7nmKip-7xeawJ-mdyZ6f",
-              }}
-            >
+    <BrowserRouter>
+      <ColorModeContextProvider>
+        <CssBaseline />
+        <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+        <RefineSnackbarProvider>
+          <Refine
+            dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
+            notificationProvider={useNotificationProvider}
+            routerProvider={routerProvider}
+            authProvider={authProvider}
+            resources={[
+              {
+                name: "posts",
+                list: "/",
+              },
+            ]}
+            options={{
+              warnWhenUnsavedChanges: true,
+              useNewQueryKeys: true,
+              projectId: "7nmKip-7xeawJ-mdyZ6f",
+            }}
+          >
+            <ThemeProvider theme={theme}>
               <Routes>
                 <Route
                   element={
@@ -142,12 +141,12 @@ export default function App() {
                 <Route path="register" element={<RegisterPage />} />
                 <Route path="forgot" element={<ForgotPage />} />
               </Routes>
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-          </RefineSnackbarProvider>
-        </ColorModeContextProvider>
-      </BrowserRouter>
-    </ThemeProvider>
+            </ThemeProvider>
+            <UnsavedChangesNotifier />
+            <DocumentTitleHandler />
+          </Refine>
+        </RefineSnackbarProvider>
+      </ColorModeContextProvider>
+    </BrowserRouter>
   )
 }
