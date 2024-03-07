@@ -52,7 +52,6 @@ router.post("/", (req, res) => {
 })
 
 async function update(id: number, updateCase: CaseItem) {
-
   cases.forEach((i) => {
     if (i.id == updateCase.id) {
       i = updateCase
@@ -64,7 +63,7 @@ async function update(id: number, updateCase: CaseItem) {
 router.put("/:id", async function (req, res, next) {
   if (validateCase(req.body)) {
     cases.forEach((i) => {
-      if (i.id == (req.params.id as unknown) as number) {
+      if (i.id == (req.params.id as unknown as number)) {
         const item: CaseItem = { id: req.params.id, startTime: new Date(), ...req.body }
         res.status(201).json(item)
       }
@@ -75,7 +74,6 @@ router.put("/:id", async function (req, res, next) {
 })
 
 async function remove(id: number) {
-
   delete cases[cases.findIndex((item) => item.id == id)]
   return "Case deleted"
 }
@@ -83,7 +81,7 @@ async function remove(id: number) {
 router.delete("/:id", async function (req, res, next) {
   if (validateCase(req.body)) {
     cases.forEach((i) => {
-      if (i.id == (req.params.id as unknown) as number){
+      if (i.id == (req.params.id as unknown as number)) {
         res.status(201).json(i)
         cases.splice(cases.indexOf(i))
       }
