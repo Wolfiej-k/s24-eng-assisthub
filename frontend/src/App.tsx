@@ -14,10 +14,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 
 import HomePage from "./pages"
+import AnalyticsPage from "./pages/analytics"
 import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
-import AnalyticsPage from "./pages/analytics"
 
 export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
@@ -131,7 +131,7 @@ export default function App() {
                     )}
                   >
                     <HomePage />
-                    <AnalyticsPage/>
+                    <AnalyticsPage />
                   </ThemedLayoutV2>
                 }
               >
