@@ -1,22 +1,20 @@
 /* eslint-env node */
 
 module.exports = {
-  env: { browser: true, es2020: true },
+  env: { node: true },
   extends: [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended-type-checked",
     "plugin:@typescript-eslint/stylistic-type-checked",
-    "plugin:react-hooks/recommended",
     "prettier",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: true,
-    tsconfigRootDir: __dirname,
+    tsconfigRootDir: "/",
   },
-  plugins: ["@typescript-eslint", "react-refresh"],
+  plugins: ["@typescript-eslint"],
   rules: {
-    "react-refresh/only-export-components": "warn",
     "@typescript-eslint/no-floating-promises": ["warn"],
     "@typescript-eslint/consistent-type-imports": [
       "error",
