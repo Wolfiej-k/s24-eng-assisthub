@@ -66,6 +66,18 @@ const storage: Record<Resource, Case[]> = {
         language: "Spanish",
       },
     },
+    {
+      id: 3,
+      benefit: "Student Debt",
+      timestamp: new Date("2020-12-31"),
+      contact: {
+        name: "Alice Johnson",
+        email: "ajohnson@college.harvard.edu",
+        phone: "111-222-3333",
+        zip: "02138",
+        language: "English",
+      },
+    },
   ],
 }
 
