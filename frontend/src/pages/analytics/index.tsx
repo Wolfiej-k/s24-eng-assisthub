@@ -1,6 +1,6 @@
-import { useList } from "@refinedev/core";
+// import { useList } from "@refinedev/core";
 import * as React from 'react';
-import { ScatterChart, } from '@mui/x-charts/ScatterChart';
+// import { ScatterChart, } from '@mui/x-charts/ScatterChart';
 import { LineChart } from '@mui/x-charts';
 import { PieChart } from '@mui/x-charts/PieChart';
 import Button from '@mui/material/Button';
@@ -9,12 +9,6 @@ import MenuItem from '@mui/material/MenuItem';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { Authenticated } from "@refinedev/core";
 
-interface ScatterValueType {
-  id: number ;
-  name: string;
-  material: string;
-  price: number;
-}
 
 interface Client {
   name: string;
@@ -36,10 +30,10 @@ interface CaseItem extends Case {
 };
 
 const languages = ["English", "Spanish", "Chinese", "Korean"];
-
+const monthLabels =  ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const benefits = ["Health Insurance", "Legal Aid", "Housing Assistance", "food vouchers"];
 
-const clients: Client[] = Array.from({ length: 10 }, (_, i) => ({
+const clients: Client[] = Array.from({ length: 40 }, (_, i) => ({
   name: `Client ${i + 1}`,
   email: `client${i + 1}@example.com`,
   phone: `123-456-78${i}0`,
@@ -47,6 +41,10 @@ const clients: Client[] = Array.from({ length: 10 }, (_, i) => ({
 }));
 
 // Generating sample Cases, associating each with a client
+const startdate = new Array(40).fill(0);
+for (let j = 0; j < 40; j++) {
+  startdate[j] = Math.floor(Math.random() * 12);
+}
 const cases: Case[] = clients.map((client, i) => ({
   client,
   language: languages[i % languages.length],
@@ -57,14 +55,13 @@ const cases: Case[] = clients.map((client, i) => ({
 const caseItems: CaseItem[] = cases.map((c, i) => ({
   ...c,
   id: i + 1,
-  startTime: new Date(2023, 0, i + 1),
-  endTime: i % 4 === 0 ? new Date(2023, 0, i + 2) : undefined
+  startTime: new Date(2023, startdate[i] as number, startdate[i] + 1 as number),
+  endTime: i % 4 === 0 ? new Date(2023, (startdate[i]) + 1 as number, startdate[i] + 2 as number) : undefined
 }));
 
 
 export default function AnalyticsPage() {
 
-  const { data, isLoading, error } = useList<ScatterValueType>({ resource: "products" });
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [selectedPlot, setSelectedPlot] = React.useState<string | null>(null);
   const open = Boolean(anchorEl);
@@ -88,8 +85,8 @@ export default function AnalyticsPage() {
 
       const caseLanguage = currentCase.language;
       // if language doesn't exist put it in the array
-      if (!accumulator[caseLanguage]) {
-        accumulator[caseLanguage] = 0;
+      if (!accumulator[caseLanguage as string]) {
+        accumulator[caseLanguage as string] = 0;
       }
       accumulator[caseLanguage]++;
       return accumulator;
@@ -101,7 +98,7 @@ export default function AnalyticsPage() {
     return cases.reduce((accumulator, currentCase) => {
 
       const caseByBenefits = currentCase.benefits;
-      // if language doesn't exist put it in the array
+      // if benefit doesn't exist put it in the array
       if (!accumulator[caseByBenefits]) {
         accumulator[caseByBenefits] = 0;
       }
@@ -110,16 +107,32 @@ export default function AnalyticsPage() {
     }, {} as Record<string, number>);
   }, []);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  const monthCounts = new Array(12).fill(0);
+  caseItems.forEach((caseItem) => {
+    const month = caseItem.startTime.getMonth();
+    monthCounts[month]++;
+  });
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
+  // initalize array for months
+  const monthOpenCounts = new Array(12).fill(0);
+  // loop through the cases and count the number of cases for each month
+  caseItems.forEach((caseItem) => {
+    const startMonth = caseItem.startTime.getMonth();
+    const endMonth = caseItem.endTime ? caseItem.endTime.getMonth() : 11;
+    for (let month = startMonth; month <= endMonth; month++) {
+      monthOpenCounts[month]++;
+    }
+  });
 
-  const product = data?.data;
+  //
 
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // }
   return (
     // from mui
     <Authenticated key="dashboard">
@@ -142,29 +155,20 @@ export default function AnalyticsPage() {
             'aria-labelledby': 'basic-button',
           }}
         >
-          <MenuItem onClick={() => handleClose('scatter')}>Scatter Chart</MenuItem>
-          <MenuItem onClick={() => handleClose('line')}>Line Chart</MenuItem>
+          <MenuItem onClick={() => handleClose('line')}>Open Cases by Month</MenuItem>
+          <MenuItem onClick={() => handleClose('start')}>Start Time of Cases by Month</MenuItem>
           <MenuItem onClick={() => handleClose('language')}>Case by Language</MenuItem>
           <MenuItem onClick={() => handleClose('benefits')}>Case by Benefit</MenuItem>
-          <MenuItem onClick={() => handleClose('bar')}>Bar Chart</MenuItem>
-
         </Menu>
-
-        {selectedPlot === 'scatter' && (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <ScatterChart
-            width={700}
-            height={400}
-            series={[{ label: 'Products', data: product.map(v => ({ x: v.id, y: v.price })) }]}
-          />
-          </div>
-        )}
-
         {selectedPlot === 'line' && (
           <LineChart
             width={700}
             height={400}
-            series={[{ label: 'Products', data: product.map(v => ({ x: v.id, y: v.price })) }]}
+            xAxis={[{
+              data: monthLabels,
+              scaleType: 'band'
+            }]}
+            series={[{data: monthOpenCounts}]}
           />
         )}
 
@@ -200,23 +204,23 @@ export default function AnalyticsPage() {
             }]}/>
           </div>
         )}
-        {selectedPlot === 'bar' && (
-        <BarChart
-        series={[
-          {
-            data: product.map(p => p.price)
-          }
-        ]}
-        height={290}
-        width={1000}
-        xAxis={[
-          {
-            data: product.map(p => p.name),
-            scaleType: 'band'
-          }
-        ]}
-        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-      />)}
+        {selectedPlot === 'start' && (
+          <BarChart
+            series={[
+              {
+                data: monthCounts
+              }
+            ]}
+            height={290}
+            width={1000}
+            xAxis={[
+              {
+                data: monthLabels,
+                scaleType: 'band'
+              }
+            ]}
+            margin={{ top: 10, bottom: 30, left: 40, right: 10 }}/>
+        )}
     </div>
     </Authenticated>
   );
