@@ -1,13 +1,10 @@
-// import { useList } from "@refinedev/core";
-import * as React from "react"
-// import { ScatterChart, } from '@mui/x-charts/ScatterChart';
 import Button from "@mui/material/Button"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { LineChart } from "@mui/x-charts"
 import { BarChart } from "@mui/x-charts/BarChart"
 import { PieChart } from "@mui/x-charts/PieChart"
-import { Authenticated } from "@refinedev/core"
+import * as React from "react"
 
 interface Client {
   name: string
@@ -18,8 +15,8 @@ interface Client {
 
 interface Case {
   client: Client
-  language: string | undefined
-  benefits: string | undefined
+  language: string
+  benefits: string
 }
 
 interface CaseItem extends Case {
@@ -39,18 +36,17 @@ const clients: Client[] = Array.from({ length: 40 }, (_, i) => ({
   zip: `1234${i}`,
 }))
 
-// Generating sample Cases, associating each with a client
 const startdate = new Array(40).fill(0)
 for (let j = 0; j < 40; j++) {
   startdate[j] = Math.floor(Math.random() * 12)
 }
+
 const cases: Case[] = clients.map((client, i) => ({
   client,
-  language: languages[i % languages.length],
-  benefits: benefits[i % benefits.length],
+  language: languages[i % languages.length] ?? "",
+  benefits: benefits[i % benefits.length] ?? "",
 }))
 
-// Generating sample CaseItems, each associated with a case
 const caseItems: CaseItem[] = cases.map((c, i) => ({
   ...c,
   id: i + 1,
@@ -60,7 +56,7 @@ const caseItems: CaseItem[] = cases.map((c, i) => ({
 
 export default function AnalyticsPage() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const [selectedPlot, setSelectedPlot] = React.useState<string | null>(null)
+  const [selectedPlot, setSelectedPlot] = React.useState("line")
   const open = Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -74,17 +70,14 @@ export default function AnalyticsPage() {
     }
   }
 
-  // memoize the number of each language class
-  // I used useMemo to store the number of cases for each language
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
   const caseByLanguage = React.useMemo(() => {
     return cases.reduce(
       (accumulator, currentCase) => {
         const caseLanguage = currentCase.language
-        // if language doesn't exist put it in the array
-        if (!accumulator[caseLanguage!]) {
-          accumulator[caseLanguage!] = 0
+        if (!accumulator[caseLanguage]) {
+          accumulator[caseLanguage] = 0
         }
+
         accumulator[caseLanguage]++
         return accumulator
       },
@@ -96,10 +89,10 @@ export default function AnalyticsPage() {
     return cases.reduce(
       (accumulator, currentCase) => {
         const caseByBenefits = currentCase.benefits
-        // if benefit doesn't exist put it in the array
         if (!accumulator[caseByBenefits]) {
           accumulator[caseByBenefits] = 0
         }
+
         accumulator[caseByBenefits]++
         return accumulator
       },
@@ -113,9 +106,7 @@ export default function AnalyticsPage() {
     monthCounts[month]++
   })
 
-  // initalize array for months
   const monthOpenCounts = new Array(12).fill(0)
-  // loop through the cases and count the number of cases for each month
   caseItems.forEach((caseItem) => {
     const startMonth = caseItem.startTime.getMonth()
     const endMonth = caseItem.endTime ? caseItem.endTime.getMonth() : 11
@@ -124,113 +115,101 @@ export default function AnalyticsPage() {
     }
   })
 
-  //
-
-  // if (isLoading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // }
   return (
-    // from mui
-    <Authenticated key="dashboard">
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "10px" }}>
-        <Button
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          Choose Plot
-        </Button>
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={() => handleClose()}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
-        >
-          <MenuItem onClick={() => handleClose("line")}>Open Cases by Month</MenuItem>
-          <MenuItem onClick={() => handleClose("start")}>Start Time of Cases by Month</MenuItem>
-          <MenuItem onClick={() => handleClose("language")}>Case by Language</MenuItem>
-          <MenuItem onClick={() => handleClose("benefits")}>Case by Benefit</MenuItem>
-        </Menu>
-        {selectedPlot === "line" && (
-          <LineChart
-            width={700}
-            height={400}
-            xAxis={[
-              {
-                data: monthLabels,
-                scaleType: "band",
-              },
-            ]}
-            series={[{ data: monthOpenCounts }]}
-          />
-        )}
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        marginTop: "10px",
+        justifyContent: "center",
+      }}
+    >
+      <Button
+        id="basic-button"
+        aria-controls={open ? "basic-menu" : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? "true" : undefined}
+        onClick={handleClick}
+      >
+        Choose Plot
+      </Button>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={() => handleClose()}
+        MenuListProps={{
+          "aria-labelledby": "basic-button",
+        }}
+      >
+        <MenuItem onClick={() => handleClose("line")}>Open Cases by Month</MenuItem>
+        <MenuItem onClick={() => handleClose("start")}>Start Time of Cases by Month</MenuItem>
+        <MenuItem onClick={() => handleClose("language")}>Case by Language</MenuItem>
+        <MenuItem onClick={() => handleClose("benefits")}>Case by Benefit</MenuItem>
+      </Menu>
+      {selectedPlot === "line" && (
+        <LineChart
+          width={700}
+          height={400}
+          xAxis={[
+            {
+              data: monthLabels,
+              scaleType: "band",
+            },
+          ]}
+          series={[{ data: monthOpenCounts }]}
+        />
+      )}
 
-        {selectedPlot === "language" && (
-          <PieChart
-            // colors={['red', 'blue', 'green']}
-
-            width={600}
-            height={600}
-            series={[
-              {
-                // I want to display the number of cases for each language
-                data: Object.entries(caseByLanguage).map(([language, count]) => ({
-                  id: language,
-                  value: count,
-                })),
-                arcLabel: ({ id, value }) => `${id} (${value})`,
-              },
-            ]}
-          />
-        )}
-        {selectedPlot === "benefits" && (
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            <PieChart
-              // colors={['red', 'blue', 'green']}
-
-              width={600}
-              height={600}
-              series={[
-                {
-                  // I want to display the number of cases for each language
-                  data: Object.entries(caseByBenefits).map(([benefit, count]) => ({
-                    id: benefit,
-                    value: count,
-                  })),
-                  arcLabel: ({ id, value }) => `${id} (${value})`,
-                },
-              ]}
-            />
-          </div>
-        )}
-        {selectedPlot === "start" && (
-          <BarChart
-            series={[
-              {
-                data: monthCounts,
-              },
-            ]}
-            height={290}
-            width={1000}
-            xAxis={[
-              {
-                data: monthLabels,
-                scaleType: "band",
-              },
-            ]}
-            margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-          />
-        )}
-      </div>
-    </Authenticated>
+      {selectedPlot === "language" && (
+        <PieChart
+          width={600}
+          height={600}
+          series={[
+            {
+              data: Object.entries(caseByLanguage).map(([language, count]) => ({
+                id: language,
+                value: count,
+              })),
+              arcLabel: ({ id, value }) => `${id} (${value})`,
+            },
+          ]}
+        />
+      )}
+      {selectedPlot === "benefits" && (
+        <PieChart
+          width={600}
+          height={600}
+          series={[
+            {
+              data: Object.entries(caseByBenefits).map(([benefit, count]) => ({
+                id: benefit,
+                value: count,
+              })),
+              arcLabel: ({ id, value }) => `${id} (${value})`,
+            },
+          ]}
+        />
+      )}
+      {selectedPlot === "start" && (
+        <BarChart
+          series={[
+            {
+              data: monthCounts,
+            },
+          ]}
+          height={290}
+          width={1000}
+          xAxis={[
+            {
+              data: monthLabels,
+              scaleType: "band",
+            },
+          ]}
+          margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+        />
+      )}
+    </div>
   )
 }
