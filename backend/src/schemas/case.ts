@@ -36,7 +36,7 @@ const caseSchema: JSONSchemaType<Case> = {
     benefits: { type: "string" },
   },
   required: ["client", "language", "benefits"],
-  additionalProperties: false
+  additionalProperties: false,
 }
 
 const ajv = new Ajv()
