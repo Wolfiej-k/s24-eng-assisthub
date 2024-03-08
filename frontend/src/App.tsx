@@ -118,24 +118,36 @@ export default function App() {
               projectId: "7nmKip-7xeawJ-mdyZ6f",
             }}
           >
-            <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
-              <ThemeProvider theme={theme}>
-                <ThemedLayoutV2
-                  Title={({ collapsed }) => (
-                    <>
-                      {collapsed && <span>AH</span>}
-                      {!collapsed && <span>AssistHub</span>}
-                    </>
-                  )}
-                >
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/analytics" element={<AnalyticsPage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                  </Routes>
-                </ThemedLayoutV2>
-              </ThemeProvider>
-            </Authenticated>
+            <ThemeProvider theme={theme}>
+              <ThemedLayoutV2
+                Title={({ collapsed }) => (
+                  <>
+                    {collapsed && <span>AH</span>}
+                    {!collapsed && <span>AssistHub</span>}
+                  </>
+                )}
+              >
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <HomePage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route
+                    path="/analytics"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <AnalyticsPage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route path="/login" element={<LoginPage />} />
+                </Routes>
+              </ThemedLayoutV2>
+            </ThemeProvider>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
           </Refine>
