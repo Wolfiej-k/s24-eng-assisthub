@@ -1,5 +1,5 @@
-import EventGrid from "./event-grid"
+import CaseGrid from "./case-grid"
 
 export default function HomePage() {
-  return <EventGrid />
+  return <CaseGrid />
 }

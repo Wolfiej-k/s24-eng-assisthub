@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
+import { ThemeProvider } from "@mui/material/styles"
 import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
@@ -10,8 +11,11 @@ import routerProvider, {
 } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import Logo from "./assets/assisthublogo.png"
+import SmallLogo from "./assets/assisthublogosmall.png"
 import { ColorModeContextProvider } from "./contexts/color-mode"
+import { theme } from "./theme"
 
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
@@ -111,28 +115,49 @@ export default function App() {
               },
             ]}
             options={{
-              syncWithLocation: true,
               warnWhenUnsavedChanges: true,
               useNewQueryKeys: true,
               projectId: "7nmKip-7xeawJ-mdyZ6f",
             }}
           >
-            <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+            <ThemeProvider theme={theme}>
               <ThemedLayoutV2
                 Title={({ collapsed }) => (
-                  <>
-                    {collapsed && <span>AH</span>}
-                    {!collapsed && <span>AssistHub</span>}
-                  </>
+                  <Link to="/">
+                    {collapsed && (
+                      <>
+                        <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
+                      </>
+                    )}
+                    {!collapsed && (
+                      <>
+                        <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
+                      </>
+                    )}
+                  </Link>
                 )}
               >
                 <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/analytics" element={<AnalyticsPage />} />
+                  <Route
+                    path="/"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <HomePage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route
+                    path="/analytics"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <AnalyticsPage />
+                      </Authenticated>
+                    }
+                  />
                   <Route path="/login" element={<LoginPage />} />
                 </Routes>
               </ThemedLayoutV2>
-            </Authenticated>
+            </ThemeProvider>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
           </Refine>
