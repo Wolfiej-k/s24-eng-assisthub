@@ -1,7 +1,7 @@
 import { DataGrid, type GridColDef } from "@mui/x-data-grid"
-import { List, useDataGrid } from "@refinedev/mui"
+import { useDataGrid } from "@refinedev/mui"
 
-interface IEvent {
+interface IPost {
   id: number
   title: string
   content: string
@@ -14,7 +14,7 @@ interface IEvent {
   language: number
 }
 
-const columns: GridColDef<IEvent>[] = [
+const columns: GridColDef<IPost>[] = [
   { field: "id", headerName: "ID", type: "number", width: 75 },
   { field: "title", headerName: "Title", width: 150, flex: 0.5 },
   { field: "content", headerName: "Content", width: 600, flex: 1 },
@@ -34,8 +34,8 @@ const columns: GridColDef<IEvent>[] = [
   },
 ]
 
-export default function EventGrid() {
-  const { dataGridProps } = useDataGrid<IEvent>({
+export default function CaseGrid() {
+  const { dataGridProps } = useDataGrid<IPost>({
     initialCurrent: 1,
     initialPageSize: 10,
     initialSorter: [
@@ -44,12 +44,7 @@ export default function EventGrid() {
         order: "asc",
       },
     ],
-    syncWithLocation: true,
   })
 
-  return (
-    <List>
-      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
-    </List>
-  )
+  return <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
 }

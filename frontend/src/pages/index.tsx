@@ -1,13 +1,5 @@
-import { Authenticated } from "@refinedev/core"
-
-import EventGrid from "./event-grid"
+import CaseGrid from "./case-grid"
 
 export default function HomePage() {
-  return (
-    <>
-      <Authenticated key="dashboard">
-        <EventGrid />
-      </Authenticated>
-    </>
-  )
+  return <CaseGrid />
 }
