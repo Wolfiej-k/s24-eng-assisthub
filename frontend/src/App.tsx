@@ -18,9 +18,7 @@ import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
 import HomePage from "./pages"
-import ForgotPage from "./pages/forgot"
 import LoginPage from "./pages/login"
-import RegisterPage from "./pages/register"
 
 export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
