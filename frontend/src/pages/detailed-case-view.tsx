@@ -1,64 +1,78 @@
 import React, { useEffect } from "react";
-import { useForm } from "@refinedev/core";
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from "@mui/material";
+import { useForm, HttpError, BaseKey } from "@refinedev/core";
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField, DatePicker, TimePicker } from "@mui/material";
 
 interface DetailedCaseViewProps {
-  event: IPost | null;
+  eventID: number | null;
   onClose: () => void;
 }
 
 interface IPost {
-  id: number;
+  id: BaseKey;
   title: string;
   content: string;
   hit: number;
-  categoryID: number;
-  userID: number;
   status: "draft" | "rejected" | "published";
   createdAt: Date;
   publishedAt: Date;
   language: number;
 }
 
-const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ event, onClose }) => {
-  const { values, setValue } = React.useState<FormValues>;
+interface FormValues {
+  title?: string;
+  content?: string;
+  hit?: number;
+  status?: "draft" | "rejected" | "published";
+  createdAt?: Date;
+  publishedAt?: Date;
+  language?: number;
+}
+
+const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose }) => {
+  const { queryResult, formLoading, onFinish } = useForm<IPost, HttpError, FormValues>({
+    resource: "posts",
+    action: "edit",
+    id: eventID?.toString(),
+    redirect: "show", // redirect to show page after form submission, defaults to "list"
+  });
+
+  const currentValues = queryResult?.data?.data;
+
+  const [values, setValues] = React.useState<FormValues>({
+    title: currentValues?.title,
+    content: currentValues?.content,
+    hit: currentValues?.hit,
+    status: currentValues?.status,
+    createdAt: currentValues?.createdAt,
+    publishedAt: currentValues?.publishedAt,
+    language: currentValues?.language,
+  });
 
   React.useEffect(() => {
-      // Set default values when the event is available
-      setValue({
-        id: event?.id,
-        title: event?.title,
-        content: event?.content,
-        hit: event?.hit,
-        categoryID: event?.categoryID,
-        userID: event?.userID,
-        status: event?.status,
-        createdAt: event?.createdAt,
-        publishedAt: event?.publishedAt,
-        language: event?.language,
+    setValues({
+      title: currentValues?.title,
+      content: currentValues?.content,
+      hit: currentValues?.hit,
+      status: currentValues?.status,
+      createdAt: currentValues?.createdAt,
+      publishedAt: currentValues?.publishedAt,
+      language: currentValues?.language,
     });
-  }, [event, setValue]);
+}, [currentValues]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    onFinish(values);
+  };
 
   return (
-    <Dialog open={!!event} onClose={onClose}>
-      {event && (
+    <Dialog open={!!eventID} onClose={onClose}>
         <>
-          <DialogTitle>{event.title}</DialogTitle>
+          <DialogTitle>Case: {values.title}</DialogTitle>
           <DialogContent>
-            <TextField label="ID" value={values.id} fullWidth disabled />
-            <TextField label="Title" value={values.title} fullWidth disabled />
-            <TextField label="Content" value={values.content} fullWidth multiline rows={4} disabled />
-            <TextField label="Date created" value={event.createdAt.toLocaleString()} fullWidth disabled />
-            <TextField label="Status" value={values.status} fullWidth disabled />
-            {/* Add more fields as needed */}
+            <TextField label="Id" value={values.title} fullWidth />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={onClose} color="primary">
-              Close
-            </Button>
-          </DialogActions>
         </>
-      )}
     </Dialog>
   );
 };
