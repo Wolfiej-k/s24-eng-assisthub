@@ -1,21 +1,98 @@
-import { Refine } from "@refinedev/core"
-
-import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
-
+import { useAuth0 } from "@auth0/auth0-react"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
-import routerBindings, { DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
+import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
+import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
+import routerProvider, {
+  CatchAllNavigate,
+  DocumentTitleHandler,
+  UnsavedChangesNotifier,
+} from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
+import axios from "axios"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { authProvider } from "./authProvider"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 
 import HomePage from "./pages"
-import ForgotPage from "./pages/forgot"
+import AnalyticsPage from "./pages/analytics"
 import LoginPage from "./pages/login"
-import RegisterPage from "./pages/register"
 
-function App() {
+export default function App() {
+  const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
+
+  if (isLoading) {
+    return <span>Loading...</span>
+  }
+
+  const authProvider: AuthBindings = {
+    login: () => {
+      return Promise.resolve({
+        success: true,
+      })
+    },
+    logout: () => {
+      void logout({ logoutParams: { returnTo: window.location.origin } })
+      return Promise.resolve({
+        success: true,
+      })
+    },
+    onError: (error: string) => {
+      return Promise.resolve({
+        logout: true,
+        redirectTo: "/login",
+        error: new Error(error),
+      })
+    },
+    check: async () => {
+      try {
+        const token = await getIdTokenClaims()
+        if (token) {
+          axios.defaults.headers.common = {
+            Authorization: `Bearer ${token.__raw}`,
+          }
+          return {
+            authenticated: true,
+          }
+        } else {
+          return {
+            authenticated: false,
+            error: {
+              message: "Check failed",
+              name: "Token not found",
+            },
+            redirectTo: "/login",
+            logout: true,
+          }
+        }
+      } catch (error: unknown) {
+        return {
+          authenticated: false,
+          error: new Error("Unknown error"),
+          redirectTo: "/login",
+          logout: true,
+        }
+      }
+    },
+    getPermissions: () => Promise.resolve(null),
+    getIdentity: async () => {
+      if (user) {
+        return Promise.resolve({
+          ...user,
+          avatar: user.picture,
+        })
+      }
+      return Promise.resolve(null)
+    },
+  }
+
+  void getIdTokenClaims().then((token) => {
+    if (token) {
+      axios.defaults.headers.common = {
+        Authorization: `Bearer ${token.__raw}`,
+      }
+    }
+  })
+
   return (
     <BrowserRouter>
       <ColorModeContextProvider>
@@ -23,10 +100,16 @@ function App() {
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
         <RefineSnackbarProvider>
           <Refine
-            dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+            dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
             notificationProvider={useNotificationProvider}
-            routerProvider={routerBindings}
+            routerProvider={routerProvider}
             authProvider={authProvider}
+            resources={[
+              {
+                name: "posts",
+                list: "/",
+              },
+            ]}
             options={{
               syncWithLocation: true,
               warnWhenUnsavedChanges: true,
@@ -34,26 +117,22 @@ function App() {
               projectId: "7nmKip-7xeawJ-mdyZ6f",
             }}
           >
-            <Routes>
-              <Route
-                index
-                element={
-                  <ThemedLayoutV2
-                    Title={({ collapsed }) => (
-                      <>
-                        {collapsed && <span>AH</span>}
-                        {!collapsed && <span>AssistHub</span>}
-                      </>
-                    )}
-                  >
-                    <HomePage />
-                  </ThemedLayoutV2>
-                }
-              />
-              <Route path="login" element={<LoginPage />} />
-              <Route path="register" element={<RegisterPage />} />
-              <Route path="forgot" element={<ForgotPage />} />
-            </Routes>
+            <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+              <ThemedLayoutV2
+                Title={({ collapsed }) => (
+                  <>
+                    {collapsed && <span>AH</span>}
+                    {!collapsed && <span>AssistHub</span>}
+                  </>
+                )}
+              >
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/analytics" element={<AnalyticsPage />} />
+                  <Route path="/login" element={<LoginPage />} />
+                </Routes>
+              </ThemedLayoutV2>
+            </Authenticated>
             <UnsavedChangesNotifier />
             <DocumentTitleHandler />
           </Refine>
@@ -62,5 +141,3 @@ function App() {
     </BrowserRouter>
   )
 }
-
-export default App
