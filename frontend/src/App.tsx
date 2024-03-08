@@ -4,21 +4,16 @@ import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
 import { Refine, type AuthBindings } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
-import routerProvider, {
-  DocumentTitleHandler,
-  NavigateToResource,
-  UnsavedChangesNotifier,
-} from "@refinedev/react-router-v6"
+import routerProvider, { DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Link } from "react-router-dom"
 import Logo from "./assets/assisthublogo.png"
 import SmallLogo from "./assets/assisthublogosmall.png"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
 import HomePage from "./pages"
-import LoginPage from "./pages/login"
 
 export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
@@ -97,68 +92,6 @@ export default function App() {
   })
 
   return (
-<<<<<<< HEAD
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <ColorModeContextProvider>
-          <CssBaseline />
-          <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
-          <RefineSnackbarProvider>
-            <Refine
-              dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
-              notificationProvider={useNotificationProvider}
-              routerProvider={routerProvider}
-              authProvider={authProvider}
-              resources={[
-                {
-                  name: "posts",
-                  list: "/",
-                },
-              ]}
-              options={{
-                syncWithLocation: true,
-                warnWhenUnsavedChanges: true,
-                useNewQueryKeys: true,
-                projectId: "7nmKip-7xeawJ-mdyZ6f",
-              }}
-            >
-              <Routes>
-                <Route
-                  element={
-                    <ThemedLayoutV2
-                      Title={({ collapsed }) => (
-                        <Link to="/">
-                          {collapsed && (
-                            <>
-                              <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
-                            </>
-                          )}
-                          {!collapsed && (
-                            <>
-                              <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
-                            </>
-                          )}
-                        </Link>
-                      )}
-                    >
-                      <HomePage />
-                    </ThemedLayoutV2>
-                  }
-                >
-                  <Route index element={<NavigateToResource resource="posts" />} />
-                </Route>
-                <Route path="login" element={<LoginPage />} />
-                <Route path="register" element={<RegisterPage />} />
-                <Route path="forgot" element={<ForgotPage />} />
-              </Routes>
-              <UnsavedChangesNotifier />
-              <DocumentTitleHandler />
-            </Refine>
-          </RefineSnackbarProvider>
-        </ColorModeContextProvider>
-      </BrowserRouter>
-    </ThemeProvider>
-=======
     <BrowserRouter>
       <ColorModeContextProvider>
         <CssBaseline />
@@ -184,31 +117,21 @@ export default function App() {
             <ThemeProvider theme={theme}>
               <ThemedLayoutV2
                 Title={({ collapsed }) => (
-                  <>
-                    {collapsed && <span>AH</span>}
-                    {!collapsed && <span>AssistHub</span>}
-                  </>
+                  <Link to="/">
+                    {collapsed && (
+                      <>
+                        <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
+                      </>
+                    )}
+                    {!collapsed && (
+                      <>
+                        <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
+                      </>
+                    )}
+                  </Link>
                 )}
               >
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
-                        <HomePage />
-                      </Authenticated>
-                    }
-                  />
-                  <Route
-                    path="/analytics"
-                    element={
-                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
-                        <AnalyticsPage />
-                      </Authenticated>
-                    }
-                  />
-                  <Route path="/login" element={<LoginPage />} />
-                </Routes>
+                <HomePage />
               </ThemedLayoutV2>
             </ThemeProvider>
             <UnsavedChangesNotifier />
@@ -217,6 +140,5 @@ export default function App() {
         </RefineSnackbarProvider>
       </ColorModeContextProvider>
     </BrowserRouter>
->>>>>>> 32167e8c12451bbebf23bb20636fc598ac42b78f
   )
 }
