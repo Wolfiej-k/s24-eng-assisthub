@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles"
 
-export const theme = createTheme({
+const theme = createTheme({
   palette: {
     primary: {
       main: "#7f32cd",
@@ -11,4 +11,21 @@ export const theme = createTheme({
       contrastText: "#13cdcd",
     },
   },
+  typography: {
+    fontFamily: "Poppins, sans-serif",
+    h1: {
+      fontSize: "31.5px",
+      fontWeight: "bold",
+    },
+    h2: {
+      fontSize: "18px",
+      fontWeight: "lighter",
+    },
+    body1: {
+      fontSize: "12px",
+      fontWeight: "lighter",
+    },
+  },
 })
+
+export { theme }

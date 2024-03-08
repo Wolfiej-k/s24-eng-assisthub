@@ -11,7 +11,9 @@ import routerProvider, {
 } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import Logo from "./assets/assisthublogo.png"
+import SmallLogo from "./assets/assisthublogosmall.png"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
@@ -126,10 +128,18 @@ export default function App() {
                   element={
                     <ThemedLayoutV2
                       Title={({ collapsed }) => (
-                        <>
-                          {collapsed && <span>AH</span>}
-                          {!collapsed && <span>AssistHub</span>}
-                        </>
+                        <Link to="/">
+                          {collapsed && (
+                            <>
+                              <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
+                            </>
+                          )}
+                          {!collapsed && (
+                            <>
+                              <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
+                            </>
+                          )}
+                        </Link>
                       )}
                     >
                       <HomePage />
