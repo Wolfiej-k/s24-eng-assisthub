@@ -2,18 +2,24 @@ import { useAuth0 } from "@auth0/auth0-react"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Refine, type AuthBindings } from "@refinedev/core"
+import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
-import routerProvider, { DocumentTitleHandler, UnsavedChangesNotifier } from "@refinedev/react-router-v6"
+import routerProvider, {
+  CatchAllNavigate,
+  DocumentTitleHandler,
+  UnsavedChangesNotifier,
+} from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
-import { BrowserRouter, Link } from "react-router-dom"
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 import Logo from "./assets/assisthublogo.png"
 import SmallLogo from "./assets/assisthublogosmall.png"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
 import HomePage from "./pages"
+import AnalyticsPage from "./pages/analytics"
+import LoginPage from "./pages/login"
 
 export default function App() {
   const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
@@ -131,7 +137,25 @@ export default function App() {
                   </Link>
                 )}
               >
-                <HomePage />
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <HomePage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route
+                    path="/analytics"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <AnalyticsPage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route path="/login" element={<LoginPage />} />
+                </Routes>
               </ThemedLayoutV2>
             </ThemeProvider>
             <UnsavedChangesNotifier />
