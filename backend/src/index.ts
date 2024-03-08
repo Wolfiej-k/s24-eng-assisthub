@@ -16,8 +16,7 @@ app.use("/api/cases", cases)
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error(err.message, err.stack)
-  res.status(500).json({ message: err.message })
-  return
+  return res.status(500).json({ message: err.message })
 })
 
 app.listen(port, () => {
