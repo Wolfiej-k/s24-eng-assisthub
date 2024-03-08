@@ -97,6 +97,7 @@ export default function App() {
   })
 
   return (
+<<<<<<< HEAD
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <ColorModeContextProvider>
@@ -157,5 +158,65 @@ export default function App() {
         </ColorModeContextProvider>
       </BrowserRouter>
     </ThemeProvider>
+=======
+    <BrowserRouter>
+      <ColorModeContextProvider>
+        <CssBaseline />
+        <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+        <RefineSnackbarProvider>
+          <Refine
+            dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
+            notificationProvider={useNotificationProvider}
+            routerProvider={routerProvider}
+            authProvider={authProvider}
+            resources={[
+              {
+                name: "posts",
+                list: "/",
+              },
+            ]}
+            options={{
+              warnWhenUnsavedChanges: true,
+              useNewQueryKeys: true,
+              projectId: "7nmKip-7xeawJ-mdyZ6f",
+            }}
+          >
+            <ThemeProvider theme={theme}>
+              <ThemedLayoutV2
+                Title={({ collapsed }) => (
+                  <>
+                    {collapsed && <span>AH</span>}
+                    {!collapsed && <span>AssistHub</span>}
+                  </>
+                )}
+              >
+                <Routes>
+                  <Route
+                    path="/"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <HomePage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route
+                    path="/analytics"
+                    element={
+                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                        <AnalyticsPage />
+                      </Authenticated>
+                    }
+                  />
+                  <Route path="/login" element={<LoginPage />} />
+                </Routes>
+              </ThemedLayoutV2>
+            </ThemeProvider>
+            <UnsavedChangesNotifier />
+            <DocumentTitleHandler />
+          </Refine>
+        </RefineSnackbarProvider>
+      </ColorModeContextProvider>
+    </BrowserRouter>
+>>>>>>> 32167e8c12451bbebf23bb20636fc598ac42b78f
   )
 }
