@@ -65,12 +65,29 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
     onFinish(values);
   };
 
+  const [isEditing, setIsEditing] = React.useState(false);
+
+  const startEditing = (e) => {
+    e.preventDefault();
+    setIsEditing(true);
+  };
+
   return (
     <Dialog open={!!eventID} onClose={onClose}>
         <>
           <DialogTitle>Case: {values.title}</DialogTitle>
           <DialogContent>
-            <TextField label="Id" value={values.title} fullWidth />
+            <br></br>
+            <TextField label="ID" value={eventID} fullWidth disabled/>
+            <form onSubmit={startEditing}>
+            <TextField label="Content" fullWidth multiline rows={6}
+              value={values.content}
+            />
+            {isEditing? (<>
+              <button type="submit">Confirm</button>
+              <button type="submit">Cancel</button>
+            </>) : (<button type="submit">Edit case</button>)}
+            </form>
           </DialogContent>
         </>
     </Dialog>
