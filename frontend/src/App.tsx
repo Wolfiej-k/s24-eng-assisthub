@@ -104,13 +104,13 @@ export default function App() {
         <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
         <RefineSnackbarProvider>
           <Refine
-            dataProvider={dataProvider("https://api.fake-rest.refine.dev", axios)}
+            dataProvider={dataProvider(import.meta.env.VITE_API_URL, axios)}
             notificationProvider={useNotificationProvider}
             routerProvider={routerProvider}
             authProvider={authProvider}
             resources={[
               {
-                name: "posts",
+                name: "cases",
                 list: "/",
               },
             ]}
@@ -149,7 +149,7 @@ export default function App() {
                   <Route
                     path="/analytics"
                     element={
-                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                      <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
                         <AnalyticsPage />
                       </Authenticated>
                     }

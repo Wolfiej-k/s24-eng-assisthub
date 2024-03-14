@@ -8,14 +8,11 @@ import App from "./App"
 const container = document.getElementById("root")!
 const root = createRoot(container)
 
-const authDomain = "dev-mmubohcpmwk3qtz1.us.auth0.com"
-const authClientId = "Glb2r4tKHddzDBiiXy6mTszL4XrBe27J"
-
 root.render(
   <React.StrictMode>
     <Auth0Provider
-      domain={authDomain}
-      clientId={authClientId}
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENTID}
       authorizationParams={{
         redirect_uri: window.location.origin,
       }}

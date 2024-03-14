@@ -1,3 +1,4 @@
+import cors from "cors"
 import "dotenv/config"
 import express, { type NextFunction, type Request, type Response } from "express"
 import cases from "./api/cases.js"
@@ -7,6 +8,7 @@ const port = process.env.PORT ?? 3000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}))
 
 app.get("/", (req: Request, res: Response) => {
   res.send("AssistHub Backend")
