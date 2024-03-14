@@ -15,6 +15,14 @@ interface DetailedCaseViewProps {
   onClose: () => void;
 }
 
+interface IImage {
+  url: string;
+  name?: string; // Optional, add more fields as needed
+  status?: string;
+  type?: string;
+  uid?: string;
+}
+
 interface IPost {
   id: BaseKey;
   title: string;
@@ -24,6 +32,7 @@ interface IPost {
   createdAt: Date;
   publishedAt: Date;
   language: number;
+  image: IImage[]
 }
 
 interface FormValues {
@@ -34,6 +43,7 @@ interface FormValues {
   createdAt?: Date;
   publishedAt?: Date;
   language?: number;
+  image?: IImage[]
 }
 
 const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose }) => {
@@ -45,10 +55,6 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
   });
 
   const currentValues = queryResult?.data?.data;
-  const { options } = useSelect({
-    resource: "posts",
-    defaultValue: queryResult?.data?.data.status,
-  });
 
   const [values, setValues] = React.useState<FormValues>({
     title: currentValues?.title,
@@ -58,6 +64,7 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
     createdAt: currentValues?.createdAt,
     publishedAt: currentValues?.publishedAt,
     language: currentValues?.language,
+    image: currentValues?.image
   });
 
   const [initialValues, setInitialValues] = React.useState<FormValues>({
@@ -68,6 +75,7 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
     createdAt: currentValues?.createdAt,
     publishedAt: currentValues?.publishedAt,
     language: currentValues?.language,
+    image: currentValues?.image
   });
 
   React.useEffect(() => {
@@ -79,8 +87,9 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
       createdAt: currentValues?.createdAt,
       publishedAt: currentValues?.publishedAt,
       language: currentValues?.language,
+      image: currentValues?.image
     });
-}, [currentValues]);
+}, [eventID, currentValues]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -132,7 +141,21 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
               <option value="draft">draft</option>
               <option value="rejected">rejected</option>
             </select>
-            <br></br>
+            {values.image && (
+              <>
+                <br />
+                <label>Image: </label>
+                <br />
+
+                <img
+                  src={values.image[0].url}
+                  width={200}
+                  height={200}
+                />
+                <br />
+                <br />
+              </>
+            )}
             {isEditing? (<>
               <button type="submit">Confirm</button>
               <button type="button" onClick={cancelEditing}>Cancel</button>
