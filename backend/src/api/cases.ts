@@ -13,9 +13,12 @@ const cases: CaseItem[] = [
       phone: "123-456-7890",
       zip: "02138",
     },
+    coaches: [],
     startTime: new Date("2024-02-29"),
-    language: "English",
-    benefits: "CalFresh",
+    data: {
+      language: "English",
+      benefits: "CalFresh",
+    },
   },
   {
     id: 2,
@@ -25,9 +28,12 @@ const cases: CaseItem[] = [
       phone: "098-765-4321",
       zip: "01237",
     },
+    coaches: [],
     startTime: new Date("2005-01-01"),
-    language: "Spanish",
-    benefits: "Section 8/Housing",
+    data: {
+      language: "Spanish",
+      benefits: "Section 8/Housing",
+    },
   },
 ]
 
@@ -54,7 +60,7 @@ router.get("/:id", (req, res) => {
     }
   }
 
-  res.status(404).send()
+  res.status(404).send("Not found")
 })
 
 router.put("/:id", (req, res) => {
@@ -69,7 +75,7 @@ router.put("/:id", (req, res) => {
       }
     }
 
-    return res.status(404).send()
+    return res.status(404).send("Not found")
   }
 
   res.status(400).send(validateCase.errors)
@@ -85,7 +91,7 @@ router.delete("/:id", (req, res) => {
     }
   }
 
-  res.status(404).send()
+  res.status(404).send("Not found")
 })
 
 export default router
