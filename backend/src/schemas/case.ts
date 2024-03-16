@@ -5,6 +5,7 @@ export interface Client {
   email: string
   phone: string
   zip: string
+  profile: string
 }
 
 export interface Coach {
@@ -16,6 +17,7 @@ export interface Case {
   client: Client
   coaches: Coach[]
   data: Record<string, string>
+  notes?: string
 }
 
 export interface CaseItem extends Case {
@@ -34,8 +36,9 @@ const caseSchema: JSONSchemaType<Case> = {
         email: { type: "string" },
         phone: { type: "string" },
         zip: { type: "string" },
+        profile: { type: "string" },
       },
-      required: ["name", "email", "phone", "zip"],
+      required: ["name", "email", "phone", "zip", "profile"],
     },
     coaches: {
       type: "array",
@@ -52,6 +55,7 @@ const caseSchema: JSONSchemaType<Case> = {
       type: "object",
       required: [],
     },
+    notes: { type: "string", nullable: true },
   },
   required: ["client", "coaches", "data"],
   additionalProperties: false,
