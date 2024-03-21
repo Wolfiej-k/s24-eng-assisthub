@@ -169,3 +169,117 @@ const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose })
 
 export default DetailedCaseView;
 
+// import React, { useEffect, useState } from "react";
+// import { Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from "@mui/material";
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
+// import Box from '@mui/material/Box';
+// import dayjs from 'dayjs';
+
+// interface Client {
+//   name: string;
+//   email: string;
+//   phone: string;
+//   zip: string;
+//   profile: string;
+// }
+
+// interface Coach {
+//   name: string;
+//   email: string;
+// }
+
+// interface Case {
+//   client: Client;
+//   coaches: Coach[];
+//   data: Record<string, string>;
+//   notes?: string;
+// }
+
+// interface CaseItem extends Case {
+//   id: number;
+//   startTime: Date;
+//   endTime?: Date;
+// }
+
+// interface DetailedCaseViewProps {
+//   eventID: number | null;
+//   onClose: () => void;
+// }
+
+// const DetailedCaseView: React.FC<DetailedCaseViewProps> = ({ eventID, onClose }) => {
+//   // Simulate fetching data. Replace with actual fetching logic.
+//   const [caseDetails, setCaseDetails] = useState<CaseItem | null>(null);
+
+//   useEffect(() => {
+//     // Placeholder for fetch logic
+//     // Here you would fetch the case details based on eventID
+//     // and then set it with setCaseDetails
+//   }, [eventID]);
+
+//   return (
+//     <Dialog open={!!eventID} onClose={onClose} fullWidth maxWidth="md">
+//       <DialogTitle>Case Details</DialogTitle>
+//       <DialogContent>
+//         {caseDetails && (
+//           <>
+//             <TextField
+//               margin="dense"
+//               label="Client Name"
+//               type="text"
+//               fullWidth
+//               variant="standard"
+//               value={caseDetails.client.name}
+//               InputProps={{
+//                 readOnly: true,
+//               }}
+//             />
+//             <TextField
+//               margin="dense"
+//               label="Client Email"
+//               type="email"
+//               fullWidth
+//               variant="standard"
+//               value={caseDetails.client.email}
+//               InputProps={{
+//                 readOnly: true,
+//               }}
+//             />
+//             {/* Repeat for other fields as needed */}
+//             <LocalizationProvider dateAdapter={AdapterDayjs}>
+//               <Box sx={{ mt: 2 }}>
+//                 <DateTimePicker
+//                   label="Start Time"
+//                   value={dayjs(caseDetails.startTime)}
+//                   onChange={() => {}}
+//                   renderInput={(params) => <TextField {...params} />}
+//                   readOnly
+//                 />
+//               </Box>
+//             </LocalizationProvider>
+//             {/* Display Coaches */}
+//             {caseDetails.coaches.map((coach, index) => (
+//               <TextField
+//                 key={index}
+//                 margin="dense"
+//                 label={`Coach ${index + 1} Name`}
+//                 type="text"
+//                 fullWidth
+//                 variant="standard"
+//                 value={coach.name}
+//                 InputProps={{
+//                   readOnly: true,
+//                 }}
+//               />
+//             ))}
+//           </>
+//         )}
+//       </DialogContent>
+//       <DialogActions>
+//         <Button onClick={onClose}>Close</Button>
+//       </DialogActions>
+//     </Dialog>
+//   );
+// };
+
+// export default DetailedCaseView;
