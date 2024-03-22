@@ -1,26 +1,24 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
+import { useUpdate } from "@refinedev/core"
 import { type Coach } from "../../../backend/src/schemas/case"
 
 export default function CoachDropdown() {
+  const { mutate } = useUpdate()
+
   const handleChange = (event: React.SyntheticEvent, value: Coach[]) => {
     updateCase(value)
   }
 
-  const updateCase = async (coaches: Coach[]) => {
+  const updateCase = (coaches: Coach[]) => {
     try {
-      const response = await fetch("/api/cases/1", {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
+      mutate({
+        resource: "cases",
+        values: {
+          coaches,
         },
-        body: JSON.stringify({ coaches }),
+        id: "1",
       })
-
-      if (!response.ok) {
-        throw new Error("Failed to update case")
-      }
-
       console.log("Case updated successfully")
     } catch (error) {
       console.error("Error updating case:", error)
