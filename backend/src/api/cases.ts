@@ -45,7 +45,14 @@ router.get("/", (_req, res) => {
 
 router.post("/", (req, res) => {
   if (validateCase(req.body)) {
-    const item: CaseItem = { id: idCount++, startTime: new Date(), ...req.body }
+    const item: CaseItem = {
+      id: idCount++,
+      startTime: new Date(),
+      client: req.body.client,
+      coaches: req.body.coaches,
+      data: req.body.data,
+      notes: req.body.notes,
+    }
     cases.push(item)
 
     return res.status(201).json(item)
@@ -70,7 +77,15 @@ router.put("/:id", (req, res) => {
     const newId = parseInt(req.params.id)
     for (const item of cases) {
       if (item.id == newId) {
-        const newItem = { id: item.id, startTime: item.startTime, endTime: item.endTime, ...req.body }
+        const newItem: CaseItem = {
+          id: item.id,
+          startTime: item.startTime,
+          endTime: item.endTime,
+          client: req.body.client,
+          coaches: req.body.coaches,
+          data: req.body.data,
+          notes: req.body.notes,
+        }
         cases[cases.indexOf(item)] = newItem
 
         return res.status(201).json(newItem)

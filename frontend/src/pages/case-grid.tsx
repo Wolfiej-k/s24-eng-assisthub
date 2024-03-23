@@ -1,5 +1,6 @@
 import { useList } from "@refinedev/core"
 import { type CaseItem } from "../types"
+import CoachDropdown from "./coach-dropdown"
 
 // interface IPost {
 //   id: number
@@ -36,10 +37,19 @@ import { type CaseItem } from "../types"
 // ]
 
 export default function CaseGrid() {
-  const { data } = useList<CaseItem>({ resource: "cases" })
+  const { data, isLoading } = useList<CaseItem>({ resource: "cases" })
   const cases = data?.data ?? []
 
-  return <div style={{ color: "black" }}>{JSON.stringify(cases)}</div>
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <div style={{ color: "black" }}>
+      <CoachDropdown item={cases[0]!} />
+      {JSON.stringify(cases)}
+    </div>
+  )
 
   // const { dataGridProps } = useDataGrid<IPost>({
   //   initialCurrent: 1,

@@ -58,7 +58,6 @@ const caseSchema: JSONSchemaType<Case> = {
     notes: { type: "string", nullable: true },
   },
   required: ["client", "coaches", "data"],
-  additionalProperties: false,
 }
 
 const ajv = new Ajv()

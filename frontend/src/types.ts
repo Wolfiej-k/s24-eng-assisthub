@@ -1,1 +1,1 @@
-export { type Case, type CaseItem } from "../../backend/src/schemas/case"
+export { type Case, type CaseItem, type Coach } from "../../backend/src/schemas/case"
