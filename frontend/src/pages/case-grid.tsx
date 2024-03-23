@@ -37,12 +37,16 @@ import CoachDropdown from "./coach-dropdown"
 // ]
 
 export default function CaseGrid() {
-  const { data } = useList<CaseItem>({ resource: "cases" })
+  const { data, isLoading } = useList<CaseItem>({ resource: "cases" })
   const cases = data?.data ?? []
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
 
   return (
     <div style={{ color: "black" }}>
-      <CoachDropdown />
+      <CoachDropdown item={cases[0]!} />
       {JSON.stringify(cases)}
     </div>
   )

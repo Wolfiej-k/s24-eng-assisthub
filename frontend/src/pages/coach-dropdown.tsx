@@ -1,28 +1,24 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
-import { type Coach } from "../../../backend/src/schemas/case"
+import { type CaseItem, type Coach } from "../types"
 
-export default function CoachDropdown() {
+export default function CoachDropdown({ item }: { item: CaseItem }) {
   const { mutate } = useUpdate()
 
-  const handleChange = (event: React.SyntheticEvent, value: Coach[]) => {
-    updateCase(value)
-  }
-
   const updateCase = (coaches: Coach[]) => {
-    try {
-      mutate({
-        resource: "cases",
-        values: {
-          coaches,
-        },
-        id: "1",
-      })
-      console.log("Case updated successfully")
-    } catch (error) {
-      console.error("Error updating case:", error)
-    }
+    mutate({
+      resource: "cases",
+      values: {
+        ...item,
+        coaches: coaches,
+      },
+      id: item.id,
+      meta: {
+        method: "put",
+      },
+      successNotification: false,
+    })
   }
 
   return (
@@ -31,8 +27,8 @@ export default function CoachDropdown() {
       id="coach-dropdown"
       options={coachList}
       getOptionLabel={(option) => option.name}
-      defaultValue={[]}
-      onChange={handleChange}
+      defaultValue={item.coaches}
+      onChange={(_, value) => updateCase(value)}
       renderInput={(params) => <TextField {...params} variant="standard" label="Select Coaches" />}
     />
   )
