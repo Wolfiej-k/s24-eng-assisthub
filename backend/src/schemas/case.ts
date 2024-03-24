@@ -1,6 +1,7 @@
-import Ajv, { type JSONSchemaType } from "ajv"
+//import Ajv, { type JSONSchemaType } from "ajv"
+import mongoose, { Schema} from 'mongoose';
 
-export interface Client {
+interface Client {
   name: string
   email: string
   phone: string
@@ -8,12 +9,12 @@ export interface Client {
   profile: string
 }
 
-export interface Coach {
+interface Coach {
   name: string
   email: string
 }
 
-export interface Case {
+interface Case {
   client: Client
   coaches: Coach[]
   data: Record<string, string>
@@ -26,39 +27,22 @@ export interface CaseItem extends Case {
   endTime?: Date
 }
 
-const caseSchema: JSONSchemaType<Case> = {
-  type: "object",
-  properties: {
-    client: {
-      type: "object",
-      properties: {
-        name: { type: "string" },
-        email: { type: "string" },
-        phone: { type: "string" },
-        zip: { type: "string" },
-        profile: { type: "string" },
-      },
-      required: ["name", "email", "phone", "zip", "profile"],
-    },
-    coaches: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          name: { type: "string" },
-          email: { type: "string" },
-        },
-        required: ["name", "email"],
-      },
-    },
-    data: {
-      type: "object",
-      required: [],
-    },
-    notes: { type: "string", nullable: true },
+const caseSchema = new Schema<Case>({
+  client: {
+      name: { type: String, required: true },
+      email: { type: String, required: true },
+      phone: { type: String, required: true },
+      zip: { type: String, required: true },
+      profile: { type: String, required: true }
   },
-  required: ["client", "coaches", "data"],
-}
+  coaches: [{
+      name: { type: String, required: true },
+      email: { type: String, required: true }
+  }],
+  data: { type: {}, required: true },
+  notes: { type: String }
+});
 
-const ajv = new Ajv()
-export const validateCase = ajv.compile(caseSchema)
+//const ajv = new Ajv()
+//export const validateCase = ajv.compile(caseSchema)
+export const CaseModel = mongoose.model("Case", caseSchema)

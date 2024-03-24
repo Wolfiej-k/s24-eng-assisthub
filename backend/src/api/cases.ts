@@ -1,5 +1,7 @@
 import { Router } from "express"
-import { validateCase, type CaseItem } from "../schemas/case.js"
+import { type CaseItem } from "../schemas/case.js"
+import { CaseModel } from "../schemas/case.js"
+import { ObjectId } from "mongodb"
 
 const router = Router()
 
@@ -43,72 +45,53 @@ router.get("/", (_req, res) => {
   res.status(200).json(cases)
 })
 
-router.post("/", (req, res) => {
-  if (validateCase(req.body)) {
-    const item: CaseItem = {
-      id: idCount++,
-      startTime: new Date(),
-      client: req.body.client,
-      coaches: req.body.coaches,
-      data: req.body.data,
-      notes: req.body.notes,
-    }
-    cases.push(item)
-
-    return res.status(201).json(item)
+router.post("/", async (req, res) => {
+  const item: CaseItem = {
+    id: idCount++,
+    startTime: new Date(),
+    client: req.body.client,
+    coaches: req.body.coaches,
+    data: req.body.data,
+    notes: req.body.notes,
   }
+  const result = await CaseModel.updateOne(item)
+  return res.status(201).json(item)
+  }
+)
 
-  res.status(400).send(validateCase.errors)
+router.get("/:id", async (req, res) => {
+  const caseid = parseInt(req.params.id)
+  try {
+    const query = { _id: caseid };
+    const caseitem = ( await CaseModel.findOne(query)) as CaseItem;
+    if (caseitem) {
+      res.status(200).send(caseitem);
+    }
+    } catch (error) {
+      res.status(404).send(`Unable to find matching document with id: ${caseid}`);
+    }
 })
 
-router.get("/:id", (req, res) => {
-  const newId = parseInt(req.params.id)
-  for (const item of cases) {
-    if (item.id == newId) {
-      return res.status(201).json(item)
-    }
-  }
-
-  res.status(404).send("Not found")
-})
-
-router.put("/:id", (req, res) => {
-  if (validateCase(req.body)) {
-    const newId = parseInt(req.params.id)
-    for (const item of cases) {
-      if (item.id == newId) {
-        const newItem: CaseItem = {
-          id: item.id,
-          startTime: item.startTime,
-          endTime: item.endTime,
-          client: req.body.client,
-          coaches: req.body.coaches,
-          data: req.body.data,
-          notes: req.body.notes,
-        }
-        cases[cases.indexOf(item)] = newItem
-
-        return res.status(201).json(newItem)
+router.put("/:id", async (req, res) => {
+  const caseid = parseInt(req.params.id)
+  try {
+        const updatedCase = req.body as CaseItem;
+        const query = { _id: caseid };
+        const result = await CaseModel.updateOne(query, {$set: updatedCase})
       }
-    }
-
-    return res.status(404).send("Not found")
+    catch(error) {
+    res.status(400).send(`Unable to find matching document with id: ${caseid}`);
   }
-
-  res.status(400).send(validateCase.errors)
 })
 
-router.delete("/:id", (req, res) => {
-  const newId = parseInt(req.params.id)
-  for (const item of cases) {
-    if (item.id == newId) {
-      cases.splice(cases.indexOf(item), 1)
-
-      return res.status(201).json(item)
-    }
-  }
-
-  res.status(404).send("Not found")
+router.delete("/:id", async (req, res) => {
+  const caseid = parseInt(req.params.id)
+  try {
+    const query = { _id: caseid };
+    const result = await CaseModel.deleteOne(query);
+  } catch (error) {
+    res.status(400).send(`Unable to find matching document with id: ${caseid}`);
+}
 })
 
 export default router
