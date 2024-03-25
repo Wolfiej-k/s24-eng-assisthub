@@ -6,6 +6,7 @@ import { useDataGrid } from "@refinedev/mui";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import React, { useState } from "react";
 import DetailedCaseView from "./detailed-case-view";
+import Button from '@mui/material/Button';
 
 export default function CoachDropdown({ item }: { item: CaseItem }) {
   const { mutate } = useUpdate()
@@ -82,11 +83,15 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       headerName: "Profile URL",
       width: 200,
       valueGetter: params => params.row.client?.profile ?? '',
-      renderCell: (params) => (
-        <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
-          <a href={params.value} target="_blank" rel="noopener noreferrer">{params.value}</a>
-        </div>
-      )
+      renderCell: (params) => {
+        const profileUrl = params.value.startsWith('https://')? params.value: `https://${params.value}`;
+        return (
+          <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+            {/* Use the adjusted profileUrl variable */}
+            <a href={profileUrl} target="_blank" rel="noopener noreferrer">{params.value}</a>
+          </div>
+          );
+        }
     },
     {
       field: "coachesNames",
@@ -138,20 +143,20 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       sortable: false,
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleOpenDialog(params.row.id)}>View Details</button>
+        <Button size="small" variant="contained" color="primary" onClick={() => setSelectedCase(params.row)}
+        sx={{
+          fontSize: '0.6rem',
+        }}>
+          View Details
+        </Button>
       ),
     },
   ];
 
   // Dialog open & close
-  const [selectedEventID, setSelectedEventID] = useState<number | null>(null);
-  const handleOpenDialog = (eventId: number) => {
-    setSelectedEventID(eventId);
-  };
+  const [selectedCase, setSelectedCase] = useState<CaseItem | null>(null);
 
-  const handleCloseDialog = () => {
-    setSelectedEventID(null);
-  };
+  const handleCloseDialog = () => setSelectedCase(null);
 
   const { dataGridProps } = useDataGrid<CaseItem>({
       resource: "cases",
@@ -176,9 +181,9 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
         onChange={(_, value) => updateCase(value)}
         renderInput={(params) => <TextField {...params} variant="standard" label="Select Coaches" />}
       />
-      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} getRowId={(row) => row.id}/>
-      {selectedEventID && (
-        <DetailedCaseView eventID={selectedEventID} onClose={handleCloseDialog} />
+      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
+      {selectedCase && (
+        <DetailedCaseView onClose={handleCloseDialog} caseDetails={selectedCase}/>
       )}
     </div>
   );
