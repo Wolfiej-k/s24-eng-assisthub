@@ -3,7 +3,8 @@ import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
 import { type CaseItem, type Coach } from "../types"
 import { useDataGrid } from "@refinedev/mui";
-import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
+import type { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import React, { useState } from "react";
 import DetailedCaseView from "./detailed-case-view";
 import Button from '@mui/material/Button';
@@ -87,9 +88,9 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       headerName: "Profile URL",
       width: 200,
       valueGetter: (params: GridValueGetterParams) =>
-      (params.row as CaseItem).client?.profile ?? '',
+      (params.row as CaseItem).client?.profile ?? '' as string,
       renderCell: (params) => {
-        const profileUrl = params.value.startsWith('https://')? params.value: `https://${params.value}`;
+        const profileUrl = (params.value as string).startsWith('https://')? params.value as string: `https://${params.value}`;
         return (
           <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
             {/* Use the adjusted profileUrl variable */}
@@ -151,7 +152,7 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       sortable: false,
       width: 150,
       renderCell: (params) => (
-        <Button size="small" variant="contained" color="primary" onClick={() => setSelectedCase(params.row)}
+        <Button size="small" variant="contained" color="primary" onClick={() => setSelectedCase(params.row as CaseItem)}
         sx={{
           fontSize: '0.6rem',
         }}>
