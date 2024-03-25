@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
 import { type CaseItem, type Coach } from "../types"
 import { useDataGrid } from "@refinedev/mui";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import React, { useState } from "react";
 import DetailedCaseView from "./detailed-case-view";
 import Button from '@mui/material/Button';
@@ -38,7 +38,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "clientName",
       headerName: "Client Name",
       width: 90,
-      valueGetter: params => params.row.client?.name ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).client?.name ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -49,7 +50,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "clientEmail",
       headerName: "Client Email",
       width: 200,
-      valueGetter: params => params.row.client?.email ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).client?.email ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -60,7 +62,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "clientPhone",
       headerName: "Client Phone",
       width: 130,
-      valueGetter: params => params.row.client?.phone ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).client?.phone ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -71,7 +74,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "clientZip",
       headerName: "ZIP Code",
       width: 70,
-      valueGetter: params => params.row.client?.zip ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).client?.zip ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -82,7 +86,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "clientProfile",
       headerName: "Profile URL",
       width: 200,
-      valueGetter: params => params.row.client?.profile ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).client?.profile ?? '',
       renderCell: (params) => {
         const profileUrl = params.value.startsWith('https://')? params.value: `https://${params.value}`;
         return (
@@ -97,7 +102,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "coachesNames",
       headerName: "Coaches",
       width: 200,
-      valueGetter: params => params.row.coaches?.map(coach => coach.name).join(', ') || 'None',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).coaches?.map(coach => coach.name).join(', ') || 'None',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -108,7 +114,7 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "startTime",
       headerName: "Start Time",
       width: 150,
-      valueGetter: params => new Date(params.row.startTime).toLocaleString(),
+      valueGetter: (params: GridValueGetterParams) => new Date((params.row as CaseItem).startTime).toLocaleString(),
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -119,7 +125,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "language",
       headerName: "Language",
       width: 120,
-      valueGetter: params => params.row.data?.language ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).data?.language ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
@@ -130,7 +137,8 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       field: "benefits",
       headerName: "Benefits",
       width: 180,
-      valueGetter: params => params.row.data?.benefits ?? '',
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).data?.benefits ?? '',
       renderCell: (params) => (
         <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
           {params.value}
