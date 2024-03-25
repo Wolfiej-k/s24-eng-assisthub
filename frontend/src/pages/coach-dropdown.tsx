@@ -2,8 +2,10 @@ import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
 import { type CaseItem, type Coach } from "../types"
-import { useDataGrid, List } from "@refinedev/mui";
+import { useDataGrid } from "@refinedev/mui";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import React, { useState } from "react";
+import DetailedCaseView from "./detailed-case-view";
 
 export default function CoachDropdown({ item }: { item: CaseItem }) {
   const { mutate } = useUpdate()
@@ -23,6 +25,7 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
     })
   }
 
+  // Populating columns for table
   const columns: GridColDef[] = [
     {
       field: "id",
@@ -129,8 +132,26 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
         </div>
       )
     },
+    {
+      field: "actions",
+      headerName: "Actions",
+      sortable: false,
+      width: 150,
+      renderCell: (params) => (
+        <button onClick={() => handleOpenDialog(params.row.id)}>View Details</button>
+      ),
+    },
   ];
 
+  // Dialog open & close
+  const [selectedEventID, setSelectedEventID] = useState<number | null>(null);
+  const handleOpenDialog = (eventId: number) => {
+    setSelectedEventID(eventId);
+  };
+
+  const handleCloseDialog = () => {
+    setSelectedEventID(null);
+  };
 
   const { dataGridProps } = useDataGrid<CaseItem>({
       resource: "cases",
@@ -155,7 +176,10 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
         onChange={(_, value) => updateCase(value)}
         renderInput={(params) => <TextField {...params} variant="standard" label="Select Coaches" />}
       />
-      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
+      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} getRowId={(row) => row.id}/>
+      {selectedEventID && (
+        <DetailedCaseView eventID={selectedEventID} onClose={handleCloseDialog} />
+      )}
     </div>
   );
 }
