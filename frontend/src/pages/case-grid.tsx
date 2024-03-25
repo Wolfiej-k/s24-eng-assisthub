@@ -47,6 +47,7 @@ export default function CaseGrid() {
   return (
     <div style={{ color: "black" }}>
       <CoachDropdown item={cases[0]!} />
+      {JSON.stringify(cases)}
     </div>
   )
 
