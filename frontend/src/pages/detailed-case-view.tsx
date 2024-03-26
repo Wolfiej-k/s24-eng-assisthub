@@ -1,40 +1,43 @@
-import { Box, Dialog, DialogContent, DialogTitle, Link, TextField, Typography } from "@mui/material"
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs"
-import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker"
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider"
+import CloseIcon from "@mui/icons-material/Close"
+import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, TextField } from "@mui/material"
 import { useUpdate } from "@refinedev/core"
-import dayjs from "dayjs"
-import React, { useRef } from "react"
-import { type CaseItem } from "../types"
+import { useConfirm } from "material-ui-confirm"
+import { useRef, useState } from "react"
+import { type Case } from "../types"
 
 interface DetailedCaseViewProps {
-  caseID: number
-  caseDetails: CaseItem | null
+  item: Case
   onClose: () => void
 }
 
-export default function DetailedCaseView({ onClose, caseID, caseDetails }: DetailedCaseViewProps) {
+export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProps) {
   const { mutate } = useUpdate()
+  const confirm = useConfirm()
   const cancelRef = useRef<(() => void) | null>(null)
-  const [notes, setNotes] = React.useState(caseDetails?.notes ?? "")
+  const [notes, setNotes] = useState(item.notes)
+  const [isEditing, setIsEditing] = useState(false)
+
+  const handleClose = () => {
+    if (isEditing) {
+      void confirm({ title: "Discard changes?" }).then(() => onClose())
+    } else {
+      onClose()
+    }
+  }
 
   const updateCase = () => {
     mutate(
       {
         resource: "cases",
         values: {
-          ...caseDetails,
           notes: notes,
         },
-        id: caseID,
-        meta: {
-          method: "put",
-        },
+        id: item._id,
+        successNotification: false,
       },
       {
         onSuccess: () => {
           setIsEditing(false)
-          onClose()
         },
       },
     )
@@ -43,14 +46,12 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
   const cancelUpdate = () => {
     cancelRef.current?.()
     setIsEditing(false)
-    setNotes(caseDetails?.notes ?? "")
+    setNotes(item.notes)
   }
-
-  const [isEditing, setIsEditing] = React.useState(false)
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsEditing(true)
+    setIsEditing(false)
   }
 
   const startEditing = (e: React.FormEvent<HTMLFormElement>) => {
@@ -63,9 +64,22 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
   }
 
   return (
-    <Dialog open={!!caseDetails} onClose={onClose}>
+    <Dialog open={true} onClose={handleClose}>
       <>
-        <DialogTitle>Case: {caseDetails?.client.name}</DialogTitle>
+        <DialogTitle>
+          {item.client.name}
+          <IconButton
+            aria-label="close"
+            onClick={handleClose}
+            sx={{
+              position: "absolute",
+              right: 16,
+              top: 12,
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
         <DialogContent>
           <form onSubmit={isEditing ? onSubmit : startEditing}>
             <Box component="form" noValidate autoComplete="off">
@@ -76,22 +90,7 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
                 type="text"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.id ?? ""}
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
-              <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DateTimePicker label="Start Time" value={caseDetails ? dayjs(caseDetails.startTime) : null} readOnly />
-              </LocalizationProvider>
-              <TextField
-                margin="dense"
-                id="clientName"
-                label="Client Name"
-                type="text"
-                fullWidth
-                variant="outlined"
-                value={caseDetails?.client.name ?? ""}
+                value={item._id}
                 InputProps={{
                   readOnly: true,
                 }}
@@ -99,11 +98,11 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
               <TextField
                 margin="dense"
                 id="clientEmail"
-                label="Client Email"
+                label="Email"
                 type="email"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.client.email ?? ""}
+                value={item.client.email}
                 InputProps={{
                   readOnly: true,
                 }}
@@ -111,11 +110,11 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
               <TextField
                 margin="dense"
                 id="clientPhone"
-                label="Client Phone"
+                label="Phone"
                 type="tel"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.client.phone ?? ""}
+                value={item.client.phone}
                 InputProps={{
                   readOnly: true,
                 }}
@@ -127,30 +126,25 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
                 type="text"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.client.zip ?? ""}
+                value={item.client.zip}
                 InputProps={{
                   readOnly: true,
                 }}
               />
-              <Typography margin="dense" variant="body1" component="div">
-                Profile URL:
-              </Typography>
-              <Link
-                href={
-                  caseDetails?.client.profile
-                    ? caseDetails.client.profile.startsWith("https://")
-                      ? caseDetails.client.profile
-                      : `https://${caseDetails.client.profile}`
-                    : "#"
+              <TextField
+                margin="dense"
+                id="clientZip"
+                label="ZIP Code"
+                type="text"
+                fullWidth
+                variant="outlined"
+                value={
+                  item.client.profile.startsWith("https://") ? item.client.profile : `https://${item.client.profile}`
                 }
-                target="_blank"
-                rel="noopener noreferrer"
-                display="block"
-                variant="body1"
-                style={{ marginBottom: "16px" }}
-              >
-                {caseDetails?.client.profile ?? "Not available"}
-              </Link>
+                InputProps={{
+                  readOnly: true,
+                }}
+              />
               <TextField
                 margin="dense"
                 id="coachesNames"
@@ -158,35 +152,37 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
                 type="text"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.coaches?.map((coach) => coach.name).join(", ") ?? "None"}
+                value={item.coaches.map((coach) => coach.name).join(", ") ?? "None"}
                 InputProps={{
                   readOnly: true,
                 }}
               />
               <TextField
                 margin="dense"
-                id="language"
-                label="Language"
+                id="startTime"
+                label="Start Time"
                 type="text"
                 fullWidth
                 variant="outlined"
-                value={caseDetails?.data.language ?? ""}
+                value={new Date(item.startTime).toLocaleString()}
                 InputProps={{
                   readOnly: true,
                 }}
               />
-              <TextField
-                margin="dense"
-                id="benefits"
-                label="Benefits"
-                type="text"
-                fullWidth
-                variant="outlined"
-                value={caseDetails?.data.benefits ?? ""}
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
+              {item.endTime && (
+                <TextField
+                  margin="dense"
+                  id="endTime"
+                  label="End Time"
+                  type="text"
+                  fullWidth
+                  variant="outlined"
+                  value={new Date(item.endTime).toLocaleString()}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              )}
               <TextField
                 margin="dense"
                 id="notes"
@@ -194,21 +190,34 @@ export default function DetailedCaseView({ onClose, caseID, caseDetails }: Detai
                 type="text"
                 fullWidth
                 variant="outlined"
-                defaultValue={caseDetails?.notes ?? ""}
+                defaultValue={item.notes}
                 onChange={handleNotesChange}
                 InputProps={{
                   readOnly: !isEditing,
                 }}
               />
             </Box>
-            {isEditing ? (
-              <>
-                <button onClick={updateCase}>Confirm</button>
-                <button onClick={cancelUpdate}>Cancel</button>
-              </>
-            ) : (
-              <button type="submit">Edit case</button>
-            )}
+            <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
+              {isEditing ? (
+                <>
+                  <Button variant="contained" onClick={updateCase}>
+                    Confirm
+                  </Button>
+                  <Button variant="contained" color={"error"} onClick={cancelUpdate}>
+                    Cancel
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button variant="contained" type="submit">
+                    Edit Case
+                  </Button>
+                  <Button variant="contained" onClick={cancelUpdate} disabled>
+                    Cancel
+                  </Button>
+                </>
+              )}
+            </Box>
           </form>
         </DialogContent>
       </>

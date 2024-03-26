@@ -11,7 +11,9 @@ import routerProvider, {
 } from "@refinedev/react-router-v6"
 import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
+import { ConfirmProvider } from "material-ui-confirm"
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+
 import Logo from "./assets/assisthublogo.png"
 import SmallLogo from "./assets/assisthublogosmall.png"
 import { ColorModeContextProvider } from "./contexts/color-mode"
@@ -137,25 +139,31 @@ export default function App() {
                   </Link>
                 )}
               >
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
-                        <HomePage />
-                      </Authenticated>
-                    }
-                  />
-                  <Route
-                    path="/analytics"
-                    element={
-                      <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
-                        <AnalyticsPage />
-                      </Authenticated>
-                    }
-                  />
-                  <Route path="/login" element={<LoginPage />} />
-                </Routes>
+                <ConfirmProvider
+                  defaultOptions={{
+                    confirmationButtonProps: { autoFocus: true },
+                  }}
+                >
+                  <Routes>
+                    <Route
+                      path="/"
+                      element={
+                        <Authenticated key="dashboard" fallback={<CatchAllNavigate to="/login" />}>
+                          <HomePage />
+                        </Authenticated>
+                      }
+                    />
+                    <Route
+                      path="/analytics"
+                      element={
+                        <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
+                          <AnalyticsPage />
+                        </Authenticated>
+                      }
+                    />
+                    <Route path="/login" element={<LoginPage />} />
+                  </Routes>
+                </ConfirmProvider>
               </ThemedLayoutV2>
             </ThemeProvider>
             <UnsavedChangesNotifier />

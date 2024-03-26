@@ -1,114 +1,78 @@
 import { Router } from "express"
-import { validateCase, type CaseItem } from "../schemas/case.js"
+import { CaseModel, type Case } from "../schemas/case.js"
 
 const router = Router()
 
-let idCount = 3
-const cases: CaseItem[] = [
-  {
-    id: 1,
-    client: {
-      name: "John Doe",
-      email: "john.doe@example.com",
-      phone: "123-456-7890",
-      zip: "02138",
-      profile: "fakewebsite.com/johndoe",
-    },
-    coaches: [],
-    startTime: new Date("2024-02-29"),
-    data: {
-      language: "English",
-      benefits: "CalFresh",
-    },
-  },
-  {
-    id: 2,
-    client: {
-      name: "Jane Smith",
-      email: "jane.smith@example.com",
-      phone: "098-765-4321",
-      zip: "01237",
-      profile: "fakewebsite.com/janesmith",
-    },
-    coaches: [],
-    startTime: new Date("2005-01-01"),
-    data: {
-      language: "Spanish",
-      benefits: "Section 8/Housing",
-    },
-  },
-]
-
-router.get("/", (_req, res) => {
-  res.status(200).json(cases)
+router.get("/", async (_req, res) => {
+  const items = await CaseModel.find()
+  res.status(200).json(items)
 })
 
-router.post("/", (req, res) => {
-  if (validateCase(req.body)) {
-    const item: CaseItem = {
-      id: idCount++,
-      startTime: new Date(),
-      client: req.body.client,
-      coaches: req.body.coaches,
-      data: req.body.data,
-      notes: req.body.notes,
-    }
-    cases.push(item)
+router.post("/", async (req, res) => {
+  const { client, coaches, data, startTime, endTime, notes } = req.body as Case
+  const item = new CaseModel({
+    client: client,
+    coaches: coaches,
+    data: data,
+    startTime: startTime,
+    endTime: endTime,
+    notes: notes,
+  })
 
-    return res.status(201).json(item)
+  try {
+    await item.save()
+    res.status(201).json(item)
+  } catch {
+    res.status(400).json({ error: "Validation failed" })
   }
-
-  res.status(400).send(validateCase.errors)
 })
 
-router.get("/:id", (req, res) => {
-  const newId = parseInt(req.params.id)
-  for (const item of cases) {
-    if (item.id == newId) {
-      return res.status(201).json(item)
+router.get("/:id", async (req, res) => {
+  try {
+    const item = await CaseModel.findById(req.params.id)
+    if (item) {
+      res.status(200).json(item)
+    } else {
+      res.status(404).json({ error: "Not found" })
     }
+  } catch {
+    res.status(404).json({ error: "Not found" })
   }
-
-  res.status(404).send("Not found")
 })
 
-router.put("/:id", (req, res) => {
-  if (validateCase(req.body)) {
-    const newId = parseInt(req.params.id)
-    for (const item of cases) {
-      if (item.id == newId) {
-        const newItem: CaseItem = {
-          id: item.id,
-          startTime: item.startTime,
-          endTime: item.endTime,
-          client: req.body.client,
-          coaches: req.body.coaches,
-          data: req.body.data,
-          notes: req.body.notes,
-        }
-        cases[cases.indexOf(item)] = newItem
+router.patch("/:id", async (req, res) => {
+  try {
+    const item = await CaseModel.findById(req.params.id)
+    if (item) {
+      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
+      item.client = client ?? item.client
+      item.coaches = coaches ?? item.coaches
+      item.data = data ?? item.data
+      item.startTime = startTime ?? item.startTime
+      item.endTime = endTime ?? item.endTime
+      item.notes = notes ?? item.notes
 
-        return res.status(201).json(newItem)
+      try {
+        await item.save()
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
       }
+    } else {
+      res.status(404).json({ error: "Not found" })
     }
-
-    return res.status(404).send("Not found")
+  } catch {
+    res.status(404).json({ error: "Not found" })
   }
-
-  res.status(400).send(validateCase.errors)
 })
 
-router.delete("/:id", (req, res) => {
-  const newId = parseInt(req.params.id)
-  for (const item of cases) {
-    if (item.id == newId) {
-      cases.splice(cases.indexOf(item), 1)
-
-      return res.status(201).json(item)
-    }
+router.delete("/:id", async (req, res) => {
+  try {
+    await CaseModel.deleteOne({ _id: req.params.id })
+    res.status(204).json()
+  } catch {
+    res.status(404).json({ error: "Not found" })
   }
-
-  res.status(404).send("Not found")
 })
 
 export default router

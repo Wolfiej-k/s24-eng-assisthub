@@ -1,113 +1,66 @@
 import Button from "@mui/material/Button"
-import { DataGrid, type GridColDef, type GridValueGetterParams } from "@mui/x-data-grid"
+import { DataGrid, type GridColDef } from "@mui/x-data-grid"
 import { useDataGrid } from "@refinedev/mui"
 import { useState } from "react"
-import { type CaseItem } from "../types"
-// import CoachDropdown from "./coach-dropdown"
+import { type Case } from "../types"
 import DetailedCaseView from "./detailed-case-view"
 
 export default function CaseGrid() {
-  const columns: GridColDef[] = [
-    {
-      field: "id",
-      headerName: "ID",
-      type: "number",
-      width: 5,
-    },
+  const columns: GridColDef<Case>[] = [
     {
       field: "clientName",
-      headerName: "Client Name",
-      width: 90,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).client?.name ?? "",
+      headerName: "Name",
+      width: 180,
+      valueGetter: (params) => params.row.client.name,
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "clientEmail",
-      headerName: "Client Email",
+      headerName: "Email",
       width: 200,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).client?.email ?? "",
+      valueGetter: (params) => params.row.client.email,
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
-    },
-    {
-      field: "clientPhone",
-      headerName: "Client Phone",
-      width: 130,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).client?.phone ?? "",
-      renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
-    },
-    {
-      field: "clientZip",
-      headerName: "ZIP Code",
-      width: 70,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).client?.zip ?? "",
-      renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
-    },
-    {
-      field: "clientProfile",
-      headerName: "Profile URL",
-      width: 200,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).client?.profile ?? ("" as string),
-      renderCell: (params) => {
-        const profileUrl = (params.value as string).startsWith("https://")
-          ? (params.value as string)
-          : `https://${params.value}`
-        return (
-          <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>
-            {/* Use the adjusted profileUrl variable */}
-            <a href={profileUrl} target="_blank" rel="noopener noreferrer">
-              {params.value}
-            </a>
-          </div>
-        )
-      },
     },
     {
       field: "coachesNames",
       headerName: "Coaches",
-      width: 200,
-      valueGetter: (params: GridValueGetterParams) =>
-        (params.row as CaseItem).coaches?.map((coach) => coach.name).join(", ") || "None",
+      width: 280,
+      valueGetter: (params) => params.row.coaches.map((coach) => coach.name).join(", ") ?? "",
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "startTime",
       headerName: "Start Time",
       width: 150,
-      valueGetter: (params: GridValueGetterParams) => new Date((params.row as CaseItem).startTime).toLocaleString(),
+      valueGetter: (params) => new Date(params.row.startTime).toLocaleDateString(),
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
-      field: "language",
-      headerName: "Language",
-      width: 120,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).data?.language ?? "",
-      renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
-    },
-    {
-      field: "benefits",
-      headerName: "Benefits",
-      width: 180,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).data?.benefits ?? "",
-      renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
-    },
-    {
-      field: "notes",
-      headerName: "Notes",
-      width: 180,
-      valueGetter: (params: GridValueGetterParams) => (params.row as CaseItem).notes ?? "",
+      field: "endTime",
+      headerName: "End Time",
+      width: 150,
+      valueGetter: (params) => {
+        if (!params.row.endTime) {
+          return ""
+        }
+
+        const date = new Date(params.row.endTime)
+        return `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`
+      },
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "actions",
       headerName: "Actions",
       sortable: false,
-      width: 150,
+      hideable: false,
+      filterable: false,
       renderCell: (params) => (
         <Button
           size="small"
           variant="contained"
           color="primary"
-          onClick={() => setSelectedCase(params.row as CaseItem)}
+          onClick={() => setSelectedCase(params.row)}
           sx={{
             fontSize: "0.6rem",
           }}
@@ -118,11 +71,10 @@ export default function CaseGrid() {
     },
   ]
 
-  // Dialog open & close
-  const [selectedCase, setSelectedCase] = useState<CaseItem | null>(null)
+  const [selectedCase, setSelectedCase] = useState<Case | null>(null)
   const handleCloseDialog = () => setSelectedCase(null)
 
-  const { dataGridProps } = useDataGrid<CaseItem>({
+  const { dataGridProps } = useDataGrid<Case>({
     resource: "cases",
     initialCurrent: 1,
     initialPageSize: 10,
@@ -136,10 +88,14 @@ export default function CaseGrid() {
 
   return (
     <>
-      <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
-      {selectedCase && (
-        <DetailedCaseView onClose={handleCloseDialog} caseDetails={selectedCase} caseID={selectedCase.id} />
-      )}
+      <DataGrid
+        {...dataGridProps}
+        getRowId={(row: Case) => row._id}
+        columns={columns}
+        autoHeight
+        pageSizeOptions={[10, 20, 30, 50, 100]}
+      />
+      {selectedCase && <DetailedCaseView onClose={handleCloseDialog} item={selectedCase} />}
     </>
   )
 }
