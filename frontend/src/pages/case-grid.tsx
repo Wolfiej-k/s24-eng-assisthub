@@ -1,5 +1,5 @@
 import { useList } from "@refinedev/core"
-import { type CaseItem } from "../types"
+import { type Case } from "../types"
 import CoachDropdown from "./coach-dropdown"
 
 // interface IPost {
@@ -37,7 +37,7 @@ import CoachDropdown from "./coach-dropdown"
 // ]
 
 export default function CaseGrid() {
-  const { data, isLoading } = useList<CaseItem>({ resource: "cases" })
+  const { data, isLoading } = useList<Case>({ resource: "cases" })
   const cases = data?.data ?? []
 
   if (isLoading) {

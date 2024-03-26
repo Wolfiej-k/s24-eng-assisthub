@@ -1,1 +1,23 @@
-export { type Case, type CaseItem, type Coach } from "../../backend/src/schemas/case"
+export interface Client {
+  name: string
+  email: string
+  phone: string
+  zip: string
+  profile: string
+}
+
+export interface Coach {
+  _id?: string
+  name: string
+  email: string
+}
+
+export interface Case {
+  _id: string
+  client: Client
+  coaches: Coach[]
+  data: Record<string, string>
+  startTime: Date
+  endTime?: Date
+  notes?: string
+}

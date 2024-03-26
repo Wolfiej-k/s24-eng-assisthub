@@ -1,64 +1,15 @@
-import Ajv, { type JSONSchemaType } from "ajv"
+import { model, Schema, type InferSchemaType } from "mongoose"
+import { clientSchema } from "./client.js"
+import { coachSchema } from "./coach.js"
 
-export interface Client {
-  name: string
-  email: string
-  phone: string
-  zip: string
-  profile: string
-}
+const caseSchema = new Schema({
+  client: { type: clientSchema, required: true },
+  coaches: { type: [coachSchema], required: true },
+  data: { type: Map, of: String, required: true },
+  startTime: { type: Date, default: Date.now },
+  endTime: { type: Date },
+  notes: { type: String },
+})
 
-export interface Coach {
-  name: string
-  email: string
-}
-
-export interface Case {
-  client: Client
-  coaches: Coach[]
-  data: Record<string, string>
-  notes?: string
-}
-
-export interface CaseItem extends Case {
-  id: number
-  startTime: Date
-  endTime?: Date
-}
-
-const caseSchema: JSONSchemaType<Case> = {
-  type: "object",
-  properties: {
-    client: {
-      type: "object",
-      properties: {
-        name: { type: "string" },
-        email: { type: "string" },
-        phone: { type: "string" },
-        zip: { type: "string" },
-        profile: { type: "string" },
-      },
-      required: ["name", "email", "phone", "zip", "profile"],
-    },
-    coaches: {
-      type: "array",
-      items: {
-        type: "object",
-        properties: {
-          name: { type: "string" },
-          email: { type: "string" },
-        },
-        required: ["name", "email"],
-      },
-    },
-    data: {
-      type: "object",
-      required: [],
-    },
-    notes: { type: "string", nullable: true },
-  },
-  required: ["client", "coaches", "data"],
-}
-
-const ajv = new Ajv()
-export const validateCase = ajv.compile(caseSchema)
+export type Case = InferSchemaType<typeof caseSchema>
+export const CaseModel = model("Case", caseSchema)
