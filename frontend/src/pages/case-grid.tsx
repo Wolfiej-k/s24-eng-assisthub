@@ -2,19 +2,6 @@ import { useList } from "@refinedev/core"
 import { type CaseItem } from "../types"
 import CoachDropdown from "./coach-dropdown"
 
-// interface IPost {
-//   id: number
-//   title: string
-//   content: string
-//   hit: number
-//   categoryID: number
-//   userID: number
-//   status: "draft" | "rejected" | "published"
-//   createdAt: Date
-//   publishedAt: Date
-//   language: number
-// }
-
 // const columns: GridColDef<CaseItem>[] = [
 //   { field: "id", headerName: "ID", type: "number", width: 75 },
 //   { field: "client.name", headerName: "Name", width: 150, flex: 0.5 },
@@ -47,7 +34,6 @@ export default function CaseGrid() {
   return (
     <div style={{ color: "black" }}>
       <CoachDropdown item={cases[0]!} />
-      {JSON.stringify(cases)}
     </div>
   )
 
