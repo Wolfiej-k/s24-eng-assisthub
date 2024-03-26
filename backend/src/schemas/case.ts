@@ -1,48 +1,15 @@
-//import Ajv, { type JSONSchemaType } from "ajv"
-import mongoose, { Schema} from 'mongoose';
+import { model, Schema, type InferSchemaType } from "mongoose"
+import { clientSchema } from "./client.js"
+import { coachSchema } from "./coach.js"
 
-interface Client {
-  name: string
-  email: string
-  phone: string
-  zip: string
-  profile: string
-}
+const caseSchema = new Schema({
+  client: { type: clientSchema, required: true },
+  coaches: { type: [coachSchema], required: true },
+  data: { type: Map, of: String, required: true },
+  startTime: { type: Date, default: Date.now },
+  endTime: { type: Date },
+  notes: { type: String },
+})
 
-interface Coach {
-  name: string
-  email: string
-}
-
-interface Case {
-  client: Client
-  coaches: Coach[]
-  data: Record<string, string>
-  notes?: string
-}
-
-export interface CaseItem extends Case {
-  id: number
-  startTime: Date
-  endTime?: Date
-}
-
-const caseSchema = new Schema<Case>({
-  client: {
-      name: { type: String, required: true },
-      email: { type: String, required: true },
-      phone: { type: String, required: true },
-      zip: { type: String, required: true },
-      profile: { type: String, required: true }
-  },
-  coaches: [{
-      name: { type: String, required: true },
-      email: { type: String, required: true }
-  }],
-  data: { type: {}, required: true },
-  notes: { type: String }
-});
-
-//const ajv = new Ajv()
-//export const validateCase = ajv.compile(caseSchema)
-export const CaseModel = mongoose.model("Case", caseSchema)
+export type Case = InferSchemaType<typeof caseSchema>
+export const CaseModel = model("Case", caseSchema)
