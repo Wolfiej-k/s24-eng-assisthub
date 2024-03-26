@@ -4,6 +4,7 @@ import { useUpdate } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useRef, useState } from "react"
 import { type Case } from "../types"
+import CoachDropdown from "./coach-dropdown"
 
 interface DetailedCaseViewProps {
   item: Case
@@ -145,18 +146,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
                   readOnly: true,
                 }}
               />
-              <TextField
-                margin="dense"
-                id="coachesNames"
-                label="Coaches"
-                type="text"
-                fullWidth
-                variant="outlined"
-                value={item.coaches.map((coach) => coach.name).join(", ") ?? "None"}
-                InputProps={{
-                  readOnly: true,
-                }}
-              />
+              <CoachDropdown item={item} editable={isEditing} />
               <TextField
                 margin="dense"
                 id="startTime"

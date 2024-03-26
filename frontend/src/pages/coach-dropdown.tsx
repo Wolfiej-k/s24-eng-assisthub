@@ -3,7 +3,12 @@ import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
 import { type Case, type Coach } from "../types"
 
-export default function CoachDropdown({ item }: { item: Case }) {
+interface CoachDropdownProps {
+  item: Case
+  editable: boolean
+}
+
+export default function CoachDropdown({ item, editable }: CoachDropdownProps) {
   const { mutate } = useUpdate()
 
   const updateCase = (coaches: Coach[]) => {
@@ -25,7 +30,9 @@ export default function CoachDropdown({ item }: { item: Case }) {
       getOptionLabel={(option) => option.name}
       defaultValue={item.coaches}
       onChange={(_, value) => updateCase(value)}
-      renderInput={(params) => <TextField {...params} variant="standard" label="Select Coaches" />}
+      renderInput={(params) => <TextField {...params} variant="standard" label="Coaches" />}
+      style={{ paddingBottom: 4 }}
+      readOnly={!editable}
     />
   )
 }
