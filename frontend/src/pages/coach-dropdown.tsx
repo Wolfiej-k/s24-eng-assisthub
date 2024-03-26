@@ -147,6 +147,18 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       )
     },
     {
+      field: "notes",
+      headerName: "Notes",
+      width: 180,
+      valueGetter: (params: GridValueGetterParams) =>
+      (params.row as CaseItem).notes ?? '',
+      renderCell: (params) => (
+        <div style={{ whiteSpace: 'normal', wordWrap: 'break-word' }}>
+          {params.value}
+        </div>
+      )
+    },
+    {
       field: "actions",
       headerName: "Actions",
       sortable: false,
@@ -192,7 +204,7 @@ export default function CoachDropdown({ item }: { item: CaseItem }) {
       />
       <DataGrid {...dataGridProps} columns={columns} autoHeight pageSizeOptions={[10, 20, 30, 50, 100]} />
       {selectedCase && (
-        <DetailedCaseView onClose={handleCloseDialog} caseDetails={selectedCase}/>
+        <DetailedCaseView onClose={handleCloseDialog} caseDetails={selectedCase} caseID={selectedCase.id}/>
       )}
     </div>
   );
