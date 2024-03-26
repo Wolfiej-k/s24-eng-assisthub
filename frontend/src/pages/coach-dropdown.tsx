@@ -1,22 +1,18 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
 import { useUpdate } from "@refinedev/core"
-import { type CaseItem, type Coach } from "../types"
+import { type Case, type Coach } from "../types"
 
-export default function CoachDropdown({ item }: { item: CaseItem }) {
+export default function CoachDropdown({ item }: { item: Case }) {
   const { mutate } = useUpdate()
 
   const updateCase = (coaches: Coach[]) => {
     mutate({
       resource: "cases",
       values: {
-        ...item,
         coaches: coaches,
       },
-      id: item.id,
-      meta: {
-        method: "put",
-      },
+      id: item._id,
       successNotification: false,
     })
   }
