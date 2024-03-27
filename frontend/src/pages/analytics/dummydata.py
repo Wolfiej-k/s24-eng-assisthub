@@ -46,7 +46,7 @@ def create_case(name: str, coach : str):
             "name": name,
             "email": ".".join(name.lower().split(" ")) + "@example.com",
             "phone": "283-334-2303",
-            "zip":  str(random.choice(list(zip_codes.keys()))),
+            "zip":  "90003",
             "profile": "profile.com/" + "".join(name.lower())
         },
         "data": {},
@@ -89,7 +89,7 @@ def create_case(name: str, coach : str):
 fake = Faker()
 client_names = []
 coach_names = []
-for _ in range(20):
+for _ in range(1):
     create_case(fake.name(), fake.name())
 #creates fake clients
 # for _ in range(10):
