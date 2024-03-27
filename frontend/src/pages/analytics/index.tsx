@@ -2,57 +2,45 @@ import Button from "@mui/material/Button"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
 import { LineChart } from "@mui/x-charts"
+import { useList } from "@refinedev/core";
 import { BarChart } from "@mui/x-charts/BarChart"
 import { PieChart } from "@mui/x-charts/PieChart"
-import * as React from "react"
+import { type Case } from "../../types"
+import zipCodes from './zipcodes.json'
+import * as React from "react";
 
-interface Client {
+
+/*
+export interface Client {
   name: string
   email: string
   phone: string
   zip: string
+  profile: string
 }
 
-interface Case {
+export interface Coach {
+  _id?: string
+  name: string
+  email: string
+}
+
+export interface Case {
+  _id: string
   client: Client
-  language: string
-  benefits: string
-}
-
-interface CaseItem extends Case {
-  id: number
+  coaches: Coach[]
+  data: Record<string, string>
   startTime: Date
   endTime?: Date
+  notes?: string
 }
+OBJECTID,Zip Code,Post Office Name
+*/
+type zipMap = {
+  [zip in string]: string;
+};
 
-const languages = ["English", "Spanish", "Chinese", "Korean"]
 const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-const benefits = ["Health Insurance", "Legal Aid", "Housing Assistance", "food vouchers"]
-
-const clients: Client[] = Array.from({ length: 40 }, (_, i) => ({
-  name: `Client ${i + 1}`,
-  email: `client${i + 1}@example.com`,
-  phone: `123-456-78${i}0`,
-  zip: `1234${i}`,
-}))
-
-const startdate = new Array(40).fill(0)
-for (let j = 0; j < 40; j++) {
-  startdate[j] = Math.floor(Math.random() * 12)
-}
-
-const cases: Case[] = clients.map((client, i) => ({
-  client,
-  language: languages[i % languages.length] ?? "",
-  benefits: benefits[i % benefits.length] ?? "",
-}))
-
-const caseItems: CaseItem[] = cases.map((c, i) => ({
-  ...c,
-  id: i + 1,
-  startTime: new Date(2023, startdate[i] as number, (startdate[i] + 1) as number),
-  endTime: i % 4 === 0 ? new Date(2023, (startdate[i] + 1) as number, (startdate[i] + 2) as number) : undefined,
-}))
 
 export default function AnalyticsPage() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
@@ -70,50 +58,42 @@ export default function AnalyticsPage() {
     }
   }
 
-  const caseByLanguage = React.useMemo(() => {
-    return cases.reduce(
-      (accumulator, currentCase) => {
-        const caseLanguage = currentCase.language
-        if (!accumulator[caseLanguage]) {
-          accumulator[caseLanguage] = 0
-        }
+  const { data: caseData, error, isLoading } = useList<Case>({ resource: "cases" })
 
-        accumulator[caseLanguage]++
-        return accumulator
-      },
-      {} as Record<string, number>,
-    )
-  }, [])
-
-  const caseByBenefits = React.useMemo(() => {
-    return cases.reduce(
-      (accumulator, currentCase) => {
-        const caseByBenefits = currentCase.benefits
-        if (!accumulator[caseByBenefits]) {
-          accumulator[caseByBenefits] = 0
-        }
-
-        accumulator[caseByBenefits]++
-        return accumulator
-      },
-      {} as Record<string, number>,
-    )
-  }, [])
-
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+  if (error) {
+    return <div>Error: {error.message}</div>;
+}
+  const casesArray = caseData.data;
   const monthCounts = new Array(12).fill(0)
-  caseItems.forEach((caseItem) => {
-    const month = caseItem.startTime.getMonth()
-    monthCounts[month]++
-  })
-
   const monthOpenCounts = new Array(12).fill(0)
-  caseItems.forEach((caseItem) => {
-    const startMonth = caseItem.startTime.getMonth()
-    const endMonth = caseItem.endTime ? caseItem.endTime.getMonth() : 11
-    for (let month = startMonth; month <= endMonth; month++) {
-      monthOpenCounts[month]++
+  const caseLocations = new Map<string, number>()
+if (Array.isArray(casesArray)) {
+  // We have to case data into Case[] because TypeScript doesn't know that data is an array of Case objects
+  casesArray.forEach((caseItem) => {
+    // get case amount for each month
+    const startDate = new Date(caseItem.startTime);
+    const startMonth = startDate.getMonth()
+    monthCounts[startMonth]++
+
+    // Get ending times for open cases otherwise no end time
+    const endDate = caseItem.endTime ? new Date(caseItem.endTime) : new Date()
+    const endMonth = caseItem.endTime ? endDate.getMonth() : 11
+    for (let i = startMonth; i <= endMonth; i++) {
+      monthOpenCounts[i]++
     }
-  })
+    const location : string= caseItem.client.zip;
+    if (location in zipCodes)
+    {
+      // idk what the fuck i did but it worked
+      caseLocations.set(zipCodes[location as keyof typeof zipCodes], (caseLocations.get(location) ?? 0) + 1)
+      console.log(caseLocations)
+    }
+  });
+}
+
 
   return (
     <div
@@ -145,8 +125,7 @@ export default function AnalyticsPage() {
       >
         <MenuItem onClick={() => handleClose("line")}>Open Cases by Month</MenuItem>
         <MenuItem onClick={() => handleClose("start")}>Start Time of Cases by Month</MenuItem>
-        <MenuItem onClick={() => handleClose("language")}>Case by Language</MenuItem>
-        <MenuItem onClick={() => handleClose("benefits")}>Case by Benefit</MenuItem>
+        <MenuItem onClick={() => handleClose("area")}>Cases by Location</MenuItem>
       </Menu>
       {selectedPlot === "line" && (
         <LineChart
@@ -159,37 +138,6 @@ export default function AnalyticsPage() {
             },
           ]}
           series={[{ data: monthOpenCounts }]}
-        />
-      )}
-
-      {selectedPlot === "language" && (
-        <PieChart
-          width={600}
-          height={600}
-          series={[
-            {
-              data: Object.entries(caseByLanguage).map(([language, count]) => ({
-                id: language,
-                value: count,
-              })),
-              arcLabel: ({ id, value }) => `${id} (${value})`,
-            },
-          ]}
-        />
-      )}
-      {selectedPlot === "benefits" && (
-        <PieChart
-          width={600}
-          height={600}
-          series={[
-            {
-              data: Object.entries(caseByBenefits).map(([benefit, count]) => ({
-                id: benefit,
-                value: count,
-              })),
-              arcLabel: ({ id, value }) => `${id} (${value})`,
-            },
-          ]}
         />
       )}
       {selectedPlot === "start" && (
@@ -210,6 +158,21 @@ export default function AnalyticsPage() {
           margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
         />
       )}
+      {selectedPlot === "area" && (
+        <PieChart
+          series={[
+            {
+              data: Array.from(caseLocations).map(([location, count]) => ({
+                name: location,
+                value: count,
+              })),
+            },
+          ]}
+          height={700}
+          width={700}
+        />
+      )
+      }
     </div>
   )
 }
