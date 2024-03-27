@@ -1,8 +1,7 @@
 import Button from "@mui/material/Button"
 import Menu from "@mui/material/Menu"
 import MenuItem from "@mui/material/MenuItem"
-import { FixedSizeList, ListChildComponentProps } from 'react-window';
-import List from '@mui/material/List';
+import { FixedSizeList,  } from 'react-window';
 import ListItemText from '@mui/material/ListItemText';
 import ListItem from '@mui/material/ListItem';
 import { LineChart } from "@mui/x-charts"
@@ -90,7 +89,6 @@ export default function AnalyticsPage() {
 
   });
 
-  console.log(Array.from(caseLocations.entries()));
   // arrays after making dictionaries
   const coachChartData = Array.from(casesCountPerCoach).map(([coachName, count]) => {
     return { name: coachName, value: count };
