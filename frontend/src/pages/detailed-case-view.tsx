@@ -1,8 +1,8 @@
 import CloseIcon from "@mui/icons-material/Close"
 import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, TextField } from "@mui/material"
-import { useUpdate } from "@refinedev/core"
+import { useForm } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { type Case } from "../types"
 import CoachDropdown from "./coach-dropdown"
 
@@ -12,47 +12,23 @@ interface DetailedCaseViewProps {
 }
 
 export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProps) {
-  const { mutate } = useUpdate()
-  const confirm = useConfirm()
-  const cancelRef = useRef<(() => void) | null>(null)
   const [notes, setNotes] = useState(item.notes)
   const [isEditing, setIsEditing] = useState(false)
+  const confirm = useConfirm()
+  const { onFinish } = useForm<Case>({
+    resource: "cases",
+    action: "edit",
+    id: item._id,
+    successNotification: false,
+    onMutationSuccess: () => setIsEditing(false),
+  })
 
   const handleClose = () => {
-    if (isEditing) {
+    if (isEditing && item.notes != notes) {
       void confirm({ title: "Discard changes?" }).then(() => onClose())
     } else {
       onClose()
     }
-  }
-
-  const updateCase = () => {
-    mutate(
-      {
-        resource: "cases",
-        values: {
-          notes: notes,
-        },
-        id: item._id,
-        successNotification: false,
-      },
-      {
-        onSuccess: () => {
-          setIsEditing(false)
-        },
-      },
-    )
-  }
-
-  const cancelUpdate = () => {
-    cancelRef.current?.()
-    setIsEditing(false)
-    setNotes(item.notes)
-  }
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsEditing(false)
   }
 
   const startEditing = (e: React.FormEvent<HTMLFormElement>) => {
@@ -60,8 +36,24 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
     setIsEditing(true)
   }
 
-  const handleNotesChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setNotes(event.target.value)
+  const cancelEdting = () => {
+    if (item.notes != notes) {
+      void confirm({ title: "Discard changes?" }).then(() => {
+        setNotes(item.notes)
+        setIsEditing(false)
+      })
+    } else {
+      setIsEditing(false)
+    }
+  }
+
+  const finishEdting = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    void onFinish({ notes: notes })
+  }
+
+  const handleNotesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNotes(e.target.value)
   }
 
   return (
@@ -82,7 +74,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <form onSubmit={isEditing ? onSubmit : startEditing}>
+          <form onSubmit={isEditing ? finishEdting : startEditing}>
             <Box component="form" noValidate autoComplete="off">
               <TextField
                 margin="dense"
@@ -134,8 +126,8 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
               />
               <TextField
                 margin="dense"
-                id="clientZip"
-                label="ZIP Code"
+                id="clientProfile"
+                label="Profile URL"
                 type="text"
                 fullWidth
                 variant="outlined"
@@ -180,7 +172,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
                 type="text"
                 fullWidth
                 variant="outlined"
-                defaultValue={item.notes}
+                value={notes}
                 onChange={handleNotesChange}
                 InputProps={{
                   readOnly: !isEditing,
@@ -190,10 +182,10 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
             <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
               {isEditing ? (
                 <>
-                  <Button variant="contained" onClick={updateCase}>
+                  <Button variant="contained" type="submit">
                     Confirm
                   </Button>
-                  <Button variant="contained" color={"error"} onClick={cancelUpdate}>
+                  <Button variant="contained" color={"error"} onClick={cancelEdting}>
                     Cancel
                   </Button>
                 </>
@@ -202,7 +194,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
                   <Button variant="contained" type="submit">
                     Edit Case
                   </Button>
-                  <Button variant="contained" onClick={cancelUpdate} disabled>
+                  <Button variant="contained" onClick={cancelEdting} disabled>
                     Cancel
                   </Button>
                 </>

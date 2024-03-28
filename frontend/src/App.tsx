@@ -171,7 +171,7 @@ export default function App() {
               </ThemedLayoutV2>
             </ThemeProvider>
             <UnsavedChangesNotifier />
-            <DocumentTitleHandler />
+            <DocumentTitleHandler handler={() => "AssistHub"} />
           </Refine>
         </RefineSnackbarProvider>
       </ColorModeContextProvider>
