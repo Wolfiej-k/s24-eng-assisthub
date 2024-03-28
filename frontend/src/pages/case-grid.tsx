@@ -10,35 +10,40 @@ export default function CaseGrid() {
     {
       field: "clientName",
       headerName: "Name",
-      width: 180,
+      minWidth: 180,
+      maxWidth: 260,
+      flex: 1,
       valueGetter: (params) => params.row.client.name,
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "clientEmail",
       headerName: "Email",
-      width: 200,
+      minWidth: 200,
+      maxWidth: 300,
+      flex: 1,
       valueGetter: (params) => params.row.client.email,
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "coachesNames",
       headerName: "Coaches",
-      width: 280,
+      minWidth: 280,
+      flex: 1,
       valueGetter: (params) => params.row.coaches.map((coach) => coach.name).join(", ") ?? "",
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "startTime",
       headerName: "Start Time",
-      width: 150,
+      minWidth: 150,
       valueGetter: (params) => new Date(params.row.startTime).toLocaleDateString(),
       renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
     },
     {
       field: "endTime",
       headerName: "End Time",
-      width: 150,
+      minWidth: 150,
       valueGetter: (params) => {
         if (!params.row.endTime) {
           return ""
@@ -55,6 +60,7 @@ export default function CaseGrid() {
       sortable: false,
       hideable: false,
       filterable: false,
+      width: 110,
       renderCell: (params) => (
         <Button
           size="small"
