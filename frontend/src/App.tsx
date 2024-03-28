@@ -115,6 +115,10 @@ export default function App() {
                 name: "cases",
                 list: "/",
               },
+              {
+                name: "analytics",
+                list: "/analytics",
+              },
             ]}
             options={{
               warnWhenUnsavedChanges: true,
