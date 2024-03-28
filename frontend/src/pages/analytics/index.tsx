@@ -1,16 +1,28 @@
-import { Button, Card, CardContent, Grid, ListItem, ListItemText, Menu, MenuItem, Typography } from "@mui/material"
-import { BarChart, LineChart, PieChart } from "@mui/x-charts"
+import {
+  Button,
+  Card,
+  CardContent,
+  Grid,
+  ListItem,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Typography,
+  useTheme,
+} from "@mui/material"
+import { BarChart, LineChart, pieArcLabelClasses, PieChart } from "@mui/x-charts"
 import { useList } from "@refinedev/core"
 import { useState } from "react"
 import { FixedSizeList } from "react-window"
 import { type Case } from "../../types"
 import zipCodes from "./zipcodes.json"
 
-const monthLabels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 export default function AnalyticsPage() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [selectedPlot, setSelectedPlot] = useState("open")
+  const theme = useTheme()
   const open = Boolean(anchorEl)
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,20 +44,41 @@ export default function AnalyticsPage() {
 
   const cases = data.data
 
-  const monthCounts = new Array(12).fill(0)
-  const monthOpenCounts = new Array(12).fill(0)
-  const monthClosedCounts = new Array(12).fill(0)
+  const monthsBetween = (t1: Date, t2: Date) => {
+    if (t1.getFullYear() == t2.getFullYear()) {
+      return t2.getMonth() - t1.getMonth() + 1
+    }
+
+    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() - 1)
+  }
+
+  const oldest = new Date(
+    cases.reduce((c1, c2) => (new Date(c1.startTime).getTime() < new Date(c2.startTime).getTime() ? c1 : c2)).startTime,
+  )
+
+  const months = monthsBetween(oldest, new Date())
+
+  const monthCounts = new Array(months).fill(0)
+  const monthOpenCounts = new Array(months).fill(0)
+  const monthClosedCounts = new Array(months).fill(0)
+  const monthLabels = new Array(months).fill("")
+
+  for (let m = 0; m < months; m++) {
+    const month = (m + oldest.getMonth()) % monthNames.length
+    const year = oldest.getFullYear() + Math.floor(m / 12)
+    monthLabels[m] = monthNames[month] + ` '${year % 100}`
+  }
 
   const caseLocations = new Map<string, number>()
   const casesCountPerCoach = new Map<string, number>()
 
   cases.forEach((item) => {
     const startDate = new Date(item.startTime)
-    const startMonth = startDate.getMonth()
+    const startMonth = monthsBetween(oldest, startDate) - 1
     monthCounts[startMonth]++
 
     const endDate = item.endTime ? new Date(item.endTime) : new Date()
-    const endMonth = endDate.getMonth()
+    const endMonth = monthsBetween(oldest, endDate) - 1
 
     if (item.endTime) {
       monthClosedCounts[endMonth]++
@@ -55,10 +88,11 @@ export default function AnalyticsPage() {
       monthOpenCounts[i]++
     }
 
-    const location = item.client.zip
-    if (location in zipCodes) {
+    const zip = item.client.zip
+    if (zip in zipCodes) {
+      const location = zipCodes[zip as keyof typeof zipCodes]
       const currentCount = caseLocations.get(location) ?? 0
-      caseLocations.set(zipCodes[location as keyof typeof zipCodes], currentCount + 1)
+      caseLocations.set(location, currentCount + 1)
     }
 
     item.coaches.forEach((coach) => {
@@ -109,7 +143,7 @@ export default function AnalyticsPage() {
                 series={[
                   {
                     data: monthCounts,
-                    color: "#13cdcd",
+                    color: theme.palette.primary.main,
                   },
                 ]}
                 height={412}
@@ -128,7 +162,7 @@ export default function AnalyticsPage() {
                 series={[
                   {
                     data: monthClosedCounts,
-                    color: "#13cdcd",
+                    color: theme.palette.primary.main,
                   },
                 ]}
                 height={412}
@@ -154,7 +188,20 @@ export default function AnalyticsPage() {
             <PieChart
               margin={{ top: 5, bottom: 10, left: 10, right: 10 }}
               height={450}
-              series={[{ arcLabel: (item) => `${item.name}`, data: coachChartData }]}
+              series={[
+                {
+                  arcLabel: (item) => `${item.label?.split(" ")[0]}`,
+                  data: coachChartData,
+                  paddingAngle: 1,
+                  cornerRadius: 4,
+                  innerRadius: 25,
+                },
+              ]}
+              sx={{
+                [`& .${pieArcLabelClasses.root}`]: {
+                  fill: theme.palette.primary.light,
+                },
+              }}
             />
           </CardContent>
         </Card>
