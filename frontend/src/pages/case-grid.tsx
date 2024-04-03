@@ -47,11 +47,42 @@ export default function CaseGrid() {
           if (!params.row.endTime) {
             return ""
           }
-
           const date = new Date(params.row.endTime)
           return `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`
         },
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
+      },
+      {
+        field: "status",
+        headerName: "Status",
+        width: 150,
+        valueGetter: (params) => {
+          const endTime = params.row.endTime
+          if (endTime) {
+            return "Closed"
+          }
+          const startTime = new Date(params.row.startTime)
+          const currentTime = new Date()
+          const timeDiff = currentTime.getTime() - startTime.getTime()
+          const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24))
+          return `${daysDiff} days`
+        },
+        renderCell: (params) => {
+          const isClosed = params.row.endTime !== null
+          return (
+            <div
+              style={{
+                backgroundColor: isClosed ? "red" : "transparent",
+                color: isClosed ? "white" : "inherit",
+                borderRadius: "20px",
+                padding: "4px 8px",
+                display: "inline-block",
+              }}
+            >
+              {params.value}
+            </div>
+          )
+        },
       },
       {
         field: "actions",
@@ -65,9 +96,7 @@ export default function CaseGrid() {
             variant="contained"
             color="primary"
             onClick={() => setSelectedCase(params.row)}
-            sx={{
-              fontSize: "0.6rem",
-            }}
+            sx={{ fontSize: "0.6rem" }}
           >
             View Details
           </Button>
