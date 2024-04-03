@@ -4,6 +4,7 @@ import { useForm } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
 import { type Case } from "../types"
+import CloseCaseButton from "./CloseCaseButton"
 import CoachDropdown from "./coach-dropdown"
 
 interface DetailedCaseViewProps {
@@ -197,6 +198,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
                   <Button variant="contained" onClick={cancelEdting} disabled>
                     Cancel
                   </Button>
+                  <CloseCaseButton caseId={item._id} open={!item.endTime} />
                 </>
               )}
             </Box>
