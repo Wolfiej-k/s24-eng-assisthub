@@ -1,6 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close"
 import { Box, Button, Dialog, DialogContent, DialogTitle, IconButton, TextField } from "@mui/material"
-import { useForm } from "@refinedev/core"
+import { useUpdate } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
 import { type Case } from "../types"
@@ -14,18 +14,14 @@ interface DetailedCaseViewProps {
 
 export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProps) {
   const [notes, setNotes] = useState(item.notes)
+  const [coaches, setCoaches] = useState(item.coaches)
   const [isEditing, setIsEditing] = useState(false)
+
   const confirm = useConfirm()
-  const { onFinish } = useForm<Case>({
-    resource: "cases",
-    action: "edit",
-    id: item._id,
-    successNotification: false,
-    onMutationSuccess: () => setIsEditing(false),
-  })
+  const { mutate } = useUpdate()
 
   const handleClose = () => {
-    if (isEditing && item.notes != notes) {
+    if (isEditing && (item.notes != notes || item.coaches != coaches)) {
       void confirm({ title: "Discard changes?" }).then(() => onClose())
     } else {
       onClose()
@@ -38,9 +34,10 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
   }
 
   const cancelEdting = () => {
-    if (item.notes != notes) {
+    if (item.notes != notes || item.coaches != coaches) {
       void confirm({ title: "Discard changes?" }).then(() => {
         setNotes(item.notes)
+        setCoaches(item.coaches)
         setIsEditing(false)
       })
     } else {
@@ -50,7 +47,20 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
 
   const finishEdting = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    void onFinish({ notes: notes })
+    mutate(
+      {
+        resource: "cases",
+        values: {
+          coaches: coaches,
+          notes: notes,
+        },
+        id: item._id,
+        successNotification: false,
+      },
+      {
+        onSuccess: () => setIsEditing(false),
+      },
+    )
   }
 
   const handleNotesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -139,7 +149,7 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
                   readOnly: true,
                 }}
               />
-              <CoachDropdown item={item} editable={isEditing} />
+              <CoachDropdown coaches={coaches} updateCoaches={(update) => setCoaches(update)} editable={isEditing} />
               <TextField
                 margin="dense"
                 id="startTime"
