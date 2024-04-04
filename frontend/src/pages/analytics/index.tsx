@@ -58,10 +58,10 @@ export default function AnalyticsPage() {
 
   const months = monthsBetween(oldest, new Date())
 
-  const monthCounts = new Array(months).fill(0)
-  const monthOpenCounts = new Array(months).fill(0)
-  const monthClosedCounts = new Array(months).fill(0)
-  const monthLabels = new Array(months).fill("")
+  const monthCounts = new Array<number>(months).fill(0)
+  const monthOpenCounts = new Array<number>(months).fill(0)
+  const monthClosedCounts = new Array<number>(months).fill(0)
+  const monthLabels = new Array<string>(months).fill("")
 
   for (let m = 0; m < months; m++) {
     const month = (m + oldest.getMonth()) % monthNames.length
@@ -102,7 +102,7 @@ export default function AnalyticsPage() {
   })
 
   const coachChartData = Array.from(casesCountPerCoach).map(([name, count]) => {
-    return { name: name, value: count }
+    return { label: name, value: count }
   })
 
   const sortedCaseLocationsArray = Array.from(caseLocations).sort(([, a], [, b]) => b - a)
@@ -147,7 +147,6 @@ export default function AnalyticsPage() {
                   },
                 ]}
                 height={412}
-                width={875}
                 xAxis={[
                   {
                     data: monthLabels,
@@ -166,7 +165,6 @@ export default function AnalyticsPage() {
                   },
                 ]}
                 height={412}
-                width={875}
                 xAxis={[
                   {
                     data: monthLabels,
@@ -180,17 +178,18 @@ export default function AnalyticsPage() {
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
-        <Card sx={{ padding: 0, alignItems: "center" }}>
-          <Typography variant="h6" align="center">
-            Assigned Cases per Coach
-          </Typography>
+        <Card sx={{ alignItems: "center" }}>
           <CardContent sx={{ justifyContent: "center" }}>
+            <Typography variant="h6" align="center">
+              Assigned Cases per Coach
+            </Typography>
             <PieChart
-              margin={{ top: 5, bottom: 10, left: 10, right: 10 }}
+              margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
               height={450}
               series={[
                 {
-                  arcLabel: (item) => `${item.label?.split(" ")[0]}`,
+                  arcLabel: (item) => item.label?.split(" ")[0] ?? "",
+                  arcLabelMinAngle: 25,
                   data: coachChartData,
                   paddingAngle: 1,
                   cornerRadius: 4,
@@ -200,6 +199,20 @@ export default function AnalyticsPage() {
               sx={{
                 [`& .${pieArcLabelClasses.root}`]: {
                   fill: theme.palette.primary.light,
+                },
+              }}
+              slotProps={{
+                legend: {
+                  direction: "row",
+                  position: { vertical: "bottom", horizontal: "middle" },
+                  padding: 0,
+                  itemMarkWidth: 20,
+                  itemMarkHeight: 4,
+                  markGap: 5,
+                  itemGap: 12,
+                  labelStyle: {
+                    fontSize: 14,
+                  },
                 },
               }}
             />
@@ -244,7 +257,7 @@ export default function AnalyticsPage() {
                   scaleType: "band",
                 },
               ]}
-              series={[{ data: monthOpenCounts, color: "#7f32cd" }]}
+              series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
             />
           </CardContent>
         </Card>
