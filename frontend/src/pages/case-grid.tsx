@@ -12,7 +12,7 @@ export default function CaseGrid() {
   const columns = useMemo<GridColDef<Case>[]>(
     () => [
       {
-        field: "clientName",
+        field: "client.name",
         headerName: "Name",
         minWidth: 180,
         maxWidth: 260,
@@ -21,7 +21,7 @@ export default function CaseGrid() {
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
       },
       {
-        field: "clientEmail",
+        field: "client.email",
         headerName: "Email",
         minWidth: 200,
         maxWidth: 300,
@@ -30,7 +30,7 @@ export default function CaseGrid() {
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
       },
       {
-        field: "coachesNames",
+        field: "coaches.name",
         headerName: "Coaches",
         minWidth: 280,
         flex: 1,
@@ -95,6 +95,9 @@ export default function CaseGrid() {
           order: "asc",
         },
       ],
+    },
+    filters: {
+      mode: "off",
     },
   })
 
