@@ -4,7 +4,7 @@ import { useUpdate } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
 import { type Case } from "../types"
-import CloseCaseButton from "./CloseCaseButton"
+import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
 
 interface DetailedCaseViewProps {
@@ -193,22 +193,28 @@ export default function DetailedCaseView({ item, onClose }: DetailedCaseViewProp
             <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
               {isEditing ? (
                 <>
-                  <Button variant="contained" type="submit">
-                    Confirm
-                  </Button>
+                  <div>
+                    <Button variant="contained" type="submit">
+                      Confirm
+                    </Button>{" "}
+                    <CloseCaseButton item={item} open={!item.endTime} onClose={onClose} />
+                  </div>
                   <Button variant="contained" color={"error"} onClick={cancelEdting}>
                     Cancel
                   </Button>
                 </>
               ) : (
                 <>
-                  <Button variant="contained" type="submit">
-                    Edit Case
-                  </Button>
+                  {item.endTime ? (
+                    <CloseCaseButton item={item} open={!item.endTime} onClose={onClose} />
+                  ) : (
+                    <Button variant="contained" type="submit">
+                      Edit Case
+                    </Button>
+                  )}
                   <Button variant="contained" onClick={cancelEdting} disabled>
                     Cancel
                   </Button>
-                  <CloseCaseButton caseId={item._id} open={!item.endTime} />
                 </>
               )}
             </Box>

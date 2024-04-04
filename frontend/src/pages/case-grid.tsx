@@ -58,9 +58,11 @@ export default function CaseGrid() {
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
       },
       {
-        field: "status",
-        headerName: "Status",
-        width: 150,
+        field: "timeOpen",
+        headerName: "Time Open",
+        minWidth: 150,
+        sortable: false,
+        filterable: false,
         valueGetter: (params) => {
           const endTime = params.row.endTime
           if (endTime) {
@@ -73,20 +75,23 @@ export default function CaseGrid() {
           return `${daysDiff} days`
         },
         renderCell: (params) => {
-          const isClosed = params.row.endTime !== null
-          return (
-            <div
-              style={{
-                backgroundColor: isClosed ? "red" : "transparent",
-                color: isClosed ? "white" : "inherit",
-                borderRadius: "20px",
-                padding: "4px 8px",
-                display: "inline-block",
-              }}
-            >
-              {params.value}
-            </div>
-          )
+          if (params.row.endTime) {
+            return (
+              <div
+                style={{
+                  backgroundColor: params.row.endTime ? "red" : "transparent",
+                  color: params.row.endTime ? "white" : "inherit",
+                  borderRadius: "20px",
+                  padding: "4px 8px",
+                  display: "inline-block",
+                }}
+              >
+                {params.value}
+              </div>
+            )
+          }
+
+          return <div>{params.value}</div>
         },
       },
       {
