@@ -27,6 +27,7 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
               message: "Error updating case",
               type: "error",
             },
+            successNotification: false,
           },
           {
             onSuccess: () => onClose(),
@@ -46,6 +47,7 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
             message: "Error updating case",
             type: "error",
           },
+          successNotification: false,
           meta: {
             method: "put",
           },
