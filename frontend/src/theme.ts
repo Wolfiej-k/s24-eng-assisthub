@@ -15,7 +15,7 @@ const theme = createTheme({
     fontFamily: "Poppins, sans-serif",
     h1: {
       fontSize: "31.5px",
-      fontWeight: "bold",
+      fontWeight: "lighter",
     },
     h2: {
       fontSize: "18px",

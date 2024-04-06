@@ -3,7 +3,7 @@ import { DataGrid, type GridColDef } from "@mui/x-data-grid"
 import { useDataGrid } from "@refinedev/mui"
 import { useMemo, useState } from "react"
 import { type Case } from "../types"
-import DetailedCaseView from "./detailed-case-view"
+import DetailedViewDialog from "./details/detailed-view-dialog"
 
 export default function CaseGrid() {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null)
@@ -141,7 +141,7 @@ export default function CaseGrid() {
         autoHeight
         pageSizeOptions={[10, 20, 30, 50, 100]}
       />
-      {selectedCase && <DetailedCaseView onClose={handleCloseDialog} item={selectedCase} />}
+      {selectedCase && <DetailedViewDialog handleClose={handleCloseDialog} item={selectedCase} />}
     </>
   )
 }

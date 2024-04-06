@@ -13,7 +13,6 @@ import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
 import { ConfirmProvider } from "material-ui-confirm"
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
-import CaseDetailView from './pages/case-page-view';
 
 import Logo from "./assets/assisthublogo.png"
 import SmallLogo from "./assets/assisthublogosmall.png"
@@ -22,6 +21,7 @@ import { theme } from "./theme"
 
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
+import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
 export default function App() {
@@ -167,7 +167,7 @@ export default function App() {
                       }
                     />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/:id" element={<CaseDetailView />} />
+                    <Route path="/:id" element={<DetailsPage />} />
                   </Routes>
                 </ConfirmProvider>
               </ThemedLayoutV2>

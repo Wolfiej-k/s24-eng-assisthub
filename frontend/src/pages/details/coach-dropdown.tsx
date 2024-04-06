@@ -1,6 +1,6 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
-import { type Coach } from "../types"
+import { type Coach } from "../../types"
 
 interface CoachDropdownProps {
   coaches: Coach[]

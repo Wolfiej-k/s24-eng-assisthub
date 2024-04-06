@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useUpdate } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
-import { type Case } from "../types"
+import { type Case } from "../../types"
 
 interface CloseCaseButtonProps {
   item: Case
