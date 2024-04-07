@@ -18,12 +18,15 @@ router.get("/", async (req, res) => { //Get a list of cases
     if (_order){
       if (_order == 'desc') {sorted_order = -1} //Override automatic ascending order if order is specified as descending
     }
-    const result = await CaseModel.find({}).sort({ [_sort as string]: sorted_order as SortOrder}) //Sort CaseModel
 
-    if(_start && _end){
-      return result[_start as unknown as number, _end as unknown as number] //If start and end points are specified, return only between those indices
+    if (typeof _sort === 'string'){
+      const result = await CaseModel.find({}).sort({ [_sort]: sorted_order as SortOrder}) //Sort CaseModel
+
+      if(_start && _end){
+        return result[_start as unknown as number, _end as unknown as number] //If start and end points are specified, return only between those indices
+      }
+      return result //Otherwise, return the entire array
     }
-    return result //Otherwise, return the entire array
   }
 })
 
@@ -87,10 +90,16 @@ router.patch("/:id", async (req, res) => { //Update case
 
 router.delete("/:id", async (req, res) => { //Delete case
   try {
+    try {
+      await CaseModel.findById(req.params.id)
+    }
+    catch {
+      res.status(404).json({ error: "Not found" })
+    }
     await CaseModel.deleteOne({ _id: req.params.id }) //Delete case by id
     res.status(204).json()
   } catch {
-    res.status(404).json({ error: "Not found" }) //Validate for errors
+    res.status(404).json({ error: "Deletion failed" }) //Validate for errors
   }
 })
 
