@@ -18,7 +18,7 @@ router.get("/", async (req, res) => { //Get a list of cases
     if (_order){
       if (_order == 'desc') {sorted_order = -1} //Override automatic ascending order if order is specified as descending
     }
-    const result = await CaseModel.find({}).sort({_sort: sorted_order as SortOrder}) //Sort CaseModel
+    const result = await CaseModel.find({}).sort({ [_sort as string]: sorted_order as SortOrder}) //Sort CaseModel
 
     if(_start && _end){
       return result[_start as unknown as number, _end as unknown as number] //If start and end points are specified, return only between those indices
