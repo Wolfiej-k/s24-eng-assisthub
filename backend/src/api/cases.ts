@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
   // Test that creating a case with a nonexistent coach reference throws an error
   try {
-    await CoachModel.find({_id: {$in: coaches}})
+    await CoachModel.find({ _id: { $in: coaches } })
   } catch {
     res.status(400).json({ error: "One or more coaches do not exist." })
     return
@@ -62,12 +62,11 @@ router.patch("/:id", async (req, res) => {
       item.notes = notes ?? item.notes
       // ensure that the coaches exist
       try {
-        await CoachModel.find({_id: {$in: item.coaches}})
+        await CoachModel.find({ _id: { $in: item.coaches } })
       } catch {
         res.status(400).json({ error: "One or more coaches do not exist." })
         return
       }
-
 
       try {
         await item.save()
