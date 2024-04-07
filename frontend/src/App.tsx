@@ -166,8 +166,15 @@ export default function App() {
                         </Authenticated>
                       }
                     />
+                    <Route
+                      path="/:id"
+                      element={
+                        <Authenticated key="details" fallback={<CatchAllNavigate to="/login" />}>
+                          <DetailsPage />
+                        </Authenticated>
+                      }
+                    />
                     <Route path="/login" element={<LoginPage />} />
-                    <Route path="/:id" element={<DetailsPage />} />
                   </Routes>
                 </ConfirmProvider>
               </ThemedLayoutV2>
