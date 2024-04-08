@@ -23,9 +23,6 @@ router.post("/", async (req, res) => {
     await item.save()
     item = await item.populate("coaches")
     res.status(201).json(item)
-
-    // const populatedItem = await CaseModel.findById(item._id).populate("coaches")
-    // res.status(201).json(populatedItem)
   } catch {
     res.status(400).json({ error: "Validation failed" })
   }
@@ -60,8 +57,6 @@ router.patch("/:id", async (req, res) => {
         await item.save()
         item = await item.populate("coaches")
         res.status(201).json(item)
-        // const populatedItem = await CaseModel.findById(item._id).populate("coaches")
-        // res.status(201).json(populatedItem)
       } catch {
         res.status(400).json({ error: "Validation failed" })
       }
@@ -75,7 +70,7 @@ router.patch("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const item = await CaseModel.findById(req.params.id)
+    let item = await CaseModel.findById(req.params.id)
     if (item) {
       const { client, coaches, data, startTime, endTime, notes } = req.body as Case
       item.client = client
@@ -87,6 +82,7 @@ router.put("/:id", async (req, res) => {
 
       try {
         await item.save()
+        item = await item.populate("coaches")
         res.status(201).json(item)
       } catch {
         res.status(400).json({ error: "Validation failed" })
