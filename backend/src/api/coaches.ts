@@ -39,9 +39,31 @@ router.patch("/:id", async (req, res) => {
   try {
     const item = await CoachModel.findById(req.params.id)
     if (item) {
-      const { name, email } = req.body as Coach
+      const { name, email } = req.body as Partial<Coach>
       item.name = name ?? item.name
       item.email = email ?? item.email
+
+      try {
+        await item.save()
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
+      }
+    } else {
+      res.status(404).json({ error: "Not found" })
+    }
+  } catch {
+    res.status(404).json({ error: "Not found" })
+  }
+})
+
+router.put("/:id", async (req, res) => {
+  try {
+    const item = await CoachModel.findById(req.params.id)
+    if (item) {
+      const { name, email } = req.body as Coach
+      item.name = name
+      item.email = email
 
       try {
         await item.save()
