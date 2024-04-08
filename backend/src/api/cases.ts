@@ -73,6 +73,32 @@ router.patch("/:id", async (req, res) => {
   }
 })
 
+router.put("/:id", async (req, res) => {
+  try {
+    const item = await CaseModel.findById(req.params.id)
+    if (item) {
+      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
+      item.client = client
+      item.coaches = coaches
+      item.data = data
+      item.startTime = startTime
+      item.endTime = endTime
+      item.notes = notes
+
+      try {
+        await item.save()
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
+      }
+    } else {
+      res.status(404).json({ error: "Not found" })
+    }
+  } catch {
+    res.status(404).json({ error: "Not found" })
+  }
+})
+
 router.delete("/:id", async (req, res) => {
   try {
     await CaseModel.deleteOne({ _id: req.params.id })

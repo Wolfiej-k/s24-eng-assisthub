@@ -3,7 +3,7 @@ import { DataGrid, type GridColDef } from "@mui/x-data-grid"
 import { useDataGrid } from "@refinedev/mui"
 import { useMemo, useState } from "react"
 import { type Case } from "../types"
-import DetailedCaseView from "./detailed-case-view"
+import DetailedViewDialog from "./details/detailed-view-dialog"
 
 export default function CaseGrid() {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null)
@@ -52,11 +52,47 @@ export default function CaseGrid() {
           if (!params.row.endTime) {
             return ""
           }
-
           const date = new Date(params.row.endTime)
           return `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`
         },
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
+      },
+      {
+        field: "timeOpen",
+        headerName: "Time Open",
+        minWidth: 150,
+        sortable: false,
+        filterable: false,
+        valueGetter: (params) => {
+          const endTime = params.row.endTime
+          if (endTime) {
+            return "Closed"
+          }
+          const startTime = new Date(params.row.startTime)
+          const currentTime = new Date()
+          const timeDiff = currentTime.getTime() - startTime.getTime()
+          const daysDiff = Math.floor(timeDiff / (1000 * 3600 * 24))
+          return `${daysDiff} days`
+        },
+        renderCell: (params) => {
+          if (params.row.endTime) {
+            return (
+              <div
+                style={{
+                  backgroundColor: params.row.endTime ? "red" : "transparent",
+                  color: params.row.endTime ? "white" : "inherit",
+                  borderRadius: "20px",
+                  padding: "4px 8px",
+                  display: "inline-block",
+                }}
+              >
+                {params.value}
+              </div>
+            )
+          }
+
+          return <div>{params.value}</div>
+        },
       },
       {
         field: "actions",
@@ -70,9 +106,7 @@ export default function CaseGrid() {
             variant="contained"
             color="primary"
             onClick={() => setSelectedCase(params.row)}
-            sx={{
-              fontSize: "0.6rem",
-            }}
+            sx={{ fontSize: "0.6rem" }}
           >
             View Details
           </Button>
@@ -107,7 +141,7 @@ export default function CaseGrid() {
         autoHeight
         pageSizeOptions={[10, 20, 30, 50, 100]}
       />
-      {selectedCase && <DetailedCaseView onClose={handleCloseDialog} item={selectedCase} />}
+      {selectedCase && <DetailedViewDialog handleClose={handleCloseDialog} item={selectedCase} />}
     </>
   )
 }
