@@ -1,27 +1,21 @@
 import { Router } from "express"
-import { CaseModel, type Case } from "../schemas/case.js"
-
+import { CoachModel, type Coach } from "../schemas/coach.js"
 const router = Router()
 
 router.get("/", async (_req, res) => {
-  const items = await CaseModel.find().populate("coaches")
+  const items = await CoachModel.find()
   res.status(200).json(items)
 })
 
 router.post("/", async (req, res) => {
-  const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-  let item = new CaseModel({
-    client: client,
-    coaches: coaches,
-    data: data,
-    startTime: startTime,
-    endTime: endTime,
-    notes: notes,
+  const { name, email } = req.body as Coach
+  const item = new CoachModel({
+    name: name,
+    email: email,
   })
 
   try {
     await item.save()
-    item = await item.populate("coaches")
     res.status(201).json(item)
   } catch {
     res.status(400).json({ error: "Validation failed" })
@@ -30,7 +24,7 @@ router.post("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const item = await CaseModel.findById(req.params.id).populate("coaches")
+    const item = await CoachModel.findById(req.params.id)
     if (item) {
       res.status(200).json(item)
     } else {
@@ -43,19 +37,14 @@ router.get("/:id", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   try {
-    let item = await CaseModel.findById(req.params.id)
+    const item = await CoachModel.findById(req.params.id)
     if (item) {
-      const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
-      item.client = client ?? item.client
-      item.coaches = coaches ?? item.coaches
-      item.data = data ?? item.data
-      item.startTime = startTime ?? item.startTime
-      item.endTime = endTime ?? item.endTime
-      item.notes = notes ?? item.notes
+      const { name, email } = req.body as Partial<Coach>
+      item.name = name ?? item.name
+      item.email = email ?? item.email
 
       try {
         await item.save()
-        item = await item.populate("coaches")
         res.status(201).json(item)
       } catch {
         res.status(400).json({ error: "Validation failed" })
@@ -70,19 +59,14 @@ router.patch("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    let item = await CaseModel.findById(req.params.id)
+    const item = await CoachModel.findById(req.params.id)
     if (item) {
-      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-      item.client = client
-      item.coaches = coaches
-      item.data = data
-      item.startTime = startTime
-      item.endTime = endTime
-      item.notes = notes
+      const { name, email } = req.body as Coach
+      item.name = name
+      item.email = email
 
       try {
         await item.save()
-        item = await item.populate("coaches")
         res.status(201).json(item)
       } catch {
         res.status(400).json({ error: "Validation failed" })
@@ -97,7 +81,7 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    await CaseModel.deleteOne({ _id: req.params.id })
+    await CoachModel.deleteOne({ _id: req.params.id })
     res.status(204).json()
   } catch {
     res.status(404).json({ error: "Not found" })
