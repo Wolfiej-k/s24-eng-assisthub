@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}))
 
+
 app.use("/api/cases", cases)
 app.use("/api/coaches", coaches)
 
