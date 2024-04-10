@@ -10,27 +10,26 @@ const jwtCheck = auth({
 
 
 const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
-
   if (req.get("Secret") === process.env.ADMIN_SECRET)
   {
+    console.log("secret passed")
+    req.auth = { admin: true }
     next()
   }
   else {
+    console.log("no secret")
     jwtCheck(req, res, next)
   }
-
 }
 
 const getIdentity = (req: Request, res: Response, next: NextFunction) => {
   //assume ensure login worked
   // check if req.auth is undefined
-  if (req.auth !== undefined)
-  {
-    req.auth.admin = true
-  }
+
   // search db for coach
   try {
-    const coach =
+    const coach = await CoachModel.findOne({ req.email })
+    req.auth.identity = coach
   }
   catch {
     return jwtCheck(req, res, next)
@@ -41,8 +40,8 @@ const ensureAdmin = (req: Request, res: Response, next: NextFunction) => {
 
   if (req.auth.admin)
   {
-    return next()
+    next()
   }
-  return res.status(401).json("Not authorized")
+  res.status(401).json("Not authorized")
 
 }

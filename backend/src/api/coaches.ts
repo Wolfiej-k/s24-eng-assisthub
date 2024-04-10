@@ -8,10 +8,11 @@ router.get("/", async (_req, res) => {
 })
 
 router.post("/", async (req, res) => {
-  const { name, email } = req.body as Coach
+  const { name, email, isAdmin } = req.body as Coach
   const item = new CoachModel({
     name: name,
     email: email,
+    isAdmin: isAdmin ?? false,
   })
 
   try {
@@ -39,9 +40,10 @@ router.patch("/:id", async (req, res) => {
   try {
     const item = await CoachModel.findById(req.params.id)
     if (item) {
-      const { name, email } = req.body as Partial<Coach>
+      const { name, email, isAdmin } = req.body as Partial<Coach>
       item.name = name ?? item.name
       item.email = email ?? item.email
+      item.isAdmin = isAdmin ?? item.isAdmin
 
       try {
         await item.save()
@@ -61,9 +63,10 @@ router.put("/:id", async (req, res) => {
   try {
     const item = await CoachModel.findById(req.params.id)
     if (item) {
-      const { name, email } = req.body as Coach
+      const { name, email, isAdmin } = req.body as Coach
       item.name = name
       item.email = email
+      item.isAdmin = isAdmin ?? false
 
       try {
         await item.save()
