@@ -4,8 +4,8 @@ import { CaseModel, type Case } from "../schemas/case.js"
 const router = Router()
 
 router.get("/", async (req, res) => { //Get a list of cases
-  const items = await CaseModel.find({})
-  res.status(200).json(items) // Check for error
+  // const items = await CaseModel.find({})
+  // res.status(200).json(items) // Check for error
   // Take in a list of specifications
   const _sort = req.query._sort;
   const _order = req.query._order;
@@ -14,20 +14,24 @@ router.get("/", async (req, res) => { //Get a list of cases
   let sorted_order = 1
   type SortOrder = 1 | -1;
 
-  if (_sort){
-    if (_order){
-      if (_order == 'desc') {sorted_order = -1} //Override automatic ascending order if order is specified as descending
-    }
-
-    if (typeof _sort === 'string'){
-      const result = await CaseModel.find({}).sort({ [_sort]: sorted_order as SortOrder}) //Sort CaseModel
-
-      if(_start && _end){
-        return result[_start as unknown as number, _end as unknown as number] //If start and end points are specified, return only between those indices
-      }
-      return result //Otherwise, return the entire array
-    }
+  if (_sort && _order){
+    if (_order == 'desc') {sorted_order = -1} //Override automatic ascending order if order is specified as descending
   }
+
+  if (typeof _sort === 'string'){
+    const result = await CaseModel.find({}).sort({ [_sort]: sorted_order as SortOrder}) //Sort CaseModel
+
+    if(_start && _end){
+      res.status(200).json(result[_start as unknown as number, _end as unknown as number]) //If start and end points are specified, return only between those indices
+    }
+    res.status(200).json(result) //Otherwise, return the entire array
+  }
+
+  const result = await CaseModel.find({})
+  if(_start && _end){
+    res.status(200).json(result[_start as unknown as number, _end as unknown as number])
+  }
+  res.status(200).json(result)
 })
 
 router.post("/", async (req, res) => { //Post a case
