@@ -8,7 +8,7 @@ const jwtCheck = auth({
   tokenSigningAlg: "RS256",
 })
 
-const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
+export const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
   if (req.get("Secret") === process.env.ADMIN_SECRET) {
     next()
   } else {
@@ -17,7 +17,7 @@ const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
 }
 
 //getIdentity should search the database for the coach who made the request. You may assume that ensureLogin was already called; if req.auth doesn’t exist, simply set req.auth.admin = true and proceed. Otherwise, we have the coach’s email in the API payload (see References), so just find it using CoachModel (similarly to the database lookups in src/api/cases.ts). Then set req.auth.identity to be the result. Lastly, add an isAdmin boolean to the coach schema in src/schemas/coach.ts, and set req.auth.admin to the corresponding field of the coach object.
-const getIdentity = async (req: Request, res: Response, next: NextFunction) => {
+export const getIdentity = async (req: Request, res: Response, next: NextFunction) => {
   if (req.auth !== undefined) {
     req.auth.admin = true
   }
@@ -38,7 +38,7 @@ const getIdentity = async (req: Request, res: Response, next: NextFunction) => {
   return next()
 }
 
-const ensureAdmin = (req: Request, res: Response, next: NextFunction) => {
+export const ensureAdmin = (req: Request, res: Response, next: NextFunction) => {
   if (req.auth.admin) {
     return next()
   }
