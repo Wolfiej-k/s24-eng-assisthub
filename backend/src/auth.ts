@@ -1,6 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express"
 import { auth } from "express-oauth2-jwt-bearer"
-import { CoachModel, type Coach } from "./schemas/coach.js"
+import { CoachModel, type Coach } from "./schemas/coach"
+import { CaseModel, type Case } from "./schemas/case"
 
 const jwtCheck = auth({
   audience: process.env.AUTH0_AUDIENCE,
@@ -44,3 +45,24 @@ export const ensureAdmin = (req: Request, res: Response, next: NextFunction) => 
   }
   return res.status(401).json("Not authorized")
 }
+
+export const ensureCoach = async (req: Request, res: Response, next: NextFunction) => {
+  const caseId = req.params.caseId;
+  const coachName = req.auth!.name;
+
+  if (!coachName) {
+    return res.status(401).json("Not authorized");
+  }
+
+  const caseItem = await CaseModel.findById(caseId).exec();
+  if (!caseItem) {
+    return res.status(404).json("Case not found");
+  }
+
+  const coachNames = caseItem.coaches.map(coach => coach.name);
+  if (coachNames.includes(coachName)) {
+    next();
+  } else {
+    res.status(403).json("Forbidden: You do not have access to this case");
+  }
+};
