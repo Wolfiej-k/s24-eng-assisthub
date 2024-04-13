@@ -1,7 +1,15 @@
-import { Router, Request } from "express"
+import { Router } from "express"
+import type { Request } from "express"
 import { CaseModel, type Case } from "../schemas/case.js"
+import { CoachModel, type Coach } from "../schemas/coach.js"
 
 const router = Router()
+
+export interface AuthorizedRequest extends Request {
+  case?: Case
+  auth.admin?: boolean
+  auth.identity?: Coach
+}
 
 router.get("/", async (req: Request, res) => {
   let items
