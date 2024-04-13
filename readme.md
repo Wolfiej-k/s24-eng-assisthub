@@ -13,7 +13,7 @@ API DOCUMENTATION
         If the case is successfully returned, it will return a 200 status. If there is an issue attaining the case with the input id, it will return a 404 status with a "Not found" error.
 
     GET /cases
-        To retrieve several cases, the function takes in a URL route with several parameters: _sort, _order, _start, _end (ex. /api/cases/{_sort}/{_order}/{_start}/{_end})
+        To retrieve several cases, the function takes in a URL route with several optional parameters: _sort, _order, _start, _end (ex. /api/cases?_sort=...&_order=...&_start=...&_end=...)
             _sort takes the value of the name of one of the case fields (ex. client.name), indicating which field is to be sorted by
             _order is either 'asc' or 'desc' indicating the order the sorted list should be outputted in 
             _start and _end are some indices, indicating which indices of the sorted array we display
