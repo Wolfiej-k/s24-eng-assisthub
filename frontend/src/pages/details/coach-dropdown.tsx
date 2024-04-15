@@ -1,6 +1,7 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
 import { type Coach } from "../../types"
+import { useEffect, useState } from "react"
 
 interface CoachDropdownProps {
   coaches: Coach[]
@@ -9,6 +10,18 @@ interface CoachDropdownProps {
 }
 
 export default function CoachDropdown({ coaches, updateCoaches, editable }: CoachDropdownProps) {
+  const [coachList, setCoachList] = useState<Coach[] | null>(null)
+
+  useEffect(() => {
+    // Fetch coach data from the backend when the component mounts
+    const response = await fetch('/api/coaches'); // Adjust the API endpoint
+      if (!response.ok) {
+        throw new Error('Failed to fetch coaches');
+      }
+      const coaches: Coach[] = await response.json();
+      setCoachList(coaches)
+  }, []);
+
   return (
     <Autocomplete
       multiple
