@@ -1,29 +1,19 @@
 import { Router } from "express"
-import type { Request } from "express"
 import { CaseModel, type Case } from "../schemas/case.js"
-import { CoachModel, type Coach } from "../schemas/coach.js"
 
 const router = Router()
 
-export interface AuthorizedRequest extends Request {
-  auth: {
-    admin: boolean
-    identity: Coach
-  }
-}
-
-router.get("/", async (req: AuthorizedRequest, res) => {
+router.get("/", async (req, res) => {
   let items
-  if (!req.auth.admin as boolean){
+  if (!req.auth.admin as boolean) {
     items = await CaseModel.find({ coaches: req.auth.identity })
-  }
-  else {
+  } else {
     items = await CaseModel.find().populate("coaches")
   }
   res.status(200).json(items)
 })
 
-router.post("/", async (req: AuthorizedRequest, res) => {
+router.post("/", async (req, res) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
   let item = new CaseModel({
     client: client,
@@ -34,7 +24,7 @@ router.post("/", async (req: AuthorizedRequest, res) => {
     notes: notes,
   })
 
-  if (!req.auth.admin as boolean && req.auth.identity._id ! in item.coaches){
+  if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
     res.status(401).json("Not authorized")
   }
 
@@ -47,11 +37,11 @@ router.post("/", async (req: AuthorizedRequest, res) => {
   }
 })
 
-router.get("/:id", async (req: AuthorizedRequest, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id).populate("coaches")
     if (item) {
-      if (!req.auth.admin as boolean && req.auth.identity._id ! in item.coaches){
+      if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
         res.status(401).json("Not authorized")
       }
       res.status(200).json(item)
@@ -63,7 +53,7 @@ router.get("/:id", async (req: AuthorizedRequest, res) => {
   }
 })
 
-router.patch("/:id", async (req: AuthorizedRequest, res) => {
+router.patch("/:id", async (req, res) => {
   try {
     let item = await CaseModel.findById(req.params.id)
     if (item) {
@@ -75,7 +65,7 @@ router.patch("/:id", async (req: AuthorizedRequest, res) => {
       item.endTime = endTime ?? item.endTime
       item.notes = notes ?? item.notes
 
-      if (!req.auth.admin as boolean && !(req.auth.identity.name  in item.coaches)){
+      if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
       }
 
@@ -94,7 +84,7 @@ router.patch("/:id", async (req: AuthorizedRequest, res) => {
   }
 })
 
-router.put("/:id", async (req: AuthorizedRequest, res) => {
+router.put("/:id", async (req, res) => {
   try {
     let item = await CaseModel.findById(req.params.id)
     if (item) {
@@ -106,7 +96,7 @@ router.put("/:id", async (req: AuthorizedRequest, res) => {
       item.endTime = endTime
       item.notes = notes
 
-      if (!req.auth.admin as boolean && !(req.auth.identity.name in item.coaches)){
+      if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
       }
 
@@ -125,10 +115,10 @@ router.put("/:id", async (req: AuthorizedRequest, res) => {
   }
 })
 
-router.delete("/:id", async (req: AuthorizedRequest, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id)
-    if (item && !req.auth.admin as boolean && !(req.auth.identity.name in item.coaches)){
+    if (item && (!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
       res.status(401).json("Not authorized")
     }
     await CaseModel.deleteOne({ _id: req.params.id })
