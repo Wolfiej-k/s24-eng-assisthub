@@ -1,9 +1,8 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
-import { type Coach } from "../../types"
-import { useEffect, useState } from "react"
-import { useList } from "@refinedev/core"
 import type { HttpError } from "@refinedev/core"
+import { useList } from "@refinedev/core"
+import { type Coach } from "../../types"
 
 interface CoachDropdownProps {
   coaches: Coach[]
@@ -16,16 +15,15 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
     resource: "coaches",
   })
 
-  const coachlist = data?.data ?? [];
+  const coachlist = data?.data ?? []
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
 
   if (isError) {
-    return <div>Something went wrong!</div>;
+    return <div>Something went wrong!</div>
   }
-
 
   return (
     <Autocomplete
