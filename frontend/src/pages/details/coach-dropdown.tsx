@@ -2,6 +2,8 @@ import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
 import { type Coach } from "../../types"
 import { useEffect, useState } from "react"
+import { useList } from "@refinedev/core"
+import type { HttpError } from "@refinedev/core"
 
 interface CoachDropdownProps {
   coaches: Coach[]
@@ -10,23 +12,26 @@ interface CoachDropdownProps {
 }
 
 export default function CoachDropdown({ coaches, updateCoaches, editable }: CoachDropdownProps) {
-  const [coachList, setCoachList] = useState<Coach[] | null>(null)
+  const { data, isLoading, isError } = useList<Coach, HttpError>({
+    resource: "coaches",
+  })
 
-  useEffect(() => {
-    // Fetch coach data from the backend when the component mounts
-    const response = await fetch('/api/coaches'); // Adjust the API endpoint
-      if (!response.ok) {
-        throw new Error('Failed to fetch coaches');
-      }
-      const coaches: Coach[] = await response.json();
-      setCoachList(coaches)
-  }, []);
+  const coachlist = data?.data ?? [];
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Something went wrong!</div>;
+  }
+
 
   return (
     <Autocomplete
       multiple
       id="coach-dropdown"
-      options={coachList}
+      options={coachlist}
       getOptionLabel={(option) => option.name}
       value={coaches}
       onChange={(_, value) => updateCoaches(value)}
