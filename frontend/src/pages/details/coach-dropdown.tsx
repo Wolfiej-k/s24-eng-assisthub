@@ -11,15 +11,11 @@ interface CoachDropdownProps {
 }
 
 export default function CoachDropdown({ coaches, updateCoaches, editable }: CoachDropdownProps) {
-  const { data, isLoading, isError } = useList<Coach, HttpError>({
+  const { data, isLoading, isError } = useList<Coach>({
     resource: "coaches",
   })
 
   const coachlist = data?.data ?? []
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
 
   if (isError) {
     return <div>Something went wrong!</div>
@@ -30,6 +26,7 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
       multiple
       id="coach-dropdown"
       options={coachlist}
+      loading={isLoading}
       getOptionLabel={(option) => option.name}
       value={coaches}
       onChange={(_, value) => updateCoaches(value)}
