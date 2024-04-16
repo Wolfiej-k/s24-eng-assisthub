@@ -24,10 +24,9 @@ router.post("/", async (req, res) => {
     notes: notes,
   })
 
-  if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
+  if ((!req.auth.admin as boolean) && req.auth.identity._id in item.coaches) {
     res.status(401).json("Not authorized")
-  }
-  else {
+  } else {
     try {
       await item.save()
       item = await item.populate("coaches")
@@ -42,10 +41,9 @@ router.get("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id).populate("coaches")
     if (item) {
-      if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
+      if ((!req.auth.admin as boolean) && req.auth.identity._id in item.coaches) {
         res.status(401).json("Not authorized")
-      }
-      else {
+      } else {
         res.status(200).json(item)
       }
     } else {
@@ -70,8 +68,7 @@ router.patch("/:id", async (req, res) => {
 
       if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
-      }
-      else {
+      } else {
         try {
           await item.save()
           item = await item.populate("coaches")
@@ -102,8 +99,7 @@ router.put("/:id", async (req, res) => {
 
       if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
-      }
-      else {
+      } else {
         try {
           await item.save()
           item = await item.populate("coaches")
@@ -125,9 +121,7 @@ router.delete("/:id", async (req, res) => {
     const item = await CaseModel.findById(req.params.id)
     if (item && (!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
       res.status(401).json("Not authorized")
-    }
-    else
-    {
+    } else {
       await CaseModel.deleteOne({ _id: req.params.id })
       res.status(204).json()
     }
