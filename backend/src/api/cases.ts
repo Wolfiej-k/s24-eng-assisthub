@@ -27,13 +27,14 @@ router.post("/", async (req, res) => {
   if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
     res.status(401).json("Not authorized")
   }
-
-  try {
-    await item.save()
-    item = await item.populate("coaches")
-    res.status(201).json(item)
-  } catch {
-    res.status(400).json({ error: "Validation failed" })
+  else {
+    try {
+      await item.save()
+      item = await item.populate("coaches")
+      res.status(201).json(item)
+    } catch {
+      res.status(400).json({ error: "Validation failed" })
+    }
   }
 })
 
@@ -44,7 +45,9 @@ router.get("/:id", async (req, res) => {
       if ((!req.auth.admin as boolean) && req.auth.identity._id! in item.coaches) {
         res.status(401).json("Not authorized")
       }
-      res.status(200).json(item)
+      else {
+        res.status(200).json(item)
+      }
     } else {
       res.status(404).json({ error: "Not found" })
     }
@@ -68,13 +71,14 @@ router.patch("/:id", async (req, res) => {
       if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
       }
-
-      try {
-        await item.save()
-        item = await item.populate("coaches")
-        res.status(201).json(item)
-      } catch {
-        res.status(400).json({ error: "Validation failed" })
+      else {
+        try {
+          await item.save()
+          item = await item.populate("coaches")
+          res.status(201).json(item)
+        } catch {
+          res.status(400).json({ error: "Validation failed" })
+        }
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -99,13 +103,14 @@ router.put("/:id", async (req, res) => {
       if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
         res.status(401).json("Not authorized")
       }
-
-      try {
-        await item.save()
-        item = await item.populate("coaches")
-        res.status(201).json(item)
-      } catch {
-        res.status(400).json({ error: "Validation failed" })
+      else {
+        try {
+          await item.save()
+          item = await item.populate("coaches")
+          res.status(201).json(item)
+        } catch {
+          res.status(400).json({ error: "Validation failed" })
+        }
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -121,8 +126,11 @@ router.delete("/:id", async (req, res) => {
     if (item && (!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
       res.status(401).json("Not authorized")
     }
-    await CaseModel.deleteOne({ _id: req.params.id })
-    res.status(204).json()
+    else
+    {
+      await CaseModel.deleteOne({ _id: req.params.id })
+      res.status(204).json()
+    }
   } catch {
     res.status(404).json({ error: "Not found" })
   }
