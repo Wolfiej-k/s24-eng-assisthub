@@ -5,8 +5,8 @@ const router = Router()
 
 router.get("/", async (req, res) => {
   let items
-  if (!req.auth.admin as boolean) {
-    items = await CaseModel.find({ coaches: req.auth.identity })
+  if (!req.auth.admin) {
+    items = await CaseModel.find({ coaches: req.auth.identity }).populate("coaches")
   } else {
     items = await CaseModel.find().populate("coaches")
   }
@@ -24,9 +24,6 @@ router.post("/", async (req, res) => {
     notes: notes,
   })
 
-  if ((!req.auth.admin as boolean) && req.auth.identity._id in item.coaches) {
-    res.status(401).json("Not authorized")
-  } else {
     try {
       await item.save()
       item = await item.populate("coaches")
@@ -34,17 +31,16 @@ router.post("/", async (req, res) => {
     } catch {
       res.status(400).json({ error: "Validation failed" })
     }
-  }
 })
 
 router.get("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id).populate("coaches")
     if (item) {
-      if ((!req.auth.admin as boolean) && req.auth.identity._id in item.coaches) {
-        res.status(401).json("Not authorized")
-      } else {
+      if (req.auth.admin || req.auth.identity._id in item.coaches) {
         res.status(200).json(item)
+      } else {
+        res.status(401).json("Not authorized")
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -66,9 +62,6 @@ router.patch("/:id", async (req, res) => {
       item.endTime = endTime ?? item.endTime
       item.notes = notes ?? item.notes
 
-      if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
-        res.status(401).json("Not authorized")
-      } else {
         try {
           await item.save()
           item = await item.populate("coaches")
@@ -76,7 +69,6 @@ router.patch("/:id", async (req, res) => {
         } catch {
           res.status(400).json({ error: "Validation failed" })
         }
-      }
     } else {
       res.status(404).json({ error: "Not found" })
     }
@@ -97,9 +89,6 @@ router.put("/:id", async (req, res) => {
       item.endTime = endTime
       item.notes = notes
 
-      if ((!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
-        res.status(401).json("Not authorized")
-      } else {
         try {
           await item.save()
           item = await item.populate("coaches")
@@ -107,7 +96,6 @@ router.put("/:id", async (req, res) => {
         } catch {
           res.status(400).json({ error: "Validation failed" })
         }
-      }
     } else {
       res.status(404).json({ error: "Not found" })
     }
@@ -119,12 +107,9 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id)
-    if (item && (!req.auth.admin as boolean) && !(req.auth.identity.name in item.coaches)) {
-      res.status(401).json("Not authorized")
-    } else {
+
       await CaseModel.deleteOne({ _id: req.params.id })
       res.status(204).json()
-    }
   } catch {
     res.status(404).json({ error: "Not found" })
   }
