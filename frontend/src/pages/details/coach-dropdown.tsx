@@ -35,13 +35,3 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
     />
   )
 }
-
-const coachList: Coach[] = [
-  { name: "Alice Liu", email: "coach@coach.com" },
-  { name: "Taj Jethwani-Keyser", email: "coach@coach.com" },
-  { name: "Hanna Wosenu", email: "coach@coach.com" },
-  { name: "Julia Poulson", email: "coach@coach.com" },
-  { name: "Kaden Zheng", email: "coach@coach.com" },
-  { name: "Michelle Nhung Le", email: "coach@coach.com" },
-  { name: "Pedro Garcia", email: "coach@coach.com" },
-]
