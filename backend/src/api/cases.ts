@@ -24,13 +24,13 @@ router.post("/", async (req, res) => {
     notes: notes,
   })
 
-    try {
-      await item.save()
-      item = await item.populate("coaches")
-      res.status(201).json(item)
-    } catch {
-      res.status(400).json({ error: "Validation failed" })
-    }
+  try {
+    await item.save()
+    item = await item.populate("coaches")
+    res.status(201).json(item)
+  } catch {
+    res.status(400).json({ error: "Validation failed" })
+  }
 })
 
 router.get("/:id", async (req, res) => {
@@ -62,13 +62,13 @@ router.patch("/:id", async (req, res) => {
       item.endTime = endTime ?? item.endTime
       item.notes = notes ?? item.notes
 
-        try {
-          await item.save()
-          item = await item.populate("coaches")
-          res.status(201).json(item)
-        } catch {
-          res.status(400).json({ error: "Validation failed" })
-        }
+      try {
+        await item.save()
+        item = await item.populate("coaches")
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
+      }
     } else {
       res.status(404).json({ error: "Not found" })
     }
@@ -89,13 +89,13 @@ router.put("/:id", async (req, res) => {
       item.endTime = endTime
       item.notes = notes
 
-        try {
-          await item.save()
-          item = await item.populate("coaches")
-          res.status(201).json(item)
-        } catch {
-          res.status(400).json({ error: "Validation failed" })
-        }
+      try {
+        await item.save()
+        item = await item.populate("coaches")
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
+      }
     } else {
       res.status(404).json({ error: "Not found" })
     }
@@ -108,8 +108,8 @@ router.delete("/:id", async (req, res) => {
   try {
     const item = await CaseModel.findById(req.params.id)
 
-      await CaseModel.deleteOne({ _id: req.params.id })
-      res.status(204).json()
+    await CaseModel.deleteOne({ _id: req.params.id })
+    res.status(204).json()
   } catch {
     res.status(404).json({ error: "Not found" })
   }
