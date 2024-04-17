@@ -95,10 +95,12 @@ export default function AnalyticsPage() {
       caseLocations.set(location, currentCount + 1)
     }
 
-    item.coaches.forEach((coach) => {
-      const currentCount = casesCountPerCoach.get(coach.name) ?? 0
-      casesCountPerCoach.set(coach.name, currentCount + 1)
-    })
+    if (item.coaches) {
+      item.coaches.forEach((coach) => {
+        const currentCount = casesCountPerCoach.get(coach.name) ?? 0
+        casesCountPerCoach.set(coach.name, currentCount + 1)
+      })
+    }
   })
 
   const coachChartData = Array.from(casesCountPerCoach).map(([name, count]) => {
