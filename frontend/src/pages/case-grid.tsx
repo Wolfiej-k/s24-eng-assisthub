@@ -34,7 +34,7 @@ export default function CaseGrid() {
         headerName: "Coaches",
         minWidth: 280,
         flex: 1,
-        valueGetter: (params) => params.row.coaches.map((coach) => coach.name).join(", ") ?? "",
+        valueGetter: (params) => params.row.coaches?.map((coach) => coach.name).join(", ") ?? "",
         renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
       },
       {
