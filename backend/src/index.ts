@@ -1,10 +1,10 @@
 import cors from "cors"
 import "dotenv/config"
 import express, { type NextFunction, type Request, type Response } from "express"
-import cases from "./api/cases.js"
-import coaches from "./api/coaches.js"
-import "./database.js"
-import { ensureLogin, getIdentity, ensureAdmin } from "./auth"
+import cases from "./api/cases"
+import coaches from "./api/coaches"
+import "./database"
+import { ensureLogin, getIdentity, ensureAdmin, ensureCoach } from "./auth"
 
 const app = express()
 const port = process.env.PORT ?? 3000

@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { CaseModel, type Case } from "../schemas/case.js"
+import { CaseModel, type Case } from "../schemas/case"
 
 const router = Router()
 

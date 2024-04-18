@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { CoachModel, type Coach } from "../schemas/coach.js"
+import { CoachModel, type Coach } from "../schemas/coach"
 const router = Router()
 
 router.get("/", async (_req, res) => {
