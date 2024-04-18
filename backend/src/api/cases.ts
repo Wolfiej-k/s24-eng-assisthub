@@ -3,34 +3,33 @@ import { CaseModel, type Case } from "../schemas/case.js"
 
 const router = Router()
 
-router.get("/", async (req, res) => { //Get a list of cases
-  let result = await CaseModel.find({})
-  // Take in a list of specifications
-  const _sort = req.query._sort;
-  const _order = req.query._order;
-  const _start = req.query._start;
-  const _end = req.query._end;
-  let sorted_order = 1
-  type SortOrder = 1 | -1;
+router.get("/", async (req, res) => {
+  const { _sort, _order, _start, _end } = req.query
+  const condition = new Array<[string, 1 | -1]>()
 
-  if (_sort && _order && typeof _sort === 'string'){
-    if (_order == 'desc') {sorted_order = -1} // Override automatic ascending order if order is specified as descending
-    result = await CaseModel.find({}).sort({ [_sort]: sorted_order as SortOrder}) // Sort CaseModel
+  if (typeof _sort === "string") {
+    const dir = _order == "desc" ? -1 : 1
+    condition.push([_sort, dir])
+  } else {
+    condition.push(["endTime", 1])
+    condition.push(["startTime", -1])
   }
 
-  if(_start && _end){
-    const start = parseInt(_start as string)
-    const end = parseInt(_end as string)
-    res.status(200).json(result.slice(start,end))
-    return
+  const items = await CaseModel.find({}).populate("coaches").sort(condition)
+
+  const start = _start === "string" ? parseInt(_start) : NaN
+  const end = _end === "string" ? parseInt(_end) + 1 : NaN
+
+  if (!isNaN(start) && !isNaN(end)) {
+    res.status(200).json(items.slice(start, end))
+  } else {
+    res.status(200).json(items)
   }
-  res.status(200).json(result)
-  return
 })
 
-router.post("/", async (req, res) => { //Post a case
+router.post("/", async (req, res) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-  const item = new CaseModel({ //Create new case with input
+  let item = new CaseModel({
     client: client,
     coaches: coaches,
     data: data,
@@ -41,30 +40,31 @@ router.post("/", async (req, res) => { //Post a case
 
   try {
     await item.save()
+    item = await item.populate("coaches")
     res.status(201).json(item)
   } catch {
-    res.status(400).json({ error: "Validation failed" }) //Validate for errors
+    res.status(400).json({ error: "Validation failed" })
   }
 })
 
-router.get("/:id", async (req, res) => { //Get specific case
+router.get("/:id", async (req, res) => {
   try {
-    const item = await CaseModel.findById(req.params.id) //Choose case by id
+    const item = await CaseModel.findById(req.params.id).populate("coaches")
     if (item) {
       res.status(200).json(item)
     } else {
       res.status(404).json({ error: "Not found" })
     }
   } catch {
-    res.status(404).json({ error: "Not found" }) //Validate for errors
+    res.status(404).json({ error: "Not found" })
   }
 })
 
-router.patch("/:id", async (req, res) => { //Update case
+router.patch("/:id", async (req, res) => {
   try {
-    const item = await CaseModel.findById(req.params.id)
+    let item = await CaseModel.findById(req.params.id)
     if (item) {
-      const { client, coaches, data, startTime, endTime, notes } = req.body as Case //Update case by id
+      const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
       item.client = client ?? item.client
       item.coaches = coaches ?? item.coaches
       item.data = data ?? item.data
@@ -74,9 +74,10 @@ router.patch("/:id", async (req, res) => { //Update case
 
       try {
         await item.save()
+        item = await item.populate("coaches")
         res.status(201).json(item)
       } catch {
-        res.status(400).json({ error: "Validation failed" }) //Validate for errors
+        res.status(400).json({ error: "Validation failed" })
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -86,14 +87,39 @@ router.patch("/:id", async (req, res) => { //Update case
   }
 })
 
-router.delete("/:id", async (req, res) => { //Delete case
+router.put("/:id", async (req, res) => {
   try {
-    await CaseModel.findById(req.params.id)
+    let item = await CaseModel.findById(req.params.id)
+    if (item) {
+      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
+      item.client = client
+      item.coaches = coaches
+      item.data = data
+      item.startTime = startTime
+      item.endTime = endTime
+      item.notes = notes
+
+      try {
+        await item.save()
+        item = await item.populate("coaches")
+        res.status(201).json(item)
+      } catch {
+        res.status(400).json({ error: "Validation failed" })
+      }
+    } else {
+      res.status(404).json({ error: "Not found" })
+    }
+  } catch {
     res.status(404).json({ error: "Not found" })
-    await CaseModel.deleteOne({ _id: req.params.id }) //Delete case by id
+  }
+})
+
+router.delete("/:id", async (req, res) => {
+  try {
+    await CaseModel.deleteOne({ _id: req.params.id })
     res.status(204).json()
-    } catch {
-    res.status(404).json({ error: "Deletion failed" }) //Validate for errors
+  } catch {
+    res.status(404).json({ error: "Not found" })
   }
 })
 
