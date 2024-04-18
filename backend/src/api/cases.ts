@@ -4,13 +4,13 @@ import { CaseModel, type Case } from "../schemas/case.js"
 const router = Router()
 
 router.get("/", async (_req, res) => {
-  const items = await CaseModel.find().populate("coaches")
+  const items = await CaseModel.find()
   res.status(200).json(items)
 })
 
 router.post("/", async (req, res) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-  let item = new CaseModel({
+  const item = new CaseModel({
     client: client,
     coaches: coaches,
     data: data,
@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
 
   try {
     await item.save()
-    item = await item.populate("coaches")
     res.status(201).json(item)
   } catch {
     res.status(400).json({ error: "Validation failed" })
@@ -30,7 +29,7 @@ router.post("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const item = await CaseModel.findById(req.params.id).populate("coaches")
+    const item = await CaseModel.findById(req.params.id)
     if (item) {
       res.status(200).json(item)
     } else {
@@ -43,9 +42,9 @@ router.get("/:id", async (req, res) => {
 
 router.patch("/:id", async (req, res) => {
   try {
-    let item = await CaseModel.findById(req.params.id)
+    const item = await CaseModel.findById(req.params.id)
     if (item) {
-      const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
+      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
       item.client = client ?? item.client
       item.coaches = coaches ?? item.coaches
       item.data = data ?? item.data
@@ -55,34 +54,6 @@ router.patch("/:id", async (req, res) => {
 
       try {
         await item.save()
-        item = await item.populate("coaches")
-        res.status(201).json(item)
-      } catch {
-        res.status(400).json({ error: "Validation failed" })
-      }
-    } else {
-      res.status(404).json({ error: "Not found" })
-    }
-  } catch {
-    res.status(404).json({ error: "Not found" })
-  }
-})
-
-router.put("/:id", async (req, res) => {
-  try {
-    let item = await CaseModel.findById(req.params.id)
-    if (item) {
-      const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-      item.client = client
-      item.coaches = coaches
-      item.data = data
-      item.startTime = startTime
-      item.endTime = endTime
-      item.notes = notes
-
-      try {
-        await item.save()
-        item = await item.populate("coaches")
         res.status(201).json(item)
       } catch {
         res.status(400).json({ error: "Validation failed" })

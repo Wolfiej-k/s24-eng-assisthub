@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express"
 import { auth } from "express-oauth2-jwt-bearer"
+import { CaseModel } from "./schemas/case"
 import { CoachModel, type Coach } from "./schemas/coach"
-import { CaseModel, type Case } from "./schemas/case"
 
 const jwtCheck = auth({
   audience: process.env.AUTH0_AUDIENCE,
@@ -10,6 +10,7 @@ const jwtCheck = auth({
 })
 
 export const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
+  console.log("Authorization Header:", req.get("Authorization"))
   if (req.get("Secret") === process.env.ADMIN_SECRET) {
     next()
   } else {
@@ -25,7 +26,6 @@ export const getIdentity = async (req: Request, res: Response, next: NextFunctio
   // search db for coach
   try {
     const coach = await CoachModel.findById(req.params.id)
-
     if (coach) {
       const { name, email, isAdmin } = req.body as Coach
       coach.email = email ?? coach.email
@@ -47,22 +47,22 @@ export const ensureAdmin = (req: Request, res: Response, next: NextFunction) => 
 }
 
 export const ensureCoach = async (req: Request, res: Response, next: NextFunction) => {
-  const caseId = req.params.caseId;
-  const coachName = req.auth!.name;
+  const caseId = req.params.caseId
+  const coachName = req.auth!.name
 
   if (!coachName) {
-    return res.status(401).json("Not authorized");
+    return res.status(401).json("Not authorized")
   }
 
-  const caseItem = await CaseModel.findById(caseId).exec();
+  const caseItem = await CaseModel.findById(caseId).exec()
   if (!caseItem) {
-    return res.status(404).json("Case not found");
+    return res.status(404).json("Case not found")
   }
 
-  const coachNames = caseItem.coaches.map(coach => coach.name);
+  const coachNames = caseItem.coaches.map((coach) => coach.name)
   if (coachNames.includes(coachName)) {
-    next();
+    next()
   } else {
-    res.status(403).json("Forbidden: You do not have access to this case");
+    res.status(403).json("Forbidden: You do not have access to this case")
   }
-};
+}
