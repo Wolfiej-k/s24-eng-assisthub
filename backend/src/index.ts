@@ -3,7 +3,7 @@ import "dotenv/config"
 import express, { type NextFunction, type Request, type Response } from "express"
 import cases from "./api/cases.js"
 import coaches from "./api/coaches.js"
-import { ensureLogin, getIdentity } from "./auth"
+import { ensureLogin, getIdentity, ensureAdmin, ensureCoach } from "./auth"
 import "./database.js"
 
 const app = express()
@@ -15,9 +15,11 @@ app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}))
 
 app.use(ensureLogin)
 app.use(getIdentity)
+// app.use(ensureAdmin)
+// app.use(ensureCoach)
 
-app.use("/api/cases", cases)
-app.use("/api/coaches", coaches)
+app.use("/api/cases", ensureAdmin, cases)
+app.use("/api/coaches", ensureAdmin, coaches)
 
 app.get("*", (_req, res) => {
   res.status(404).send("Not found")

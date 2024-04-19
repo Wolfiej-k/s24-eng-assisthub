@@ -9,7 +9,7 @@ router.get("/", async (_req, res) => {
   res.status(200).json(items)
 })
 
-router.post("/", ensureAdmin, async (req, res) => {
+router.post("/", async (req, res) => {
   const { name, email, isAdmin } = req.body as Coach
   const item = new CoachModel({
     name: name,

@@ -1,5 +1,4 @@
 import { Router } from "express"
-import { ensureAdmin } from "../auth.js"
 import { CaseModel, type Case } from "../schemas/case.js"
 
 const router = Router()
@@ -9,7 +8,7 @@ router.get("/", async (_req, res) => {
   res.status(200).json(items)
 })
 
-router.post("/", ensureAdmin, async (req, res) => {
+router.post("/", async (req, res) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
   const item = new CaseModel({
     client: client,
@@ -67,7 +66,7 @@ router.patch("/:id", async (req, res) => {
   }
 })
 
-router.delete("/:id", ensureAdmin, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     await CaseModel.deleteOne({ _id: req.params.id })
     res.status(204).json()
