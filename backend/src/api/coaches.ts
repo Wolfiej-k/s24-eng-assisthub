@@ -1,5 +1,7 @@
 import { Router } from "express"
+import { ensureAdmin } from "../auth.js"
 import { CoachModel, type Coach } from "../schemas/coach.js"
+
 const router = Router()
 
 router.get("/", async (_req, res) => {
@@ -7,7 +9,7 @@ router.get("/", async (_req, res) => {
   res.status(200).json(items)
 })
 
-router.post("/", async (req, res) => {
+router.post("/", ensureAdmin, async (req, res) => {
   const { name, email, isAdmin } = req.body as Coach
   const item = new CoachModel({
     name: name,
@@ -36,7 +38,7 @@ router.get("/:id", async (req, res) => {
   }
 })
 
-router.patch("/:id", async (req, res) => {
+router.patch("/:id", ensureAdmin, async (req, res) => {
   try {
     const item = await CoachModel.findById(req.params.id)
     if (item) {
@@ -59,7 +61,7 @@ router.patch("/:id", async (req, res) => {
   }
 })
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", ensureAdmin, async (req, res) => {
   try {
     const item = await CoachModel.findById(req.params.id)
     if (item) {
@@ -82,7 +84,7 @@ router.put("/:id", async (req, res) => {
   }
 })
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", ensureAdmin, async (req, res) => {
   try {
     await CoachModel.deleteOne({ _id: req.params.id })
     res.status(204).json()
