@@ -15,25 +15,17 @@ app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}))
 
 app.use(ensureLogin)
 app.use(getIdentity)
+
 app.use("/api/cases", cases)
 app.use("/api/coaches", coaches)
 
-// Admin-only routes
-app.post('/api/cases', ensureAdmin);
-app.delete('/api/cases', ensureAdmin);
-app.post('/api/coaches', ensureAdmin);
-app.patch('/api/coaches', ensureAdmin);
-app.delete('/api/coaches', ensureAdmin);
-
-// Coach-specific route, example for viewing a case
-app.get('/api/cases/:caseId', ensureCoach);
 app.get("*", (_req, res) => {
   res.status(404).send("Not found")
 })
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error(`[server] Routing error:`, err.message, "\n", err.stack)
-  return res.status(500).json({ message: err.message })
+  res.status(500).json({ error: err.message })
 })
 
 app.listen(port, () => {

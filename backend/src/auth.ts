@@ -17,8 +17,9 @@ const jwtCheck = auth({
   tokenSigningAlg: "RS256",
 })
 
-export const ensureLogin = (req: Request, res: Response, next: NextFunction) => {
+export function ensureLogin(req: Request, res: Response, next: NextFunction) {
   if (req.get("Secret") === process.env.ADMIN_SECRET) {
+    req.auth = { admin: true }
     next()
   } else {
     jwtCheck(req, res, next)
@@ -88,6 +89,27 @@ export const ensureCoach = async (req: AuthRequest, res: Response, next: NextFun
   if (coachIds.includes(coachID)) {
     next();
   } else {
-    res.status(403).json("Forbidden: You do not have access to this case");
+    res.status(403).json({ error: "Forbidden" })
   }
-};
+}
+
+// export const ensureCoach = async (req: Request, res: Response, next: NextFunction) => {
+//   const caseId = req.params.caseId
+//   const coachName = req.auth.name
+
+//   if (!coachName) {
+//     return res.status(401).json({ error: "Unauthorized" })
+//   }
+
+//   const caseItem = await CaseModel.findById(caseId).exec()
+//   if (!caseItem) {
+//     return res.status(404).json("Case not found")
+//   }
+
+//   const coachNames = caseItem.coaches.map((coach) => coach.name)
+//   if (coachNames.includes(coachName)) {
+//     next()
+//   } else {
+//     res.status(403).json("Forbidden: You do not have access to this case")
+//   }
+// }

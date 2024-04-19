@@ -53,9 +53,8 @@ export default function App() {
     check: async () => {
       try {
         const idToken = await getIdTokenClaims()
-        const accessToken = await getAccessTokenSilently()
-
-        if (idToken && accessToken) {
+        if (idToken) {
+          const accessToken = await getAccessTokenSilently()
           axios.defaults.headers.common = {
             Authorization: `Bearer ${accessToken}`,
           }
