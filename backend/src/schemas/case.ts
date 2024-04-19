@@ -1,5 +1,5 @@
 import { model, Schema, type InferSchemaType } from "mongoose"
-import { clientSchema } from "./client.js"
+import { clientSchema } from "./client"
 
 const caseSchema = new Schema({
   client: { type: clientSchema, required: true },
