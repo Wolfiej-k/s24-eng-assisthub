@@ -10,7 +10,7 @@ export interface Coach {
   _id?: string
   name: string
   email: string
-  isAdmin: boolean
+  admin: boolean
 }
 
 export interface Case {

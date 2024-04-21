@@ -51,7 +51,7 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
     setValues({ ...values, client: { ...values.client, [field]: value } })
   }
 
-  const startEditing = (e: React.FormEvent<HTMLFormElement>) => {
+  const startEditing = (e: React.FormEvent) => {
     e.preventDefault()
     setIsEditing(true)
   }
@@ -67,7 +67,7 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
       })
     }
   }
-  const finishEditing = (e: React.FormEvent<HTMLFormElement>) => {
+  const finishEditing = (e: React.FormEvent) => {
     e.preventDefault()
     void onFinish(values)
   }
