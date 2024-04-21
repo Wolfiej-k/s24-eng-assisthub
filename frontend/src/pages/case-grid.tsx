@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button"
-import { DataGrid, type GridColDef } from "@mui/x-data-grid"
+import { DataGrid, type GridColDef, type GridRenderCellParams } from "@mui/x-data-grid"
 import { useDataGrid } from "@refinedev/mui"
 import { useMemo, useState } from "react"
 import { type Case } from "../types"
@@ -39,24 +39,23 @@ export default function CaseGrid() {
       },
       {
         field: "startTime",
-        headerName: "Start Time",
+        headerName: "Start Date",
         minWidth: 150,
-        valueGetter: (params) => new Date(params.row.startTime).toLocaleDateString(),
-        renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
+        type: "dateTime",
+        valueGetter: (params) => new Date(params.row.startTime),
+        renderCell: (params: GridRenderCellParams<object, Date>) => (
+          <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value?.toLocaleDateString()}</div>
+        ),
       },
       {
         field: "endTime",
-        headerName: "End Time",
+        headerName: "End Date",
         minWidth: 150,
-        valueGetter: (params) => {
-          if (!params.row.endTime) {
-            return ""
-          }
-
-          const date = new Date(params.row.endTime)
-          return `${date.getMonth() + 1}-${date.getDate()}-${date.getFullYear()}`
-        },
-        renderCell: (params) => <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>,
+        type: "dateTime",
+        valueGetter: (params) => params.row.endTime && new Date(params.row.endTime),
+        renderCell: (params: GridRenderCellParams<object, Date>) => (
+          <div style={{ whiteSpace: "normal", wordWrap: "break-word" }}>{params.value?.toLocaleDateString()}</div>
+        ),
       },
       {
         field: "actions",
@@ -87,14 +86,6 @@ export default function CaseGrid() {
     pagination: {
       current: 1,
       pageSize: 10,
-    },
-    sorters: {
-      initial: [
-        {
-          field: "ID",
-          order: "asc",
-        },
-      ],
     },
     filters: {
       mode: "off",

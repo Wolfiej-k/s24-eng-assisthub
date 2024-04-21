@@ -15,16 +15,19 @@ router.get("/", async (req, res) => {
     condition.push(["startTime", -1])
   }
 
-  const items = await CaseModel.find({}).populate("coaches").sort(condition)
+  let items = await CaseModel.find({}).populate("coaches").sort(condition)
+  const length = items.length.toString()
 
-  const start = _start === "string" ? parseInt(_start) : NaN
-  const end = _end === "string" ? parseInt(_end) + 1 : NaN
+  const start = typeof _start === "string" ? parseInt(_start) : NaN
+  const end = typeof _end === "string" ? parseInt(_end) : NaN
 
   if (!isNaN(start) && !isNaN(end)) {
-    res.status(200).json(items.slice(start, end))
-  } else {
-    res.status(200).json(items)
+    items = items.slice(start, end)
   }
+
+  res.set("X-Total-Count", length)
+  res.set("Access-Control-Expose-Headers", "X-Total-Count")
+  res.status(200).json(items)
 })
 
 router.post("/", async (req, res) => {
