@@ -2,7 +2,7 @@
 
 ## API Documentation
 
-All API queries are of content-type `application/json`.
+All API queries are of content-type `application/json`. In order to authorize a request, either set the `"Secret"` header to the admin secret (as specified in an environmental variable) or supply an Auth0-issued JWT in the `"Authorization"` header. In the following, we assume this has been done; otherwise, all routes return status `401` with body `{ error: "Unauthorized" }`. Lastly, unspecified errors (such as attempting to update a record in parallel with another requester) trigger status `500` with body `{ error: "Internal server error" }`.
 
 #### Client type
 > | field      |  type     | data type               | description                                                           |
@@ -18,6 +18,7 @@ All API queries are of content-type `application/json`.
 > |------------|-----------|-------------------------|-----------------------------------------------------------------------|
 > | name | required | `string` | Coach name
 > | email | required | `string` | Coach email address
+> | admin | required | `boolean` | Coach has admin privileges, i.e., may access all routes
 
 #### Case type
 > | field      |  type     | data type               | description                                                           |
@@ -43,7 +44,7 @@ All API queries are of content-type `application/json`.
 > | _end | optional | `number` | Ending index of result in sorted order, inclusive
 
 ##### Response
-Always returns `200` status with array of `Case` documents. Header `"X-Total-Count"` set to total number of documents.
+Always returns `200` status with array of `Case` documents that **the sender is assigned to**. Only admin-authorized requests (i.e., admin secret or account with admin privileges) see the entire list. Header `"X-Total-Count"` set to total number of documents.
 </details>
 
 <details>
@@ -55,7 +56,7 @@ Always returns `200` status with array of `Case` documents. Header `"X-Total-Cou
 > | id | required | `string` | ID of case to query
 
 ##### Response
-Returns status `200` with `Case` document if found, and status `404` with body `{ error: "Not found" }` otherwise.
+Returns status `200` with `Case` document if found and authorized. If requester is not admin or assigned to the case, returns status `403` with body `{ error: "Forbidden }`. Returns status `404` with body `{ error: "Not found" }` otherwise.
 </details>
 
 <details>
@@ -72,7 +73,7 @@ Returns status `200` with `Case` document if found, and status `404` with body `
 > | notes | optional | `string` | Free-form notes about case
 
 ##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
 </details>
 
 <details>
@@ -96,7 +97,7 @@ Returns status `201` with `Case` document (with populated `coaches`) if case is 
 Any field not supplied defaults to the current entry in the database.
 
 ##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the case cannot be found, returns status `404` with body `{error: "Not found"}`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin and not assigned to the case, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
 </details>
 
 <details>
@@ -120,7 +121,7 @@ Returns status `201` with `Case` document (with populated `coaches`) if case is 
 Replaces document entirely with supplied data. When possible, `PATCH` is recommended.
 
 ##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the case cannot be found, returns status `404` with body `{error: "Not found"}`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin and not assigned to the case, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
 </details>
 
 <details>
@@ -132,5 +133,5 @@ Returns status `201` with `Case` document (with populated `coaches`) if case is 
 > | id | required | `string` | ID of case to query
 
 ##### Response
-Returns status `204` with empty body if removed, and status `404` with body `{ error: "Not found" }` otherwise.
+Returns status `204` with empty body if removed. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. Returns status `404` with body `{ error: "Not found" }` otherwise. 
 </details>
