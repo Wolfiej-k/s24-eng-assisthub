@@ -6,4 +6,5 @@ export const coachSchema = new Schema({
 })
 
 export type Coach = InferSchemaType<typeof coachSchema>
+export type CoachRes = Coach & { _id: string }
 export const CoachModel = model("Coach", coachSchema)
