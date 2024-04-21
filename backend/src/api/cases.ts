@@ -3,8 +3,30 @@ import { CaseModel, type Case } from "../schemas/case.js"
 
 const router = Router()
 
-router.get("/", async (_req, res) => {
-  const items = await CaseModel.find().populate("coaches")
+router.get("/", async (req, res) => {
+  const { _sort, _order, _start, _end } = req.query
+  const condition = new Array<[string, 1 | -1]>()
+
+  if (typeof _sort === "string") {
+    const dir = _order == "desc" ? -1 : 1
+    condition.push([_sort, dir])
+  } else {
+    condition.push(["endTime", 1])
+    condition.push(["startTime", -1])
+  }
+
+  let items = await CaseModel.find({}).populate("coaches").sort(condition)
+  const length = items.length.toString()
+
+  const start = typeof _start === "string" ? parseInt(_start) : NaN
+  const end = typeof _end === "string" ? parseInt(_end) : NaN
+
+  if (!isNaN(start) && !isNaN(end)) {
+    items = items.slice(start, end)
+  }
+
+  res.set("X-Total-Count", length)
+  res.set("Access-Control-Expose-Headers", "X-Total-Count")
   res.status(200).json(items)
 })
 
