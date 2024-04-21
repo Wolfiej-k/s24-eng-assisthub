@@ -1,9 +1,9 @@
 import cors from "cors"
 import "dotenv/config"
 import express, { type NextFunction, type Request, type Response } from "express"
+import { UnauthorizedError } from "express-oauth2-jwt-bearer"
 import cases from "./api/cases.js"
 import coaches from "./api/coaches.js"
-import { ensureAdmin, ensureLogin, getIdentity } from "./auth"
 import "./database.js"
 
 const app = express()
@@ -13,19 +13,20 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use((cors as (options: cors.CorsOptions) => express.RequestHandler)({}))
 
-app.use(ensureLogin)
-app.use(getIdentity)
-
-app.use("/api/cases", ensureAdmin, cases)
-app.use("/api/coaches", ensureAdmin, coaches)
+app.use("/api/cases", cases)
+app.use("/api/coaches", coaches)
 
 app.get("*", (_req, res) => {
   return res.status(404).send("Not found")
 })
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  if (err instanceof UnauthorizedError) {
+    return res.status(401).json({ error: "Unauthorized" })
+  }
+
   console.error(`[server] Routing error:`, err.message, "\n", err.stack)
-  return res.status(500).json({ error: err.message })
+  return res.status(500).json({ error: "Internal server error" })
 })
 
 app.listen(port, () => {

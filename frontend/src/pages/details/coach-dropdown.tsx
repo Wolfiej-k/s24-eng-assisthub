@@ -27,6 +27,7 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
       options={coachlist}
       loading={isLoading}
       getOptionLabel={(option) => option.name}
+      isOptionEqualToValue={(option, value) => option._id === value._id}
       value={coaches}
       onChange={(_, value) => updateCoaches(value)}
       renderInput={(params) => <TextField {...params} variant="standard" label="Coaches" />}

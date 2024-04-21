@@ -17,25 +17,21 @@ export function ensureLogin(req: Request, res: Response, next: NextFunction) {
   return jwtCheck(req, res, next)
 }
 
-export async function getIdentity(req: Request, res: Response, next: NextFunction) {
+export async function getIdentity(req: Request, _res: Response, next: NextFunction) {
   if (req.auth.admin) {
     return next()
   }
 
-  try {
-    const query = await CoachModel.find({ email: req.auth.payload?.email })
-    const coach = (query ?? [])[0]
+  const query = await CoachModel.find({ email: req.auth.payload?.email })
+  const coach = query[0]
 
-    if (coach) {
-      req.auth.identity = coach
-      req.auth.admin = coach.admin
-      return next()
-    }
-
-    return res.status(401).json({ error: "Unauthorized" })
-  } catch {
-    return res.status(401).json({ error: "Unauthorized" })
+  if (!coach) {
+    return next(Error("Coach-Auth0 account mismatch"))
   }
+
+  req.auth.identity = coach
+  req.auth.admin = coach.admin
+  return next()
 }
 
 export function ensureAdmin(req: Request, res: Response, next: NextFunction) {
