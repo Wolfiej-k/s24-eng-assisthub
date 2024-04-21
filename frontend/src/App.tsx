@@ -21,6 +21,7 @@ import { theme } from "./theme"
 
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
+import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
 export default function App() {
@@ -162,6 +163,14 @@ export default function App() {
                       element={
                         <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
                           <AnalyticsPage />
+                        </Authenticated>
+                      }
+                    />
+                    <Route
+                      path="/:id"
+                      element={
+                        <Authenticated key="details" fallback={<CatchAllNavigate to="/login" />}>
+                          <DetailsPage />
                         </Authenticated>
                       }
                     />
