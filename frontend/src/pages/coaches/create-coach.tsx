@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, Stack, TextField } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, Stack, TextField, useTheme } from "@mui/material"
 import { useForm } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
@@ -10,15 +10,15 @@ const initialCoach = {
   admin: false,
 }
 
-export default function CreateCoachesForm() {
+export default function CreateCoachForm() {
   const [coach, setCoach] = useState<Coach>(initialCoach)
 
   const confirm = useConfirm()
+  const theme = useTheme()
 
   const { onFinish } = useForm<Coach>({
     resource: "coaches",
-    action: "edit",
-    id: coach._id,
+    action: "create",
     successNotification: false,
   })
 
@@ -59,6 +59,7 @@ export default function CreateCoachesForm() {
             <Checkbox name="admin" checked={coach.admin} onChange={(e) => handleChange("admin", e.target.checked)} />
           }
           label="Admin?"
+          sx={{ color: theme.palette.primary.dark }}
         />
         <Button type="submit" variant="contained" color="primary" fullWidth>
           Add Coach

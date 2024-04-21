@@ -21,6 +21,7 @@ import { theme } from "./theme"
 
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
+import CoachesPage from "./pages/coaches"
 import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
@@ -118,6 +119,10 @@ export default function App() {
                 list: "/",
               },
               {
+                name: "coaches",
+                list: "/coaches",
+              },
+              {
                 name: "analytics",
                 list: "/analytics",
               },
@@ -164,6 +169,14 @@ export default function App() {
                       element={
                         <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
                           <AnalyticsPage />
+                        </Authenticated>
+                      }
+                    />
+                    <Route
+                      path="/coaches"
+                      element={
+                        <Authenticated key="coaches" fallback={<CatchAllNavigate to="/login" />}>
+                          <CoachesPage />
                         </Authenticated>
                       }
                     />
