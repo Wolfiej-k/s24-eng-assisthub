@@ -1,5 +1,6 @@
 import Autocomplete from "@mui/material/Autocomplete"
 import TextField from "@mui/material/TextField"
+import { useList } from "@refinedev/core"
 import { type Coach } from "../../types"
 
 interface CoachDropdownProps {
@@ -9,11 +10,22 @@ interface CoachDropdownProps {
 }
 
 export default function CoachDropdown({ coaches, updateCoaches, editable }: CoachDropdownProps) {
+  const { data, isLoading, isError } = useList<Coach>({
+    resource: "coaches",
+  })
+
+  const coachlist = data?.data ?? []
+
+  if (isError) {
+    return <div>Something went wrong!</div>
+  }
+
   return (
     <Autocomplete
       multiple
       id="coach-dropdown"
-      options={coachList}
+      options={coachlist}
+      loading={isLoading}
       getOptionLabel={(option) => option.name}
       value={coaches}
       onChange={(_, value) => updateCoaches(value)}
@@ -23,13 +35,3 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
     />
   )
 }
-
-const coachList: Coach[] = [
-  { name: "Alice Liu", email: "coach@coach.com" },
-  { name: "Taj Jethwani-Keyser", email: "coach@coach.com" },
-  { name: "Hanna Wosenu", email: "coach@coach.com" },
-  { name: "Julia Poulson", email: "coach@coach.com" },
-  { name: "Kaden Zheng", email: "coach@coach.com" },
-  { name: "Michelle Nhung Le", email: "coach@coach.com" },
-  { name: "Pedro Garcia", email: "coach@coach.com" },
-]

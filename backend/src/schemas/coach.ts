@@ -1,4 +1,4 @@
-import { model, Schema, type InferSchemaType } from "mongoose"
+import { model, Schema, type InferSchemaType, type Types } from "mongoose"
 
 export const coachSchema = new Schema({
   name: { type: String, required: true },
@@ -7,4 +7,5 @@ export const coachSchema = new Schema({
 })
 
 export type Coach = InferSchemaType<typeof coachSchema>
+export type CoachRes = Coach & { _id: Types.ObjectId }
 export const CoachModel = model("Coach", coachSchema)
