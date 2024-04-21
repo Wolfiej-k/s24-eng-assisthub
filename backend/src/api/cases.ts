@@ -63,7 +63,7 @@ router.get("/:id", async (req, res) => {
         item = await item.populate("coaches")
         res.status(200).json(item)
       } else {
-        res.status(401).json({ error: "Not authorized" })
+        res.status(401).json({ error: "Unauthorized" })
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -94,7 +94,7 @@ router.patch("/:id", async (req, res) => {
           res.status(400).json({ error: "Validation failed" })
         }
       } else {
-        res.status(401).json({ error: "Not authorized" })
+        res.status(401).json({ error: "Unauthorized" })
       }
     } else {
       res.status(404).json({ error: "Not found" })
@@ -125,7 +125,7 @@ router.put("/:id", async (req, res) => {
           res.status(400).json({ error: "Validation failed" })
         }
       } else {
-        res.status(401).json({ error: "Not authorized" })
+        res.status(401).json({ error: "Unauthorized" })
       }
     } else {
       res.status(404).json({ error: "Not found" })
