@@ -1,7 +1,12 @@
 import { Router } from "express"
+import { Error } from "mongoose"
+import { ensureAdmin, ensureLogin, getIdentity } from "../auth.js"
 import { CaseModel, type Case } from "../schemas/case.js"
 
 const router = Router()
+
+router.use(ensureLogin)
+router.use(getIdentity)
 
 router.get("/", async (req, res) => {
   const { _sort, _order, _start, _end } = req.query
@@ -17,7 +22,7 @@ router.get("/", async (req, res) => {
 
   const filter: Record<string, string> = {}
   if (!req.auth.admin) {
-    filter.coaches = req.auth.identity._id
+    filter.coaches = req.auth.identity!._id.toString()
   }
 
   let items = await CaseModel.find(filter).populate("coaches").sort(condition)
@@ -32,12 +37,35 @@ router.get("/", async (req, res) => {
 
   res.set("X-Total-Count", length)
   res.set("Access-Control-Expose-Headers", "X-Total-Count")
-  res.status(200).json(items)
+  return res.status(200).json(items)
 })
 
-router.post("/", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
+  try {
+    let item = await CaseModel.findById(req.params.id)
+
+    if (!item) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
+      return res.status(401).json({ error: "Unauthorized" })
+    }
+
+    item = await item.populate("coaches")
+    return res.status(200).json(item)
+  } catch (e) {
+    if (e instanceof Error.DocumentNotFoundError) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    next(e)
+  }
+})
+
+router.post("/", ensureAdmin, async (req, res, next) => {
   const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-  let item = new CaseModel({
+  const item = new CaseModel({
     client: client,
     coaches: coaches,
     data: data,
@@ -48,99 +76,98 @@ router.post("/", async (req, res) => {
 
   try {
     await item.save()
+    return res.status(201).json(item)
+  } catch (e) {
+    if (e instanceof Error.ValidationError) {
+      return res.status(400).json({ error: "Validation failed" })
+    }
+
+    next(e)
+  }
+})
+
+router.patch("/:id", async (req, res, next) => {
+  try {
+    let item = await CaseModel.findById(req.params.id)
+
+    if (!item) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
+      return res.status(401).json({ error: "Unauthorized" })
+    }
+
+    const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
+    item.client = client ?? item.client
+    item.coaches = coaches ?? item.coaches
+    item.data = data ?? item.data
+    item.startTime = startTime ?? item.startTime
+    item.endTime = endTime ?? item.endTime
+    item.notes = notes ?? item.notes
+
+    await item.save()
     item = await item.populate("coaches")
-    res.status(201).json(item)
-  } catch {
-    res.status(400).json({ error: "Validation failed" })
+    return res.status(201).json(item)
+  } catch (e) {
+    if (e instanceof Error.DocumentNotFoundError) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    if (e instanceof Error.ValidationError) {
+      return res.status(400).json({ error: "Validation failed" })
+    }
+
+    next(e)
   }
 })
 
-router.get("/:id", async (req, res) => {
+router.put("/:id", async (req, res, next) => {
   try {
     let item = await CaseModel.findById(req.params.id)
-    if (item) {
-      if (req.auth.admin || req.auth.identity._id in item.coaches) {
-        item = await item.populate("coaches")
-        res.status(200).json(item)
-      } else {
-        res.status(401).json({ error: "Unauthorized" })
-      }
-    } else {
-      res.status(404).json({ error: "Not found" })
+
+    if (!item) {
+      return res.status(404).json({ error: "Not found" })
     }
-  } catch {
-    res.status(404).json({ error: "Not found" })
+
+    if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
+      return res.status(401).json({ error: "Unauthorized" })
+    }
+
+    const { client, coaches, data, startTime, endTime, notes } = req.body as Case
+    item.client = client
+    item.coaches = coaches
+    item.data = data
+    item.startTime = startTime
+    item.endTime = endTime
+    item.notes = notes
+
+    await item.save()
+    item = await item.populate("coaches")
+    return res.status(201).json(item)
+  } catch (e) {
+    if (e instanceof Error.DocumentNotFoundError) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    if (e instanceof Error.ValidationError) {
+      return res.status(400).json({ error: "Validation failed" })
+    }
+
+    next(e)
   }
 })
 
-router.patch("/:id", async (req, res) => {
-  try {
-    let item = await CaseModel.findById(req.params.id)
-    if (item) {
-      if (req.auth.admin || req.auth.identity._id in item.coaches) {
-        const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
-        item.client = client ?? item.client
-        item.coaches = coaches ?? item.coaches
-        item.data = data ?? item.data
-        item.startTime = startTime ?? item.startTime
-        item.endTime = endTime ?? item.endTime
-        item.notes = notes ?? item.notes
-
-        try {
-          await item.save()
-          item = await item.populate("coaches")
-          res.status(201).json(item)
-        } catch {
-          res.status(400).json({ error: "Validation failed" })
-        }
-      } else {
-        res.status(401).json({ error: "Unauthorized" })
-      }
-    } else {
-      res.status(404).json({ error: "Not found" })
-    }
-  } catch {
-    res.status(404).json({ error: "Not found" })
-  }
-})
-
-router.put("/:id", async (req, res) => {
-  try {
-    let item = await CaseModel.findById(req.params.id)
-    if (item) {
-      if (req.auth.admin || req.auth.identity._id in item.coaches) {
-        const { client, coaches, data, startTime, endTime, notes } = req.body as Case
-        item.client = client
-        item.coaches = coaches
-        item.data = data
-        item.startTime = startTime
-        item.endTime = endTime
-        item.notes = notes
-
-        try {
-          await item.save()
-          item = await item.populate("coaches")
-          res.status(201).json(item)
-        } catch {
-          res.status(400).json({ error: "Validation failed" })
-        }
-      } else {
-        res.status(401).json({ error: "Unauthorized" })
-      }
-    } else {
-      res.status(404).json({ error: "Not found" })
-    }
-  } catch {
-    res.status(404).json({ error: "Not found" })
-  }
-})
-
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", ensureAdmin, async (req, res, next) => {
   try {
     await CaseModel.deleteOne({ _id: req.params.id })
-    res.status(204).json()
-  } catch {
-    res.status(404).json({ error: "Not found" })
+    return res.status(204).json()
+  } catch (e) {
+    if (e instanceof Error.DocumentNotFoundError) {
+      return res.status(404).json({ error: "Not found" })
+    }
+
+    next(e)
   }
 })
 

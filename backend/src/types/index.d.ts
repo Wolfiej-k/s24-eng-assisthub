@@ -5,7 +5,10 @@ declare module "express-serve-static-core" {
   interface Request {
     auth: {
       admin: boolean
-      identity: CoachRes
+      identity?: CoachRes
+      payload?: {
+        email: string
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
 export default function App() {
-  const { isLoading, user, logout, getIdTokenClaims } = useAuth0()
+  const { isLoading, user, logout, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
 
   if (isLoading) {
     return <span>Loading...</span>
@@ -52,10 +52,11 @@ export default function App() {
     },
     check: async () => {
       try {
-        const token = await getIdTokenClaims()
-        if (token) {
+        const idToken = await getIdTokenClaims()
+        if (idToken) {
+          const accessToken = await getAccessTokenSilently()
           axios.defaults.headers.common = {
-            Authorization: `Bearer ${token.__raw}`,
+            Authorization: `Bearer ${accessToken}`,
           }
           return {
             authenticated: true,
@@ -92,10 +93,10 @@ export default function App() {
     },
   }
 
-  void getIdTokenClaims().then((token) => {
+  void getAccessTokenSilently().then((token) => {
     if (token) {
       axios.defaults.headers.common = {
-        Authorization: `Bearer ${token.__raw}`,
+        Authorization: `Bearer ${token}`,
       }
     }
   })
