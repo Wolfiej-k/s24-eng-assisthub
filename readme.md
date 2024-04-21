@@ -1,46 +1,136 @@
-## AssistHub
+# AssistHub
 
-To be filled out.
+## API Documentation
 
-API DOCUMENTATION
+All API queries are of content-type `application/json`.
 
+#### Client type
+> | field      |  type     | data type               | description                                                           |
+> |------------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | name | required | `string` | Client name
+> | email | required | `string` | Client email address
+> | phone | required | `string` | Client phone number
+> | zip | required | `string` | Client ZIP code
+> | profile | required | `string` | Client profile URL
 
-    GET -- There are two GET methods: one to retrieve a specific case, and one to retrieve several cases. 
+#### Coach type
+> | field      |  type     | data type               | description                                                           |
+> |------------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | name | required | `string` | Coach name
+> | email | required | `string` | Coach email address
 
-    GET /cases/:id
-        For the specific case, the function simply takes in the case id in the form of a query string (ex. /api/cases/{id}) and returns the case with the matching id.
+#### Case type
+> | field      |  type     | data type               | description                                                           |
+> |------------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | client | required | `Client` | Client associated with case
+> | coaches | required | `Coach[]` | Coaches assigned to case
+> | data | required | `Record<string, string>` | Case metadata, e.g., client form responses
+> | startTime | required | `Date` | Date case was opened
+> | endTime | optional | `Date` | Date case was closed, `null` if still open
+> | notes | optional | `string` | Free-form notes about case
 
-        If the case is successfully returned, it will return a 200 status. If there is an issue attaining the case with the input id, it will return a 404 status with a "Not found" error.
+#### Creating and updating cases
 
-    GET /cases
-        To retrieve several cases, the function takes in a URL route with several optional parameters: _sort, _order, _start, _end (ex. /api/cases?_sort=...&_order=...&_start=...&_end=...)
-            _sort takes the value of the name of one of the case fields (ex. client.name), indicating which field is to be sorted by
-            _order is either 'asc' or 'desc' indicating the order the sorted list should be outputted in 
-            _start and _end are some indices, indicating which indices of the sorted array we display
+<details>
+<summary><code>GET</code> <code>/cases/</code>: read all or many cases</summary>
 
-        If the case can be found, it will return a 200 status.
+##### Queries
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | _sort | optional | `string` | Name of the case field (e.g., "client.name") to sort by |
+> | _order | optional | `"asc"` or `"desc"` | Sort in ascending or descending order
+> | _start | optional | `number` | Starting index of result in sorted order
+> | _end | optional | `number` | Ending index of result in sorted order, inclusive
 
+##### Response
+Always returns `200` status with array of `Case` documents. Header `"X-Total-Count"` set to total number of documents.
+</details>
 
-    POST /cases
-        The POST method allows users to create new cases. This function takes in a JSON object with attributes corresponding to the CaseModel object: client, coaches, data, startTime, endTime, and notes, and autogenerates an id and start time. 
-        
-        If the case can successfully be saved, it will return a 201 status, and if there is an issue it will return a 400 status with a "Validation failed" error.
+<details>
+<summary><code>GET</code> <code>/cases/:id</code>: read one case</summary>
 
+##### Parameters
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | id | required | `string` | ID of case to query
 
-    DELETE /cases/:id
-        The DELETE method takes in a case id in the form of a query string like /api/cases/{id}, and deletes that case from the database.
+##### Response
+Returns status `200` with `Case` document if found, and status `404` with body `{ error: "Not found" }` otherwise.
+</details>
 
-        If the case is successfully deleted, it will return a 204 staus. Otherwise, it will return a 404 status with a "Not Found" error.
+<details>
+<summary><code>POST</code> <code>/cases/</code>: create one case</summary>
 
+##### Request
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | client | required | `Client` | Client associated with case
+> | coaches | required | `string[]` | IDs of coaches to assign to case
+> | data | required | `Record<string, string>` | Case metadata, e.g., client form responses
+> | startTime | optional | `Date` | Date case was opened, defaults to present
+> | endTime | optional | `Date` | Date case was closed
+> | notes | optional | `string` | Free-form notes about case
 
-    PATCH and PUT -- There are two methods we use to update cases: PATCH and PUT. PUT takes an entire JSON object and overrides an entire case whereas PATCH just updates individual fields for a case.
+##### Response
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+</details>
 
-    PATCH /cases/:id
-        The PATCH method takes in a case id in the form of a query string like /api/cases/{id} as well as a JSON object with attributes corresponding to the CaseModel object: client, coaches, data, startTime, endTime, and notes, and alters the case with the given id according to the case information inputted. For the PATCH method, these fields are all optional, and the original case will only be overriden with the fields included in the JSON object.
-        
-        If it successfully saves the case, it will return a status 201. If it cannot save the case, it will return a 400 status with a "Validation failed" error. If the case inputted is not valid, or the id cannot be found, it will return a 404 status with a "Not Found" error.
+<details>
+<summary><code>PATCH</code> <code>/cases/:id</code>: update one case (field-by-field)</summary>
 
-    PUT /cases/:id
-        The PATCH method takes in a case id in the form of a query string like /api/cases/{id} as well as a JSON object with attributes corresponding to the CaseModel object: client, coaches, data, startTime, endTime, and notes, and alters the case with the given id according to the case information inputted. For the PUT method, these fields are all required and the case with the given id will be overriden with all fields.
-        
-        If it successfully saves the case, it will return a status 201. If it cannot save the case, it will return a 400 status with a "Validation failed" error. If the case inputted is not valid, or the id cannot be found, it will return a 404 status with a "Not Found" error.
+##### Parameters
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | id | required | `string` | ID of case to update
+
+##### Request
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | client | optional | `Client` | Client associated with case
+> | coaches | optional | `string[]` | IDs of coaches to assign to case
+> | data | optional | `Record<string, string>` | Case metadata, e.g., client form responses
+> | startTime | optional | `Date` | Date case was opened
+> | endTime | optional | `Date` | Date case was closed
+> | notes | optional | `string` | Free-form notes about case
+
+Any field not supplied defaults to the current entry in the database.
+
+##### Response
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the case cannot be found, returns status `404` with body `{error: "Not found"}`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+</details>
+
+<details>
+<summary><code>PUT</code> <code>/cases/:id</code>: update one case (entire)</summary>
+
+##### Parameters
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | id | required | `string` | ID of case to update
+
+##### Request
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | client | required | `Client` | Client associated with case
+> | coaches | required | `string[]` | IDs of coaches to assign to case
+> | data | required | `Record<string, string>` | Case metadata, e.g., client form responses
+> | startTime | optional | `Date` | Date case was opened, defaults to present
+> | endTime | optional | `Date` | Date case was closed
+> | notes | optional | `string` | Free-form notes about case
+
+Replaces document entirely with supplied data. When possible, `PATCH` is recommended.
+
+##### Response
+Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the case cannot be found, returns status `404` with body `{error: "Not found"}`. If there is an issue, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
+</details>
+
+<details>
+<summary><code>DELETE</code> <code>/cases/:id</code>: delete one case</summary>
+
+##### Parameters
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | id | required | `string` | ID of case to query
+
+##### Response
+Returns status `204` with empty body if removed, and status `404` with body `{ error: "Not found" }` otherwise.
+</details>
