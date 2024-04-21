@@ -49,7 +49,7 @@ router.get("/:id", async (req, res, next) => {
     }
 
     if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
-      return res.status(401).json({ error: "Unauthorized" })
+      return res.status(403).json({ error: "Forbidden" })
     }
 
     item = await item.populate("coaches")
@@ -95,7 +95,7 @@ router.patch("/:id", async (req, res, next) => {
     }
 
     if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
-      return res.status(401).json({ error: "Unauthorized" })
+      return res.status(403).json({ error: "Forbidden" })
     }
 
     const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
@@ -131,7 +131,7 @@ router.put("/:id", async (req, res, next) => {
     }
 
     if (!req.auth.admin && item.coaches.indexOf(req.auth.identity!._id) == -1) {
-      return res.status(401).json({ error: "Unauthorized" })
+      return res.status(403).json({ error: "Forbidden" })
     }
 
     const { client, coaches, data, startTime, endTime, notes } = req.body as Case
