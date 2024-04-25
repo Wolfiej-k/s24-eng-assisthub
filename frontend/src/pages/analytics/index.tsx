@@ -16,6 +16,7 @@ import { useState } from "react"
 import { FixedSizeList } from "react-window"
 import { type Case } from "../../types"
 import zipCodes from "./zipcodes.json"
+import ChartContainer from './downloadGraphs'
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -113,6 +114,7 @@ export default function AnalyticsPage() {
     <Grid container spacing={2} sx={{ padding: "12px" }}>
       <Grid item xs={12} md={7}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
+        <ChartContainer>
           <CardContent>
             <Typography variant="h6" align="center">
               {selectedPlot == "open" ? "Cases Opened per Month" : "Cases Closed per Month"}
@@ -141,7 +143,8 @@ export default function AnalyticsPage() {
               </Menu>
             </div>
             {selectedPlot === "open" && (
-              <BarChart
+
+                <BarChart
                 series={[
                   {
                     data: monthCounts,
@@ -157,6 +160,7 @@ export default function AnalyticsPage() {
                 ]}
                 margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
               />
+
             )}
             {selectedPlot === "close" && (
               <BarChart
@@ -177,48 +181,51 @@ export default function AnalyticsPage() {
               />
             )}
           </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
         <Card sx={{ alignItems: "center" }}>
+        <ChartContainer>
           <CardContent sx={{ justifyContent: "center" }}>
             <Typography variant="h6" align="center">
               Assigned Cases per Coach
             </Typography>
-            <PieChart
-              margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
-              height={450}
-              series={[
-                {
-                  arcLabel: (item) => item.label?.split(" ")[0] ?? "",
-                  arcLabelMinAngle: 25,
-                  data: coachChartData,
-                  paddingAngle: 1,
-                  cornerRadius: 4,
-                  innerRadius: 25,
-                },
-              ]}
-              sx={{
-                [`& .${pieArcLabelClasses.root}`]: {
-                  fill: theme.palette.primary.light,
-                },
-              }}
-              slotProps={{
-                legend: {
-                  direction: "row",
-                  position: { vertical: "bottom", horizontal: "middle" },
-                  padding: 0,
-                  itemMarkWidth: 20,
-                  itemMarkHeight: 4,
-                  markGap: 5,
-                  itemGap: 12,
-                  labelStyle: {
-                    fontSize: 14,
+              <PieChart
+                margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
+                height={450}
+                series={[
+                  {
+                    arcLabel: (item) => item.label?.split(" ")[0] ?? "",
+                    arcLabelMinAngle: 25,
+                    data: coachChartData,
+                    paddingAngle: 1,
+                    cornerRadius: 4,
+                    innerRadius: 25,
                   },
-                },
-              }}
-            />
+                ]}
+                sx={{
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fill: theme.palette.primary.light,
+                  },
+                }}
+                slotProps={{
+                  legend: {
+                    direction: "row",
+                    position: { vertical: "bottom", horizontal: "middle" },
+                    padding: 0,
+                    itemMarkWidth: 20,
+                    itemMarkHeight: 4,
+                    markGap: 5,
+                    itemGap: 12,
+                    labelStyle: {
+                      fontSize: 14,
+                    },
+                  },
+                }}
+              />
           </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={4}>
@@ -247,11 +254,13 @@ export default function AnalyticsPage() {
       </Grid>
       <Grid item xs={12} md={8}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
+        <ChartContainer>
           <CardContent>
             <Typography variant="h6" align="center">
               Total Open Cases per Month
             </Typography>
-            <LineChart
+
+              <LineChart
               height={448}
               xAxis={[
                 {
@@ -260,8 +269,9 @@ export default function AnalyticsPage() {
                 },
               ]}
               series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
-            />
+              />
           </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
     </Grid>
