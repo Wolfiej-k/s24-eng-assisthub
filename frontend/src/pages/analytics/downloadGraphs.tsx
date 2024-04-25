@@ -38,7 +38,7 @@ export default function ChartContainer({children}) {
 
     const output = {"name": "chart.png", "width": svgElem.clientWidth, "height": svgElem.clientHeight}
     // const uriData = `data:image/svg+xml;base64,${btoa(svgElem.outerHTML)}` // it may fail.
-    const uriData = `data:image/svg+xml;base64,${btoa(new XMLSerializer().serializeToString(svgElem))}`
+    const uriData = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(svgElem))))}`
     const img = new Image()
     img.src = uriData
     console.log(uriData)
