@@ -12,18 +12,19 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "'Poppins', sans-serif",
+    //fontFamily: "Times",
     h1: {
       fontSize: "31.5px",
-      fontWeight: "lighter",
+      fontWeight: 500,
     },
     h2: {
       fontSize: "18px",
-      fontWeight: "lighter",
+      fontWeight: 500,
     },
     body1: {
       fontSize: "12px",
-      fontWeight: "lighter",
+      fontWeight: 500,
     },
   },
 })
