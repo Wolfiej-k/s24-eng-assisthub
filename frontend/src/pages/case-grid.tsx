@@ -1,10 +1,10 @@
+import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import { DataGrid, type GridColDef, type GridRenderCellParams } from "@mui/x-data-grid"
 import { useDataGrid } from "@refinedev/mui"
 import { useMemo, useState } from "react"
 import { type Case } from "../types"
 import DetailedViewDialog from "./details/detailed-view-dialog"
-import Box from '@mui/material/Box';
 
 export default function CaseGrid() {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null)
@@ -15,19 +15,19 @@ export default function CaseGrid() {
       {
         field: "client.name",
         headerName: "Name",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 150,
         maxWidth: 260,
         flex: 1,
         valueGetter: (params) => params.row.client.name,
         renderCell: (params) => (
-          <div style={{ overflow: "hidden", whiteSpace: "normal", wordWrap: "break-word"}}>{params.value}</div>
+          <div style={{ overflow: "hidden", whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>
         ),
       },
       {
         field: "client.email",
         headerName: "Email",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 180,
         maxWidth: 350,
         flex: 1,
@@ -37,7 +37,7 @@ export default function CaseGrid() {
       {
         field: "coaches.name",
         headerName: "Coaches",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 280,
         flex: 1,
         valueGetter: (params) => params.row.coaches.map((coach) => coach.name).join(", ") ?? "",
@@ -48,7 +48,7 @@ export default function CaseGrid() {
       {
         field: "startTime",
         headerName: "Start Date",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 120,
         type: "dateTime",
         valueGetter: (params) => new Date(params.row.startTime),
@@ -59,7 +59,7 @@ export default function CaseGrid() {
       {
         field: "endTime",
         headerName: "End Date",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 120,
         type: "dateTime",
         valueGetter: (params) => params.row.endTime && new Date(params.row.endTime),
@@ -70,7 +70,7 @@ export default function CaseGrid() {
       {
         field: "daysOpen",
         headerName: "Days Open",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         minWidth: 120,
         sortable: false,
         filterable: false,
@@ -108,7 +108,7 @@ export default function CaseGrid() {
       {
         field: "actions",
         headerName: "Actions",
-        headerClassName: 'column-header',
+        headerClassName: "column-header",
         sortable: false,
         hideable: false,
         filterable: false,
@@ -139,27 +139,26 @@ export default function CaseGrid() {
     },
   })
 
-
   return (
     <>
-    <Box
+      <Box
         sx={{
           height: 300,
-          width: '100%',
-          '& .column-header': {
-            backgroundColor: 'rgb(255, 255, 255)',
-            typography: 'subtitle1',
-            fontWeight: 'bold',
+          width: "100%",
+          "& .column-header": {
+            backgroundColor: "rgb(255, 255, 255)",
+            typography: "subtitle1",
+            fontWeight: "bold",
           },
         }}
       >
-      <DataGrid
-        {...dataGridProps}
-        getRowId={(row: Case) => row._id}
-        columns={columns}
-        autoHeight
-        pageSizeOptions={[10, 20, 30, 50, 100]}
-      />
+        <DataGrid
+          {...dataGridProps}
+          getRowId={(row: Case) => row._id}
+          columns={columns}
+          autoHeight
+          pageSizeOptions={[10, 20, 30, 50, 100]}
+        />
       </Box>
       {selectedCase && <DetailedViewDialog handleClose={handleCloseDialog} item={selectedCase} />}
     </>
