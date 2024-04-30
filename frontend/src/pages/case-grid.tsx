@@ -23,6 +23,13 @@ export default function CaseGrid() {
         ),
       },
       {
+        field: "_id",
+        headerName: "Case ID",
+        minWidth: 200,
+        flex: 1,
+        valueGetter: (params) => params.row._id,
+      },
+      {
         field: "client.email",
         headerName: "Email",
         minWidth: 120,
@@ -109,7 +116,10 @@ export default function CaseGrid() {
             size="small"
             variant="contained"
             color="primary"
-            onClick={() => setSelectedCase(params.row)}
+            onClick={() => {
+              setSelectedCase(params.row);
+              console.log(params.row);  // This will log the selected case
+            }}
             sx={{ fontSize: "0.6rem" }}
           >
             View Details

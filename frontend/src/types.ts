@@ -20,4 +20,5 @@ export interface Case {
   startTime: Date
   endTime?: Date
   notes?: string
+  documents: { data: string; name: string }[]
 }

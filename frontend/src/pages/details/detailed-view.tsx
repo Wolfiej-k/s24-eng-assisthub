@@ -5,6 +5,7 @@ import { useState } from "react"
 import { type Case } from "../../types"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
+import FileUpload from './file-upload'
 
 interface DetailedViewProps {
   item: Case
@@ -51,6 +52,25 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
     setValues({ ...values, client: { ...values.client, [field]: value } })
   }
 
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    const reader = new FileReader();
+    if (file) {
+      reader.onloadend = function () {
+        const base64string = reader.result as string;
+        setValues({ ...values, documents: [...values.documents, { data: base64string, name: file.name }] });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveDocument = (index: number) => {
+    setValues({
+      ...values,
+      documents: values.documents.filter((_, i) => i !== index),
+    });
+  };
+
   const startEditing = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsEditing(true)
@@ -75,7 +95,7 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
   return (
     <>
       <form onSubmit={isEditing ? finishEditing : startEditing}>
-        <Box component="form" noValidate autoComplete="off">
+        <Box>
           <TextField
             margin="dense"
             id="id"
@@ -129,7 +149,7 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
             fullWidth
             variant="outlined"
             value={
-              values.client.profile.startsWith("https://") ? values.client.profile : `https://${values.client.profile}`
+              values.client?.profile?.startsWith("https://") ? values.client.profile : `https://${values.client.profile}`
             }
             onChange={(e) => handleClientChange("profile", e.target.value)}
             InputProps={{ readOnly: !isEditing }}
@@ -176,6 +196,15 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
             onChange={(e) => handleChange("notes", e.target.value)}
             InputProps={{ readOnly: !isEditing }}
           />
+          <FileUpload onChange={handleFileChange} editable={isEditing} />
+          {values.documents.map((document, index) => (
+            <div key={index}>
+              <a href={document.data} download={document.name}>
+                {document.name}
+              </a>
+              {isEditing && <button onClick={() => handleRemoveDocument(index)}>Remove</button>}
+            </div>
+          ))}
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
           {isEditing ? (
