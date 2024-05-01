@@ -2,13 +2,16 @@ import {Box, IconButton} from "@mui/material";
 import DownloadIcon from '@mui/icons-material/Download';
 import {useRef} from "react";
 
-const getDefs = () => {
-  const styles = getStyles()
-
-  return `<defs><style type=\\"text/css\\"><![CDATA[${styles}}]]></style></defs>`
+interface ChartContainerProps {
+  children: React.ReactNode;
 }
 
-const stringifyStylesheet = (stylesheet) =>
+const getDefs = () => {
+  const styles = getStyles();
+  return `<defs><style type="text/css">${styles}</style></defs>`;
+};
+
+const stringifyStylesheet = (stylesheet : CSSStyleSheet) =>
   stylesheet.cssRules
     ? Array.from(stylesheet.cssRules)
       .map(rule => rule.cssText || '')
@@ -20,18 +23,25 @@ const getStyles = () =>
     .map(s => stringifyStylesheet(s))
     .join("\n")
 
-export default function ChartContainer({children}) {
-  const ref = useRef()
+//TestComponent({str}: TestComponentProps)
+function ChartContainer ({children}: ChartContainerProps)  {
+  const ref = useRef<HTMLDivElement>(null);
 
   const download = () => {
-    const svgElems = ref.current.querySelectorAll('svg[class$="MuiChartsSurface-root"]')
+    if (!ref.current) {
+      return
+    }
+    const svgElems = ref.current.querySelectorAll<SVGSVGElement>('svg[class$="MuiChartsSurface-root"]')
 
-    if (svgElems.length === 0) {
-      console.log("No svg chart found in container")
-      return;
+    if (!svgElems) {
+      return
     }
 
     const svgElem = svgElems[0]
+
+    if (!svgElem) {
+      return
+    }
     // adding styles
     const defs = getDefs()
     svgElem.insertAdjacentHTML("afterbegin", defs)
@@ -41,11 +51,13 @@ export default function ChartContainer({children}) {
     const uriData = `data:image/svg+xml;base64,${btoa(unescape(encodeURIComponent(new XMLSerializer().serializeToString(svgElem))))}`
     const img = new Image()
     img.src = uriData
-    console.log(uriData)
     img.onload = () => {
       const canvas = document.createElement("canvas");
       [canvas.width, canvas.height] = [output.width, output.height]
       const ctx = canvas.getContext("2d")
+      if (!ctx) {
+        return
+      }
       ctx.drawImage(img, 0, 0, output.width, output.height)
 
       // download
@@ -69,3 +81,5 @@ export default function ChartContainer({children}) {
     </Box>
   )
 }
+
+export default ChartContainer;

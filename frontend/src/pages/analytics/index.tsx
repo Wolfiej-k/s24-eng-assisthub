@@ -1,19 +1,12 @@
 import {
-  Button,
   Card,
   CardContent,
   Grid,
-  ListItem,
-  ListItemText,
-  Menu,
-  MenuItem,
   Typography,
   useTheme,
 } from "@mui/material"
 import { BarChart, LineChart, pieArcLabelClasses, PieChart } from "@mui/x-charts"
 import { useList } from "@refinedev/core"
-import { useState } from "react"
-import { FixedSizeList } from "react-window"
 import { type Case } from "../../types"
 import zipCodes from "./zipcodes.json"
 import ChartContainer from './downloadGraphs'
@@ -21,21 +14,7 @@ import ChartContainer from './downloadGraphs'
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 export default function AnalyticsPage() {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [selectedPlot, setSelectedPlot] = useState("open")
   const theme = useTheme()
-  const open = Boolean(anchorEl)
-
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
-
-  const handleClose = (plot?: string) => {
-    setAnchorEl(null)
-    if (plot) {
-      setSelectedPlot(plot)
-    }
-  }
 
   const { data, isLoading, error } = useList<Case>({ resource: "cases" })
 
@@ -43,14 +22,19 @@ export default function AnalyticsPage() {
     return <div>Loading...</div>
   }
 
+
   const cases = data.data
+
+  if (!cases || cases.length === 0 ) {
+    return <div>Loading...</div>
+  }
 
   const monthsBetween = (t1: Date, t2: Date) => {
     if (t1.getFullYear() == t2.getFullYear()) {
       return t2.getMonth() - t1.getMonth() + 1
     }
 
-    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() - 1)
+    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() )
   }
 
   const oldest = new Date(
@@ -64,6 +48,8 @@ export default function AnalyticsPage() {
   const monthClosedCounts = new Array<number>(months).fill(0)
   const monthLabels = new Array<string>(months).fill("")
 
+
+
   for (let m = 0; m < months; m++) {
     const month = (m + oldest.getMonth()) % monthNames.length
     const year = oldest.getFullYear() + Math.floor(m / 12)
@@ -72,6 +58,7 @@ export default function AnalyticsPage() {
 
   const caseLocations = new Map<string, number>()
   const casesCountPerCoach = new Map<string, number>()
+  const benefits = new Map<string, number>()
 
   cases.forEach((item) => {
     const startDate = new Date(item.startTime)
@@ -80,9 +67,9 @@ export default function AnalyticsPage() {
 
     const endDate = item.endTime ? new Date(item.endTime) : new Date()
     const endMonth = monthsBetween(oldest, endDate) - 1
-
     if (item.endTime) {
       monthClosedCounts[endMonth]++
+      monthOpenCounts[endMonth]--
     }
 
     for (let i = startMonth; i <= endMonth; i++) {
@@ -91,7 +78,8 @@ export default function AnalyticsPage() {
 
     const zip = item.client.zip
     if (zip in zipCodes) {
-      const location = zipCodes[zip as keyof typeof zipCodes]
+      const location = zipCodes[zip as keyof typeof zipCodes].county as string
+      // increment the count for the county
       const currentCount = caseLocations.get(location) ?? 0
       caseLocations.set(location, currentCount + 1)
     }
@@ -102,9 +90,17 @@ export default function AnalyticsPage() {
         casesCountPerCoach.set(coach.name, currentCount + 1)
       })
     }
+    if (item.benefits) {
+      const currentCount = benefits.get(item.benefits) ?? 0
+      benefits.set(item.benefits, currentCount + 1)
+    }
   })
 
   const coachChartData = Array.from(casesCountPerCoach).map(([name, count]) => {
+    return { label: name, value: count }
+  })
+
+  const benefitsData = Array.from(benefits).map(([name, count]) => {
     return { label: name, value: count }
   })
 
@@ -112,46 +108,22 @@ export default function AnalyticsPage() {
 
   return (
     <Grid container spacing={2} sx={{ padding: "12px" }}>
-      <Grid item xs={12} md={7}>
-        <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
+      <Grid item xs={1} md={7}>
+        <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
         <ChartContainer>
           <CardContent>
             <Typography variant="h6" align="center">
-              {selectedPlot == "open" ? "Cases Opened per Month" : "Cases Closed per Month"}
+            Closed Cases Per Month
             </Typography>
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <Button
-                id="basic-button"
-                aria-controls={open ? "basic-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                onClick={handleClick}
-              >
-                Other Bar Graphs
-              </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={() => handleClose()}
-                MenuListProps={{
-                  "aria-labelledby": "basic-button",
-                }}
-              >
-                <MenuItem onClick={() => handleClose("open")}>Open Cases by Month</MenuItem>
-                <MenuItem onClick={() => handleClose("close")}>Closed Cases by Month</MenuItem>
-              </Menu>
-            </div>
-            {selectedPlot === "open" && (
-
                 <BarChart
                 series={[
                   {
+                    label : "Opened Cases",
                     data: monthCounts,
                     color: theme.palette.primary.main,
                   },
                 ]}
-                height={412}
+                height={430}
                 xAxis={[
                   {
                     data: monthLabels,
@@ -159,29 +131,9 @@ export default function AnalyticsPage() {
                   },
                 ]}
                 margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
-              />
-
-            )}
-            {selectedPlot === "close" && (
-              <BarChart
-                series={[
-                  {
-                    data: monthClosedCounts,
-                    color: theme.palette.primary.main,
-                  },
-                ]}
-                height={412}
-                xAxis={[
-                  {
-                    data: monthLabels,
-                    scaleType: "band",
-                  },
-                ]}
-                margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
-              />
-            )}
+                />
           </CardContent>
-          </ChartContainer>
+        </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
@@ -193,7 +145,7 @@ export default function AnalyticsPage() {
             </Typography>
               <PieChart
                 margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
-                height={450}
+                height={430}
                 series={[
                   {
                     arcLabel: (item) => item.label?.split(" ")[0] ?? "",
@@ -202,8 +154,10 @@ export default function AnalyticsPage() {
                     paddingAngle: 1,
                     cornerRadius: 4,
                     innerRadius: 25,
+                    color: theme.palette.secondary.main,
                   },
                 ]}
+                // this is such a funny way to just make the text white😭
                 sx={{
                   [`& .${pieArcLabelClasses.root}`]: {
                     fill: theme.palette.primary.light,
@@ -230,26 +184,48 @@ export default function AnalyticsPage() {
       </Grid>
       <Grid item xs={12} md={4}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
+          <ChartContainer>
           <CardContent>
             <Typography variant="h6" align="center">
-              Cases by Area
+              Cases Per Area
             </Typography>
-            <FixedSizeList height={448} width={450} itemSize={50} itemCount={sortedCaseLocationsArray.length}>
-              {({ index }) => {
-                const [location, count] = sortedCaseLocationsArray[index]
-                return (
-                  <ListItem style={{ display: "flex", alignItems: "center" }} component="div">
-                    <div>
-                      <ListItemText
-                        primary={`${location}: ${count}`}
-                        primaryTypographyProps={{ style: { fontSize: "1.25rem" } }}
-                      />
-                    </div>
-                  </ListItem>
-                )
-              }}
-            </FixedSizeList>
+            <PieChart
+                margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
+                height={430}
+                series={[
+                  {
+                    arcLabel: (item) => item.label?.split(" ")[0] ?? "",
+                    arcLabelMinAngle: 25,
+                    data: sortedCaseLocationsArray.slice(0, 5).map(([label, value]) => ({ label, value })),
+                    paddingAngle: 1,
+                    cornerRadius: 4,
+                    innerRadius: 25,
+                    color: theme.palette.secondary.main,
+                  },
+                ]}
+                // this is such a funny way to just make the text white😭
+                sx={{
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fill: theme.palette.primary.light,
+                  },
+                }}
+                slotProps={{
+                  legend: {
+                    direction: "row",
+                    position: { vertical: "bottom", horizontal: "middle" },
+                    padding: 0,
+                    itemMarkWidth: 20,
+                    itemMarkHeight: 4,
+                    markGap: 5,
+                    itemGap: 12,
+                    labelStyle: {
+                      fontSize: 14,
+                    },
+                  },
+                }}
+              />
           </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={8}>
@@ -257,18 +233,92 @@ export default function AnalyticsPage() {
         <ChartContainer>
           <CardContent>
             <Typography variant="h6" align="center">
-              Total Open Cases per Month
+              Total Open Cases Per Month
             </Typography>
-
               <LineChart
-              height={448}
+              height={430}
               xAxis={[
                 {
                   data: monthLabels,
                   scaleType: "band",
                 },
               ]}
-              series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
+              series={[
+                { data: monthOpenCounts, color : theme.palette.primary.main}]}
+              />
+          </CardContent>
+          </ChartContainer>
+        </Card>
+      </Grid>
+      <Grid item xs={1} md={7}>
+        <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
+        <ChartContainer>
+          <CardContent>
+            <Typography variant="h6" align="center">
+            Closed Cases Per Month
+            </Typography>
+                <BarChart
+                series={[
+                  {
+                    label : "Closed Cases",
+                    data: monthClosedCounts,
+                    color: theme.palette.secondary.main,
+                  },
+                ]}
+                height={430}
+                xAxis={[
+                  {
+                    data: monthLabels,
+                    scaleType: "band",
+                  },
+                ]}
+                margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
+                />
+          </CardContent>
+        </ChartContainer>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={5}>
+        <Card sx={{ alignItems: "center" }}>
+        <ChartContainer>
+          <CardContent sx={{ justifyContent: "center" }}>
+            <Typography variant="h6" align="center">
+              Benefits Per Case
+            </Typography>
+              <PieChart
+                margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
+                height={430}
+                series={[
+                  {
+                    arcLabel: (item) => item.label?.split(" ")[0] ?? "",
+                    arcLabelMinAngle: 25,
+                    data: benefitsData,
+                    paddingAngle: 1,
+                    cornerRadius: 4,
+                    innerRadius: 25,
+                    color: theme.palette.secondary.main,
+                  },
+                ]}
+                // this is such a funny way to just make the text white😭
+                sx={{
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fill: theme.palette.primary.light,
+                  },
+                }}
+                slotProps={{
+                  legend: {
+                    direction: "row",
+                    position: { vertical: "bottom", horizontal: "middle" },
+                    padding: 0,
+                    itemMarkWidth: 20,
+                    itemMarkHeight: 4,
+                    markGap: 5,
+                    itemGap: 12,
+                    labelStyle: {
+                      fontSize: 14,
+                    },
+                  },
+                }}
               />
           </CardContent>
           </ChartContainer>
