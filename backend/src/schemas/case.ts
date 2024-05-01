@@ -8,7 +8,6 @@ const caseSchema = new Schema({
   startTime: { type: Date, default: Date.now },
   endTime: { type: Date },
   notes: { type: String },
-  benefits: { type: String },
 })
 
 export type Case = InferSchemaType<typeof caseSchema>
