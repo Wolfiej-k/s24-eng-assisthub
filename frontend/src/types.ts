@@ -20,5 +20,4 @@ export interface Case {
   startTime: Date
   endTime?: Date
   notes?: string
-  benefits: string[]
 }

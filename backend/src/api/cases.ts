@@ -64,7 +64,7 @@ router.get("/:id", async (req, res, next) => {
 })
 
 router.post("/", ensureAdmin, async (req, res, next) => {
-  const { client, coaches, data, startTime, endTime, notes, benefits } = req.body as Case
+  const { client, coaches, data, startTime, endTime, notes } = req.body as Case
   const item = new CaseModel({
     client: client,
     coaches: coaches,
@@ -72,7 +72,6 @@ router.post("/", ensureAdmin, async (req, res, next) => {
     startTime: startTime,
     endTime: endTime,
     notes: notes,
-    benefits: benefits,
   })
 
   try {
@@ -99,14 +98,13 @@ router.patch("/:id", async (req, res, next) => {
       return res.status(403).json({ error: "Forbidden" })
     }
 
-    const { client, coaches, data, startTime, endTime, notes, benefits } = req.body as Partial<Case>
+    const { client, coaches, data, startTime, endTime, notes } = req.body as Partial<Case>
     item.client = client ?? item.client
     item.coaches = coaches ?? item.coaches
     item.data = data ?? item.data
     item.startTime = startTime ?? item.startTime
     item.endTime = endTime ?? item.endTime
     item.notes = notes ?? item.notes
-    item.benefits = benefits ?? item.benefits
 
     await item.save()
     item = await item.populate("coaches")
@@ -136,14 +134,13 @@ router.put("/:id", async (req, res, next) => {
       return res.status(403).json({ error: "Forbidden" })
     }
 
-    const { client, coaches, data, startTime, endTime, notes, benefits } = req.body as Case
+    const { client, coaches, data, startTime, endTime, notes } = req.body as Case
     item.client = client
     item.coaches = coaches
     item.data = data
     item.startTime = startTime
     item.endTime = endTime
     item.notes = notes
-    item.benefits = benefits
 
     await item.save()
     item = await item.populate("coaches")
