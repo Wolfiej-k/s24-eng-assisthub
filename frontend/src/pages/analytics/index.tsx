@@ -34,7 +34,7 @@ export default function AnalyticsPage() {
       return t2.getMonth() - t1.getMonth() + 1
     }
 
-    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() )
+    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() -1)
   }
 
   const oldest = new Date(
@@ -64,6 +64,8 @@ export default function AnalyticsPage() {
     const startDate = new Date(item.startTime)
     const startMonth = monthsBetween(oldest, startDate) - 1
     monthCounts[startMonth]++
+
+
 
     const endDate = item.endTime ? new Date(item.endTime) : new Date()
     const endMonth = monthsBetween(oldest, endDate) - 1
@@ -130,7 +132,7 @@ export default function AnalyticsPage() {
                     scaleType: "band",
                   },
                 ]}
-                margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
+                margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
                 />
           </CardContent>
         </ChartContainer>
@@ -272,7 +274,7 @@ export default function AnalyticsPage() {
                     scaleType: "band",
                   },
                 ]}
-                margin={{ top: 20, bottom: 30, left: 40, right: 10 }}
+                margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
                 />
           </CardContent>
         </ChartContainer>
