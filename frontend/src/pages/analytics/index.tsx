@@ -1,15 +1,9 @@
-import {
-  Card,
-  CardContent,
-  Grid,
-  Typography,
-  useTheme,
-} from "@mui/material"
+import { Card, CardContent, Grid, Typography, useTheme } from "@mui/material"
 import { BarChart, LineChart, pieArcLabelClasses, PieChart } from "@mui/x-charts"
 import { useList } from "@refinedev/core"
 import { type Case } from "../../types"
+import ChartContainer from "./downloadGraphs"
 import zipCodes from "./zipcodes.json"
-import ChartContainer from './downloadGraphs'
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -22,10 +16,9 @@ export default function AnalyticsPage() {
     return <div>Loading...</div>
   }
 
-
   const cases = data.data
 
-  if (!cases || cases.length === 0 ) {
+  if (!cases || cases.length === 0) {
     return <div>Loading...</div>
   }
 
@@ -34,7 +27,7 @@ export default function AnalyticsPage() {
       return t2.getMonth() - t1.getMonth() + 1
     }
 
-    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() -1)
+    return t2.getMonth() + (12 - t1.getMonth() + 1) + 12 * (t2.getFullYear() - t1.getFullYear() - 1)
   }
 
   const oldest = new Date(
@@ -47,8 +40,6 @@ export default function AnalyticsPage() {
   const monthOpenCounts = new Array<number>(months).fill(0)
   const monthClosedCounts = new Array<number>(months).fill(0)
   const monthLabels = new Array<string>(months).fill("")
-
-
 
   for (let m = 0; m < months; m++) {
     const month = (m + oldest.getMonth()) % monthNames.length
@@ -80,7 +71,7 @@ export default function AnalyticsPage() {
 
     const zip = item.client.zip
     if (zip in zipCodes) {
-      const location = zipCodes[zip as keyof typeof zipCodes].county as string
+      const location = zipCodes[zip as keyof typeof zipCodes].county
       // increment the count for the county
       const currentCount = caseLocations.get(location) ?? 0
       caseLocations.set(location, currentCount + 1)
@@ -112,15 +103,15 @@ export default function AnalyticsPage() {
     <Grid container spacing={2} sx={{ padding: "12px" }}>
       <Grid item xs={1} md={7}>
         <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
-        <ChartContainer>
-          <CardContent>
-            <Typography variant="h6" align="center">
-            Closed Cases Per Month
-            </Typography>
-                <BarChart
+          <ChartContainer>
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Closed Cases Per Month
+              </Typography>
+              <BarChart
                 series={[
                   {
-                    label : "Opened Cases",
+                    label: "Opened Cases",
                     data: monthCounts,
                     color: theme.palette.primary.main,
                   },
@@ -140,11 +131,11 @@ export default function AnalyticsPage() {
       </Grid>
       <Grid item xs={12} md={5}>
         <Card sx={{ alignItems: "center" }}>
-        <ChartContainer>
-          <CardContent sx={{ justifyContent: "center" }}>
-            <Typography variant="h6" align="center">
-              Assigned Cases per Coach
-            </Typography>
+          <ChartContainer>
+            <CardContent sx={{ justifyContent: "center" }}>
+              <Typography variant="h6" align="center">
+                Assigned Cases per Coach
+              </Typography>
               <PieChart
                 margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
                 height={430}
@@ -180,18 +171,18 @@ export default function AnalyticsPage() {
                   },
                 }}
               />
-          </CardContent>
+            </CardContent>
           </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={4}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
           <ChartContainer>
-          <CardContent>
-            <Typography variant="h6" align="center">
-              Cases Per Area
-            </Typography>
-            <PieChart
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Cases Per Area
+              </Typography>
+              <PieChart
                 margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
                 height={430}
                 series={[
@@ -226,43 +217,42 @@ export default function AnalyticsPage() {
                   },
                 }}
               />
-          </CardContent>
+            </CardContent>
           </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={8}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
-        <ChartContainer>
-          <CardContent>
-            <Typography variant="h6" align="center">
-              Total Open Cases Per Month
-            </Typography>
+          <ChartContainer>
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Total Open Cases Per Month
+              </Typography>
               <LineChart
-              height={430}
-              xAxis={[
-                {
-                  data: monthLabels,
-                  scaleType: "band",
-                },
-              ]}
-              series={[
-                { data: monthOpenCounts, color : theme.palette.primary.main}]}
+                height={430}
+                xAxis={[
+                  {
+                    data: monthLabels,
+                    scaleType: "band",
+                  },
+                ]}
+                series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
               />
-          </CardContent>
+            </CardContent>
           </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={1} md={7}>
         <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
-        <ChartContainer>
-          <CardContent>
-            <Typography variant="h6" align="center">
-            Closed Cases Per Month
-            </Typography>
-                <BarChart
+          <ChartContainer>
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Closed Cases Per Month
+              </Typography>
+              <BarChart
                 series={[
                   {
-                    label : "Closed Cases",
+                    label: "Closed Cases",
                     data: monthClosedCounts,
                     color: theme.palette.secondary.main,
                   },
@@ -282,11 +272,11 @@ export default function AnalyticsPage() {
       </Grid>
       <Grid item xs={12} md={5}>
         <Card sx={{ alignItems: "center" }}>
-        <ChartContainer>
-          <CardContent sx={{ justifyContent: "center" }}>
-            <Typography variant="h6" align="center">
-              Benefits Per Case
-            </Typography>
+          <ChartContainer>
+            <CardContent sx={{ justifyContent: "center" }}>
+              <Typography variant="h6" align="center">
+                Benefits Per Case
+              </Typography>
               <PieChart
                 margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
                 height={430}
@@ -301,7 +291,6 @@ export default function AnalyticsPage() {
                     color: theme.palette.secondary.main,
                   },
                 ]}
-                // this is such a funny way to just make the text white😭
                 sx={{
                   [`& .${pieArcLabelClasses.root}`]: {
                     fill: theme.palette.primary.light,
@@ -322,7 +311,7 @@ export default function AnalyticsPage() {
                   },
                 }}
               />
-          </CardContent>
+            </CardContent>
           </ChartContainer>
         </Card>
       </Grid>
