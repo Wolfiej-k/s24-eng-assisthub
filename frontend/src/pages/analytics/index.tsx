@@ -74,7 +74,7 @@ export default function AnalyticsPage() {
 
     const zip = item.client.zip
     if (zip in zipCodes) {
-      const location = zipCodes[zip as keyof typeof zipCodes].county
+      const location = zipCodes[zip as keyof typeof zipCodes]
       const currentCount = caseLocations.get(location) ?? 0
       caseLocations.set(location, currentCount + 1)
     }
@@ -111,7 +111,7 @@ export default function AnalyticsPage() {
           <ChartContainer>
             <CardContent>
               <Typography variant="h6" align="center">
-                Opened Cases Per Month
+                Closed Cases Per Month
               </Typography>
               <BarChart
                 series={[

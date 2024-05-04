@@ -1,7030 +1,1723 @@
 {
-  "89439": {
-    "city": "NaN",
-    "county": "Sierra"
-  },
-  "90001": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90002": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90003": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90004": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90005": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90006": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90007": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90008": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90010": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90011": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90012": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90013": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90014": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90015": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90016": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90017": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90018": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90019": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90020": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90021": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90022": {
-    "city": "East los Angeles",
-    "county": "Los Angeles"
-  },
-  "90023": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90024": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90025": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90026": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90027": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90028": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90029": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90031": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90032": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90033": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90034": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90035": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90036": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90037": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90038": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90039": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90040": {
-    "city": "City of commerce",
-    "county": "Los Angeles"
-  },
-  "90041": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90042": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90043": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90044": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90045": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90046": {
-    "city": "Cole",
-    "county": "Los Angeles"
-  },
-  "90047": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90048": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90049": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90056": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90057": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90058": {
-    "city": "Vernon",
-    "county": "Los Angeles"
-  },
-  "90059": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90061": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90062": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90063": {
-    "city": "Hazard",
-    "county": "Los Angeles"
-  },
-  "90064": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90065": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90066": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90067": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90068": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90069": {
-    "city": "West hollywood",
-    "county": "Los Angeles"
-  },
-  "90071": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90077": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "900HH": {
-    "city": "Los Angeles",
-    "county": "Los Angeles"
-  },
-  "90201": {
-    "city": "Bell gardens",
-    "county": "Los Angeles"
-  },
-  "90210": {
-    "city": "Beverly hills",
-    "county": "Los Angeles"
-  },
-  "90211": {
-    "city": "Beverly hills",
-    "county": "Los Angeles"
-  },
-  "90212": {
-    "city": "Beverly hills",
-    "county": "Los Angeles"
-  },
-  "90220": {
-    "city": "Rancho dominguez",
-    "county": "Los Angeles"
-  },
-  "90221": {
-    "city": "East rancho domi",
-    "county": "Los Angeles"
-  },
-  "90222": {
-    "city": "Rosewood",
-    "county": "Los Angeles"
-  },
-  "90230": {
-    "city": "Culver city",
-    "county": "Los Angeles"
-  },
-  "90232": {
-    "city": "Culver city",
-    "county": "Los Angeles"
-  },
-  "90240": {
-    "city": "Downey",
-    "county": "Los Angeles"
-  },
-  "90241": {
-    "city": "Downey",
-    "county": "Los Angeles"
-  },
-  "90242": {
-    "city": "Downey",
-    "county": "Los Angeles"
-  },
-  "90245": {
-    "city": "El segundo",
-    "county": "Los Angeles"
-  },
-  "90247": {
-    "city": "Gardena",
-    "county": "Los Angeles"
-  },
-  "90248": {
-    "city": "Gardena",
-    "county": "Los Angeles"
-  },
-  "90249": {
-    "city": "Gardena",
-    "county": "Los Angeles"
-  },
-  "90250": {
-    "city": "Holly park",
-    "county": "Los Angeles"
-  },
-  "90254": {
-    "city": "Hermosa beach",
-    "county": "Los Angeles"
-  },
-  "90255": {
-    "city": "Huntington park",
-    "county": "Los Angeles"
-  },
-  "90260": {
-    "city": "Lawndale",
-    "county": "Los Angeles"
-  },
-  "90261": {
-    "city": "Lawndale",
-    "county": "Los Angeles"
-  },
-  "90262": {
-    "city": "Lynwood",
-    "county": "Los Angeles"
-  },
-  "90263": {
-    "city": "Malibu",
-    "county": "Los Angeles"
-  },
-  "90265": {
-    "city": "Malibu",
-    "county": "Los Angeles"
-  },
-  "90266": {
-    "city": "Manhattan beach",
-    "county": "Los Angeles"
-  },
-  "90270": {
-    "city": "Maywood",
-    "county": "Los Angeles"
-  },
-  "90272": {
-    "city": "Pacific palisade",
-    "county": "Los Angeles"
-  },
-  "90274": {
-    "city": "Palos verdes est",
-    "county": "Los Angeles"
-  },
-  "90275": {
-    "city": "Zcta 90275",
-    "county": "Los Angeles"
-  },
-  "90277": {
-    "city": "Redondo beach",
-    "county": "Los Angeles"
-  },
-  "90278": {
-    "city": "Redondo beach",
-    "county": "Los Angeles"
-  },
-  "90280": {
-    "city": "South gate",
-    "county": "Los Angeles"
-  },
-  "90290": {
-    "city": "Topanga",
-    "county": "Los Angeles"
-  },
-  "90291": {
-    "city": "Venice",
-    "county": "Los Angeles"
-  },
-  "90292": {
-    "city": "Marina del rey",
-    "county": "Los Angeles"
-  },
-  "90293": {
-    "city": "Playa del rey",
-    "county": "Los Angeles"
-  },
-  "902HH": {
-    "city": "Zcta 902hh",
-    "county": "Los Angeles"
-  },
-  "90301": {
-    "city": "Inglewood",
-    "county": "Los Angeles"
-  },
-  "90302": {
-    "city": "Inglewood",
-    "county": "Los Angeles"
-  },
-  "90303": {
-    "city": "Inglewood",
-    "county": "Los Angeles"
-  },
-  "90304": {
-    "city": "Lennox",
-    "county": "Los Angeles"
-  },
-  "90305": {
-    "city": "Inglewood",
-    "county": "Los Angeles"
-  },
-  "90401": {
-    "city": "Santa monica",
-    "county": "Los Angeles"
-  },
-  "90402": {
-    "city": "Santa monica",
-    "county": "Los Angeles"
-  },
-  "90403": {
-    "city": "Santa monica",
-    "county": "Los Angeles"
-  },
-  "90404": {
-    "city": "Santa monica",
-    "county": "Los Angeles"
-  },
-  "90405": {
-    "city": "Santa monica",
-    "county": "Los Angeles"
-  },
-  "904HH": {
-    "city": "Zcta 904hh",
-    "county": "Los Angeles"
-  },
-  "90501": {
-    "city": "Torrance",
-    "county": "Los Angeles"
-  },
-  "90502": {
-    "city": "Torrance",
-    "county": "Los Angeles"
-  },
-  "90503": {
-    "city": "Torrance",
-    "county": "Los Angeles"
-  },
-  "90504": {
-    "city": "Torrance",
-    "county": "Los Angeles"
-  },
-  "90505": {
-    "city": "Torrance",
-    "county": "Los Angeles"
-  },
-  "90601": {
-    "city": "Whittier",
-    "county": "Los Angeles"
-  },
-  "90602": {
-    "city": "Whittier",
-    "county": "Los Angeles"
-  },
-  "90603": {
-    "city": "Whittier",
-    "county": "Los Angeles"
-  },
-  "90604": {
-    "city": "Whittier",
-    "county": "Los Angeles"
-  },
-  "90605": {
-    "city": "Whittier",
-    "county": "Los Angeles"
-  },
-  "90606": {
-    "city": "Los nietos",
-    "county": "Los Angeles"
-  },
-  "90620": {
-    "city": "Buena park",
-    "county": "Orange"
-  },
-  "90621": {
-    "city": "Buena park",
-    "county": "Orange"
-  },
-  "90623": {
-    "city": "Cerritos",
-    "county": "Orange"
-  },
-  "90630": {
-    "city": "Cypress",
-    "county": "Orange"
-  },
-  "90631": {
-    "city": "La habra heights",
-    "county": "Orange"
-  },
-  "90638": {
-    "city": "La mirada",
-    "county": "Los Angeles"
-  },
-  "90640": {
-    "city": "Montebello",
-    "county": "Los Angeles"
-  },
-  "90650": {
-    "city": "Norwalk",
-    "county": "Los Angeles"
-  },
-  "90660": {
-    "city": "Pico rivera",
-    "county": "Los Angeles"
-  },
-  "90670": {
-    "city": "Santa fe springs",
-    "county": "Los Angeles"
-  },
-  "90680": {
-    "city": "Stanton",
-    "county": "Orange"
-  },
-  "906HH": {
-    "city": "Zcta 906hh",
-    "county": "Los Angeles"
-  },
-  "90701": {
-    "city": "Cerritos",
-    "county": "Los Angeles"
-  },
-  "90703": {
-    "city": "Cerritos",
-    "county": "Los Angeles"
-  },
-  "90704": {
-    "city": "Avalon",
-    "county": "Los Angeles"
-  },
-  "90706": {
-    "city": "Bellflower",
-    "county": "Los Angeles"
-  },
-  "90710": {
-    "city": "Harbor city",
-    "county": "Los Angeles"
-  },
-  "90712": {
-    "city": "Lakewood",
-    "county": "Los Angeles"
-  },
-  "90713": {
-    "city": "Lakewood",
-    "county": "Los Angeles"
-  },
-  "90715": {
-    "city": "Lakewood",
-    "county": "Los Angeles"
-  },
-  "90716": {
-    "city": "Hawaiian gardens",
-    "county": "Los Angeles"
-  },
-  "90717": {
-    "city": "Rancho palos ver",
-    "county": "Los Angeles"
-  },
-  "90720": {
-    "city": "Rossmoor",
-    "county": "Orange"
-  },
-  "90723": {
-    "city": "Paramount",
-    "county": "Los Angeles"
-  },
-  "90731": {
-    "city": "San pedro",
-    "county": "Los Angeles"
-  },
-  "90732": {
-    "city": "Rancho palos ver",
-    "county": "Los Angeles"
-  },
-  "90740": {
-    "city": "Seal beach",
-    "county": "Orange"
-  },
-  "90742": {
-    "city": "Sunset beach",
-    "county": "Orange"
-  },
-  "90743": {
-    "city": "Surfside",
-    "county": "Orange"
-  },
-  "90744": {
-    "city": "Wilmington",
-    "county": "Los Angeles"
-  },
-  "90745": {
-    "city": "Carson",
-    "county": "Los Angeles"
-  },
-  "90746": {
-    "city": "Carson",
-    "county": "Los Angeles"
-  },
-  "907HH": {
-    "city": "Zcta 907hh",
-    "county": "Los Angeles"
-  },
-  "907XX": {
-    "city": "Zcta 907xx",
-    "county": "Los Angeles"
-  },
-  "90802": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90803": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90804": {
-    "city": "Signal hill",
-    "county": "Los Angeles"
-  },
-  "90805": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90806": {
-    "city": "Signal hill",
-    "county": "Los Angeles"
-  },
-  "90807": {
-    "city": "Signal hill",
-    "county": "Los Angeles"
-  },
-  "90808": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90810": {
-    "city": "Carson",
-    "county": "Los Angeles"
-  },
-  "90813": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90814": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90815": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "90822": {
-    "city": "Long beach",
-    "county": "Los Angeles"
-  },
-  "908HH": {
-    "city": "Zcta 908hh",
-    "county": "Los Angeles"
-  },
-  "91001": {
-    "city": "Altadena",
-    "county": "Los Angeles"
-  },
-  "91006": {
-    "city": "Arcadia",
-    "county": "Los Angeles"
-  },
-  "91007": {
-    "city": "Arcadia",
-    "county": "Los Angeles"
-  },
-  "91010": {
-    "city": "Bradbury",
-    "county": "Los Angeles"
-  },
-  "91011": {
-    "city": "Flintridge",
-    "county": "Los Angeles"
-  },
-  "91016": {
-    "city": "Monrovia",
-    "county": "Los Angeles"
-  },
-  "91020": {
-    "city": "Montrose",
-    "county": "Los Angeles"
-  },
-  "91024": {
-    "city": "Sierra madre",
-    "county": "Los Angeles"
-  },
-  "91030": {
-    "city": "South pasadena",
-    "county": "Los Angeles"
-  },
-  "91040": {
-    "city": "Shadow hills",
-    "county": "Los Angeles"
-  },
-  "91042": {
-    "city": "Tujunga",
-    "county": "Los Angeles"
-  },
-  "910HH": {
-    "city": "Zcta 910hh",
-    "county": "Los Angeles"
-  },
-  "910XX": {
-    "city": "Zcta 910xx",
-    "county": "Los Angeles"
-  },
-  "91101": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91103": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91104": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91105": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91106": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91107": {
-    "city": "Pasadena",
-    "county": "Los Angeles"
-  },
-  "91108": {
-    "city": "San marino",
-    "county": "Los Angeles"
-  },
-  "91201": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91202": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91203": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91204": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91205": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91206": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91207": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91208": {
-    "city": "Glendale",
-    "county": "Los Angeles"
-  },
-  "91214": {
-    "city": "La crescenta",
-    "county": "Los Angeles"
-  },
-  "91301": {
-    "city": "Oak park",
-    "county": "Los Angeles"
-  },
-  "91302": {
-    "city": "Calabasas",
-    "county": "Los Angeles"
-  },
-  "91303": {
-    "city": "Canoga park",
-    "county": "Los Angeles"
-  },
-  "91304": {
-    "city": "Canoga park",
-    "county": "Los Angeles"
-  },
-  "91306": {
-    "city": "Winnetka",
-    "county": "Los Angeles"
-  },
-  "91307": {
-    "city": "West hills",
-    "county": "Los Angeles"
-  },
-  "91311": {
-    "city": "Chatsworth",
-    "county": "Los Angeles"
-  },
-  "91316": {
-    "city": "Encino",
-    "county": "Los Angeles"
-  },
-  "91320": {
-    "city": "Newbury park",
-    "county": "Ventura"
-  },
-  "91321": {
-    "city": "Newhall",
-    "county": "Los Angeles"
-  },
-  "91324": {
-    "city": "Northridge",
-    "county": "Los Angeles"
-  },
-  "91325": {
-    "city": "Northridge",
-    "county": "Los Angeles"
-  },
-  "91326": {
-    "city": "Porter ranch",
-    "county": "Los Angeles"
-  },
-  "91331": {
-    "city": "Arleta",
-    "county": "Los Angeles"
-  },
-  "91335": {
-    "city": "Reseda",
-    "county": "Los Angeles"
-  },
-  "91340": {
-    "city": "San fernando",
-    "county": "Los Angeles"
-  },
-  "91342": {
-    "city": "Sylmar",
-    "county": "Los Angeles"
-  },
-  "91343": {
-    "city": "North hills",
-    "county": "Los Angeles"
-  },
-  "91344": {
-    "city": "Granada hills",
-    "county": "Los Angeles"
-  },
-  "91345": {
-    "city": "Mission hills",
-    "county": "Los Angeles"
-  },
-  "91350": {
-    "city": "Agua dulce",
-    "county": "Los Angeles"
-  },
-  "91351": {
-    "city": "Canyon country",
-    "county": "Los Angeles"
-  },
-  "91352": {
-    "city": "Sun valley",
-    "county": "Los Angeles"
-  },
-  "91354": {
-    "city": "Valencia",
-    "county": "Los Angeles"
-  },
-  "91355": {
-    "city": "Valencia",
-    "county": "Los Angeles"
-  },
-  "91356": {
-    "city": "Tarzana",
-    "county": "Los Angeles"
-  },
-  "91360": {
-    "city": "Thousand oaks",
-    "county": "Ventura"
-  },
-  "91361": {
-    "city": "Westlake village",
-    "county": "Ventura"
-  },
-  "91362": {
-    "city": "Westlake village",
-    "county": "Ventura"
-  },
-  "91364": {
-    "city": "Woodland hills",
-    "county": "Los Angeles"
-  },
-  "91367": {
-    "city": "Woodland hills",
-    "county": "Los Angeles"
-  },
-  "91377": {
-    "city": "Zcta 91377",
-    "county": "Ventura"
-  },
-  "91381": {
-    "city": "Newhall",
-    "county": "Los Angeles"
-  },
-  "91384": {
-    "city": "Castaic",
-    "county": "Los Angeles"
-  },
-  "913HH": {
-    "city": "Zcta 913hh",
-    "county": "Los Angeles"
-  },
-  "913XX": {
-    "city": "Zcta 913xx",
-    "county": "Los Angeles"
-  },
-  "91401": {
-    "city": "Van nuys",
-    "county": "Los Angeles"
-  },
-  "91402": {
-    "city": "Panorama city",
-    "county": "Los Angeles"
-  },
-  "91403": {
-    "city": "Sherman oaks",
-    "county": "Los Angeles"
-  },
-  "91405": {
-    "city": "Van nuys",
-    "county": "Los Angeles"
-  },
-  "91406": {
-    "city": "Van nuys",
-    "county": "Los Angeles"
-  },
-  "91411": {
-    "city": "Van nuys",
-    "county": "Los Angeles"
-  },
-  "91423": {
-    "city": "Sherman oaks",
-    "county": "Los Angeles"
-  },
-  "91436": {
-    "city": "Encino",
-    "county": "Los Angeles"
-  },
-  "91501": {
-    "city": "Burbank",
-    "county": "Los Angeles"
-  },
-  "91502": {
-    "city": "Burbank",
-    "county": "Los Angeles"
-  },
-  "91504": {
-    "city": "Burbank",
-    "county": "Los Angeles"
-  },
-  "91505": {
-    "city": "Burbank",
-    "county": "Los Angeles"
-  },
-  "91506": {
-    "city": "Burbank",
-    "county": "Los Angeles"
-  },
-  "91601": {
-    "city": "North hollywood",
-    "county": "Los Angeles"
-  },
-  "91602": {
-    "city": "Toluca lake",
-    "county": "Los Angeles"
-  },
-  "91604": {
-    "city": "Studio city",
-    "county": "Los Angeles"
-  },
-  "91605": {
-    "city": "North hollywood",
-    "county": "Los Angeles"
-  },
-  "91606": {
-    "city": "North hollywood",
-    "county": "Los Angeles"
-  },
-  "91607": {
-    "city": "Valley village",
-    "county": "Los Angeles"
-  },
-  "91608": {
-    "city": "Universal city",
-    "county": "Los Angeles"
-  },
-  "91701": {
-    "city": "Alta loma",
-    "county": "San Bernardino"
-  },
-  "91702": {
-    "city": "Azusa",
-    "county": "Los Angeles"
-  },
-  "91706": {
-    "city": "Irwindale",
-    "county": "Los Angeles"
-  },
-  "91709": {
-    "city": "Chino hills",
-    "county": "San Bernardino"
-  },
-  "91710": {
-    "city": "Chino",
-    "county": "San Bernardino"
-  },
-  "91711": {
-    "city": "Claremont",
-    "county": "Los Angeles"
-  },
-  "91719": {
-    "city": "Corona",
-    "county": "Riverside"
-  },
-  "91722": {
-    "city": "Covina",
-    "county": "Los Angeles"
-  },
-  "91723": {
-    "city": "Covina",
-    "county": "Los Angeles"
-  },
-  "91724": {
-    "city": "Covina",
-    "county": "Los Angeles"
-  },
-  "91730": {
-    "city": "Rancho cucamonga",
-    "county": "San Bernardino"
-  },
-  "91731": {
-    "city": "El monte",
-    "county": "Los Angeles"
-  },
-  "91732": {
-    "city": "El monte",
-    "county": "Los Angeles"
-  },
-  "91733": {
-    "city": "South el monte",
-    "county": "Los Angeles"
-  },
-  "91737": {
-    "city": "Alta loma",
-    "county": "San Bernardino"
-  },
-  "91739": {
-    "city": "Etiwanda",
-    "county": "San Bernardino"
-  },
-  "91740": {
-    "city": "Glendora",
-    "county": "Los Angeles"
-  },
-  "91741": {
-    "city": "Glendora",
-    "county": "Los Angeles"
-  },
-  "91743": {
-    "city": "Guasti",
-    "county": "San Bernardino"
-  },
-  "91744": {
-    "city": "Industry",
-    "county": "Los Angeles"
-  },
-  "91745": {
-    "city": "Hacienda heights",
-    "county": "Los Angeles"
-  },
-  "91746": {
-    "city": "Bassett",
-    "county": "Los Angeles"
-  },
-  "91748": {
-    "city": "Rowland heights",
-    "county": "Los Angeles"
-  },
-  "91750": {
-    "city": "La verne",
-    "county": "Los Angeles"
-  },
-  "91752": {
-    "city": "Mira loma",
-    "county": "Riverside"
-  },
-  "91754": {
-    "city": "Monterey park",
-    "county": "Los Angeles"
-  },
-  "91755": {
-    "city": "Monterey park",
-    "county": "Los Angeles"
-  },
-  "91759": {
-    "city": "Mt baldy",
-    "county": "Los Angeles"
-  },
-  "91761": {
-    "city": "Ontario",
-    "county": "San Bernardino"
-  },
-  "91762": {
-    "city": "Ontario",
-    "county": "San Bernardino"
-  },
-  "91763": {
-    "city": "Montclair",
-    "county": "San Bernardino"
-  },
-  "91764": {
-    "city": "Ontario",
-    "county": "San Bernardino"
-  },
-  "91765": {
-    "city": "Diamond bar",
-    "county": "Los Angeles"
-  },
-  "91766": {
-    "city": "Phillips ranch",
-    "county": "Los Angeles"
-  },
-  "91767": {
-    "city": "Pomona",
-    "county": "Los Angeles"
-  },
-  "91768": {
-    "city": "Pomona",
-    "county": "Los Angeles"
-  },
-  "91770": {
-    "city": "Rosemead",
-    "county": "Los Angeles"
-  },
-  "91773": {
-    "city": "San dimas",
-    "county": "Los Angeles"
-  },
-  "91775": {
-    "city": "San gabriel",
-    "county": "Los Angeles"
-  },
-  "91776": {
-    "city": "San gabriel",
-    "county": "Los Angeles"
-  },
-  "91780": {
-    "city": "Temple city",
-    "county": "Los Angeles"
-  },
-  "91784": {
-    "city": "Upland",
-    "county": "San Bernardino"
-  },
-  "91786": {
-    "city": "Upland",
-    "county": "San Bernardino"
-  },
-  "91789": {
-    "city": "Diamond bar",
-    "county": "Los Angeles"
-  },
-  "91790": {
-    "city": "West covina",
-    "county": "Los Angeles"
-  },
-  "91791": {
-    "city": "West covina",
-    "county": "Los Angeles"
-  },
-  "91792": {
-    "city": "West covina",
-    "county": "Los Angeles"
-  },
-  "917HH": {
-    "city": "Zcta 917hh",
-    "county": "Los Angeles"
-  },
-  "917XX": {
-    "city": "Zcta 917xx",
-    "county": "Los Angeles"
-  },
-  "91801": {
-    "city": "Alhambra",
-    "county": "Los Angeles"
-  },
-  "91803": {
-    "city": "Alhambra",
-    "county": "Los Angeles"
-  },
-  "91901": {
-    "city": "Alpine",
-    "county": "San Diego"
-  },
-  "91902": {
-    "city": "Bonita",
-    "county": "San Diego"
-  },
-  "91905": {
-    "city": "Boulevard",
-    "county": "San Diego"
-  },
-  "91906": {
-    "city": "Campo",
-    "county": "San Diego"
-  },
-  "91910": {
-    "city": "Chula vista",
-    "county": "San Diego"
-  },
-  "91911": {
-    "city": "Chula vista",
-    "county": "San Diego"
-  },
-  "91913": {
-    "city": "Chula vista",
-    "county": "San Diego"
-  },
-  "91914": {
-    "city": "Chula vista",
-    "county": "San Diego"
-  },
-  "91915": {
-    "city": "Chula vista",
-    "county": "San Diego"
-  },
-  "91916": {
-    "city": "Descanso",
-    "county": "San Diego"
-  },
-  "91917": {
-    "city": "Dulzura",
-    "county": "San Diego"
-  },
-  "91931": {
-    "city": "Guatay",
-    "county": "San Diego"
-  },
-  "91932": {
-    "city": "Imperial beach",
-    "county": "San Diego"
-  },
-  "91934": {
-    "city": "Jacumba",
-    "county": "San Diego"
-  },
-  "91935": {
-    "city": "Jamul",
-    "county": "San Diego"
-  },
-  "91941": {
-    "city": "La mesa",
-    "county": "San Diego"
-  },
-  "91942": {
-    "city": "La mesa",
-    "county": "San Diego"
-  },
-  "91945": {
-    "city": "Lemon grove",
-    "county": "San Diego"
-  },
-  "91948": {
-    "city": "Mount laguna",
-    "county": "San Diego"
-  },
-  "91950": {
-    "city": "National city",
-    "county": "San Diego"
-  },
-  "91962": {
-    "city": "Pine valley",
-    "county": "San Diego"
-  },
-  "91963": {
-    "city": "Potrero",
-    "county": "San Diego"
-  },
-  "91977": {
-    "city": "Spring valley",
-    "county": "San Diego"
-  },
-  "91978": {
-    "city": "Spring valley",
-    "county": "San Diego"
-  },
-  "91980": {
-    "city": "Tecate",
-    "county": "San Diego"
-  },
-  "919HH": {
-    "city": "Zcta 919hh",
-    "county": "San Diego"
-  },
-  "919XX": {
-    "city": "Zcta 919xx",
-    "county": "San Diego"
-  },
-  "92003": {
-    "city": "Bonsall",
-    "county": "San Diego"
-  },
-  "92004": {
-    "city": "Borrego springs",
-    "county": "San Diego"
-  },
-  "92007": {
-    "city": "Cardiff by the s",
-    "county": "San Diego"
-  },
-  "92008": {
-    "city": "Carlsbad",
-    "county": "San Diego"
-  },
-  "92009": {
-    "city": "Carlsbad",
-    "county": "San Diego"
-  },
-  "92014": {
-    "city": "Del mar",
-    "county": "San Diego"
-  },
-  "92019": {
-    "city": "El cajon",
-    "county": "San Diego"
-  },
-  "92020": {
-    "city": "El cajon",
-    "county": "San Diego"
-  },
-  "92021": {
-    "city": "El cajon",
-    "county": "San Diego"
-  },
-  "92024": {
-    "city": "Encinitas",
-    "county": "San Diego"
-  },
-  "92025": {
-    "city": "Escondido",
-    "county": "San Diego"
-  },
-  "92026": {
-    "city": "Escondido",
-    "county": "San Diego"
-  },
-  "92027": {
-    "city": "Escondido",
-    "county": "San Diego"
-  },
-  "92028": {
-    "city": "Fallbrook",
-    "county": "San Diego"
-  },
-  "92029": {
-    "city": "Escondido",
-    "county": "San Diego"
-  },
-  "92036": {
-    "city": "Julian",
-    "county": "San Diego"
-  },
-  "92037": {
-    "city": "La jolla",
-    "county": "San Diego"
-  },
-  "92040": {
-    "city": "Lakeside",
-    "county": "San Diego"
-  },
-  "92054": {
-    "city": "Oceanside",
-    "county": "San Diego"
-  },
-  "92056": {
-    "city": "Oceanside",
-    "county": "San Diego"
-  },
-  "92057": {
-    "city": "Oceanside",
-    "county": "San Diego"
-  },
-  "92059": {
-    "city": "Pala",
-    "county": "San Diego"
-  },
-  "92060": {
-    "city": "Palomar mountain",
-    "county": "San Diego"
-  },
-  "92061": {
-    "city": "Pauma valley",
-    "county": "San Diego"
-  },
-  "92064": {
-    "city": "Poway",
-    "county": "San Diego"
-  },
-  "92065": {
-    "city": "Ramona",
-    "county": "San Diego"
-  },
-  "92066": {
-    "city": "Ranchita",
-    "county": "San Diego"
-  },
-  "92067": {
-    "city": "Rancho santa fe",
-    "county": "San Diego"
-  },
-  "92069": {
-    "city": "San marcos",
-    "county": "San Diego"
-  },
-  "92070": {
-    "city": "Santa ysabel",
-    "county": "San Diego"
-  },
-  "92071": {
-    "city": "Santee",
-    "county": "San Diego"
-  },
-  "92075": {
-    "city": "Solana beach",
-    "county": "San Diego"
-  },
-  "92078": {
-    "city": "Zcta 92078",
-    "county": "San Diego"
-  },
-  "92082": {
-    "city": "Valley center",
-    "county": "San Diego"
-  },
-  "92083": {
-    "city": "Vista",
-    "county": "San Diego"
-  },
-  "92084": {
-    "city": "Vista",
-    "county": "San Diego"
-  },
-  "92086": {
-    "city": "Warner springs",
-    "county": "San Diego"
-  },
-  "92091": {
-    "city": "Zcta 92091",
-    "county": "San Diego"
-  },
-  "920HH": {
-    "city": "Zcta 920hh",
-    "county": "San Diego"
-  },
-  "920XX": {
-    "city": "Zcta 920xx",
-    "county": "San Diego"
-  },
-  "92101": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92102": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92103": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92104": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92105": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92106": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92107": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92108": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92109": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92110": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92111": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92113": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92114": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92115": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92116": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92117": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92118": {
-    "city": "Coronado",
-    "county": "San Diego"
-  },
-  "92119": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92120": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92121": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92122": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92123": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92124": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92126": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92127": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92128": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92129": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92130": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92131": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92139": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92154": {
-    "city": "San diego",
-    "county": "San Diego"
-  },
-  "92173": {
-    "city": "San ysidro",
-    "county": "San Diego"
-  },
-  "921HH": {
-    "city": "Zcta 921hh",
-    "county": "San Diego"
-  },
-  "92201": {
-    "city": "Chiriaco summit",
-    "county": "Riverside"
-  },
-  "92203": {
-    "city": "Indio",
-    "county": "Riverside"
-  },
-  "92210": {
-    "city": "Indian wells",
-    "county": "Riverside"
-  },
-  "92211": {
-    "city": "Palm desert",
-    "county": "Riverside"
-  },
-  "92220": {
-    "city": "Banning",
-    "county": "Riverside"
-  },
-  "92223": {
-    "city": "Beaumont",
-    "county": "Riverside"
-  },
-  "92225": {
-    "city": "Lost lake",
-    "county": "Riverside"
-  },
-  "92227": {
-    "city": "Brawley",
-    "county": "Imperial"
-  },
-  "92230": {
-    "city": "Cabazon",
-    "county": "Riverside"
-  },
-  "92231": {
-    "city": "Calexico",
-    "county": "Imperial"
-  },
-  "92233": {
-    "city": "Calipatria",
-    "county": "Imperial"
-  },
-  "92234": {
-    "city": "Cathedral city",
-    "county": "Riverside"
-  },
-  "92236": {
-    "city": "Coachella",
-    "county": "Riverside"
-  },
-  "92239": {
-    "city": "Eagle mountain",
-    "county": "Riverside"
-  },
-  "92240": {
-    "city": "Desert hot sprin",
-    "county": "Riverside"
-  },
-  "92241": {
-    "city": "Desert hot sprin",
-    "county": "Riverside"
-  },
-  "92242": {
-    "city": "Big river",
-    "county": "San Bernardino"
-  },
-  "92243": {
-    "city": "El centro",
-    "county": "Imperial"
-  },
-  "92249": {
-    "city": "Heber",
-    "county": "Imperial"
-  },
-  "92250": {
-    "city": "Holtville",
-    "county": "Imperial"
-  },
-  "92251": {
-    "city": "Imperial",
-    "county": "Imperial"
-  },
-  "92252": {
-    "city": "Joshua tree",
-    "county": "San Bernardino"
-  },
-  "92253": {
-    "city": "La quinta",
-    "county": "Riverside"
-  },
-  "92254": {
-    "city": "Mecca",
-    "county": "Riverside"
-  },
-  "92256": {
-    "city": "Morongo valley",
-    "county": "San Bernardino"
-  },
-  "92257": {
-    "city": "Niland",
-    "county": "Imperial"
-  },
-  "92258": {
-    "city": "North palm sprin",
-    "county": "Riverside"
-  },
-  "92259": {
-    "city": "Ocotillo",
-    "county": "Imperial"
-  },
-  "92260": {
-    "city": "Palm city",
-    "county": "Riverside"
-  },
-  "92262": {
-    "city": "Palm springs",
-    "county": "Riverside"
-  },
-  "92264": {
-    "city": "Palm springs",
-    "county": "Riverside"
-  },
-  "92266": {
-    "city": "Palo verde",
-    "county": "Imperial"
-  },
-  "92267": {
-    "city": "Parker dam",
-    "county": "San Bernardino"
-  },
-  "92268": {
-    "city": "Pioneertown",
-    "county": "San Bernardino"
-  },
-  "92270": {
-    "city": "Rancho mirage",
-    "county": "Riverside"
-  },
-  "92273": {
-    "city": "Seeley",
-    "county": "Imperial"
-  },
-  "92274": {
-    "city": "Salton city",
-    "county": "Riverside"
-  },
-  "92275": {
-    "city": "Salton city",
-    "county": "Imperial"
-  },
-  "92276": {
-    "city": "Thousand palms",
-    "county": "Riverside"
-  },
-  "92277": {
-    "city": "Twentynine palms",
-    "county": "San Bernardino"
-  },
-  "92278": {
-    "city": "Twentynine palms",
-    "county": "San Bernardino"
-  },
-  "92280": {
-    "city": "Vidal",
-    "county": "San Bernardino"
-  },
-  "92281": {
-    "city": "Westmorland",
-    "county": "Imperial"
-  },
-  "92282": {
-    "city": "White water",
-    "county": "Riverside"
-  },
-  "92283": {
-    "city": "Felicity",
-    "county": "Imperial"
-  },
-  "92284": {
-    "city": "Yucca valley",
-    "county": "San Bernardino"
-  },
-  "92285": {
-    "city": "Landers",
-    "county": "San Bernardino"
-  },
-  "922HH": {
-    "city": "Zcta 922hh",
-    "county": "Imperial"
-  },
-  "922XX": {
-    "city": "Zcta 922xx",
-    "county": "Riverside"
-  },
-  "92301": {
-    "city": "Adelanto",
-    "county": "San Bernardino"
-  },
-  "92304": {
-    "city": "Amboy",
-    "county": "San Bernardino"
-  },
-  "92305": {
-    "city": "Angelus oaks",
-    "county": "San Bernardino"
-  },
-  "92307": {
-    "city": "Apple valley",
-    "county": "San Bernardino"
-  },
-  "92308": {
-    "city": "Apple valley",
-    "county": "San Bernardino"
-  },
-  "92309": {
-    "city": "Baker",
-    "county": "San Bernardino"
-  },
-  "92310": {
-    "city": "Fort irwin",
-    "county": "San Bernardino"
-  },
-  "92311": {
-    "city": "Barstow",
-    "county": "San Bernardino"
-  },
-  "92313": {
-    "city": "Zcta 92313",
-    "county": "San Bernardino"
-  },
-  "92314": {
-    "city": "Big bear city",
-    "county": "San Bernardino"
-  },
-  "92315": {
-    "city": "Big bear lake",
-    "county": "San Bernardino"
-  },
-  "92316": {
-    "city": "Bloomington",
-    "county": "San Bernardino"
-  },
-  "92317": {
-    "city": "Blue jay",
-    "county": "San Bernardino"
-  },
-  "92318": {
-    "city": "Bryn mawr",
-    "county": "San Bernardino"
-  },
-  "92320": {
-    "city": "Calimesa",
-    "county": "Riverside"
-  },
-  "92321": {
-    "city": "Cedar glen",
-    "county": "San Bernardino"
-  },
-  "92323": {
-    "city": "Cima",
-    "county": "San Bernardino"
-  },
-  "92324": {
-    "city": "Grand terrace",
-    "county": "San Bernardino"
-  },
-  "92325": {
-    "city": "Crestline",
-    "county": "San Bernardino"
-  },
-  "92327": {
-    "city": "Daggett",
-    "county": "San Bernardino"
-  },
-  "92328": {
-    "city": "Death valley",
-    "county": "Inyo"
-  },
-  "92332": {
-    "city": "Essex",
-    "county": "San Bernardino"
-  },
-  "92333": {
-    "city": "Fawnskin",
-    "county": "San Bernardino"
-  },
-  "92335": {
-    "city": "Fontana",
-    "county": "San Bernardino"
-  },
-  "92336": {
-    "city": "Fontana",
-    "county": "San Bernardino"
-  },
-  "92337": {
-    "city": "Fontana",
-    "county": "San Bernardino"
-  },
-  "92338": {
-    "city": "Ludlow",
-    "county": "San Bernardino"
-  },
-  "92339": {
-    "city": "Forest falls",
-    "county": "San Bernardino"
-  },
-  "92341": {
-    "city": "Green valley lak",
-    "county": "San Bernardino"
-  },
-  "92342": {
-    "city": "Helendale",
-    "county": "San Bernardino"
-  },
-  "92345": {
-    "city": "Hesperia",
-    "county": "San Bernardino"
-  },
-  "92346": {
-    "city": "East highland",
-    "county": "San Bernardino"
-  },
-  "92347": {
-    "city": "Hinkley",
-    "county": "San Bernardino"
-  },
-  "92352": {
-    "city": "Lake arrowhead",
-    "county": "San Bernardino"
-  },
-  "92354": {
-    "city": "Loma linda",
-    "county": "San Bernardino"
-  },
-  "92356": {
-    "city": "Lucerne valley",
-    "county": "San Bernardino"
-  },
-  "92358": {
-    "city": "Lytle creek",
-    "county": "San Bernardino"
-  },
-  "92359": {
-    "city": "Mentone",
-    "county": "San Bernardino"
-  },
-  "92363": {
-    "city": "Needles",
-    "county": "San Bernardino"
-  },
-  "92364": {
-    "city": "Nipton",
-    "county": "San Bernardino"
-  },
-  "92365": {
-    "city": "Newberry springs",
-    "county": "San Bernardino"
-  },
-  "92368": {
-    "city": "Oro grande",
-    "county": "San Bernardino"
-  },
-  "92371": {
-    "city": "Phelan",
-    "county": "San Bernardino"
-  },
-  "92372": {
-    "city": "Pinon hills",
-    "county": "San Bernardino"
-  },
-  "92373": {
-    "city": "Redlands",
-    "county": "San Bernardino"
-  },
-  "92374": {
-    "city": "Redlands",
-    "county": "San Bernardino"
-  },
-  "92376": {
-    "city": "Rialto",
-    "county": "San Bernardino"
-  },
-  "92377": {
-    "city": "Rialto",
-    "county": "San Bernardino"
-  },
-  "92382": {
-    "city": "Arrowbear lake",
-    "county": "San Bernardino"
-  },
-  "92384": {
-    "city": "Shoshone",
-    "county": "Inyo"
-  },
-  "92386": {
-    "city": "Sugarloaf",
-    "county": "San Bernardino"
-  },
-  "92389": {
-    "city": "Tecopa",
-    "county": "Inyo"
-  },
-  "92392": {
-    "city": "Spring valley la",
-    "county": "San Bernardino"
-  },
-  "92394": {
-    "city": "George afb",
-    "county": "San Bernardino"
-  },
-  "92397": {
-    "city": "Wrightwood",
-    "county": "San Bernardino"
-  },
-  "92398": {
-    "city": "Yermo",
-    "county": "San Bernardino"
-  },
-  "92399": {
-    "city": "Yucaipa",
-    "county": "San Bernardino"
-  },
-  "923HH": {
-    "city": "Zcta 923hh",
-    "county": "San Bernardino"
-  },
-  "923XX": {
-    "city": "Zcta 923xx",
-    "county": "Inyo"
-  },
-  "92401": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92404": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92405": {
-    "city": "Muscoy",
-    "county": "San Bernardino"
-  },
-  "92407": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92408": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92410": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92411": {
-    "city": "San bernardino",
-    "county": "San Bernardino"
-  },
-  "92501": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92503": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92504": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92505": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92506": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92507": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92508": {
-    "city": "Riverside",
-    "county": "Riverside"
-  },
-  "92509": {
-    "city": "Rubidoux",
-    "county": "Riverside"
-  },
-  "92518": {
-    "city": "March air force",
-    "county": "Riverside"
-  },
-  "92530": {
-    "city": "Lake elsinore",
-    "county": "Riverside"
-  },
-  "92532": {
-    "city": "Lake elsinore",
-    "county": "Riverside"
-  },
-  "92536": {
-    "city": "Aguanga",
-    "county": "Riverside"
-  },
-  "92539": {
-    "city": "Anza",
-    "county": "Riverside"
-  },
-  "92543": {
-    "city": "Hemet",
-    "county": "Riverside"
-  },
-  "92544": {
-    "city": "Hemet",
-    "county": "Riverside"
-  },
-  "92545": {
-    "city": "Hemet",
-    "county": "Riverside"
-  },
-  "92548": {
-    "city": "Homeland",
-    "county": "Riverside"
-  },
-  "92549": {
-    "city": "Idyllwild",
-    "county": "Riverside"
-  },
-  "92551": {
-    "city": "Zcta 92551",
-    "county": "Riverside"
-  },
-  "92553": {
-    "city": "Moreno valley",
-    "county": "Riverside"
-  },
-  "92555": {
-    "city": "Moreno valley",
-    "county": "Riverside"
-  },
-  "92557": {
-    "city": "Moreno valley",
-    "county": "Riverside"
-  },
-  "92561": {
-    "city": "Mountain center",
-    "county": "Riverside"
-  },
-  "92562": {
-    "city": "Murrieta",
-    "county": "Riverside"
-  },
-  "92563": {
-    "city": "Murrieta",
-    "county": "Riverside"
-  },
-  "92567": {
-    "city": "Lakeview",
-    "county": "Riverside"
-  },
-  "92570": {
-    "city": "Mead valley",
-    "county": "Riverside"
-  },
-  "92571": {
-    "city": "Perris",
-    "county": "Riverside"
-  },
-  "92582": {
-    "city": "San jacinto",
-    "county": "Riverside"
-  },
-  "92583": {
-    "city": "Gilman hot sprin",
-    "county": "Riverside"
-  },
-  "92584": {
-    "city": "Menifee",
-    "county": "Riverside"
-  },
-  "92585": {
-    "city": "Romoland",
-    "county": "Riverside"
-  },
-  "92586": {
-    "city": "Sun city",
-    "county": "Riverside"
-  },
-  "92587": {
-    "city": "Canyon lake",
-    "county": "Riverside"
-  },
-  "92590": {
-    "city": "Temecula",
-    "county": "Riverside"
-  },
-  "92591": {
-    "city": "Temecula",
-    "county": "Riverside"
-  },
-  "92592": {
-    "city": "Temecula",
-    "county": "Riverside"
-  },
-  "92595": {
-    "city": "Wildomar",
-    "county": "Riverside"
-  },
-  "92596": {
-    "city": "Winchester",
-    "county": "Riverside"
-  },
-  "925HH": {
-    "city": "Zcta 925hh",
-    "county": "Riverside"
-  },
-  "925XX": {
-    "city": "Zcta 925xx",
-    "county": "Riverside"
-  },
-  "92602": {
-    "city": "Zcta 92602",
-    "county": "Orange"
-  },
-  "92604": {
-    "city": "Zcta 92604",
-    "county": "Orange"
-  },
-  "92606": {
-    "city": "Zcta 92606",
-    "county": "Orange"
-  },
-  "92610": {
-    "city": "Foothill ranch",
-    "county": "Orange"
-  },
-  "92612": {
-    "city": "Zcta 92612",
-    "county": "Orange"
-  },
-  "92614": {
-    "city": "Zcta 92614",
-    "county": "Orange"
-  },
-  "92618": {
-    "city": "Zcta 92618",
-    "county": "Orange"
-  },
-  "92620": {
-    "city": "Zcta 92620",
-    "county": "Orange"
-  },
-  "92624": {
-    "city": "Capistrano beach",
-    "county": "Orange"
-  },
-  "92625": {
-    "city": "Corona del mar",
-    "county": "Orange"
-  },
-  "92626": {
-    "city": "Costa mesa",
-    "county": "Orange"
-  },
-  "92627": {
-    "city": "Costa mesa",
-    "county": "Orange"
-  },
-  "92629": {
-    "city": "Monarch bay",
-    "county": "Orange"
-  },
-  "92630": {
-    "city": "Lake forest",
-    "county": "Orange"
-  },
-  "92646": {
-    "city": "Huntington beach",
-    "county": "Orange"
-  },
-  "92647": {
-    "city": "Huntington beach",
-    "county": "Orange"
-  },
-  "92648": {
-    "city": "Huntington beach",
-    "county": "Orange"
-  },
-  "92649": {
-    "city": "Huntington beach",
-    "county": "Orange"
-  },
-  "92651": {
-    "city": "Laguna niguel",
-    "county": "Orange"
-  },
-  "92653": {
-    "city": "Laguna hills",
-    "county": "Orange"
-  },
-  "92655": {
-    "city": "Midway city",
-    "county": "Orange"
-  },
-  "92656": {
-    "city": "Aliso viejo",
-    "county": "Orange"
-  },
-  "92657": {
-    "city": "Newport beach",
-    "county": "Orange"
-  },
-  "92660": {
-    "city": "Newport beach",
-    "county": "Orange"
-  },
-  "92661": {
-    "city": "Newport beach",
-    "county": "Orange"
-  },
-  "92662": {
-    "city": "Newport beach",
-    "county": "Orange"
-  },
-  "92663": {
-    "city": "Newport beach",
-    "county": "Orange"
-  },
-  "92672": {
-    "city": "San clemente",
-    "county": "Orange"
-  },
-  "92673": {
-    "city": "San clemente",
-    "county": "Orange"
-  },
-  "92675": {
-    "city": "Mission viejo",
-    "county": "Orange"
-  },
-  "92676": {
-    "city": "Silverado",
-    "county": "Orange"
-  },
-  "92677": {
-    "city": "Laguna niguel",
-    "county": "Orange"
-  },
-  "92679": {
-    "city": "Coto de caza",
-    "county": "Orange"
-  },
-  "92683": {
-    "city": "Westminster",
-    "county": "Orange"
-  },
-  "92688": {
-    "city": "Rancho santa mar",
-    "county": "Orange"
-  },
-  "92691": {
-    "city": "Mission viejo",
-    "county": "Orange"
-  },
-  "92692": {
-    "city": "Mission viejo",
-    "county": "Orange"
-  },
-  "92694": {
-    "city": "Zcta 92694",
-    "county": "Orange"
-  },
-  "926HH": {
-    "city": "Zcta 926hh",
-    "county": "Orange"
-  },
-  "926XX": {
-    "city": "Zcta 926xx",
-    "county": "Orange"
-  },
-  "92701": {
-    "city": "Santa ana",
-    "county": "Orange"
-  },
-  "92703": {
-    "city": "Santa ana",
-    "county": "Orange"
-  },
-  "92704": {
-    "city": "Santa ana",
-    "county": "Orange"
-  },
-  "92705": {
-    "city": "Cowan heights",
-    "county": "Orange"
-  },
-  "92706": {
-    "city": "Santa ana",
-    "county": "Orange"
-  },
-  "92707": {
-    "city": "Santa ana height",
-    "county": "Orange"
-  },
-  "92708": {
-    "city": "Fountain valley",
-    "county": "Orange"
-  },
-  "92780": {
-    "city": "Zcta 92780",
-    "county": "Orange"
-  },
-  "92782": {
-    "city": "Zcta 92782",
-    "county": "Orange"
-  },
-  "927HH": {
-    "city": "Zcta 927hh",
-    "county": "Orange"
-  },
-  "92801": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92802": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92804": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92805": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92806": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92807": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92808": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92821": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92823": {
-    "city": "Anaheim",
-    "county": "Orange"
-  },
-  "92831": {
-    "city": "Zcta 92831",
-    "county": "Orange"
-  },
-  "92832": {
-    "city": "Zcta 92832",
-    "county": "Orange"
-  },
-  "92833": {
-    "city": "Zcta 92833",
-    "county": "Orange"
-  },
-  "92835": {
-    "city": "Zcta 92835",
-    "county": "Orange"
-  },
-  "92840": {
-    "city": "Zcta 92840",
-    "county": "Orange"
-  },
-  "92841": {
-    "city": "Zcta 92841",
-    "county": "Orange"
-  },
-  "92843": {
-    "city": "Zcta 92843",
-    "county": "Orange"
-  },
-  "92844": {
-    "city": "Zcta 92844",
-    "county": "Orange"
-  },
-  "92845": {
-    "city": "Zcta 92845",
-    "county": "Orange"
-  },
-  "92860": {
-    "city": "Zcta 92860",
-    "county": "Riverside"
-  },
-  "92861": {
-    "city": "Zcta 92861",
-    "county": "Orange"
-  },
-  "92865": {
-    "city": "Zcta 92865",
-    "county": "Orange"
-  },
-  "92866": {
-    "city": "Zcta 92866",
-    "county": "Orange"
-  },
-  "92867": {
-    "city": "Zcta 92867",
-    "county": "Orange"
-  },
-  "92868": {
-    "city": "Zcta 92868",
-    "county": "Orange"
-  },
-  "92869": {
-    "city": "Zcta 92869",
-    "county": "Orange"
-  },
-  "92870": {
-    "city": "Zcta 92870",
-    "county": "Orange"
-  },
-  "92879": {
-    "city": "Zcta 92879",
-    "county": "Riverside"
-  },
-  "92880": {
-    "city": "Zcta 92880",
-    "county": "Riverside"
-  },
-  "92881": {
-    "city": "Zcta 92881",
-    "county": "Riverside"
-  },
-  "92882": {
-    "city": "Zcta 92882",
-    "county": "Riverside"
-  },
-  "92883": {
-    "city": "Zcta 92883",
-    "county": "Riverside"
-  },
-  "92886": {
-    "city": "Zcta 92886",
-    "county": "Orange"
-  },
-  "92887": {
-    "city": "Zcta 92887",
-    "county": "Orange"
-  },
-  "928HH": {
-    "city": "Zcta 928hh",
-    "county": "Orange"
-  },
-  "928XX": {
-    "city": "Zcta 928xx",
-    "county": "Orange"
-  },
-  "93001": {
-    "city": "San buenaventura",
-    "county": "Ventura"
-  },
-  "93003": {
-    "city": "San buenaventura",
-    "county": "Ventura"
-  },
-  "93004": {
-    "city": "San buenaventura",
-    "county": "Ventura"
-  },
-  "93010": {
-    "city": "Camarillo",
-    "county": "Ventura"
-  },
-  "93012": {
-    "city": "Camarillo",
-    "county": "Ventura"
-  },
-  "93013": {
-    "city": "Carpinteria",
-    "county": "Santa Barbara"
-  },
-  "93015": {
-    "city": "Bardsdale",
-    "county": "Ventura"
-  },
-  "93021": {
-    "city": "Moorpark",
-    "county": "Ventura"
-  },
-  "93022": {
-    "city": "Oak view",
-    "county": "Ventura"
-  },
-  "93023": {
-    "city": "Ojai",
-    "county": "Ventura"
-  },
-  "93030": {
-    "city": "Oxnard",
-    "county": "Ventura"
-  },
-  "93033": {
-    "city": "Oxnard",
-    "county": "Ventura"
-  },
-  "93035": {
-    "city": "Oxnard",
-    "county": "Ventura"
-  },
-  "93040": {
-    "city": "Piru",
-    "county": "Ventura"
-  },
-  "93041": {
-    "city": "Port hueneme",
-    "county": "Ventura"
-  },
-  "93060": {
-    "city": "Santa paula",
-    "county": "Ventura"
-  },
-  "93063": {
-    "city": "Santa susana",
-    "county": "Ventura"
-  },
-  "93065": {
-    "city": "Simi valley",
-    "county": "Ventura"
-  },
-  "93066": {
-    "city": "Somis",
-    "county": "Ventura"
-  },
-  "93067": {
-    "city": "Summerland",
-    "county": "Santa Barbara"
-  },
-  "930HH": {
-    "city": "Zcta 930hh",
-    "county": "Santa Barbara"
-  },
-  "930XX": {
-    "city": "Zcta 930xx",
-    "county": "Ventura"
-  },
-  "93101": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93103": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93105": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93108": {
-    "city": "Montecito",
-    "county": "Santa Barbara"
-  },
-  "93109": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93110": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93111": {
-    "city": "Santa barbara",
-    "county": "Santa Barbara"
-  },
-  "93117": {
-    "city": "Goleta",
-    "county": "Santa Barbara"
-  },
-  "931HH": {
-    "city": "Zcta 931hh",
-    "county": "Santa Barbara"
-  },
-  "931XX": {
-    "city": "Zcta 931xx",
-    "county": "Santa Barbara"
-  },
-  "93201": {
-    "city": "Alpaugh",
-    "county": "Tulare"
-  },
-  "93202": {
-    "city": "Armona",
-    "county": "Kings"
-  },
-  "93203": {
-    "city": "Arvin",
-    "county": "Kern"
-  },
-  "93204": {
-    "city": "Avenal",
-    "county": "Kings"
-  },
-  "93205": {
-    "city": "Bodfish",
-    "county": "Kern"
-  },
-  "93206": {
-    "city": "Buttonwillow",
-    "county": "Kern"
-  },
-  "93207": {
-    "city": "California hot s",
-    "county": "Tulare"
-  },
-  "93208": {
-    "city": "Camp nelson",
-    "county": "Tulare"
-  },
-  "93210": {
-    "city": "Coalinga",
-    "county": "Fresno"
-  },
-  "93212": {
-    "city": "Corcoran",
-    "county": "Kings"
-  },
-  "93215": {
-    "city": "Delano",
-    "county": "Kern"
-  },
-  "93216": {
-    "city": "Delano",
-    "county": "Kern"
-  },
-  "93218": {
-    "city": "Ducor",
-    "county": "Tulare"
-  },
-  "93219": {
-    "city": "Earlimart",
-    "county": "Tulare"
-  },
-  "93221": {
-    "city": "Exeter",
-    "county": "Tulare"
-  },
-  "93222": {
-    "city": "Frazier park",
-    "county": "Kern"
-  },
-  "93223": {
-    "city": "Farmersville",
-    "county": "Tulare"
-  },
-  "93224": {
-    "city": "Fellows",
-    "county": "Kern"
-  },
-  "93225": {
-    "city": "Frazier park",
-    "county": "Kern"
-  },
-  "93226": {
-    "city": "Glennville",
-    "county": "Kern"
-  },
-  "93230": {
-    "city": "Hanford",
-    "county": "Kings"
-  },
-  "93234": {
-    "city": "Huron",
-    "county": "Fresno"
-  },
-  "93235": {
-    "city": "Ivanhoe",
-    "county": "Tulare"
-  },
-  "93238": {
-    "city": "Kernville",
-    "county": "Kern"
-  },
-  "93239": {
-    "city": "Kettleman city",
-    "county": "Kings"
-  },
-  "93240": {
-    "city": "Mountain mesa",
-    "county": "Kern"
-  },
-  "93241": {
-    "city": "Lamont",
-    "county": "Kern"
-  },
-  "93242": {
-    "city": "Laton",
-    "county": "Fresno"
-  },
-  "93243": {
-    "city": "Gorman",
-    "county": "Kern"
-  },
-  "93244": {
-    "city": "Lemoncove",
-    "county": "Tulare"
-  },
-  "93245": {
-    "city": "Lemoore naval ai",
-    "county": "Kings"
-  },
-  "93247": {
-    "city": "Lindsay",
-    "county": "Tulare"
-  },
-  "93249": {
-    "city": "Lost hills",
-    "county": "Kern"
-  },
-  "93250": {
-    "city": "Mc farland",
-    "county": "Kern"
-  },
-  "93251": {
-    "city": "Mc kittrick",
-    "county": "Kern"
-  },
-  "93252": {
-    "city": "Maricopa",
-    "county": "Kern"
-  },
-  "93254": {
-    "city": "New cuyama",
-    "county": "Santa Barbara"
-  },
-  "93255": {
-    "city": "Onyx",
-    "county": "Kern"
-  },
-  "93256": {
-    "city": "Pixley",
-    "county": "Tulare"
-  },
-  "93257": {
-    "city": "Porterville",
-    "county": "Tulare"
-  },
-  "93260": {
-    "city": "Posey",
-    "county": "Tulare"
-  },
-  "93261": {
-    "city": "Richgrove",
-    "county": "Tulare"
-  },
-  "93262": {
-    "city": "Giant forest",
-    "county": "Tulare"
-  },
-  "93263": {
-    "city": "Shafter",
-    "county": "Kern"
-  },
-  "93265": {
-    "city": "Springville",
-    "county": "Tulare"
-  },
-  "93266": {
-    "city": "Stratford",
-    "county": "Kings"
-  },
-  "93267": {
-    "city": "Strathmore",
-    "county": "Tulare"
-  },
-  "93268": {
-    "city": "Taft",
-    "county": "Kern"
-  },
-  "93270": {
-    "city": "Terra bella",
-    "county": "Tulare"
-  },
-  "93271": {
-    "city": "Three rivers",
-    "county": "Tulare"
-  },
-  "93272": {
-    "city": "Tipton",
-    "county": "Tulare"
-  },
-  "93274": {
-    "city": "Tulare",
-    "county": "Tulare"
-  },
-  "93276": {
-    "city": "Tupman",
-    "county": "Kern"
-  },
-  "93277": {
-    "city": "Visalia",
-    "county": "Tulare"
-  },
-  "93280": {
-    "city": "Pond",
-    "county": "Kern"
-  },
-  "93282": {
-    "city": "Waukena",
-    "county": "Tulare"
-  },
-  "93283": {
-    "city": "Weldon",
-    "county": "Kern"
-  },
-  "93285": {
-    "city": "Wofford heights",
-    "county": "Kern"
-  },
-  "93286": {
-    "city": "Woodlake",
-    "county": "Tulare"
-  },
-  "93287": {
-    "city": "Woody",
-    "county": "Kern"
-  },
-  "93291": {
-    "city": "Visalia",
-    "county": "Tulare"
-  },
-  "93292": {
-    "city": "Visalia",
-    "county": "Tulare"
-  },
-  "932HH": {
-    "city": "Zcta 932hh",
-    "county": "Kern"
-  },
-  "932XX": {
-    "city": "Zcta 932xx",
-    "county": "Kings"
-  },
-  "93301": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93304": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93305": {
-    "city": "College heights",
-    "county": "Kern"
-  },
-  "93306": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93307": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93308": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93309": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93311": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "93312": {
-    "city": "Greenacres",
-    "county": "Kern"
-  },
-  "93313": {
-    "city": "Bakersfield",
-    "county": "Kern"
-  },
-  "933HH": {
-    "city": "Zcta 933hh",
-    "county": "Kern"
-  },
-  "933XX": {
-    "city": "Zcta 933xx",
-    "county": "Kern"
-  },
-  "93401": {
-    "city": "San luis obispo",
-    "county": "San Luis Obispo"
-  },
-  "93402": {
-    "city": "Los osos",
-    "county": "San Luis Obispo"
-  },
-  "93405": {
-    "city": "San luis obispo",
-    "county": "San Luis Obispo"
-  },
-  "93420": {
-    "city": "Halcyon",
-    "county": "San Luis Obispo"
-  },
-  "93422": {
-    "city": "Atascadero",
-    "county": "San Luis Obispo"
-  },
-  "93424": {
-    "city": "Avila beach",
-    "county": "San Luis Obispo"
-  },
-  "93426": {
-    "city": "Bradley",
-    "county": "Monterey"
-  },
-  "93427": {
-    "city": "Buellton",
-    "county": "Santa Barbara"
-  },
-  "93428": {
-    "city": "Cambria",
-    "county": "San Luis Obispo"
-  },
-  "93429": {
-    "city": "Casmalia",
-    "county": "Santa Barbara"
-  },
-  "93430": {
-    "city": "Cayucos",
-    "county": "San Luis Obispo"
-  },
-  "93432": {
-    "city": "Creston",
-    "county": "San Luis Obispo"
-  },
-  "93433": {
-    "city": "Grover beach",
-    "county": "San Luis Obispo"
-  },
-  "93434": {
-    "city": "Guadalupe",
-    "county": "Santa Barbara"
-  },
-  "93435": {
-    "city": "Harmony",
-    "county": "San Luis Obispo"
-  },
-  "93436": {
-    "city": "Lompoc",
-    "county": "Santa Barbara"
-  },
-  "93437": {
-    "city": "Lompoc",
-    "county": "Santa Barbara"
-  },
-  "93440": {
-    "city": "Los alamos",
-    "county": "Santa Barbara"
-  },
-  "93441": {
-    "city": "Los olivos",
-    "county": "Santa Barbara"
-  },
-  "93442": {
-    "city": "Morro bay",
-    "county": "San Luis Obispo"
-  },
-  "93444": {
-    "city": "Nipomo",
-    "county": "San Luis Obispo"
-  },
-  "93445": {
-    "city": "Oceano",
-    "county": "San Luis Obispo"
-  },
-  "93446": {
-    "city": "Adelaide",
-    "county": "San Luis Obispo"
-  },
-  "93447": {
-    "city": "Paso robles",
-    "county": "San Luis Obispo"
-  },
-  "93449": {
-    "city": "Shell beach",
-    "county": "San Luis Obispo"
-  },
-  "93450": {
-    "city": "San ardo",
-    "county": "Monterey"
-  },
-  "93451": {
-    "city": "Parkfield",
-    "county": "San Luis Obispo"
-  },
-  "93452": {
-    "city": "San simeon",
-    "county": "San Luis Obispo"
-  },
-  "93453": {
-    "city": "California valle",
-    "county": "San Luis Obispo"
-  },
-  "93454": {
-    "city": "Santa maria",
-    "county": "Santa Barbara"
-  },
-  "93455": {
-    "city": "Orcutt",
-    "county": "Santa Barbara"
-  },
-  "93458": {
-    "city": "Zcta 93458",
-    "county": "Santa Barbara"
-  },
-  "93460": {
-    "city": "Santa ynez",
-    "county": "Santa Barbara"
-  },
-  "93461": {
-    "city": "Shandon",
-    "county": "San Luis Obispo"
-  },
-  "93463": {
-    "city": "Ballard",
-    "county": "Santa Barbara"
-  },
-  "93465": {
-    "city": "Templeton",
-    "county": "San Luis Obispo"
-  },
-  "934HH": {
-    "city": "Zcta 934hh",
-    "county": "Monterey"
-  },
-  "934XX": {
-    "city": "Zcta 934xx",
-    "county": "Monterey"
-  },
-  "93501": {
-    "city": "Mojave",
-    "county": "Kern"
-  },
-  "93505": {
-    "city": "California city",
-    "county": "Kern"
-  },
-  "93510": {
-    "city": "Acton",
-    "county": "Los Angeles"
-  },
-  "93512": {
-    "city": "Benton",
-    "county": "Mono"
-  },
-  "93513": {
-    "city": "Big pine",
-    "county": "Inyo"
-  },
-  "93514": {
-    "city": "Toms place",
-    "county": "Inyo"
-  },
-  "93516": {
-    "city": "Boron",
-    "county": "Kern"
-  },
-  "93517": {
-    "city": "Bridgeport",
-    "county": "Mono"
-  },
-  "93518": {
-    "city": "Havilah",
-    "county": "Kern"
-  },
-  "93522": {
-    "city": "Darwin",
-    "county": "Inyo"
-  },
-  "93523": {
-    "city": "North edwards",
-    "county": "Kern"
-  },
-  "93526": {
-    "city": "Independence",
-    "county": "Inyo"
-  },
-  "93527": {
-    "city": "Pearsonville",
-    "county": "Kern"
-  },
-  "93528": {
-    "city": "Johannesburg",
-    "county": "Kern"
-  },
-  "93529": {
-    "city": "June lake",
-    "county": "Mono"
-  },
-  "93530": {
-    "city": "Keeler",
-    "county": "Inyo"
-  },
-  "93531": {
-    "city": "Keene",
-    "county": "Kern"
-  },
-  "93532": {
-    "city": "Elizabeth lake",
-    "county": "Los Angeles"
-  },
-  "93534": {
-    "city": "Lancaster",
-    "county": "Los Angeles"
-  },
-  "93535": {
-    "city": "Hi vista",
-    "county": "Los Angeles"
-  },
-  "93536": {
-    "city": "Quartz hill",
-    "county": "Los Angeles"
-  },
-  "93541": {
-    "city": "Lee vining",
-    "county": "Mono"
-  },
-  "93543": {
-    "city": "Juniper hills",
-    "county": "Los Angeles"
-  },
-  "93544": {
-    "city": "Crystalaire",
-    "county": "Los Angeles"
-  },
-  "93545": {
-    "city": "Lone pine",
-    "county": "Inyo"
-  },
-  "93546": {
-    "city": "Crowley lake",
-    "county": "Mono"
-  },
-  "93549": {
-    "city": "Cartago",
-    "county": "Inyo"
-  },
-  "93550": {
-    "city": "Lake los angeles",
-    "county": "Los Angeles"
-  },
-  "93551": {
-    "city": "Leona valley",
-    "county": "Los Angeles"
-  },
-  "93552": {
-    "city": "Palmdale",
-    "county": "Los Angeles"
-  },
-  "93553": {
-    "city": "Juniper hills",
-    "county": "Los Angeles"
-  },
-  "93554": {
-    "city": "Randsburg",
-    "county": "Kern"
-  },
-  "93555": {
-    "city": "China lake nwc",
-    "county": "Kern"
-  },
-  "93560": {
-    "city": "Willow springs",
-    "county": "Kern"
-  },
-  "93561": {
-    "city": "Bear valley spri",
-    "county": "Kern"
-  },
-  "93562": {
-    "city": "Argus",
-    "county": "San Bernardino"
-  },
-  "93563": {
-    "city": "Valyermo",
-    "county": "Los Angeles"
-  },
-  "93591": {
-    "city": "Lake los angeles",
-    "county": "Los Angeles"
-  },
-  "935HH": {
-    "city": "Zcta 935hh",
-    "county": "Los Angeles"
-  },
-  "935XX": {
-    "city": "Zcta 935xx",
-    "county": "Kern"
-  },
-  "93601": {
-    "city": "Ahwahnee",
-    "county": "Madera"
-  },
-  "93602": {
-    "city": "Auberry",
-    "county": "Fresno"
-  },
-  "93603": {
-    "city": "Badger",
-    "county": "Tulare"
-  },
-  "93604": {
-    "city": "Bass lake",
-    "county": "Madera"
-  },
-  "93605": {
-    "city": "Big creek",
-    "county": "Fresno"
-  },
-  "93606": {
-    "city": "Biola",
-    "county": "Fresno"
-  },
-  "93608": {
-    "city": "Cantua creek",
-    "county": "Fresno"
-  },
-  "93609": {
-    "city": "Caruthers",
-    "county": "Fresno"
-  },
-  "93610": {
-    "city": "Chowchilla",
-    "county": "Madera"
-  },
-  "93611": {
-    "city": "Clovis",
-    "county": "Fresno"
-  },
-  "93612": {
-    "city": "Clovis",
-    "county": "Fresno"
-  },
-  "93614": {
-    "city": "Coarsegold",
-    "county": "Madera"
-  },
-  "93615": {
-    "city": "Cutler",
-    "county": "Tulare"
-  },
-  "93616": {
-    "city": "Del rey",
-    "county": "Fresno"
-  },
-  "93618": {
-    "city": "Dinuba",
-    "county": "Tulare"
-  },
-  "93620": {
-    "city": "Dos palos",
-    "county": "Merced"
-  },
-  "93621": {
-    "city": "Dunlap",
-    "county": "Fresno"
-  },
-  "93622": {
-    "city": "Firebaugh",
-    "county": "Fresno"
-  },
-  "93623": {
-    "city": "Fish camp",
-    "county": "Mariposa"
-  },
-  "93624": {
-    "city": "Five points",
-    "county": "Fresno"
-  },
-  "93625": {
-    "city": "Fowler",
-    "county": "Fresno"
-  },
-  "93626": {
-    "city": "Friant",
-    "county": "Fresno"
-  },
-  "93627": {
-    "city": "Helm",
-    "county": "Fresno"
-  },
-  "93628": {
-    "city": "Hume",
-    "county": "Fresno"
-  },
-  "93630": {
-    "city": "Kerman",
-    "county": "Fresno"
-  },
-  "93631": {
-    "city": "Kingsburg",
-    "county": "Fresno"
-  },
-  "93634": {
-    "city": "Lakeshore",
-    "county": "Fresno"
-  },
-  "93635": {
-    "city": "Los banos",
-    "county": "Merced"
-  },
-  "93637": {
-    "city": "Madera",
-    "county": "Madera"
-  },
-  "93638": {
-    "city": "Madera",
-    "county": "Madera"
-  },
-  "93640": {
-    "city": "Mendota",
-    "county": "Fresno"
-  },
-  "93641": {
-    "city": "Miramonte",
-    "county": "Fresno"
-  },
-  "93643": {
-    "city": "North fork",
-    "county": "Madera"
-  },
-  "93644": {
-    "city": "Oakhurst",
-    "county": "Madera"
-  },
-  "93645": {
-    "city": "O neals",
-    "county": "Madera"
-  },
-  "93646": {
-    "city": "Orange cove",
-    "county": "Fresno"
-  },
-  "93647": {
-    "city": "Orosi",
-    "county": "Tulare"
-  },
-  "93648": {
-    "city": "Parlier",
-    "county": "Fresno"
-  },
-  "93650": {
-    "city": "Pinedale",
-    "county": "Fresno"
-  },
-  "93651": {
-    "city": "Prather",
-    "county": "Fresno"
-  },
-  "93652": {
-    "city": "Raisin",
-    "county": "Fresno"
-  },
-  "93653": {
-    "city": "Raymond",
-    "county": "Madera"
-  },
-  "93654": {
-    "city": "Reedley",
-    "county": "Fresno"
-  },
-  "93656": {
-    "city": "Riverdale",
-    "county": "Fresno"
-  },
-  "93657": {
-    "city": "Sanger",
-    "county": "Fresno"
-  },
-  "93660": {
-    "city": "San joaquin",
-    "county": "Fresno"
-  },
-  "93662": {
-    "city": "Selma",
-    "county": "Fresno"
-  },
-  "93664": {
-    "city": "Shaver lake",
-    "county": "Fresno"
-  },
-  "93665": {
-    "city": "South dos palos",
-    "county": "Merced"
-  },
-  "93666": {
-    "city": "Sultana",
-    "county": "Tulare"
-  },
-  "93667": {
-    "city": "Tollhouse",
-    "county": "Fresno"
-  },
-  "93668": {
-    "city": "Tranquillity",
-    "county": "Fresno"
-  },
-  "93669": {
-    "city": "Wishon",
-    "county": "Madera"
-  },
-  "93673": {
-    "city": "Traver",
-    "county": "Tulare"
-  },
-  "93675": {
-    "city": "Squaw valley",
-    "county": "Fresno"
-  },
-  "936HH": {
-    "city": "Zcta 936hh",
-    "county": "Fresno"
-  },
-  "936XX": {
-    "city": "Zcta 936xx",
-    "county": "Merced"
-  },
-  "93701": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93702": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93703": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93704": {
-    "city": "Fig garden villa",
-    "county": "Fresno"
-  },
-  "93705": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93706": {
-    "city": "Easton",
-    "county": "Fresno"
-  },
-  "93710": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93711": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93720": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93721": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93722": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93725": {
-    "city": "Calwa",
-    "county": "Fresno"
-  },
-  "93726": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93727": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93728": {
-    "city": "Fresno",
-    "county": "Fresno"
-  },
-  "93901": {
-    "city": "Salinas",
-    "county": "Monterey"
-  },
-  "93905": {
-    "city": "Salinas",
-    "county": "Monterey"
-  },
-  "93906": {
-    "city": "Salinas",
-    "county": "Monterey"
-  },
-  "93907": {
-    "city": "Prunedale",
-    "county": "Monterey"
-  },
-  "93908": {
-    "city": "Salinas",
-    "county": "Monterey"
-  },
-  "93920": {
-    "city": "Big sur",
-    "county": "Monterey"
-  },
-  "93921": {
-    "city": "Carmel",
-    "county": "Monterey"
-  },
-  "93923": {
-    "city": "Carmel",
-    "county": "Monterey"
-  },
-  "93924": {
-    "city": "Carmel valley",
-    "county": "Monterey"
-  },
-  "93925": {
-    "city": "Chualar",
-    "county": "Monterey"
-  },
-  "93926": {
-    "city": "Gonzales",
-    "county": "Monterey"
-  },
-  "93927": {
-    "city": "Greenfield",
-    "county": "Monterey"
-  },
-  "93928": {
-    "city": "Jolon",
-    "county": "Monterey"
-  },
-  "93930": {
-    "city": "King city",
-    "county": "Monterey"
-  },
-  "93932": {
-    "city": "Lockwood",
-    "county": "Monterey"
-  },
-  "93933": {
-    "city": "Marina",
-    "county": "Monterey"
-  },
-  "93940": {
-    "city": "Del rey oaks",
-    "county": "Monterey"
-  },
-  "93950": {
-    "city": "Pacific grove",
-    "county": "Monterey"
-  },
-  "93953": {
-    "city": "Pebble beach",
-    "county": "Monterey"
-  },
-  "93954": {
-    "city": "San lucas",
-    "county": "Monterey"
-  },
-  "93955": {
-    "city": "Sand city",
-    "county": "Monterey"
-  },
-  "93960": {
-    "city": "Soledad",
-    "county": "Monterey"
-  },
-  "93962": {
-    "city": "Spreckels",
-    "county": "Monterey"
-  },
-  "939HH": {
-    "city": "Zcta 939hh",
-    "county": "Monterey"
-  },
-  "939XX": {
-    "city": "Zcta 939xx",
-    "county": "Monterey"
-  },
-  "94002": {
-    "city": "Belmont",
-    "county": "San Mateo"
-  },
-  "94005": {
-    "city": "Brisbane",
-    "county": "San Mateo"
-  },
-  "94010": {
-    "city": "Hillsborough",
-    "county": "San Mateo"
-  },
-  "94014": {
-    "city": "Colma",
-    "county": "San Mateo"
-  },
-  "94015": {
-    "city": "Daly city",
-    "county": "San Mateo"
-  },
-  "94019": {
-    "city": "Half moon bay",
-    "county": "San Mateo"
-  },
-  "94020": {
-    "city": "La honda",
-    "county": "San Mateo"
-  },
-  "94021": {
-    "city": "Loma mar",
-    "county": "San Mateo"
-  },
-  "94022": {
-    "city": "Los altos",
-    "county": "Santa Clara"
-  },
-  "94024": {
-    "city": "Los altos",
-    "county": "Santa Clara"
-  },
-  "94025": {
-    "city": "West menlo park",
-    "county": "San Mateo"
-  },
-  "94027": {
-    "city": "Atherton",
-    "county": "San Mateo"
-  },
-  "94028": {
-    "city": "Ladera",
-    "county": "San Mateo"
-  },
-  "94030": {
-    "city": "Millbrae",
-    "county": "San Mateo"
-  },
-  "94037": {
-    "city": "Montara",
-    "county": "San Mateo"
-  },
-  "94038": {
-    "city": "Moss beach",
-    "county": "San Mateo"
-  },
-  "94040": {
-    "city": "Mountain view",
-    "county": "Santa Clara"
-  },
-  "94041": {
-    "city": "Mountain view",
-    "county": "Santa Clara"
-  },
-  "94043": {
-    "city": "Mountain view",
-    "county": "Santa Clara"
-  },
-  "94044": {
-    "city": "Pacifica",
-    "county": "San Mateo"
-  },
-  "94060": {
-    "city": "Pescadero",
-    "county": "San Mateo"
-  },
-  "94061": {
-    "city": "Redwood city",
-    "county": "San Mateo"
-  },
-  "94062": {
-    "city": "Woodside",
-    "county": "San Mateo"
-  },
-  "94063": {
-    "city": "Redwood city",
-    "county": "San Mateo"
-  },
-  "94065": {
-    "city": "Redwood city",
-    "county": "San Mateo"
-  },
-  "94066": {
-    "city": "San bruno",
-    "county": "San Mateo"
-  },
-  "94070": {
-    "city": "San carlos",
-    "county": "San Mateo"
-  },
-  "94074": {
-    "city": "San gregorio",
-    "county": "San Mateo"
-  },
-  "94080": {
-    "city": "South san franci",
-    "county": "San Mateo"
-  },
-  "94086": {
-    "city": "Sunnyvale",
-    "county": "Santa Clara"
-  },
-  "94087": {
-    "city": "Sunnyvale",
-    "county": "Santa Clara"
-  },
-  "94089": {
-    "city": "Sunnyvale",
-    "county": "Santa Clara"
-  },
-  "940HH": {
-    "city": "Zcta 940hh",
-    "county": "San Mateo"
-  },
-  "94102": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94103": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94104": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94105": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94107": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94108": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94109": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94110": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94111": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94112": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94114": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94115": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94116": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94117": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94118": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94121": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94122": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94123": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94124": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94127": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94128": {
-    "city": "San francisco",
-    "county": "San Mateo"
-  },
-  "94129": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94130": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94131": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94132": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94133": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "94134": {
-    "city": "San francisco",
-    "county": "San Francisco"
-  },
-  "941HH": {
-    "city": "Zcta 941hh",
-    "county": "San Francisco"
-  },
-  "941XX": {
-    "city": "Zcta 941xx",
-    "county": "San Francisco"
-  },
-  "94301": {
-    "city": "Palo alto",
-    "county": "Santa Clara"
-  },
-  "94303": {
-    "city": "East palo alto",
-    "county": "San Mateo"
-  },
-  "94304": {
-    "city": "Palo alto",
-    "county": "Santa Clara"
-  },
-  "94305": {
-    "city": "Stanford",
-    "county": "Santa Clara"
-  },
-  "94306": {
-    "city": "Palo alto",
-    "county": "Santa Clara"
-  },
-  "943HH": {
-    "city": "Zcta 943hh",
-    "county": "San Mateo"
-  },
-  "94401": {
-    "city": "Russian river",
-    "county": "San Mateo"
-  },
-  "94402": {
-    "city": "San mateo",
-    "county": "San Mateo"
-  },
-  "94403": {
-    "city": "San mateo",
-    "county": "San Mateo"
-  },
-  "94404": {
-    "city": "Foster city",
-    "county": "San Mateo"
-  },
-  "944HH": {
-    "city": "Zcta 944hh",
-    "county": "San Mateo"
-  },
-  "94501": {
-    "city": "Coast guard isla",
-    "county": "Alameda"
-  },
-  "94502": {
-    "city": "Alameda",
-    "county": "Alameda"
-  },
-  "94506": {
-    "city": "Black hawk",
-    "county": "Contra Costa"
-  },
-  "94507": {
-    "city": "Alamo",
-    "county": "Contra Costa"
-  },
-  "94508": {
-    "city": "Angwin",
-    "county": "Napa"
-  },
-  "94509": {
-    "city": "Antioch",
-    "county": "Contra Costa"
-  },
-  "94510": {
-    "city": "Benicia",
-    "county": "Solano"
-  },
-  "94511": {
-    "city": "Bethel island",
-    "county": "Contra Costa"
-  },
-  "94512": {
-    "city": "Birds landing",
-    "county": "Solano"
-  },
-  "94513": {
-    "city": "Brentwood",
-    "county": "Contra Costa"
-  },
-  "94514": {
-    "city": "Byron",
-    "county": "Contra Costa"
-  },
-  "94515": {
-    "city": "Calistoga",
-    "county": "Napa"
-  },
-  "94517": {
-    "city": "Clayton",
-    "county": "Contra Costa"
-  },
-  "94518": {
-    "city": "Concord",
-    "county": "Contra Costa"
-  },
-  "94519": {
-    "city": "Concord",
-    "county": "Contra Costa"
-  },
-  "94520": {
-    "city": "Concord",
-    "county": "Contra Costa"
-  },
-  "94521": {
-    "city": "Concord",
-    "county": "Contra Costa"
-  },
-  "94523": {
-    "city": "Pleasant hill",
-    "county": "Contra Costa"
-  },
-  "94525": {
-    "city": "Crockett",
-    "county": "Contra Costa"
-  },
-  "94526": {
-    "city": "Danville",
-    "county": "Contra Costa"
-  },
-  "94530": {
-    "city": "El cerrito",
-    "county": "Contra Costa"
-  },
-  "94533": {
-    "city": "Fairfield",
-    "county": "Solano"
-  },
-  "94535": {
-    "city": "Travis afb",
-    "county": "Solano"
-  },
-  "94536": {
-    "city": "Fremont",
-    "county": "Alameda"
-  },
-  "94538": {
-    "city": "Fremont",
-    "county": "Alameda"
-  },
-  "94539": {
-    "city": "Fremont",
-    "county": "Alameda"
-  },
-  "94541": {
-    "city": "Hayward",
-    "county": "Alameda"
-  },
-  "94542": {
-    "city": "Hayward",
-    "county": "Alameda"
-  },
-  "94544": {
-    "city": "Hayward",
-    "county": "Alameda"
-  },
-  "94545": {
-    "city": "Hayward",
-    "county": "Alameda"
-  },
-  "94546": {
-    "city": "Castro valley",
-    "county": "Alameda"
-  },
-  "94547": {
-    "city": "Hercules",
-    "county": "Contra Costa"
-  },
-  "94549": {
-    "city": "Lafayette",
-    "county": "Contra Costa"
-  },
-  "94550": {
-    "city": "Livermore",
-    "county": "Alameda"
-  },
-  "94552": {
-    "city": "Castro valley",
-    "county": "Alameda"
-  },
-  "94553": {
-    "city": "Pacheco",
-    "county": "Contra Costa"
-  },
-  "94555": {
-    "city": "Fremont",
-    "county": "Alameda"
-  },
-  "94556": {
-    "city": "Moraga",
-    "county": "Contra Costa"
-  },
-  "94558": {
-    "city": "Spanish flat",
-    "county": "Napa"
-  },
-  "94559": {
-    "city": "Napa",
-    "county": "Napa"
-  },
-  "94560": {
-    "city": "Newark",
-    "county": "Alameda"
-  },
-  "94561": {
-    "city": "Oakley",
-    "county": "Contra Costa"
-  },
-  "94563": {
-    "city": "Orinda",
-    "county": "Contra Costa"
-  },
-  "94564": {
-    "city": "Pinole",
-    "county": "Contra Costa"
-  },
-  "94565": {
-    "city": "Shore acres",
-    "county": "Contra Costa"
-  },
-  "94566": {
-    "city": "Pleasanton",
-    "county": "Alameda"
-  },
-  "94567": {
-    "city": "Pope valley",
-    "county": "Napa"
-  },
-  "94568": {
-    "city": "Dublin",
-    "county": "Alameda"
-  },
-  "94569": {
-    "city": "Port costa",
-    "county": "Contra Costa"
-  },
-  "94571": {
-    "city": "Rio vista",
-    "county": "Solano"
-  },
-  "94572": {
-    "city": "Rodeo",
-    "county": "Contra Costa"
-  },
-  "94574": {
-    "city": "Saint helena",
-    "county": "Napa"
-  },
-  "94576": {
-    "city": "Deer park",
-    "county": "Napa"
-  },
-  "94577": {
-    "city": "San leandro",
-    "county": "Alameda"
-  },
-  "94578": {
-    "city": "San leandro",
-    "county": "Alameda"
-  },
-  "94579": {
-    "city": "San leandro",
-    "county": "Alameda"
-  },
-  "94580": {
-    "city": "San lorenzo",
-    "county": "Alameda"
-  },
-  "94583": {
-    "city": "San ramon",
-    "county": "Contra Costa"
-  },
-  "94585": {
-    "city": "Suisun city",
-    "county": "Solano"
-  },
-  "94586": {
-    "city": "Sunol",
-    "county": "Alameda"
-  },
-  "94587": {
-    "city": "Union city",
-    "county": "Alameda"
-  },
-  "94588": {
-    "city": "Pleasanton",
-    "county": "Alameda"
-  },
-  "94589": {
-    "city": "American canyon",
-    "county": "Solano"
-  },
-  "94590": {
-    "city": "Vallejo",
-    "county": "Solano"
-  },
-  "94591": {
-    "city": "Vallejo",
-    "county": "Solano"
-  },
-  "94592": {
-    "city": "Mare island",
-    "county": "Solano"
-  },
-  "94595": {
-    "city": "Walnut creek",
-    "county": "Contra Costa"
-  },
-  "94596": {
-    "city": "Walnut creek",
-    "county": "Contra Costa"
-  },
-  "94598": {
-    "city": "Walnut creek",
-    "county": "Contra Costa"
-  },
-  "94599": {
-    "city": "Yountville",
-    "county": "Napa"
-  },
-  "945HH": {
-    "city": "Zcta 945hh",
-    "county": "Alameda"
-  },
-  "945XX": {
-    "city": "Zcta 945xx",
-    "county": "Alameda"
-  },
-  "94601": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94602": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94603": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94605": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94606": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94607": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94608": {
-    "city": "Emeryville",
-    "county": "Alameda"
-  },
-  "94609": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94610": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94611": {
-    "city": "Piedmont",
-    "county": "Alameda"
-  },
-  "94612": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94618": {
-    "city": "Piedmont",
-    "county": "Alameda"
-  },
-  "94619": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "94621": {
-    "city": "Oakland",
-    "county": "Alameda"
-  },
-  "946HH": {
-    "city": "Zcta 946hh",
-    "county": "Alameda"
-  },
-  "94702": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "94703": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "94704": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "94705": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "94706": {
-    "city": "Albany",
-    "county": "Alameda"
-  },
-  "94707": {
-    "city": "Kensington",
-    "county": "Alameda"
-  },
-  "94708": {
-    "city": "Kensington",
-    "county": "Alameda"
-  },
-  "94709": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "94710": {
-    "city": "Berkeley",
-    "county": "Alameda"
-  },
-  "947HH": {
-    "city": "Zcta 947hh",
-    "county": "Alameda"
-  },
-  "94801": {
-    "city": "Richmond",
-    "county": "Contra Costa"
-  },
-  "94803": {
-    "city": "El sobrante",
-    "county": "Contra Costa"
-  },
-  "94804": {
-    "city": "Richmond",
-    "county": "Contra Costa"
-  },
-  "94805": {
-    "city": "Richmond",
-    "county": "Contra Costa"
-  },
-  "94806": {
-    "city": "San pablo",
-    "county": "Contra Costa"
-  },
-  "948HH": {
-    "city": "Zcta 948hh",
-    "county": "Contra Costa"
-  },
-  "94901": {
-    "city": "San rafael",
-    "county": "Marin"
-  },
-  "94903": {
-    "city": "Civic center",
-    "county": "Marin"
-  },
-  "94904": {
-    "city": "Kentfield",
-    "county": "Marin"
-  },
-  "94920": {
-    "city": "Belvedere",
-    "county": "Marin"
-  },
-  "94922": {
-    "city": "Bodega",
-    "county": "Sonoma"
-  },
-  "94923": {
-    "city": "Bodega bay",
-    "county": "Sonoma"
-  },
-  "94924": {
-    "city": "Bolinas",
-    "county": "Marin"
-  },
-  "94925": {
-    "city": "Corte madera",
-    "county": "Marin"
-  },
-  "94928": {
-    "city": "Rohnert park",
-    "county": "Sonoma"
-  },
-  "94929": {
-    "city": "Dillon beach",
-    "county": "Marin"
-  },
-  "94930": {
-    "city": "Fairfax",
-    "county": "Marin"
-  },
-  "94931": {
-    "city": "Cotati",
-    "county": "Sonoma"
-  },
-  "94933": {
-    "city": "Forest knolls",
-    "county": "Marin"
-  },
-  "94937": {
-    "city": "Inverness",
-    "county": "Marin"
-  },
-  "94938": {
-    "city": "Lagunitas",
-    "county": "Marin"
-  },
-  "94939": {
-    "city": "Larkspur",
-    "county": "Marin"
-  },
-  "94940": {
-    "city": "Marshall",
-    "county": "Marin"
-  },
-  "94941": {
-    "city": "Mill valley",
-    "county": "Marin"
-  },
-  "94945": {
-    "city": "Novato",
-    "county": "Marin"
-  },
-  "94946": {
-    "city": "Nicasio",
-    "county": "Marin"
-  },
-  "94947": {
-    "city": "Novato",
-    "county": "Marin"
-  },
-  "94949": {
-    "city": "Novato",
-    "county": "Marin"
-  },
-  "94950": {
-    "city": "Olema",
-    "county": "Marin"
-  },
-  "94951": {
-    "city": "Penngrove",
-    "county": "Sonoma"
-  },
-  "94952": {
-    "city": "Petaluma",
-    "county": "Sonoma"
-  },
-  "94954": {
-    "city": "Petaluma",
-    "county": "Sonoma"
-  },
-  "94956": {
-    "city": "Point reyes stat",
-    "county": "Marin"
-  },
-  "94960": {
-    "city": "San anselmo",
-    "county": "Marin"
-  },
-  "94963": {
-    "city": "San geronimo",
-    "county": "Marin"
-  },
-  "94964": {
-    "city": "San quentin",
-    "county": "Marin"
-  },
-  "94965": {
-    "city": "Sausalito",
-    "county": "Marin"
-  },
-  "94970": {
-    "city": "Stinson beach",
-    "county": "Marin"
-  },
-  "94971": {
-    "city": "Tomales",
-    "county": "Marin"
-  },
-  "94972": {
-    "city": "Valley ford",
-    "county": "Sonoma"
-  },
-  "94973": {
-    "city": "Woodacre",
-    "county": "Marin"
-  },
-  "949HH": {
-    "city": "Zcta 949hh",
-    "county": "Marin"
-  },
-  "949XX": {
-    "city": "Zcta 949xx",
-    "county": "Marin"
-  },
-  "95002": {
-    "city": "Alviso",
-    "county": "Santa Clara"
-  },
-  "95003": {
-    "city": "Aptos",
-    "county": "Santa Cruz"
-  },
-  "95004": {
-    "city": "Aromas",
-    "county": "Monterey"
-  },
-  "95005": {
-    "city": "Ben lomond",
-    "county": "Santa Cruz"
-  },
-  "95006": {
-    "city": "Boulder creek",
-    "county": "Santa Cruz"
-  },
-  "95007": {
-    "city": "Brookdale",
-    "county": "Santa Cruz"
-  },
-  "95008": {
-    "city": "Campbell",
-    "county": "Santa Clara"
-  },
-  "95010": {
-    "city": "Capitola",
-    "county": "Santa Cruz"
-  },
-  "95012": {
-    "city": "Castroville",
-    "county": "Monterey"
-  },
-  "95014": {
-    "city": "Monte vista",
-    "county": "Santa Clara"
-  },
-  "95017": {
-    "city": "Davenport",
-    "county": "Santa Cruz"
-  },
-  "95018": {
-    "city": "Felton",
-    "county": "Santa Cruz"
-  },
-  "95019": {
-    "city": "Freedom",
-    "county": "Santa Cruz"
-  },
-  "95020": {
-    "city": "Gilroy",
-    "county": "Santa Clara"
-  },
-  "95023": {
-    "city": "Hollister",
-    "county": "San Benito"
-  },
-  "95030": {
-    "city": "Monte sereno",
-    "county": "Santa Clara"
-  },
-  "95032": {
-    "city": "Los gatos",
-    "county": "Santa Clara"
-  },
-  "95033": {
-    "city": "Zcta 95033",
-    "county": "Santa Cruz"
-  },
-  "95035": {
-    "city": "Milpitas",
-    "county": "Santa Clara"
-  },
-  "95037": {
-    "city": "Morgan hill",
-    "county": "Santa Clara"
-  },
-  "95039": {
-    "city": "Moss landing",
-    "county": "Monterey"
-  },
-  "95041": {
-    "city": "Mount hermon",
-    "county": "Santa Cruz"
-  },
-  "95043": {
-    "city": "Paicines",
-    "county": "San Benito"
-  },
-  "95045": {
-    "city": "San juan bautist",
-    "county": "San Benito"
-  },
-  "95046": {
-    "city": "San martin",
-    "county": "Santa Clara"
-  },
-  "95050": {
-    "city": "Santa clara",
-    "county": "Santa Clara"
-  },
-  "95051": {
-    "city": "Santa clara",
-    "county": "Santa Clara"
-  },
-  "95054": {
-    "city": "Santa clara",
-    "county": "Santa Clara"
-  },
-  "95060": {
-    "city": "Scotts valley",
-    "county": "Santa Cruz"
-  },
-  "95062": {
-    "city": "Santa cruz",
-    "county": "Santa Cruz"
-  },
-  "95064": {
-    "city": "Santa cruz",
-    "county": "Santa Cruz"
-  },
-  "95065": {
-    "city": "Santa cruz",
-    "county": "Santa Cruz"
-  },
-  "95066": {
-    "city": "Scotts valley",
-    "county": "Santa Cruz"
-  },
-  "95070": {
-    "city": "Saratoga",
-    "county": "Santa Clara"
-  },
-  "95073": {
-    "city": "Soquel",
-    "county": "Santa Cruz"
-  },
-  "95076": {
-    "city": "La selva beach",
-    "county": "Santa Cruz"
-  },
-  "950HH": {
-    "city": "Zcta 950hh",
-    "county": "Monterey"
-  },
-  "95110": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95111": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95112": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95113": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95116": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95117": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95118": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95119": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95120": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95121": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95122": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95123": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95124": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95125": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95126": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95127": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95128": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95129": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95130": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95131": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95132": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95133": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95134": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95135": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95136": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95138": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95139": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "95140": {
-    "city": "Mount hamilton",
-    "county": "Santa Clara"
-  },
-  "95148": {
-    "city": "San jose",
-    "county": "Santa Clara"
-  },
-  "951HH": {
-    "city": "Zcta 951hh",
-    "county": "Santa Clara"
-  },
-  "95202": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95203": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95204": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95205": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95206": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95207": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95209": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95210": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95212": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95215": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95219": {
-    "city": "Stockton",
-    "county": "San Joaquin"
-  },
-  "95220": {
-    "city": "Acampo",
-    "county": "San Joaquin"
-  },
-  "95221": {
-    "city": "Altaville",
-    "county": "Calaveras"
-  },
-  "95222": {
-    "city": "Angels camp",
-    "county": "Calaveras"
-  },
-  "95223": {
-    "city": "Bear valley",
-    "county": "Calaveras"
-  },
-  "95224": {
-    "city": "Avery",
-    "county": "Calaveras"
-  },
-  "95225": {
-    "city": "Burson",
-    "county": "Calaveras"
-  },
-  "95226": {
-    "city": "Campo seco",
-    "county": "Calaveras"
-  },
-  "95227": {
-    "city": "Clements",
-    "county": "San Joaquin"
-  },
-  "95228": {
-    "city": "Copperopolis",
-    "county": "Calaveras"
-  },
-  "95230": {
-    "city": "Farmington",
-    "county": "San Joaquin"
-  },
-  "95231": {
-    "city": "French camp",
-    "county": "San Joaquin"
-  },
-  "95232": {
-    "city": "Glencoe",
-    "county": "Calaveras"
-  },
-  "95233": {
-    "city": "Hathaway pines",
-    "county": "Calaveras"
-  },
-  "95236": {
-    "city": "Linden",
-    "county": "San Joaquin"
-  },
-  "95237": {
-    "city": "Lockeford",
-    "county": "San Joaquin"
-  },
-  "95240": {
-    "city": "Lodi",
-    "county": "San Joaquin"
-  },
-  "95242": {
-    "city": "Lodi",
-    "county": "San Joaquin"
-  },
-  "95245": {
-    "city": "Mokelumne hill",
-    "county": "Calaveras"
-  },
-  "95246": {
-    "city": "Mountain ranch",
-    "county": "Calaveras"
-  },
-  "95247": {
-    "city": "Murphys",
-    "county": "Calaveras"
-  },
-  "95249": {
-    "city": "San andreas",
-    "county": "Calaveras"
-  },
-  "95250": {
-    "city": "Sheepranch",
-    "county": "Calaveras"
-  },
-  "95251": {
-    "city": "Vallecito",
-    "county": "Calaveras"
-  },
-  "95252": {
-    "city": "Valley springs",
-    "county": "Calaveras"
-  },
-  "95254": {
-    "city": "Wallace",
-    "county": "Calaveras"
-  },
-  "95255": {
-    "city": "West point",
-    "county": "Calaveras"
-  },
-  "95257": {
-    "city": "Wilseyville",
-    "county": "Calaveras"
-  },
-  "95258": {
-    "city": "Woodbridge",
-    "county": "San Joaquin"
-  },
-  "952HH": {
-    "city": "Zcta 952hh",
-    "county": "Calaveras"
-  },
-  "952XX": {
-    "city": "Zcta 952xx",
-    "county": "Calaveras"
-  },
-  "95301": {
-    "city": "Atwater",
-    "county": "Merced"
-  },
-  "95303": {
-    "city": "Ballico",
-    "county": "Merced"
-  },
-  "95305": {
-    "city": "Big oak flat",
-    "county": "Tuolumne"
-  },
-  "95306": {
-    "city": "Catheys valley",
-    "county": "Mariposa"
-  },
-  "95307": {
-    "city": "Ceres",
-    "county": "Stanislaus"
-  },
-  "95310": {
-    "city": "Columbia",
-    "county": "Tuolumne"
-  },
-  "95311": {
-    "city": "Coulterville",
-    "county": "Mariposa"
-  },
-  "95312": {
-    "city": "Cressey",
-    "county": "Merced"
-  },
-  "95313": {
-    "city": "Crows landing",
-    "county": "Stanislaus"
-  },
-  "95315": {
-    "city": "Delhi",
-    "county": "Merced"
-  },
-  "95316": {
-    "city": "Denair",
-    "county": "Stanislaus"
-  },
-  "95317": {
-    "city": "El nido",
-    "county": "Merced"
-  },
-  "95318": {
-    "city": "El portal",
-    "county": "Mariposa"
-  },
-  "95320": {
-    "city": "Escalon",
-    "county": "San Joaquin"
-  },
-  "95321": {
-    "city": "Groveland",
-    "county": "Tuolumne"
-  },
-  "95322": {
-    "city": "Gustine",
-    "county": "Merced"
-  },
-  "95323": {
-    "city": "Hickman",
-    "county": "Stanislaus"
-  },
-  "95324": {
-    "city": "Hilmar",
-    "county": "Merced"
-  },
-  "95325": {
-    "city": "Hornitos",
-    "county": "Mariposa"
-  },
-  "95326": {
-    "city": "Hughson",
-    "county": "Stanislaus"
-  },
-  "95327": {
-    "city": "Jamestown",
-    "county": "Tuolumne"
-  },
-  "95328": {
-    "city": "Keyes",
-    "county": "Stanislaus"
-  },
-  "95329": {
-    "city": "La grange",
-    "county": "Tuolumne"
-  },
-  "95330": {
-    "city": "Lathrop",
-    "county": "San Joaquin"
-  },
-  "95333": {
-    "city": "Le grand",
-    "county": "Merced"
-  },
-  "95334": {
-    "city": "Livingston",
-    "county": "Merced"
-  },
-  "95335": {
-    "city": "Cold springs",
-    "county": "Tuolumne"
-  },
-  "95336": {
-    "city": "Manteca",
-    "county": "San Joaquin"
-  },
-  "95337": {
-    "city": "Manteca",
-    "county": "San Joaquin"
-  },
-  "95338": {
-    "city": "Mariposa",
-    "county": "Mariposa"
-  },
-  "95340": {
-    "city": "Red top",
-    "county": "Merced"
-  },
-  "95345": {
-    "city": "Midpines",
-    "county": "Mariposa"
-  },
-  "95346": {
-    "city": "Mi wuk village",
-    "county": "Tuolumne"
-  },
-  "95348": {
-    "city": "Merced",
-    "county": "Merced"
-  },
-  "95350": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95351": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95354": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95355": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95356": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95357": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95358": {
-    "city": "Modesto",
-    "county": "Stanislaus"
-  },
-  "95360": {
-    "city": "Newman",
-    "county": "Stanislaus"
-  },
-  "95361": {
-    "city": "Knights ferry",
-    "county": "Stanislaus"
-  },
-  "95363": {
-    "city": "Patterson",
-    "county": "Stanislaus"
-  },
-  "95364": {
-    "city": "Pinecrest",
-    "county": "Tuolumne"
-  },
-  "95365": {
-    "city": "Planada",
-    "county": "Merced"
-  },
-  "95366": {
-    "city": "Ripon",
-    "county": "San Joaquin"
-  },
-  "95367": {
-    "city": "Riverbank",
-    "county": "Stanislaus"
-  },
-  "95368": {
-    "city": "Salida",
-    "county": "Stanislaus"
-  },
-  "95369": {
-    "city": "Snelling",
-    "county": "Merced"
-  },
-  "95370": {
-    "city": "Sonora",
-    "county": "Tuolumne"
-  },
-  "95372": {
-    "city": "Soulsbyville",
-    "county": "Tuolumne"
-  },
-  "95374": {
-    "city": "Stevinson",
-    "county": "Merced"
-  },
-  "95376": {
-    "city": "Tracy",
-    "county": "San Joaquin"
-  },
-  "95379": {
-    "city": "Tuolumne",
-    "county": "Tuolumne"
-  },
-  "95380": {
-    "city": "Turlock",
-    "county": "Stanislaus"
-  },
-  "95382": {
-    "city": "Turlock",
-    "county": "Stanislaus"
-  },
-  "95383": {
-    "city": "Twain harte",
-    "county": "Tuolumne"
-  },
-  "95385": {
-    "city": "Vernalis",
-    "county": "Stanislaus"
-  },
-  "95386": {
-    "city": "Waterford",
-    "county": "Stanislaus"
-  },
-  "95387": {
-    "city": "Westley",
-    "county": "Stanislaus"
-  },
-  "95388": {
-    "city": "Winton",
-    "county": "Merced"
-  },
-  "95389": {
-    "city": "Yosemite lodge",
-    "county": "Mariposa"
-  },
-  "953HH": {
-    "city": "Zcta 953hh",
-    "county": "Mariposa"
-  },
-  "953XX": {
-    "city": "Zcta 953xx",
-    "county": "Tuolumne"
-  },
-  "95401": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95403": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95404": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95405": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95407": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95409": {
-    "city": "Santa rosa",
-    "county": "Sonoma"
-  },
-  "95410": {
-    "city": "Albion",
-    "county": "Mendocino"
-  },
-  "95412": {
-    "city": "Annapolis",
-    "county": "Sonoma"
-  },
-  "95415": {
-    "city": "Boonville",
-    "county": "Mendocino"
-  },
-  "95417": {
-    "city": "Branscomb",
-    "county": "Mendocino"
-  },
-  "95419": {
-    "city": "Camp meeker",
-    "county": "Sonoma"
-  },
-  "95420": {
-    "city": "Caspar",
-    "county": "Mendocino"
-  },
-  "95421": {
-    "city": "Cazadero",
-    "county": "Sonoma"
-  },
-  "95422": {
-    "city": "Clearlake",
-    "county": "Lake"
-  },
-  "95423": {
-    "city": "Clearlake oaks",
-    "county": "Lake"
-  },
-  "95424": {
-    "city": "Clearlake park",
-    "county": "Lake"
-  },
-  "95425": {
-    "city": "Cloverdale",
-    "county": "Sonoma"
-  },
-  "95426": {
-    "city": "Loch lomond",
-    "county": "Lake"
-  },
-  "95427": {
-    "city": "Comptche",
-    "county": "Mendocino"
-  },
-  "95428": {
-    "city": "Covelo",
-    "county": "Mendocino"
-  },
-  "95429": {
-    "city": "Dos rios",
-    "county": "Mendocino"
-  },
-  "95430": {
-    "city": "Duncans mills",
-    "county": "Sonoma"
-  },
-  "95431": {
-    "city": "Eldridge",
-    "county": "Sonoma"
-  },
-  "95432": {
-    "city": "Elk",
-    "county": "Mendocino"
-  },
-  "95436": {
-    "city": "Forestville",
-    "county": "Sonoma"
-  },
-  "95437": {
-    "city": "Fort bragg",
-    "county": "Mendocino"
-  },
-  "95439": {
-    "city": "Fulton",
-    "county": "Sonoma"
-  },
-  "95441": {
-    "city": "Geyserville",
-    "county": "Sonoma"
-  },
-  "95442": {
-    "city": "Glen ellen",
-    "county": "Sonoma"
-  },
-  "95443": {
-    "city": "Glenhaven",
-    "county": "Lake"
-  },
-  "95444": {
-    "city": "Graton",
-    "county": "Sonoma"
-  },
-  "95445": {
-    "city": "Gualala",
-    "county": "Mendocino"
-  },
-  "95446": {
-    "city": "Guerneville",
-    "county": "Sonoma"
-  },
-  "95448": {
-    "city": "Healdsburg",
-    "county": "Sonoma"
-  },
-  "95449": {
-    "city": "Hopland",
-    "county": "Mendocino"
-  },
-  "95450": {
-    "city": "Jenner",
-    "county": "Sonoma"
-  },
-  "95451": {
-    "city": "Kelseyville",
-    "county": "Lake"
-  },
-  "95452": {
-    "city": "Kenwood",
-    "county": "Sonoma"
-  },
-  "95453": {
-    "city": "Lakeport",
-    "county": "Lake"
-  },
-  "95454": {
-    "city": "Laytonville",
-    "county": "Mendocino"
-  },
-  "95456": {
-    "city": "Littleriver",
-    "county": "Mendocino"
-  },
-  "95457": {
-    "city": "Lower lake",
-    "county": "Lake"
-  },
-  "95458": {
-    "city": "Lucerne",
-    "county": "Lake"
-  },
-  "95459": {
-    "city": "Manchester",
-    "county": "Mendocino"
-  },
-  "95460": {
-    "city": "Mendocino",
-    "county": "Mendocino"
-  },
-  "95461": {
-    "city": "Middletown",
-    "county": "Lake"
-  },
-  "95462": {
-    "city": "Russian river md",
-    "county": "Sonoma"
-  },
-  "95463": {
-    "city": "Navarro",
-    "county": "Mendocino"
-  },
-  "95464": {
-    "city": "Nice",
-    "county": "Lake"
-  },
-  "95465": {
-    "city": "Occidental",
-    "county": "Sonoma"
-  },
-  "95466": {
-    "city": "Philo",
-    "county": "Mendocino"
-  },
-  "95468": {
-    "city": "Point arena",
-    "county": "Mendocino"
-  },
-  "95469": {
-    "city": "Potter valley",
-    "county": "Mendocino"
-  },
-  "95470": {
-    "city": "Redwood valley",
-    "county": "Mendocino"
-  },
-  "95471": {
-    "city": "Rio nido",
-    "county": "Sonoma"
-  },
-  "95472": {
-    "city": "Freestone",
-    "county": "Sonoma"
-  },
-  "95476": {
-    "city": "Sonoma",
-    "county": "Sonoma"
-  },
-  "95480": {
-    "city": "Stewarts point",
-    "county": "Sonoma"
-  },
-  "95481": {
-    "city": "Talmage",
-    "county": "Mendocino"
-  },
-  "95482": {
-    "city": "Ukiah",
-    "county": "Mendocino"
-  },
-  "95485": {
-    "city": "Upper lake",
-    "county": "Lake"
-  },
-  "95488": {
-    "city": "Westport",
-    "county": "Mendocino"
-  },
-  "95490": {
-    "city": "Willits",
-    "county": "Mendocino"
-  },
-  "95492": {
-    "city": "Windsor",
-    "county": "Sonoma"
-  },
-  "95493": {
-    "city": "Witter springs",
-    "county": "Lake"
-  },
-  "95494": {
-    "city": "Yorkville",
-    "county": "Mendocino"
-  },
-  "95497": {
-    "city": "The sea ranch",
-    "county": "Sonoma"
-  },
-  "954HH": {
-    "city": "Zcta 954hh",
-    "county": "Lake"
-  },
-  "954XX": {
-    "city": "Zcta 954xx",
-    "county": "Mendocino"
-  },
-  "95501": {
-    "city": "Eureka",
-    "county": "Humboldt"
-  },
-  "95502": {
-    "city": "Eureka",
-    "county": "Humboldt"
-  },
-  "95503": {
-    "city": "Eureka",
-    "county": "Humboldt"
-  },
-  "95511": {
-    "city": "Alderpoint",
-    "county": "Humboldt"
-  },
-  "95514": {
-    "city": "Blocksburg",
-    "county": "Humboldt"
-  },
-  "95519": {
-    "city": "Zcta 95519",
-    "county": "Humboldt"
-  },
-  "95521": {
-    "city": "Mc kinleyville",
-    "county": "Humboldt"
-  },
-  "95524": {
-    "city": "Bayside",
-    "county": "Humboldt"
-  },
-  "95525": {
-    "city": "Blue lake",
-    "county": "Humboldt"
-  },
-  "95526": {
-    "city": "Ruth",
-    "county": "Humboldt"
-  },
-  "95527": {
-    "city": "Burnt ranch",
-    "county": "Trinity"
-  },
-  "95528": {
-    "city": "Carlotta",
-    "county": "Humboldt"
-  },
-  "95531": {
-    "city": "Crescent city",
-    "county": "Del Norte"
-  },
-  "95536": {
-    "city": "Ferndale",
-    "county": "Humboldt"
-  },
-  "95537": {
-    "city": "Fields landing",
-    "county": "Humboldt"
-  },
-  "95540": {
-    "city": "Fortuna",
-    "county": "Humboldt"
-  },
-  "95542": {
-    "city": "Garberville",
-    "county": "Humboldt"
-  },
-  "95543": {
-    "city": "Gasquet",
-    "county": "Del Norte"
-  },
-  "95545": {
-    "city": "Honeydew",
-    "county": "Humboldt"
-  },
-  "95546": {
-    "city": "Hoopa",
-    "county": "Humboldt"
-  },
-  "95547": {
-    "city": "Hydesville",
-    "county": "Humboldt"
-  },
-  "95548": {
-    "city": "Klamath",
-    "county": "Del Norte"
-  },
-  "95549": {
-    "city": "Kneeland",
-    "county": "Humboldt"
-  },
-  "95550": {
-    "city": "Korbel",
-    "county": "Humboldt"
-  },
-  "95551": {
-    "city": "Loleta",
-    "county": "Humboldt"
-  },
-  "95552": {
-    "city": "Mad river",
-    "county": "Trinity"
-  },
-  "95553": {
-    "city": "Miranda",
-    "county": "Humboldt"
-  },
-  "95554": {
-    "city": "Myers flat",
-    "county": "Humboldt"
-  },
-  "95555": {
-    "city": "Orick",
-    "county": "Humboldt"
-  },
-  "95556": {
-    "city": "Orleans",
-    "county": "Humboldt"
-  },
-  "95558": {
-    "city": "Petrolia",
-    "county": "Humboldt"
-  },
-  "95559": {
-    "city": "Phillipsville",
-    "county": "Humboldt"
-  },
-  "95560": {
-    "city": "Redway",
-    "county": "Humboldt"
-  },
-  "95562": {
-    "city": "Rio dell",
-    "county": "Humboldt"
-  },
-  "95563": {
-    "city": "Salyer",
-    "county": "Trinity"
-  },
-  "95564": {
-    "city": "Samoa",
-    "county": "Humboldt"
-  },
-  "95565": {
-    "city": "Scotia",
-    "county": "Humboldt"
-  },
-  "95567": {
-    "city": "Smith river",
-    "county": "Del Norte"
-  },
-  "95568": {
-    "city": "Somes bar",
-    "county": "Siskiyou"
-  },
-  "95569": {
-    "city": "Redcrest",
-    "county": "Humboldt"
-  },
-  "95570": {
-    "city": "Westhaven",
-    "county": "Humboldt"
-  },
-  "95571": {
-    "city": "Weott",
-    "county": "Humboldt"
-  },
-  "95573": {
-    "city": "Willow creek",
-    "county": "Humboldt"
-  },
-  "95585": {
-    "city": "Leggett",
-    "county": "Mendocino"
-  },
-  "95587": {
-    "city": "Piercy",
-    "county": "Mendocino"
-  },
-  "95589": {
-    "city": "Whitethorn",
-    "county": "Humboldt"
-  },
-  "95595": {
-    "city": "Zenia",
-    "county": "Trinity"
-  },
-  "955HH": {
-    "city": "Zcta 955hh",
-    "county": "Del Norte"
-  },
-  "955XX": {
-    "city": "Zcta 955xx",
-    "county": "Humboldt"
-  },
-  "95601": {
-    "city": "Amador city",
-    "county": "Amador"
-  },
-  "95602": {
-    "city": "Auburn",
-    "county": "Placer"
-  },
-  "95603": {
-    "city": "Auburn",
-    "county": "Placer"
-  },
-  "95605": {
-    "city": "Bryte",
-    "county": "Yolo"
-  },
-  "95606": {
-    "city": "Brooks",
-    "county": "Yolo"
-  },
-  "95607": {
-    "city": "Capay",
-    "county": "Yolo"
-  },
-  "95608": {
-    "city": "Carmichael",
-    "county": "Sacramento"
-  },
-  "95610": {
-    "city": "Citrus heights",
-    "county": "Sacramento"
-  },
-  "95612": {
-    "city": "Clarksburg",
-    "county": "Yolo"
-  },
-  "95613": {
-    "city": "Coloma",
-    "county": "El Dorado"
-  },
-  "95614": {
-    "city": "Cool",
-    "county": "El Dorado"
-  },
-  "95615": {
-    "city": "Courtland",
-    "county": "Sacramento"
-  },
-  "95616": {
-    "city": "Davis",
-    "county": "Yolo"
-  },
-  "95618": {
-    "city": "El macero",
-    "county": "Yolo"
-  },
-  "95619": {
-    "city": "Diamond springs",
-    "county": "El Dorado"
-  },
-  "95620": {
-    "city": "Liberty farms",
-    "county": "Solano"
-  },
-  "95621": {
-    "city": "Citrus heights",
-    "county": "Sacramento"
-  },
-  "95623": {
-    "city": "El dorado",
-    "county": "El Dorado"
-  },
-  "95624": {
-    "city": "Elk grove",
-    "county": "Sacramento"
-  },
-  "95625": {
-    "city": "Elmira",
-    "county": "Solano"
-  },
-  "95626": {
-    "city": "Elverta",
-    "county": "Sacramento"
-  },
-  "95627": {
-    "city": "Esparto",
-    "county": "Yolo"
-  },
-  "95628": {
-    "city": "Fair oaks",
-    "county": "Sacramento"
-  },
-  "95629": {
-    "city": "Fiddletown",
-    "county": "Amador"
-  },
-  "95630": {
-    "city": "El dorado hills",
-    "county": "Sacramento"
-  },
-  "95631": {
-    "city": "Foresthill",
-    "county": "Placer"
-  },
-  "95632": {
-    "city": "Galt",
-    "county": "Sacramento"
-  },
-  "95633": {
-    "city": "Garden valley",
-    "county": "El Dorado"
-  },
-  "95634": {
-    "city": "Georgetown",
-    "county": "El Dorado"
-  },
-  "95635": {
-    "city": "Greenwood",
-    "county": "El Dorado"
-  },
-  "95636": {
-    "city": "Grizzly flats",
-    "county": "El Dorado"
-  },
-  "95637": {
-    "city": "Guinda",
-    "county": "Yolo"
-  },
-  "95638": {
-    "city": "Herald",
-    "county": "Sacramento"
-  },
-  "95639": {
-    "city": "Hood",
-    "county": "Sacramento"
-  },
-  "95640": {
-    "city": "Ione",
-    "county": "Amador"
-  },
-  "95641": {
-    "city": "Isleton",
-    "county": "Sacramento"
-  },
-  "95642": {
-    "city": "Jackson",
-    "county": "Amador"
-  },
-  "95645": {
-    "city": "Knights landing",
-    "county": "Yolo"
-  },
-  "95646": {
-    "city": "Kirkwood",
-    "county": "Alpine"
-  },
-  "95648": {
-    "city": "Lincoln",
-    "county": "Placer"
-  },
-  "95650": {
-    "city": "Loomis",
-    "county": "Placer"
-  },
-  "95651": {
-    "city": "Lotus",
-    "county": "El Dorado"
-  },
-  "95653": {
-    "city": "Madison",
-    "county": "Yolo"
-  },
-  "95655": {
-    "city": "Mather afb",
-    "county": "Sacramento"
-  },
-  "95658": {
-    "city": "Newcastle",
-    "county": "Placer"
-  },
-  "95659": {
-    "city": "Trowbridge",
-    "county": "Sutter"
-  },
-  "95660": {
-    "city": "North highlands",
-    "county": "Sacramento"
-  },
-  "95661": {
-    "city": "Roseville",
-    "county": "Placer"
-  },
-  "95662": {
-    "city": "Orangevale",
-    "county": "Sacramento"
-  },
-  "95663": {
-    "city": "Penryn",
-    "county": "Placer"
-  },
-  "95664": {
-    "city": "Pilot hill",
-    "county": "El Dorado"
-  },
-  "95665": {
-    "city": "Pine grove",
-    "county": "Amador"
-  },
-  "95666": {
-    "city": "Pioneer",
-    "county": "Amador"
-  },
-  "95667": {
-    "city": "Placerville",
-    "county": "El Dorado"
-  },
-  "95668": {
-    "city": "Pleasant grove",
-    "county": "Sutter"
-  },
-  "95669": {
-    "city": "Plymouth",
-    "county": "Amador"
-  },
-  "95670": {
-    "city": "Gold river",
-    "county": "Sacramento"
-  },
-  "95672": {
-    "city": "Rescue",
-    "county": "El Dorado"
-  },
-  "95673": {
-    "city": "Rio linda",
-    "county": "Sacramento"
-  },
-  "95674": {
-    "city": "Rio oso",
-    "county": "Sutter"
-  },
-  "95675": {
-    "city": "River pines",
-    "county": "Amador"
-  },
-  "95676": {
-    "city": "Robbins",
-    "county": "Sutter"
-  },
-  "95677": {
-    "city": "Rocklin",
-    "county": "Placer"
-  },
-  "95678": {
-    "city": "Roseville",
-    "county": "Placer"
-  },
-  "95681": {
-    "city": "Sheridan",
-    "county": "Placer"
-  },
-  "95682": {
-    "city": "Cameron park",
-    "county": "El Dorado"
-  },
-  "95683": {
-    "city": "Rancho murieta",
-    "county": "Sacramento"
-  },
-  "95684": {
-    "city": "Somerset",
-    "county": "El Dorado"
-  },
-  "95685": {
-    "city": "Sutter creek",
-    "county": "Amador"
-  },
-  "95686": {
-    "city": "Thornton",
-    "county": "San Joaquin"
-  },
-  "95687": {
-    "city": "Vacaville",
-    "county": "Solano"
-  },
-  "95688": {
-    "city": "Vacaville",
-    "county": "Solano"
-  },
-  "95689": {
-    "city": "Volcano",
-    "county": "Amador"
-  },
-  "95690": {
-    "city": "Walnut grove",
-    "county": "Sacramento"
-  },
-  "95691": {
-    "city": "West sacramento",
-    "county": "Yolo"
-  },
-  "95692": {
-    "city": "Wheatland",
-    "county": "Yuba"
-  },
-  "95693": {
-    "city": "Wilton",
-    "county": "Sacramento"
-  },
-  "95694": {
-    "city": "Winters",
-    "county": "Yolo"
-  },
-  "95695": {
-    "city": "Woodland",
-    "county": "Yolo"
-  },
-  "956HH": {
-    "city": "Zcta 956hh",
-    "county": "Amador"
-  },
-  "956XX": {
-    "city": "Zcta 956xx",
-    "county": "El Dorado"
-  },
-  "95701": {
-    "city": "Alta",
-    "county": "Placer"
-  },
-  "95703": {
-    "city": "Applegate",
-    "county": "Placer"
-  },
-  "95709": {
-    "city": "Camino",
-    "county": "El Dorado"
-  },
-  "95713": {
-    "city": "Iowa hill",
-    "county": "Placer"
-  },
-  "95714": {
-    "city": "Dutch flat",
-    "county": "Placer"
-  },
-  "95715": {
-    "city": "Emigrant gap",
-    "county": "Placer"
-  },
-  "95717": {
-    "city": "Gold run",
-    "county": "Placer"
-  },
-  "95720": {
-    "city": "Kyburz",
-    "county": "El Dorado"
-  },
-  "95721": {
-    "city": "Echo lake",
-    "county": "El Dorado"
-  },
-  "95722": {
-    "city": "Meadow vista",
-    "county": "Placer"
-  },
-  "95726": {
-    "city": "Pacific house",
-    "county": "El Dorado"
-  },
-  "95728": {
-    "city": "Soda springs",
-    "county": "Placer"
-  },
-  "95735": {
-    "city": "Twin bridges",
-    "county": "El Dorado"
-  },
-  "95736": {
-    "city": "Weimar",
-    "county": "Placer"
-  },
-  "95742": {
-    "city": "Rancho cordova",
-    "county": "Sacramento"
-  },
-  "95746": {
-    "city": "Granite bay",
-    "county": "Placer"
-  },
-  "95747": {
-    "city": "Roseville",
-    "county": "Placer"
-  },
-  "95758": {
-    "city": "Elk grove",
-    "county": "Sacramento"
-  },
-  "95762": {
-    "city": "El dorado hills",
-    "county": "El Dorado"
-  },
-  "95765": {
-    "city": "Rocklin",
-    "county": "Placer"
-  },
-  "95776": {
-    "city": "Woodland",
-    "county": "Yolo"
-  },
-  "957HH": {
-    "city": "Zcta 957hh",
-    "county": "El Dorado"
-  },
-  "957XX": {
-    "city": "Zcta 957xx",
-    "county": "Placer"
-  },
-  "95814": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95815": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95816": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95817": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95818": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95819": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95820": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95821": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95822": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95823": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95824": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95825": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95826": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95827": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95828": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95829": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95830": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95831": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95832": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95833": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95834": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95835": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95836": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95837": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95838": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95841": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95842": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95843": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "95864": {
-    "city": "Sacramento",
-    "county": "Sacramento"
-  },
-  "958HH": {
-    "city": "Zcta 958hh",
-    "county": "Sacramento"
-  },
-  "95901": {
-    "city": "Marysville",
-    "county": "Yuba"
-  },
-  "95903": {
-    "city": "Beale afb",
-    "county": "Yuba"
-  },
-  "95910": {
-    "city": "Alleghany",
-    "county": "Sierra"
-  },
-  "95912": {
-    "city": "Arbuckle",
-    "county": "Colusa"
-  },
-  "95913": {
-    "city": "Artois",
-    "county": "Glenn"
-  },
-  "95914": {
-    "city": "Bangor",
-    "county": "Butte"
-  },
-  "95916": {
-    "city": "Berry creek",
-    "county": "Butte"
-  },
-  "95917": {
-    "city": "Biggs",
-    "county": "Butte"
-  },
-  "95918": {
-    "city": "Browns valley",
-    "county": "Yuba"
-  },
-  "95919": {
-    "city": "Brownsville",
-    "county": "Yuba"
-  },
-  "95920": {
-    "city": "Butte city",
-    "county": "Glenn"
-  },
-  "95922": {
-    "city": "Camptonville",
-    "county": "Yuba"
-  },
-  "95923": {
-    "city": "Canyondam",
-    "county": "Plumas"
-  },
-  "95925": {
-    "city": "Challenge",
-    "county": "Yuba"
-  },
-  "95926": {
-    "city": "Cohasset",
-    "county": "Butte"
-  },
-  "95928": {
-    "city": "Chico",
-    "county": "Butte"
-  },
-  "95930": {
-    "city": "Clipper mills",
-    "county": "Butte"
-  },
-  "95932": {
-    "city": "Colusa",
-    "county": "Colusa"
-  },
-  "95934": {
-    "city": "Crescent mills",
-    "county": "Plumas"
-  },
-  "95935": {
-    "city": "Dobbins",
-    "county": "Yuba"
-  },
-  "95936": {
-    "city": "Downieville",
-    "county": "Sierra"
-  },
-  "95937": {
-    "city": "Dunnigan",
-    "county": "Colusa"
-  },
-  "95938": {
-    "city": "Durham",
-    "county": "Butte"
-  },
-  "95939": {
-    "city": "Elk creek",
-    "county": "Glenn"
-  },
-  "95941": {
-    "city": "Forbestown",
-    "county": "Butte"
-  },
-  "95942": {
-    "city": "Butte meadows",
-    "county": "Butte"
-  },
-  "95943": {
-    "city": "Glenn",
-    "county": "Glenn"
-  },
-  "95944": {
-    "city": "Goodyears bar",
-    "county": "Sierra"
-  },
-  "95945": {
-    "city": "Grass valley",
-    "county": "Nevada"
-  },
-  "95946": {
-    "city": "Penn valley",
-    "county": "Nevada"
-  },
-  "95947": {
-    "city": "Greenville",
-    "county": "Plumas"
-  },
-  "95948": {
-    "city": "Gridley",
-    "county": "Butte"
-  },
-  "95949": {
-    "city": "Grass valley",
-    "county": "Nevada"
-  },
-  "95950": {
-    "city": "Grimes",
-    "county": "Colusa"
-  },
-  "95951": {
-    "city": "Hamilton city",
-    "county": "Glenn"
-  },
-  "95953": {
-    "city": "Live oak",
-    "county": "Sutter"
-  },
-  "95954": {
-    "city": "Magalia",
-    "county": "Butte"
-  },
-  "95955": {
-    "city": "Maxwell",
-    "county": "Colusa"
-  },
-  "95956": {
-    "city": "Meadow valley",
-    "county": "Plumas"
-  },
-  "95957": {
-    "city": "Meridian",
-    "county": "Sutter"
-  },
-  "95959": {
-    "city": "Nevada city",
-    "county": "Nevada"
-  },
-  "95960": {
-    "city": "North san juan",
-    "county": "Nevada"
-  },
-  "95961": {
-    "city": "Olivehurst",
-    "county": "Yuba"
-  },
-  "95962": {
-    "city": "Oregon house",
-    "county": "Yuba"
-  },
-  "95963": {
-    "city": "Orland",
-    "county": "Glenn"
-  },
-  "95965": {
-    "city": "Pulga",
-    "county": "Butte"
-  },
-  "95966": {
-    "city": "Oroville",
-    "county": "Butte"
-  },
-  "95968": {
-    "city": "Palermo",
-    "county": "Butte"
-  },
-  "95969": {
-    "city": "Paradise",
-    "county": "Butte"
-  },
-  "95970": {
-    "city": "Princeton",
-    "county": "Colusa"
-  },
-  "95971": {
-    "city": "Quincy",
-    "county": "Plumas"
-  },
-  "95972": {
-    "city": "Rackerby",
-    "county": "Yuba"
-  },
-  "95973": {
-    "city": "Richardson sprin",
-    "county": "Butte"
-  },
-  "95974": {
-    "city": "Richvale",
-    "county": "Butte"
-  },
-  "95975": {
-    "city": "Rough and ready",
-    "county": "Nevada"
-  },
-  "95977": {
-    "city": "Smartville",
-    "county": "Nevada"
-  },
-  "95978": {
-    "city": "Stirling city",
-    "county": "Butte"
-  },
-  "95979": {
-    "city": "Stonyford",
-    "county": "Colusa"
-  },
-  "95981": {
-    "city": "La porte",
-    "county": "Yuba"
-  },
-  "95982": {
-    "city": "Sutter",
-    "county": "Sutter"
-  },
-  "95983": {
-    "city": "Taylorsville",
-    "county": "Plumas"
-  },
-  "95984": {
-    "city": "Twain",
-    "county": "Plumas"
-  },
-  "95986": {
-    "city": "Washington",
-    "county": "Nevada"
-  },
-  "95987": {
-    "city": "Williams",
-    "county": "Colusa"
-  },
-  "95988": {
-    "city": "Willows",
-    "county": "Glenn"
-  },
-  "95991": {
-    "city": "Yuba city",
-    "county": "Sutter"
-  },
-  "95993": {
-    "city": "Yuba city",
-    "county": "Sutter"
-  },
-  "959HH": {
-    "city": "Zcta 959hh",
-    "county": "Butte"
-  },
-  "959XX": {
-    "city": "Zcta 959xx",
-    "county": "Butte"
-  },
-  "96001": {
-    "city": "Redding",
-    "county": "Shasta"
-  },
-  "96002": {
-    "city": "Redding",
-    "county": "Shasta"
-  },
-  "96003": {
-    "city": "Redding",
-    "county": "Shasta"
-  },
-  "96006": {
-    "city": "Adin",
-    "county": "Modoc"
-  },
-  "96007": {
-    "city": "Anderson",
-    "county": "Shasta"
-  },
-  "96008": {
-    "city": "Bella vista",
-    "county": "Shasta"
-  },
-  "96009": {
-    "city": "Bieber",
-    "county": "Lassen"
-  },
-  "96010": {
-    "city": "Big bar",
-    "county": "Trinity"
-  },
-  "96011": {
-    "city": "Big bend",
-    "county": "Shasta"
-  },
-  "96013": {
-    "city": "Burney",
-    "county": "Shasta"
-  },
-  "96014": {
-    "city": "Callahan",
-    "county": "Siskiyou"
-  },
-  "96015": {
-    "city": "Canby",
-    "county": "Modoc"
-  },
-  "96016": {
-    "city": "Cassel",
-    "county": "Shasta"
-  },
-  "96017": {
-    "city": "Castella",
-    "county": "Shasta"
-  },
-  "96019": {
-    "city": "Shasta lake",
-    "county": "Shasta"
-  },
-  "96020": {
-    "city": "Chester",
-    "county": "Plumas"
-  },
-  "96021": {
-    "city": "Corning",
-    "county": "Tehama"
-  },
-  "96022": {
-    "city": "Cottonwood",
-    "county": "Shasta"
-  },
-  "96023": {
-    "city": "Dorris",
-    "county": "Siskiyou"
-  },
-  "96024": {
-    "city": "Douglas city",
-    "county": "Trinity"
-  },
-  "96025": {
-    "city": "Dunsmuir",
-    "county": "Siskiyou"
-  },
-  "96027": {
-    "city": "Sawyers bar",
-    "county": "Siskiyou"
-  },
-  "96028": {
-    "city": "Fall river mills",
-    "county": "Shasta"
-  },
-  "96029": {
-    "city": "Flournoy",
-    "county": "Tehama"
-  },
-  "96031": {
-    "city": "Forks of salmon",
-    "county": "Siskiyou"
-  },
-  "96032": {
-    "city": "Fort jones",
-    "county": "Siskiyou"
-  },
-  "96033": {
-    "city": "French gulch",
-    "county": "Shasta"
-  },
-  "96034": {
-    "city": "Gazelle",
-    "county": "Siskiyou"
-  },
-  "96035": {
-    "city": "Gerber",
-    "county": "Tehama"
-  },
-  "96037": {
-    "city": "Greenview",
-    "county": "Siskiyou"
-  },
-  "96038": {
-    "city": "Grenada",
-    "county": "Siskiyou"
-  },
-  "96039": {
-    "city": "Happy camp",
-    "county": "Siskiyou"
-  },
-  "96040": {
-    "city": "Hat creek",
-    "county": "Shasta"
-  },
-  "96041": {
-    "city": "Hayfork",
-    "county": "Trinity"
-  },
-  "96044": {
-    "city": "Hornbrook",
-    "county": "Siskiyou"
-  },
-  "96046": {
-    "city": "Hyampom",
-    "county": "Trinity"
-  },
-  "96047": {
-    "city": "Igo",
-    "county": "Shasta"
-  },
-  "96048": {
-    "city": "Helena",
-    "county": "Trinity"
-  },
-  "96050": {
-    "city": "Klamath river",
-    "county": "Siskiyou"
-  },
-  "96051": {
-    "city": "Lakehead",
-    "county": "Shasta"
-  },
-  "96052": {
-    "city": "Lewiston",
-    "county": "Trinity"
-  },
-  "96054": {
-    "city": "Lookout",
-    "county": "Modoc"
-  },
-  "96055": {
-    "city": "Los molinos",
-    "county": "Tehama"
-  },
-  "96056": {
-    "city": "Mcarthur",
-    "county": "Shasta"
-  },
-  "96057": {
-    "city": "Mccloud",
-    "county": "Siskiyou"
-  },
-  "96058": {
-    "city": "Macdoel",
-    "county": "Siskiyou"
-  },
-  "96059": {
-    "city": "Manton",
-    "county": "Tehama"
-  },
-  "96061": {
-    "city": "Mill creek",
-    "county": "Tehama"
-  },
-  "96062": {
-    "city": "Millville",
-    "county": "Shasta"
-  },
-  "96063": {
-    "city": "Mineral",
-    "county": "Tehama"
-  },
-  "96064": {
-    "city": "Montague",
-    "county": "Siskiyou"
-  },
-  "96065": {
-    "city": "Montgomery creek",
-    "county": "Shasta"
-  },
-  "96067": {
-    "city": "Mount shasta",
-    "county": "Siskiyou"
-  },
-  "96068": {
-    "city": "Nubieber",
-    "county": "Lassen"
-  },
-  "96069": {
-    "city": "Oak run",
-    "county": "Shasta"
-  },
-  "96071": {
-    "city": "Old station",
-    "county": "Shasta"
-  },
-  "96073": {
-    "city": "Palo cedro",
-    "county": "Shasta"
-  },
-  "96074": {
-    "city": "Paskenta",
-    "county": "Tehama"
-  },
-  "96075": {
-    "city": "Paynes creek",
-    "county": "Tehama"
-  },
-  "96076": {
-    "city": "Wildwood",
-    "county": "Shasta"
-  },
-  "96080": {
-    "city": "Red bluff",
-    "county": "Tehama"
-  },
-  "96084": {
-    "city": "Round mountain",
-    "county": "Shasta"
-  },
-  "96085": {
-    "city": "Scott bar",
-    "county": "Siskiyou"
-  },
-  "96086": {
-    "city": "Seiad valley",
-    "county": "Siskiyou"
-  },
-  "96087": {
-    "city": "Shasta",
-    "county": "Shasta"
-  },
-  "96088": {
-    "city": "Shingletown",
-    "county": "Shasta"
-  },
-  "96090": {
-    "city": "Tehama",
-    "county": "Tehama"
-  },
-  "96091": {
-    "city": "Trinity center",
-    "county": "Trinity"
-  },
-  "96092": {
-    "city": "Vina",
-    "county": "Tehama"
-  },
-  "96093": {
-    "city": "Weaverville",
-    "county": "Trinity"
-  },
-  "96094": {
-    "city": "Edgewood",
-    "county": "Siskiyou"
-  },
-  "96095": {
-    "city": "Whiskeytown",
-    "county": "Shasta"
-  },
-  "96096": {
-    "city": "Whitmore",
-    "county": "Shasta"
-  },
-  "96097": {
-    "city": "Yreka",
-    "county": "Siskiyou"
-  },
-  "960HH": {
-    "city": "Zcta 960hh",
-    "county": "Lassen"
-  },
-  "960XX": {
-    "city": "Zcta 960xx",
-    "county": "Siskiyou"
-  },
-  "96101": {
-    "city": "Alturas",
-    "county": "Modoc"
-  },
-  "96103": {
-    "city": "Cromberg",
-    "county": "Plumas"
-  },
-  "96104": {
-    "city": "Cedarville",
-    "county": "Modoc"
-  },
-  "96105": {
-    "city": "Chilcoot",
-    "county": "Plumas"
-  },
-  "96106": {
-    "city": "Clio",
-    "county": "Plumas"
-  },
-  "96107": {
-    "city": "Coleville",
-    "county": "Mono"
-  },
-  "96108": {
-    "city": "Davis creek",
-    "county": "Modoc"
-  },
-  "96109": {
-    "city": "Doyle",
-    "county": "Lassen"
-  },
-  "96110": {
-    "city": "Eagleville",
-    "county": "Modoc"
-  },
-  "96112": {
-    "city": "Fort bidwell",
-    "county": "Modoc"
-  },
-  "96113": {
-    "city": "Herlong",
-    "county": "Lassen"
-  },
-  "96114": {
-    "city": "Janesville",
-    "county": "Lassen"
-  },
-  "96115": {
-    "city": "Lake city",
-    "county": "Modoc"
-  },
-  "96116": {
-    "city": "Likely",
-    "county": "Modoc"
-  },
-  "96117": {
-    "city": "Litchfield",
-    "county": "Lassen"
-  },
-  "96118": {
-    "city": "Loyalton",
-    "county": "Sierra"
-  },
-  "96119": {
-    "city": "Madeline",
-    "county": "Lassen"
-  },
-  "96120": {
-    "city": "Hope valley",
-    "county": "Alpine"
-  },
-  "96121": {
-    "city": "Milford",
-    "county": "Lassen"
-  },
-  "96122": {
-    "city": "Portola",
-    "county": "Plumas"
-  },
-  "96123": {
-    "city": "Ravendale",
-    "county": "Lassen"
-  },
-  "96124": {
-    "city": "Calpine",
-    "county": "Sierra"
-  },
-  "96125": {
-    "city": "Sierra city",
-    "county": "Sierra"
-  },
-  "96126": {
-    "city": "Sierraville",
-    "county": "Sierra"
-  },
-  "96128": {
-    "city": "Standish",
-    "county": "Lassen"
-  },
-  "96130": {
-    "city": "Susanville",
-    "county": "Lassen"
-  },
-  "96132": {
-    "city": "Termo",
-    "county": "Lassen"
-  },
-  "96133": {
-    "city": "Topaz",
-    "county": "Mono"
-  },
-  "96134": {
-    "city": "Tulelake",
-    "county": "Siskiyou"
-  },
-  "96136": {
-    "city": "Wendel",
-    "county": "Lassen"
-  },
-  "96137": {
-    "city": "Peninsula villag",
-    "county": "Lassen"
-  },
-  "96140": {
-    "city": "Carnelian bay",
-    "county": "Placer"
-  },
-  "96141": {
-    "city": "Homewood",
-    "county": "Placer"
-  },
-  "96142": {
-    "city": "Tahoma",
-    "county": "El Dorado"
-  },
-  "96143": {
-    "city": "Kings beach",
-    "county": "Placer"
-  },
-  "96145": {
-    "city": "Tahoe city",
-    "county": "Placer"
-  },
-  "96146": {
-    "city": "Olympic valley",
-    "county": "Placer"
-  },
-  "96148": {
-    "city": "Tahoe vista",
-    "county": "Placer"
-  },
-  "96150": {
-    "city": "South lake tahoe",
-    "county": "El Dorado"
-  },
-  "96161": {
-    "city": "Truckee",
-    "county": "Nevada"
-  },
-  "961HH": {
-    "city": "Zcta 961hh",
-    "county": "El Dorado"
-  },
-  "961XX": {
-    "city": "Zcta 961xx",
-    "county": "Lassen"
-  },
-  "97635": {
-    "city": "NaN",
-    "county": "Modoc"
-  },
-  "976HH": {
-    "city": "NaN",
-    "county": "Modoc"
-  }
+  "00012": "Mt Meadows Area",
+  "00016": "Sequoia National Forest",
+  "00017": "Northeast Fresno County",
+  "00018": "Los Padres Ntl Forest",
+  "00019": "Lassen Ntl Forest",
+  "00020": "Sierra National Forest",
+  "00022": "Jackson St Forest",
+  "00026": "East Tulare County",
+  "00028": "Plumas Ntl Forest",
+  "00029": "Tahoe National Forest",
+  "00031": "Lassen National Forest",
+  "00032": "Los Padres Ntl Forest",
+  "00033": "Tahoe National Forest",
+  "00034": "Klamath National Forest",
+  "00035": "Modoc/Shasta/Klamath for",
+  "00037": "West Tehama County",
+  "00038": "East Tehama County",
+  "00039": "Southeast Trinity County",
+  "00040": "Yosemite Ntl Park",
+  "00044": "South Alpine County",
+  "00047": "West Glenn County",
+  "00048": "Mendocino Ntl Forest",
+  "00049": "Six Rivers National Fore",
+  "00050": "Six Rivers Ntl Forest",
+  "00051": "Eldorado Ntl Forest",
+  "00052": "Eldorado Ntl Forest",
+  "00054": "Six Rivers Ntl Forest",
+  "00055": "Trinity Ntl Forest",
+  "00057": "Channel Islands National Pk",
+  "00058": "Yosemite Ntl Park",
+  "00061": "Channel Is Air Guard Station",
+  "00065": "Plumas National Park",
+  "90001": "Los Angeles",
+  "90002": "Los Angeles",
+  "90003": "Los Angeles",
+  "90004": "Los Angeles",
+  "90005": "Los Angeles",
+  "90006": "Los Angeles",
+  "90007": "Los Angeles",
+  "90008": "Los Angeles",
+  "90011": "Los Angeles",
+  "90012": "Los Angeles",
+  "90013": "Los Angeles",
+  "90014": "Los Angeles",
+  "90015": "Los Angeles",
+  "90016": "Los Angeles",
+  "90017": "Los Angeles",
+  "90018": "Los Angeles",
+  "90019": "Los Angeles",
+  "90020": "Los Angeles",
+  "90021": "Los Angeles",
+  "90022": "Los Angeles",
+  "90023": "Los Angeles",
+  "90024": "Los Angeles",
+  "90025": "Los Angeles",
+  "90026": "Los Angeles",
+  "90027": "Los Angeles",
+  "90028": "Los Angeles",
+  "90029": "Los Angeles",
+  "90031": "Los Angeles",
+  "90032": "Los Angeles",
+  "90033": "Los Angeles",
+  "90034": "Los Angeles",
+  "90035": "Los Angeles",
+  "90036": "Los Angeles",
+  "90037": "Los Angeles",
+  "90038": "Los Angeles",
+  "90039": "Los Angeles",
+  "90040": "Los Angeles",
+  "90041": "Los Angeles",
+  "90042": "Los Angeles",
+  "90043": "Los Angeles",
+  "90044": "Los Angeles",
+  "90045": "Los Angeles",
+  "90046": "Los Angeles",
+  "90047": "Los Angeles",
+  "90048": "Los Angeles",
+  "90049": "Los Angeles",
+  "90056": "Los Angeles",
+  "90057": "Los Angeles",
+  "90058": "Los Angeles",
+  "90059": "Los Angeles",
+  "90061": "Los Angeles",
+  "90062": "Los Angeles",
+  "90063": "Los Angeles",
+  "90064": "Los Angeles",
+  "90065": "Los Angeles",
+  "90066": "Los Angeles",
+  "90067": "Los Angeles",
+  "90068": "Los Angeles",
+  "90069": "West Hollywood",
+  "90071": "Los Angeles",
+  "90073": "Los Angeles",
+  "90077": "Los Angeles",
+  "90089": "Los Angeles",
+  "90094": "Playa Vista",
+  "90095": "Los Angeles",
+  "90201": "Bell Gardens",
+  "90210": "Beverly Hills",
+  "90211": "Beverly Hills",
+  "90212": "Beverly Hills",
+  "90220": "Compton",
+  "90221": "Compton",
+  "90222": "Compton",
+  "90230": "Culver City",
+  "90232": "Culver City",
+  "90240": "Downey",
+  "90241": "Downey",
+  "90242": "Downey",
+  "90245": "El Segundo",
+  "90247": "Gardena",
+  "90248": "Gardena",
+  "90249": "Gardena",
+  "90250": "Hawthorne",
+  "90254": "Hermosa Beach",
+  "90255": "Huntington Park",
+  "90260": "Lawndale",
+  "90262": "Lynwood",
+  "90263": "Malibu",
+  "90265": "Malibu",
+  "90266": "Manhattan Beach",
+  "90270": "Maywood",
+  "90272": "Pacific Palisades",
+  "90274": "Palos Verdes Peninsula",
+  "90275": "Rancho Palos Verdes",
+  "90277": "Redondo Beach",
+  "90278": "Redondo Beach",
+  "90280": "South Gate",
+  "90290": "Topanga",
+  "90291": "Venice",
+  "90292": "Marina del Rey",
+  "90293": "Playa del Rey",
+  "90301": "Inglewood",
+  "90302": "Inglewood",
+  "90303": "Inglewood",
+  "90304": "Inglewood",
+  "90305": "Inglewood",
+  "90401": "Santa Monica",
+  "90402": "Santa Monica",
+  "90403": "Santa Monica",
+  "90404": "Santa Monica",
+  "90405": "Santa Monica",
+  "90501": "Torrance",
+  "90502": "Torrance",
+  "90503": "Torrance",
+  "90504": "Torrance",
+  "90505": "Torrance",
+  "90506": "Torrance",
+  "90601": "Whittier",
+  "90602": "Whittier",
+  "90603": "Whittier",
+  "90604": "Whittier",
+  "90605": "Whittier",
+  "90606": "Whittier",
+  "90620": "Buena Park",
+  "90621": "Buena Park",
+  "90623": "La Palma",
+  "90630": "Cypress",
+  "90631": "La Habra",
+  "90638": "La Mirada",
+  "90639": "La Mirada",
+  "90640": "Montebello",
+  "90650": "Norwalk",
+  "90660": "Pico Rivera",
+  "90670": "Santa Fe Springs",
+  "90680": "Stanton",
+  "90701": "Artesia",
+  "90703": "Cerritos",
+  "90704": "Avalon",
+  "90706": "Bellflower",
+  "90710": "Harbor City",
+  "90712": "Lakewood",
+  "90713": "Lakewood",
+  "90715": "Lakewood",
+  "90716": "Hawaiian Gardens",
+  "90717": "Lomita",
+  "90720": "Los Alamitos",
+  "90723": "Paramount",
+  "90731": "San Pedro",
+  "90732": "San Pedro",
+  "90740": "Seal Beach",
+  "90742": "Sunset Beach",
+  "90743": "Surfside",
+  "90744": "Wilmington",
+  "90745": "Carson",
+  "90746": "Carson",
+  "90747": "Carson",
+  "90755": "Signal Hill",
+  "90802": "Long Beach",
+  "90803": "Long Beach",
+  "90804": "Long Beach",
+  "90805": "Long Beach",
+  "90806": "Long Beach",
+  "90807": "Long Beach",
+  "90808": "Long Beach",
+  "90810": "Long Beach",
+  "90813": "Long Beach",
+  "90814": "Long Beach",
+  "90815": "Long Beach",
+  "90822": "Long Beach",
+  "90840": "Long Beach",
+  "91001": "Altadena",
+  "91006": "Arcadia",
+  "91007": "Arcadia",
+  "91008": "Duarte",
+  "91010": "Duarte",
+  "91011": "La Canada Flintridge",
+  "91016": "Monrovia",
+  "91020": "Montrose",
+  "91024": "Sierra Madre",
+  "91030": "South Pasadena",
+  "91040": "Sunland",
+  "91042": "Tujunga",
+  "91101": "Pasadena",
+  "91103": "Pasadena",
+  "91104": "Pasadena",
+  "91105": "Pasadena",
+  "91106": "Pasadena",
+  "91107": "Pasadena",
+  "91108": "San Marino",
+  "91123": "Pasadena",
+  "91201": "Glendale",
+  "91202": "Glendale",
+  "91203": "Glendale",
+  "91204": "Glendale",
+  "91205": "Glendale",
+  "91206": "Glendale",
+  "91207": "Glendale",
+  "91208": "Glendale",
+  "91210": "Glendale",
+  "91214": "La Crescenta",
+  "91301": "Agoura Hills",
+  "91302": "Calabasas",
+  "91303": "Canoga Park",
+  "91304": "Canoga Park",
+  "91306": "Winnetka",
+  "91307": "West Hills",
+  "91311": "Chatsworth",
+  "91316": "Encino",
+  "91320": "Newbury Park",
+  "91321": "Newhall",
+  "91324": "Northridge",
+  "91325": "Northridge",
+  "91326": "Porter Ranch",
+  "91330": "Northridge",
+  "91331": "Pacoima",
+  "91335": "Reseda",
+  "91340": "San Fernando",
+  "91342": "Sylmar",
+  "91343": "North Hills",
+  "91344": "Granada Hills",
+  "91345": "Mission Hills",
+  "91350": "Santa Clarita",
+  "91351": "Canyon Country",
+  "91352": "Sun Valley",
+  "91354": "Valencia",
+  "91355": "Valencia",
+  "91356": "Tarzana",
+  "91360": "Thousand Oaks",
+  "91361": "Westlake Village",
+  "91362": "Thousand Oaks",
+  "91364": "Woodland Hills",
+  "91367": "Woodland Hills",
+  "91371": "Woodland Hills",
+  "91377": "Oak Park",
+  "91381": "Stevenson Ranch",
+  "91384": "Castaic",
+  "91387": "Canyon Country",
+  "91390": "Santa Clarita",
+  "91401": "Van Nuys",
+  "91402": "Panorama City",
+  "91403": "Sherman Oaks",
+  "91405": "Van Nuys",
+  "91406": "Van Nuys",
+  "91411": "Van Nuys",
+  "91423": "Sherman Oaks",
+  "91436": "Encino",
+  "91501": "Burbank",
+  "91502": "Burbank",
+  "91504": "Burbank",
+  "91505": "Burbank",
+  "91506": "Burbank",
+  "91521": "Burbank",
+  "91522": "Burbank",
+  "91523": "Burbank",
+  "91601": "North Hollywood",
+  "91602": "North Hollywood",
+  "91604": "Studio City",
+  "91605": "North Hollywood",
+  "91606": "North Hollywood",
+  "91607": "Valley Village",
+  "91608": "Universal City",
+  "91701": "Rancho Cucamonga",
+  "91702": "Azusa",
+  "91706": "Baldwin Park",
+  "91708": "Chino",
+  "91709": "Chino Hills",
+  "91710": "Chino",
+  "91711": "Claremont",
+  "91722": "Covina",
+  "91723": "Covina",
+  "91724": "Covina",
+  "91730": "Rancho Cucamonga",
+  "91731": "El Monte",
+  "91732": "El Monte",
+  "91733": "South El Monte",
+  "91737": "Rancho Cucamonga",
+  "91739": "Rancho Cucamonga",
+  "91740": "Glendora",
+  "91741": "Glendora",
+  "91744": "La Puente",
+  "91745": "Hacienda Heights",
+  "91746": "La Puente",
+  "91748": "Rowland Heights",
+  "91750": "La Verne",
+  "91752": "Mira Loma",
+  "91754": "Monterey Park",
+  "91755": "Monterey Park",
+  "91759": "Mt Baldy",
+  "91761": "Ontario",
+  "91762": "Ontario",
+  "91763": "Montclair",
+  "91764": "Ontario",
+  "91765": "Diamond Bar",
+  "91766": "Pomona",
+  "91767": "Pomona",
+  "91768": "Pomona",
+  "91770": "Rosemead",
+  "91773": "San Dimas",
+  "91775": "San Gabriel",
+  "91776": "San Gabriel",
+  "91780": "Temple City",
+  "91784": "Upland",
+  "91786": "Upland",
+  "91789": "Walnut",
+  "91790": "West Covina",
+  "91791": "West Covina",
+  "91792": "West Covina",
+  "91801": "Alhambra",
+  "91803": "Alhambra",
+  "91901": "Alpine",
+  "91902": "Bonita",
+  "91905": "Boulevard",
+  "91906": "Campo",
+  "91910": "Chula Vista",
+  "91911": "Chula Vista",
+  "91913": "Chula Vista",
+  "91914": "Chula Vista",
+  "91915": "Chula Vista",
+  "91916": "Descanso",
+  "91917": "Dulzura",
+  "91932": "Imperial Beach",
+  "91934": "Jacumba",
+  "91935": "Jamul",
+  "91941": "La Mesa",
+  "91942": "La Mesa",
+  "91945": "Lemon Grove",
+  "91950": "National City",
+  "91962": "Pine Valley",
+  "91963": "Potrero",
+  "91977": "Spring Valley",
+  "91978": "Spring Valley",
+  "91980": "Tecate",
+  "92003": "Bonsall",
+  "92004": "Borrego Springs",
+  "92007": "Cardiff By the Sea",
+  "92008": "Carlsbad",
+  "92009": "Carlsbad",
+  "92010": "Carlsbad",
+  "92011": "Carlsbad",
+  "92014": "Del Mar",
+  "92019": "El Cajon",
+  "92020": "El Cajon",
+  "92021": "El Cajon",
+  "92024": "Encinitas",
+  "92025": "Escondido",
+  "92026": "Escondido",
+  "92027": "Escondido",
+  "92028": "Fallbrook",
+  "92029": "Escondido",
+  "92036": "Julian",
+  "92037": "La Jolla",
+  "92040": "Lakeside",
+  "92054": "Oceanside",
+  "92055": "Camp Pendleton",
+  "92056": "Oceanside",
+  "92057": "Oceanside",
+  "92058": "Oceanside",
+  "92059": "Pala",
+  "92061": "Pauma Valley",
+  "92064": "Poway",
+  "92065": "Ramona",
+  "92066": "Ranchita",
+  "92067": "Rancho Santa Fe",
+  "92069": "San Marcos",
+  "92070": "Santa Ysabel",
+  "92071": "Santee",
+  "92075": "Solana Beach",
+  "92078": "San Marcos",
+  "92081": "Vista",
+  "92082": "Valley Center",
+  "92083": "Vista",
+  "92084": "Vista",
+  "92086": "Warner Springs",
+  "92091": "Rancho Santa Fe",
+  "92093": "La Jolla",
+  "92096": "San Marcos",
+  "92101": "San Diego",
+  "92102": "San Diego",
+  "92103": "San Diego",
+  "92104": "San Diego",
+  "92105": "San Diego",
+  "92106": "San Diego",
+  "92107": "San Diego",
+  "92108": "San Diego",
+  "92109": "San Diego",
+  "92110": "San Diego",
+  "92111": "San Diego",
+  "92113": "San Diego",
+  "92114": "San Diego",
+  "92115": "San Diego",
+  "92116": "San Diego",
+  "92117": "San Diego",
+  "92118": "Coronado",
+  "92119": "San Diego",
+  "92120": "San Diego",
+  "92121": "San Diego",
+  "92122": "San Diego",
+  "92123": "San Diego",
+  "92124": "San Diego",
+  "92126": "San Diego",
+  "92127": "San Diego",
+  "92128": "San Diego",
+  "92129": "San Diego",
+  "92130": "San Diego",
+  "92131": "San Diego",
+  "92134": "San Diego",
+  "92135": "San Diego",
+  "92136": "San Diego",
+  "92139": "San Diego",
+  "92140": "San Diego",
+  "92145": "San Diego",
+  "92152": "San Diego",
+  "92154": "San Diego",
+  "92155": "San Diego",
+  "92173": "San Ysidro",
+  "92182": "San Diego",
+  "92201": "Indio",
+  "92203": "Indio",
+  "92210": "Indian Wells",
+  "92211": "Palm Desert",
+  "92220": "Banning",
+  "92223": "Beaumont",
+  "92225": "Blythe",
+  "92227": "Brawley",
+  "92230": "Cabazon",
+  "92231": "Calexico",
+  "92233": "Calipatria",
+  "92234": "Cathedral City",
+  "92236": "Coachella",
+  "92239": "Desert Center",
+  "92240": "Desert Hot Springs",
+  "92241": "Desert Hot Springs",
+  "92242": "Earp",
+  "92243": "El Centro",
+  "92249": "Heber",
+  "92250": "Holtville",
+  "92251": "Imperial",
+  "92252": "Joshua Tree",
+  "92253": "La Quinta",
+  "92254": "Mecca",
+  "92256": "Morongo Valley",
+  "92257": "Niland",
+  "92258": "North Palm Springs",
+  "92259": "Ocotillo",
+  "92260": "Palm Desert",
+  "92262": "Palm Springs",
+  "92264": "Palm Springs",
+  "92267": "Parker Dam",
+  "92270": "Rancho Mirage",
+  "92274": "Thermal",
+  "92276": "Thousand Palms",
+  "92277": "Twentynine Palms",
+  "92278": "Twentynine Palms",
+  "92280": "Vidal",
+  "92281": "Westmorland",
+  "92282": "Whitewater",
+  "92283": "Winterhaven",
+  "92284": "Yucca Valley",
+  "92285": "Landers",
+  "92301": "Adelanto",
+  "92304": "Amboy",
+  "92305": "Angelus Oaks",
+  "92307": "Apple Valley",
+  "92308": "Apple Valley",
+  "92309": "Baker",
+  "92310": "Fort Irwin",
+  "92311": "Barstow",
+  "92313": "Grand Terrace",
+  "92314": "Big Bear City",
+  "92315": "Big Bear Lake",
+  "92316": "Bloomington",
+  "92317": "Blue Jay",
+  "92318": "Bryn Mawr",
+  "92320": "Calimesa",
+  "92321": "Cedar Glen",
+  "92322": "Cedarpines Park",
+  "92324": "Colton",
+  "92325": "Crestline",
+  "92327": "Daggett",
+  "92328": "Death Valley",
+  "92332": "Essex",
+  "92333": "Fawnskin",
+  "92335": "Fontana",
+  "92336": "Fontana",
+  "92337": "Fontana",
+  "92338": "Ludlow",
+  "92339": "Forest Falls",
+  "92341": "Green Valley Lake",
+  "92342": "Helendale",
+  "92344": "Hesperia",
+  "92345": "Hesperia",
+  "92346": "Highland",
+  "92347": "Hinkley",
+  "92350": "Loma Linda",
+  "92352": "Lake Arrowhead",
+  "92354": "Loma Linda",
+  "92356": "Lucerne Valley",
+  "92358": "Lytle Creek",
+  "92359": "Mentone",
+  "92363": "Needles",
+  "92364": "Nipton",
+  "92365": "Newberry Springs",
+  "92368": "Oro Grande",
+  "92371": "Phelan",
+  "92372": "Pinon Hills",
+  "92373": "Redlands",
+  "92374": "Redlands",
+  "92376": "Rialto",
+  "92377": "Rialto",
+  "92378": "Rimforest",
+  "92382": "Running Springs",
+  "92384": "Shoshone",
+  "92385": "Skyforest",
+  "92386": "Sugarloaf",
+  "92389": "Tecopa",
+  "92391": "Twin Peaks",
+  "92392": "Victorville",
+  "92394": "Victorville",
+  "92395": "Victorville",
+  "92397": "Wrightwood",
+  "92398": "Yermo",
+  "92399": "Yucaipa",
+  "92401": "San Bernardino",
+  "92404": "San Bernardino",
+  "92405": "San Bernardino",
+  "92407": "San Bernardino",
+  "92408": "San Bernardino",
+  "92410": "San Bernardino",
+  "92411": "San Bernardino",
+  "92415": "San Bernardino",
+  "92501": "Riverside",
+  "92503": "Riverside",
+  "92504": "Riverside",
+  "92505": "Riverside",
+  "92506": "Riverside",
+  "92507": "Riverside",
+  "92508": "Riverside",
+  "92509": "Riverside",
+  "92518": "March Air Reserve Base",
+  "92521": "Riverside",
+  "92530": "Lake Elsinore",
+  "92532": "Lake Elsinore",
+  "92536": "Aguanga",
+  "92539": "Anza",
+  "92543": "Hemet",
+  "92544": "Hemet",
+  "92545": "Hemet",
+  "92548": "Homeland",
+  "92549": "Idyllwild",
+  "92551": "Moreno Valley",
+  "92553": "Moreno Valley",
+  "92555": "Moreno Valley",
+  "92557": "Moreno Valley",
+  "92561": "Mountain Center",
+  "92562": "Murrieta",
+  "92563": "Murrieta",
+  "92567": "Nuevo",
+  "92570": "Perris",
+  "92571": "Perris",
+  "92582": "San Jacinto",
+  "92583": "San Jacinto",
+  "92584": "Menifee",
+  "92585": "Sun City",
+  "92586": "Sun City",
+  "92587": "Quail Valley",
+  "92590": "Temecula",
+  "92591": "Temecula",
+  "92592": "Temecula",
+  "92595": "Wildomar",
+  "92596": "Winchester",
+  "92602": "Irvine",
+  "92603": "Irvine",
+  "92604": "Irvine",
+  "92606": "Irvine",
+  "92610": "Foothill Ranch",
+  "92612": "Irvine",
+  "92614": "Irvine",
+  "92617": "Irvine",
+  "92618": "Irvine",
+  "92620": "Irvine",
+  "92624": "Capistrano Beach",
+  "92625": "Corona del Mar",
+  "92626": "Costa Mesa",
+  "92627": "Costa Mesa",
+  "92629": "Dana Point",
+  "92630": "Lake Forest",
+  "92637": "Laguna Woods",
+  "92646": "Huntington Beach",
+  "92647": "Huntington Beach",
+  "92648": "Huntington Beach",
+  "92649": "Huntington Beach",
+  "92651": "Laguna Beach",
+  "92653": "Laguna Hills",
+  "92655": "Midway City",
+  "92656": "Aliso Viejo",
+  "92657": "Newport Coast",
+  "92660": "Newport Beach",
+  "92661": "Newport Beach",
+  "92662": "Newport Beach",
+  "92663": "Newport Beach",
+  "92672": "San Clemente",
+  "92673": "San Clemente",
+  "92675": "San Juan Capistrano",
+  "92676": "Silverado",
+  "92677": "Laguna Niguel",
+  "92679": "Trabuco Canyon",
+  "92683": "Westminster",
+  "92688": "Rancho Santa Margarita",
+  "92691": "Mission Viejo",
+  "92692": "Mission Viejo",
+  "92694": "Ladera Ranch",
+  "92697": "Irvine",
+  "92701": "Santa Ana",
+  "92703": "Santa Ana",
+  "92704": "Santa Ana",
+  "92705": "Santa Ana",
+  "92706": "Santa Ana",
+  "92707": "Santa Ana",
+  "92708": "Fountain Valley",
+  "92780": "Tustin",
+  "92782": "Tustin",
+  "92801": "Anaheim",
+  "92802": "Anaheim",
+  "92804": "Anaheim",
+  "92805": "Anaheim",
+  "92806": "Anaheim",
+  "92807": "Anaheim",
+  "92808": "Anaheim",
+  "92821": "Brea",
+  "92823": "Brea",
+  "92831": "Fullerton",
+  "92832": "Fullerton",
+  "92833": "Fullerton",
+  "92835": "Fullerton",
+  "92840": "Garden Grove",
+  "92841": "Garden Grove",
+  "92843": "Garden Grove",
+  "92844": "Garden Grove",
+  "92845": "Garden Grove",
+  "92860": "Norco",
+  "92861": "Villa Park",
+  "92865": "Orange",
+  "92866": "Orange",
+  "92867": "Orange",
+  "92868": "Orange",
+  "92869": "Orange",
+  "92870": "Placentia",
+  "92879": "Corona",
+  "92880": "Corona",
+  "92881": "Corona",
+  "92882": "Corona",
+  "92883": "Corona",
+  "92886": "Yorba Linda",
+  "92887": "Yorba Linda",
+  "93001": "Ventura",
+  "93003": "Ventura",
+  "93004": "Ventura",
+  "93010": "Camarillo",
+  "93012": "Camarillo",
+  "93013": "Carpinteria",
+  "93015": "Fillmore",
+  "93021": "Moorpark",
+  "93022": "Oak View",
+  "93023": "Ojai",
+  "93030": "Oxnard",
+  "93033": "Oxnard",
+  "93035": "Oxnard",
+  "93036": "Oxnard",
+  "93040": "Piru",
+  "93041": "Port Hueneme",
+  "93042": "Point Mugu Nawc",
+  "93043": "Port Hueneme CBC Base",
+  "93060": "Santa Paula",
+  "93063": "Simi Valley",
+  "93065": "Simi Valley",
+  "93066": "Somis",
+  "93067": "Summerland",
+  "93101": "Santa Barbara",
+  "93103": "Santa Barbara",
+  "93105": "Santa Barbara",
+  "93106": "Santa Barbara",
+  "93108": "Santa Barbara",
+  "93109": "Santa Barbara",
+  "93110": "Santa Barbara",
+  "93111": "Santa Barbara",
+  "93117": "Goleta",
+  "93202": "Armona",
+  "93203": "Arvin",
+  "93204": "Avenal",
+  "93205": "Bodfish",
+  "93206": "Buttonwillow",
+  "93207": "California Hot Springs",
+  "93210": "Coalinga",
+  "93212": "Corcoran",
+  "93215": "Delano",
+  "93219": "Earlimart",
+  "93221": "Exeter",
+  "93222": "Pine Mountain Club",
+  "93223": "Farmersville",
+  "93224": "Fellows",
+  "93225": "Frazier Park",
+  "93226": "Glennville",
+  "93230": "Hanford",
+  "93234": "Huron",
+  "93235": "Ivanhoe",
+  "93238": "Kernville",
+  "93239": "Kettleman City",
+  "93240": "Lake Isabella",
+  "93241": "Lamont",
+  "93242": "Laton",
+  "93243": "Lebec",
+  "93244": "Lemon Cove",
+  "93245": "Lemoore",
+  "93247": "Lindsay",
+  "93249": "Lost Hills",
+  "93250": "Mc Farland",
+  "93251": "Mc Kittrick",
+  "93252": "Maricopa",
+  "93254": "New Cuyama",
+  "93255": "Onyx",
+  "93256": "Pixley",
+  "93257": "Porterville",
+  "93260": "Posey",
+  "93262": "Sequoia National Park",
+  "93263": "Shafter",
+  "93265": "Springville",
+  "93266": "Stratford",
+  "93267": "Strathmore",
+  "93268": "Taft",
+  "93270": "Terra Bella",
+  "93271": "Three Rivers",
+  "93272": "Tipton",
+  "93274": "Tulare",
+  "93276": "Tupman",
+  "93277": "Visalia",
+  "93280": "Wasco",
+  "93283": "Weldon",
+  "93285": "Wofford Heights",
+  "93286": "Woodlake",
+  "93287": "Woody",
+  "93291": "Visalia",
+  "93292": "Visalia",
+  "93301": "Bakersfield",
+  "93304": "Bakersfield",
+  "93305": "Bakersfield",
+  "93306": "Bakersfield",
+  "93307": "Bakersfield",
+  "93308": "Bakersfield",
+  "93309": "Bakersfield",
+  "93311": "Bakersfield",
+  "93312": "Bakersfield",
+  "93313": "Bakersfield",
+  "93314": "Bakersfield",
+  "93401": "San Luis Obispo",
+  "93402": "Los Osos",
+  "93405": "San Luis Obispo",
+  "93407": "San Luis Obispo",
+  "93420": "Arroyo Grande",
+  "93422": "Atascadero",
+  "93426": "Bradley",
+  "93427": "Buellton",
+  "93428": "Cambria",
+  "93429": "Casmalia",
+  "93430": "Cayucos",
+  "93432": "Creston",
+  "93433": "Grover Beach",
+  "93434": "Guadalupe",
+  "93435": "Harmony",
+  "93436": "Lompoc",
+  "93437": "Lompoc",
+  "93440": "Los Alamos",
+  "93441": "Los Olivos",
+  "93442": "Morro Bay",
+  "93444": "Nipomo",
+  "93445": "Oceano",
+  "93446": "Paso Robles",
+  "93449": "Pismo Beach",
+  "93450": "San Ardo",
+  "93451": "San Miguel",
+  "93452": "San Simeon",
+  "93453": "Santa Margarita",
+  "93454": "Santa Maria",
+  "93455": "Santa Maria",
+  "93458": "Santa Maria",
+  "93460": "Santa Ynez",
+  "93461": "Shandon",
+  "93463": "Solvang",
+  "93465": "Templeton",
+  "93501": "Mojave",
+  "93505": "California City",
+  "93510": "Acton",
+  "93512": "Benton",
+  "93513": "Big Pine",
+  "93514": "Bishop",
+  "93516": "Boron",
+  "93517": "Bridgeport",
+  "93518": "Caliente",
+  "93519": "Cantil",
+  "93523": "Edwards",
+  "93524": "Edwards",
+  "93526": "Independence",
+  "93527": "Inyokern",
+  "93528": "Johannesburg",
+  "93529": "June Lake",
+  "93531": "Keene",
+  "93532": "Lake Hughes",
+  "93534": "Lancaster",
+  "93535": "Lancaster",
+  "93536": "Lancaster",
+  "93541": "Lee Vining",
+  "93543": "Littlerock",
+  "93544": "Llano",
+  "93545": "Lone Pine",
+  "93546": "Mammoth Lakes",
+  "93550": "Palmdale",
+  "93551": "Palmdale",
+  "93552": "Palmdale",
+  "93553": "Pearblossom",
+  "93554": "Randsburg",
+  "93555": "Ridgecrest",
+  "93560": "Rosamond",
+  "93561": "Tehachapi",
+  "93562": "Trona",
+  "93563": "Valyermo",
+  "93591": "Palmdale",
+  "93601": "Ahwahnee",
+  "93602": "Auberry",
+  "93603": "Badger",
+  "93604": "Bass Lake",
+  "93608": "Cantua Creek",
+  "93609": "Caruthers",
+  "93610": "Chowchilla",
+  "93611": "Clovis",
+  "93612": "Clovis",
+  "93614": "Coarsegold",
+  "93615": "Cutler",
+  "93616": "Del Rey",
+  "93618": "Dinuba",
+  "93619": "Clovis",
+  "93620": "Dos Palos",
+  "93621": "Dunlap",
+  "93622": "Firebaugh",
+  "93623": "Fish Camp",
+  "93625": "Fowler",
+  "93626": "Friant",
+  "93627": "Helm",
+  "93628": "Hume",
+  "93630": "Kerman",
+  "93631": "Kingsburg",
+  "93633": "Kings Canyon National Pk",
+  "93635": "Los Banos",
+  "93636": "Madera",
+  "93637": "Madera",
+  "93638": "Madera",
+  "93640": "Mendota",
+  "93641": "Miramonte",
+  "93643": "North Fork",
+  "93644": "Oakhurst",
+  "93645": "O Neals",
+  "93646": "Orange Cove",
+  "93647": "Orosi",
+  "93648": "Parlier",
+  "93650": "Fresno",
+  "93651": "Prather",
+  "93652": "Raisin City",
+  "93653": "Raymond",
+  "93654": "Reedley",
+  "93656": "Riverdale",
+  "93657": "Sanger",
+  "93660": "San Joaquin",
+  "93662": "Selma",
+  "93664": "Shaver Lake",
+  "93667": "Tollhouse",
+  "93668": "Tranquillity",
+  "93669": "Wishon",
+  "93675": "Squaw Valley",
+  "93701": "Fresno",
+  "93702": "Fresno",
+  "93703": "Fresno",
+  "93704": "Fresno",
+  "93705": "Fresno",
+  "93706": "Fresno",
+  "93710": "Fresno",
+  "93711": "Fresno",
+  "93720": "Fresno",
+  "93721": "Fresno",
+  "93722": "Fresno",
+  "93723": "Fresno",
+  "93725": "Fresno",
+  "93726": "Fresno",
+  "93727": "Fresno",
+  "93728": "Fresno",
+  "93730": "Fresno",
+  "93737": "Fresno",
+  "93741": "Fresno",
+  "93901": "Salinas",
+  "93905": "Salinas",
+  "93906": "Salinas",
+  "93907": "Salinas",
+  "93908": "Salinas",
+  "93920": "Big Sur",
+  "93923": "Carmel",
+  "93924": "Carmel Valley",
+  "93925": "Chualar",
+  "93926": "Gonzales",
+  "93927": "Greenfield",
+  "93930": "King City",
+  "93932": "Lockwood",
+  "93933": "Marina",
+  "93940": "Monterey",
+  "93943": "Monterey",
+  "93944": "Monterey",
+  "93950": "Pacific Grove",
+  "93953": "Pebble Beach",
+  "93955": "Seaside",
+  "93960": "Soledad",
+  "93962": "Spreckels",
+  "94002": "Belmont",
+  "94005": "Brisbane",
+  "94010": "Burlingame",
+  "94014": "Daly City",
+  "94015": "Daly City",
+  "94019": "Half Moon Bay",
+  "94020": "La Honda",
+  "94021": "Loma Mar",
+  "94022": "Los Altos",
+  "94024": "Los Altos",
+  "94025": "Menlo Park",
+  "94027": "Atherton",
+  "94028": "Portola Valley",
+  "94030": "Millbrae",
+  "94035": "Mountain View",
+  "94037": "Montara",
+  "94038": "Moss Beach",
+  "94040": "Mountain View",
+  "94041": "Mountain View",
+  "94043": "Mountain View",
+  "94044": "Pacifica",
+  "94060": "Pescadero",
+  "94061": "Redwood City",
+  "94062": "Redwood City",
+  "94063": "Redwood City",
+  "94065": "Redwood City",
+  "94066": "San Bruno",
+  "94070": "San Carlos",
+  "94074": "San Gregorio",
+  "94080": "South San Francisco",
+  "94085": "Sunnyvale",
+  "94086": "Sunnyvale",
+  "94087": "Sunnyvale",
+  "94089": "Sunnyvale",
+  "94102": "San Francisco",
+  "94103": "San Francisco",
+  "94104": "San Francisco",
+  "94105": "San Francisco",
+  "94107": "San Francisco",
+  "94108": "San Francisco",
+  "94109": "San Francisco",
+  "94110": "San Francisco",
+  "94111": "San Francisco",
+  "94112": "San Francisco",
+  "94114": "San Francisco",
+  "94115": "San Francisco",
+  "94116": "San Francisco",
+  "94117": "San Francisco",
+  "94118": "San Francisco",
+  "94121": "San Francisco",
+  "94122": "San Francisco",
+  "94123": "San Francisco",
+  "94124": "San Francisco",
+  "94127": "San Francisco",
+  "94128": "San Francisco",
+  "94129": "San Francisco",
+  "94130": "San Francisco",
+  "94131": "San Francisco",
+  "94132": "San Francisco",
+  "94133": "San Francisco",
+  "94134": "San Francisco",
+  "94158": "San Francisco",
+  "94301": "Palo Alto",
+  "94303": "Palo Alto",
+  "94304": "Palo Alto",
+  "94305": "Stanford",
+  "94306": "Palo Alto",
+  "94401": "San Mateo",
+  "94402": "San Mateo",
+  "94403": "San Mateo",
+  "94404": "San Mateo",
+  "94501": "Alameda",
+  "94502": "Alameda",
+  "94503": "American Canyon",
+  "94505": "Discovery Bay",
+  "94506": "Danville",
+  "94507": "Alamo",
+  "94508": "Angwin",
+  "94509": "Antioch",
+  "94510": "Benicia",
+  "94511": "Bethel Island",
+  "94512": "Birds Landing",
+  "94513": "Brentwood",
+  "94514": "Byron",
+  "94515": "Calistoga",
+  "94517": "Clayton",
+  "94518": "Concord",
+  "94519": "Concord",
+  "94520": "Concord",
+  "94521": "Concord",
+  "94523": "Pleasant Hill",
+  "94525": "Crockett",
+  "94526": "Danville",
+  "94528": "Diablo",
+  "94530": "El Cerrito",
+  "94531": "Antioch",
+  "94533": "Fairfield",
+  "94534": "Fairfield",
+  "94535": "Travis AFB",
+  "94536": "Fremont",
+  "94538": "Fremont",
+  "94539": "Fremont",
+  "94541": "Hayward",
+  "94542": "Hayward",
+  "94544": "Hayward",
+  "94545": "Hayward",
+  "94546": "Castro Valley",
+  "94547": "Hercules",
+  "94548": "Knightsen",
+  "94549": "Lafayette",
+  "94550": "Livermore",
+  "94551": "Livermore",
+  "94552": "Castro Valley",
+  "94553": "Martinez",
+  "94555": "Fremont",
+  "94556": "Moraga",
+  "94558": "Napa",
+  "94559": "Napa",
+  "94560": "Newark",
+  "94561": "Oakley",
+  "94563": "Orinda",
+  "94564": "Pinole",
+  "94565": "Pittsburg",
+  "94566": "Pleasanton",
+  "94567": "Pope Valley",
+  "94568": "Dublin",
+  "94569": "Port Costa",
+  "94571": "Rio Vista",
+  "94572": "Rodeo",
+  "94574": "Saint Helena",
+  "94576": "Deer Park",
+  "94577": "San Leandro",
+  "94578": "San Leandro",
+  "94579": "San Leandro",
+  "94580": "San Lorenzo",
+  "94582": "San Ramon",
+  "94583": "San Ramon",
+  "94585": "Suisun City",
+  "94586": "Sunol",
+  "94587": "Union City",
+  "94588": "Pleasanton",
+  "94589": "Vallejo",
+  "94590": "Vallejo",
+  "94591": "Vallejo",
+  "94592": "Vallejo",
+  "94595": "Walnut Creek",
+  "94596": "Walnut Creek",
+  "94597": "Walnut Creek",
+  "94598": "Walnut Creek",
+  "94599": "Yountville",
+  "94601": "Oakland",
+  "94602": "Oakland",
+  "94603": "Oakland",
+  "94605": "Oakland",
+  "94606": "Oakland",
+  "94607": "Oakland",
+  "94608": "Emeryville",
+  "94609": "Oakland",
+  "94610": "Oakland",
+  "94611": "Oakland",
+  "94612": "Oakland",
+  "94613": "Oakland",
+  "94618": "Oakland",
+  "94619": "Oakland",
+  "94621": "Oakland",
+  "94702": "Berkeley",
+  "94703": "Berkeley",
+  "94704": "Berkeley",
+  "94705": "Berkeley",
+  "94706": "Albany",
+  "94707": "Berkeley",
+  "94708": "Berkeley",
+  "94709": "Berkeley",
+  "94710": "Berkeley",
+  "94720": "Berkeley",
+  "94801": "Richmond",
+  "94803": "El Sobrante",
+  "94804": "Richmond",
+  "94805": "Richmond",
+  "94806": "San Pablo",
+  "94901": "San Rafael",
+  "94903": "San Rafael",
+  "94904": "Greenbrae",
+  "94920": "Belvedere Tiburon",
+  "94922": "Bodega",
+  "94923": "Bodega Bay",
+  "94924": "Bolinas",
+  "94925": "Corte Madera",
+  "94928": "Rohnert Park",
+  "94929": "Dillon Beach",
+  "94930": "Fairfax",
+  "94931": "Cotati",
+  "94933": "Forest Knolls",
+  "94937": "Inverness",
+  "94938": "Lagunitas",
+  "94939": "Larkspur",
+  "94940": "Marshall",
+  "94941": "Mill Valley",
+  "94945": "Novato",
+  "94946": "Nicasio",
+  "94947": "Novato",
+  "94949": "Novato",
+  "94951": "Penngrove",
+  "94952": "Petaluma",
+  "94954": "Petaluma",
+  "94956": "Point Reyes Station",
+  "94957": "Ross",
+  "94960": "San Anselmo",
+  "94963": "San Geronimo",
+  "94964": "San Quentin",
+  "94965": "Sausalito",
+  "94970": "Stinson Beach",
+  "94971": "Tomales",
+  "94972": "Valley Ford",
+  "94973": "Woodacre",
+  "95002": "Alviso",
+  "95003": "Aptos",
+  "95004": "Aromas",
+  "95005": "Ben Lomond",
+  "95006": "Boulder Creek",
+  "95008": "Campbell",
+  "95010": "Capitola",
+  "95012": "Castroville",
+  "95013": "Coyote",
+  "95014": "Cupertino",
+  "95017": "Davenport",
+  "95018": "Felton",
+  "95019": "Freedom",
+  "95020": "Gilroy",
+  "95023": "Hollister",
+  "95030": "Los Gatos",
+  "95032": "Los Gatos",
+  "95033": "Los Gatos",
+  "95035": "Milpitas",
+  "95037": "Morgan Hill",
+  "95039": "Moss Landing",
+  "95043": "Paicines",
+  "95045": "San Juan Bautista",
+  "95046": "San Martin",
+  "95050": "Santa Clara",
+  "95051": "Santa Clara",
+  "95053": "Santa Clara",
+  "95054": "Santa Clara",
+  "95060": "Santa Cruz",
+  "95062": "Santa Cruz",
+  "95064": "Santa Cruz",
+  "95065": "Santa Cruz",
+  "95066": "Scotts Valley",
+  "95070": "Saratoga",
+  "95073": "Soquel",
+  "95075": "Tres Pinos",
+  "95076": "Watsonville",
+  "95110": "San Jose",
+  "95111": "San Jose",
+  "95112": "San Jose",
+  "95113": "San Jose",
+  "95116": "San Jose",
+  "95117": "San Jose",
+  "95118": "San Jose",
+  "95119": "San Jose",
+  "95120": "San Jose",
+  "95121": "San Jose",
+  "95122": "San Jose",
+  "95123": "San Jose",
+  "95124": "San Jose",
+  "95125": "San Jose",
+  "95126": "San Jose",
+  "95127": "San Jose",
+  "95128": "San Jose",
+  "95129": "San Jose",
+  "95130": "San Jose",
+  "95131": "San Jose",
+  "95132": "San Jose",
+  "95133": "San Jose",
+  "95134": "San Jose",
+  "95135": "San Jose",
+  "95136": "San Jose",
+  "95138": "San Jose",
+  "95139": "San Jose",
+  "95140": "Mount Hamilton",
+  "95141": "San Jose",
+  "95148": "San Jose",
+  "95192": "San Jose",
+  "95202": "Stockton",
+  "95203": "Stockton",
+  "95204": "Stockton",
+  "95205": "Stockton",
+  "95206": "Stockton",
+  "95207": "Stockton",
+  "95209": "Stockton",
+  "95210": "Stockton",
+  "95211": "Stockton",
+  "95212": "Stockton",
+  "95215": "Stockton",
+  "95219": "Stockton",
+  "95220": "Acampo",
+  "95222": "Angels Camp",
+  "95223": "Arnold",
+  "95228": "Copperopolis",
+  "95230": "Farmington",
+  "95231": "French Camp",
+  "95232": "Glencoe",
+  "95236": "Linden",
+  "95237": "Lockeford",
+  "95240": "Lodi",
+  "95242": "Lodi",
+  "95245": "Mokelumne Hill",
+  "95246": "Mountain Ranch",
+  "95247": "Murphys",
+  "95249": "San Andreas",
+  "95251": "Vallecito",
+  "95252": "Valley Springs",
+  "95255": "West Point",
+  "95257": "Wilseyville",
+  "95258": "Woodbridge",
+  "95301": "Atwater",
+  "95303": "Ballico",
+  "95304": "Tracy",
+  "95306": "Catheys Valley",
+  "95307": "Ceres",
+  "95310": "Columbia",
+  "95311": "Coulterville",
+  "95313": "Crows Landing",
+  "95315": "Delhi",
+  "95316": "Denair",
+  "95317": "El Nido",
+  "95318": "El Portal",
+  "95320": "Escalon",
+  "95321": "Groveland",
+  "95322": "Gustine",
+  "95323": "Hickman",
+  "95324": "Hilmar",
+  "95326": "Hughson",
+  "95327": "Jamestown",
+  "95328": "Keyes",
+  "95329": "La Grange",
+  "95330": "Lathrop",
+  "95333": "Le Grand",
+  "95334": "Livingston",
+  "95335": "Long Barn",
+  "95336": "Manteca",
+  "95337": "Manteca",
+  "95338": "Mariposa",
+  "95340": "Merced",
+  "95341": "Merced",
+  "95345": "Midpines",
+  "95346": "MI Wuk Village",
+  "95348": "Merced",
+  "95350": "Modesto",
+  "95351": "Modesto",
+  "95354": "Modesto",
+  "95355": "Modesto",
+  "95356": "Modesto",
+  "95357": "Modesto",
+  "95358": "Modesto",
+  "95360": "Newman",
+  "95361": "Oakdale",
+  "95363": "Patterson",
+  "95364": "Pinecrest",
+  "95365": "Planada",
+  "95366": "Ripon",
+  "95367": "Riverbank",
+  "95368": "Salida",
+  "95369": "Snelling",
+  "95370": "Sonora",
+  "95372": "Soulsbyville",
+  "95374": "Stevinson",
+  "95376": "Tracy",
+  "95377": "Tracy",
+  "95379": "Tuolumne",
+  "95380": "Turlock",
+  "95382": "Turlock",
+  "95383": "Twain Harte",
+  "95385": "Vernalis",
+  "95386": "Waterford",
+  "95388": "Winton",
+  "95389": "Yosemite National Park",
+  "95391": "Tracy",
+  "95401": "Santa Rosa",
+  "95403": "Santa Rosa",
+  "95404": "Santa Rosa",
+  "95405": "Santa Rosa",
+  "95407": "Santa Rosa",
+  "95409": "Santa Rosa",
+  "95410": "Albion",
+  "95412": "Annapolis",
+  "95415": "Boonville",
+  "95417": "Branscomb",
+  "95420": "Caspar",
+  "95421": "Cazadero",
+  "95422": "Clearlake",
+  "95423": "Clearlake Oaks",
+  "95425": "Cloverdale",
+  "95426": "Cobb",
+  "95427": "Comptche",
+  "95428": "Covelo",
+  "95429": "Dos Rios",
+  "95432": "Elk",
+  "95436": "Forestville",
+  "95437": "Fort Bragg",
+  "95439": "Fulton",
+  "95441": "Geyserville",
+  "95442": "Glen Ellen",
+  "95443": "Glenhaven",
+  "95444": "Graton",
+  "95445": "Gualala",
+  "95446": "Guerneville",
+  "95448": "Healdsburg",
+  "95449": "Hopland",
+  "95450": "Jenner",
+  "95451": "Kelseyville",
+  "95452": "Kenwood",
+  "95453": "Lakeport",
+  "95454": "Laytonville",
+  "95456": "Little River",
+  "95457": "Lower Lake",
+  "95458": "Lucerne",
+  "95459": "Manchester",
+  "95460": "Mendocino",
+  "95461": "Middletown",
+  "95462": "Monte Rio",
+  "95464": "Nice",
+  "95465": "Occidental",
+  "95466": "Philo",
+  "95467": "Hidden Valley Lake",
+  "95468": "Point Arena",
+  "95469": "Potter Valley",
+  "95470": "Redwood Valley",
+  "95472": "Sebastopol",
+  "95476": "Sonoma",
+  "95482": "Ukiah",
+  "95485": "Upper Lake",
+  "95488": "Westport",
+  "95490": "Willits",
+  "95492": "Windsor",
+  "95493": "Witter Springs",
+  "95494": "Yorkville",
+  "95497": "The Sea Ranch",
+  "95501": "Eureka",
+  "95503": "Eureka",
+  "95511": "Alderpoint",
+  "95514": "Blocksburg",
+  "95519": "McKinleyville",
+  "95521": "Arcata",
+  "95524": "Bayside",
+  "95525": "Blue Lake",
+  "95526": "Bridgeville",
+  "95527": "Burnt Ranch",
+  "95528": "Carlotta",
+  "95531": "Crescent City",
+  "95536": "Ferndale",
+  "95540": "Fortuna",
+  "95542": "Garberville",
+  "95543": "Gasquet",
+  "95546": "Hoopa",
+  "95547": "Hydesville",
+  "95548": "Klamath",
+  "95549": "Kneeland",
+  "95550": "Korbel",
+  "95551": "Loleta",
+  "95552": "Mad River",
+  "95554": "Myers Flat",
+  "95555": "Orick",
+  "95556": "Orleans",
+  "95558": "Petrolia",
+  "95560": "Redway",
+  "95562": "Rio Dell",
+  "95563": "Salyer",
+  "95564": "Samoa",
+  "95565": "Scotia",
+  "95567": "Smith River",
+  "95568": "Somes Bar",
+  "95569": "Redcrest",
+  "95570": "Trinidad",
+  "95573": "Willow Creek",
+  "95585": "Leggett",
+  "95587": "Piercy",
+  "95589": "Whitethorn",
+  "95595": "Zenia",
+  "95602": "Auburn",
+  "95603": "Auburn",
+  "95605": "West Sacramento",
+  "95606": "Brooks",
+  "95607": "Capay",
+  "95608": "Carmichael",
+  "95610": "Citrus Heights",
+  "95612": "Clarksburg",
+  "95614": "Cool",
+  "95615": "Courtland",
+  "95616": "Davis",
+  "95618": "Davis",
+  "95619": "Diamond Springs",
+  "95620": "Dixon",
+  "95621": "Citrus Heights",
+  "95623": "El Dorado",
+  "95624": "Elk Grove",
+  "95626": "Elverta",
+  "95627": "Esparto",
+  "95628": "Fair Oaks",
+  "95629": "Fiddletown",
+  "95630": "Folsom",
+  "95631": "Foresthill",
+  "95632": "Galt",
+  "95633": "Garden Valley",
+  "95634": "Georgetown",
+  "95635": "Greenwood",
+  "95636": "Grizzly Flats",
+  "95637": "Guinda",
+  "95638": "Herald",
+  "95640": "Ione",
+  "95641": "Isleton",
+  "95642": "Jackson",
+  "95645": "Knights Landing",
+  "95648": "Lincoln",
+  "95650": "Loomis",
+  "95651": "Lotus",
+  "95652": "McClellan",
+  "95653": "Madison",
+  "95655": "Mather",
+  "95658": "Newcastle",
+  "95659": "Nicolaus",
+  "95660": "North Highlands",
+  "95661": "Roseville",
+  "95662": "Orangevale",
+  "95663": "Penryn",
+  "95664": "Pilot Hill",
+  "95665": "Pine Grove",
+  "95666": "Pioneer",
+  "95667": "Placerville",
+  "95668": "Pleasant Grove",
+  "95669": "Plymouth",
+  "95670": "Rancho Cordova",
+  "95672": "Rescue",
+  "95673": "Rio Linda",
+  "95674": "Rio Oso",
+  "95677": "Rocklin",
+  "95678": "Roseville",
+  "95679": "Rumsey",
+  "95681": "Sheridan",
+  "95682": "Shingle Springs",
+  "95683": "Sloughhouse",
+  "95684": "Somerset",
+  "95685": "Sutter Creek",
+  "95687": "Vacaville",
+  "95688": "Vacaville",
+  "95689": "Volcano",
+  "95690": "Walnut Grove",
+  "95691": "West Sacramento",
+  "95692": "Wheatland",
+  "95693": "Wilton",
+  "95694": "Winters",
+  "95695": "Woodland",
+  "95698": "Zamora",
+  "95701": "Alta",
+  "95703": "Applegate",
+  "95709": "Camino",
+  "95713": "Colfax",
+  "95714": "Dutch Flat",
+  "95715": "Emigrant Gap",
+  "95717": "Gold Run",
+  "95720": "Kyburz",
+  "95721": "Echo Lake",
+  "95722": "Meadow Vista",
+  "95724": "Norden",
+  "95726": "Pollock Pines",
+  "95728": "Soda Springs",
+  "95735": "Twin Bridges",
+  "95742": "Rancho Cordova",
+  "95746": "Granite Bay",
+  "95747": "Roseville",
+  "95757": "Elk Grove",
+  "95758": "Elk Grove",
+  "95762": "El Dorado Hills",
+  "95765": "Rocklin",
+  "95776": "Woodland",
+  "95811": "Sacramento",
+  "95814": "Sacramento",
+  "95815": "Sacramento",
+  "95816": "Sacramento",
+  "95817": "Sacramento",
+  "95818": "Sacramento",
+  "95819": "Sacramento",
+  "95820": "Sacramento",
+  "95821": "Sacramento",
+  "95822": "Sacramento",
+  "95823": "Sacramento",
+  "95824": "Sacramento",
+  "95825": "Sacramento",
+  "95826": "Sacramento",
+  "95827": "Sacramento",
+  "95828": "Sacramento",
+  "95829": "Sacramento",
+  "95830": "Sacramento",
+  "95831": "Sacramento",
+  "95832": "Sacramento",
+  "95833": "Sacramento",
+  "95834": "Sacramento",
+  "95835": "Sacramento",
+  "95836": "Sacramento",
+  "95837": "Sacramento",
+  "95838": "Sacramento",
+  "95841": "Sacramento",
+  "95842": "Sacramento",
+  "95843": "Antelope",
+  "95864": "Sacramento",
+  "95901": "Marysville",
+  "95903": "Beale AFB",
+  "95910": "Alleghany",
+  "95912": "Arbuckle",
+  "95914": "Bangor",
+  "95915": "Belden",
+  "95916": "Berry Creek",
+  "95917": "Biggs",
+  "95918": "Browns Valley",
+  "95919": "Brownsville",
+  "95920": "Butte City",
+  "95922": "Camptonville",
+  "95923": "Canyon Dam",
+  "95925": "Challenge",
+  "95926": "Chico",
+  "95928": "Chico",
+  "95932": "Colusa",
+  "95934": "Crescent Mills",
+  "95935": "Dobbins",
+  "95936": "Downieville",
+  "95937": "Dunnigan",
+  "95938": "Durham",
+  "95939": "Elk Creek",
+  "95941": "Forbestown",
+  "95942": "Forest Ranch",
+  "95943": "Glenn",
+  "95944": "Goodyears Bar",
+  "95945": "Grass Valley",
+  "95946": "Penn Valley",
+  "95947": "Greenville",
+  "95948": "Gridley",
+  "95949": "Grass Valley",
+  "95951": "Hamilton City",
+  "95953": "Live Oak",
+  "95954": "Magalia",
+  "95955": "Maxwell",
+  "95956": "Meadow Valley",
+  "95957": "Meridian",
+  "95959": "Nevada City",
+  "95960": "North San Juan",
+  "95961": "Olivehurst",
+  "95962": "Oregon House",
+  "95963": "Orland",
+  "95965": "Oroville",
+  "95966": "Oroville",
+  "95968": "Palermo",
+  "95969": "Paradise",
+  "95970": "Princeton",
+  "95971": "Quincy",
+  "95972": "Rackerby",
+  "95973": "Chico",
+  "95975": "Rough and Ready",
+  "95977": "Smartsville",
+  "95979": "Stonyford",
+  "95981": "Strawberry Valley",
+  "95982": "Sutter",
+  "95983": "Taylorsville",
+  "95984": "Twain",
+  "95987": "Williams",
+  "95988": "Willows",
+  "95991": "Yuba City",
+  "95993": "Yuba City",
+  "96001": "Redding",
+  "96002": "Redding",
+  "96003": "Redding",
+  "96006": "Adin",
+  "96007": "Anderson",
+  "96008": "Bella Vista",
+  "96010": "Big Bar",
+  "96013": "Burney",
+  "96014": "Callahan",
+  "96015": "Canby",
+  "96016": "Cassel",
+  "96017": "Castella",
+  "96019": "Shasta Lake",
+  "96020": "Chester",
+  "96021": "Corning",
+  "96022": "Cottonwood",
+  "96023": "Dorris",
+  "96024": "Douglas City",
+  "96025": "Dunsmuir",
+  "96027": "Etna",
+  "96028": "Fall River Mills",
+  "96031": "Forks of Salmon",
+  "96032": "Fort Jones",
+  "96033": "French Gulch",
+  "96034": "Gazelle",
+  "96035": "Gerber",
+  "96038": "Grenada",
+  "96039": "Happy Camp",
+  "96040": "Hat Creek",
+  "96041": "Hayfork",
+  "96044": "Hornbrook",
+  "96046": "Hyampom",
+  "96047": "Igo",
+  "96048": "Junction City",
+  "96050": "Klamath River",
+  "96051": "Lakehead",
+  "96052": "Lewiston",
+  "96054": "Lookout",
+  "96055": "Los Molinos",
+  "96056": "McArthur",
+  "96057": "McCloud",
+  "96058": "Macdoel",
+  "96059": "Manton",
+  "96061": "Mill Creek",
+  "96062": "Millville",
+  "96063": "Mineral",
+  "96064": "Montague",
+  "96065": "Montgomery Creek",
+  "96067": "Mount Shasta",
+  "96069": "Oak Run",
+  "96071": "Old Station",
+  "96073": "Palo Cedro",
+  "96075": "Paynes Creek",
+  "96076": "Platina",
+  "96080": "Red Bluff",
+  "96085": "Scott Bar",
+  "96086": "Seiad Valley",
+  "96087": "Shasta",
+  "96088": "Shingletown",
+  "96091": "Trinity Center",
+  "96093": "Weaverville",
+  "96094": "Weed",
+  "96096": "Whitmore",
+  "96097": "Yreka",
+  "96101": "Alturas",
+  "96103": "Blairsden Graeagle",
+  "96104": "Cedarville",
+  "96105": "Chilcoot",
+  "96106": "Clio",
+  "96107": "Coleville",
+  "96108": "Davis Creek",
+  "96109": "Doyle",
+  "96111": "Floriston",
+  "96112": "Fort Bidwell",
+  "96113": "Herlong",
+  "96114": "Janesville",
+  "96115": "Lake City",
+  "96116": "Likely",
+  "96117": "Litchfield",
+  "96118": "Loyalton",
+  "96119": "Madeline",
+  "96120": "Markleeville",
+  "96121": "Milford",
+  "96122": "Portola",
+  "96123": "Ravendale",
+  "96124": "Calpine",
+  "96125": "Sierra City",
+  "96126": "Sierraville",
+  "96128": "Standish",
+  "96129": "Beckwourth",
+  "96130": "Susanville",
+  "96132": "Termo",
+  "96133": "Topaz",
+  "96134": "Tulelake",
+  "96136": "Wendel",
+  "96137": "Westwood",
+  "96140": "Carnelian Bay",
+  "96141": "Homewood",
+  "96142": "Tahoma",
+  "96143": "Kings Beach",
+  "96145": "Tahoe City",
+  "96146": "Olympic Valley",
+  "96148": "Tahoe Vista",
+  "96150": "South Lake Tahoe",
+  "96161": "Truckee",
+  "96162": "Truckee"
 }
