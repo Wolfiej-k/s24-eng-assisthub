@@ -2,6 +2,7 @@ import { Box, Button, TextField } from "@mui/material"
 import { useForm } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
+import Markdown from "react-markdown"
 import { type Case } from "../../types"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
@@ -171,10 +172,21 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
             fullWidth
             variant="outlined"
             multiline
-            rows={5}
+            rows={7}
             value={values.notes}
             onChange={(e) => handleChange("notes", e.target.value)}
-            InputProps={{ readOnly: !isEditing }}
+            InputProps={
+              !isEditing
+                ? {
+                    readOnly: true,
+                    inputComponent: () => (
+                      <div style={{ whiteSpace: "pre-wrap", height: 120, width: "100%", overflowY: "auto" }}>
+                        <Markdown>{values.notes ?? ""}</Markdown>
+                      </div>
+                    ),
+                  }
+                : {}
+            }
           />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
