@@ -164,36 +164,30 @@ export default function DetailedView({ item, parentSetValues, parentSetIsEditing
               readOnly: true,
             }}
           />
-          {isEditing ? (
-            <TextField
-              margin="dense"
-              id="notes"
-              label="Notes"
-              type="text"
-              fullWidth
-              variant="outlined"
-              multiline
-              rows={5}
-              value={values.notes}
-              onChange={(e) => handleChange("notes", e.target.value)}
-              InputProps={{ readOnly: !isEditing }}
-            />
-          ) : (
-            <Box
-              sx={{
-                border: "1px solid rgba(0, 0, 0, 0.23)",
-                borderRadius: "4px",
-                padding: "16.5px 14px",
-                marginTop: "8px",
-                marginBottom: "4px",
-                "&:hover": {
-                  borderColor: "rgba(0, 0, 0, 0.87)",
-                },
-              }}
-            >
-              <Markdown>{values.notes}</Markdown>
-            </Box>
-          )}
+          <TextField
+            margin="dense"
+            id="notes"
+            label="Notes"
+            type="text"
+            fullWidth
+            variant="outlined"
+            multiline
+            rows={7}
+            value={values.notes}
+            onChange={(e) => handleChange("notes", e.target.value)}
+            InputProps={
+              !isEditing
+                ? {
+                    readOnly: true,
+                    inputComponent: () => (
+                      <div style={{ whiteSpace: "pre-wrap", height: 120, width: "100%", overflowY: "auto" }}>
+                        <Markdown>{values.notes ?? ""}</Markdown>
+                      </div>
+                    ),
+                  }
+                : {}
+            }
+          />
         </Box>
         <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
           {isEditing ? (
