@@ -109,6 +109,7 @@ export default function CaseGrid() {
         field: "actions",
         headerName: "Actions",
         headerClassName: "column-header",
+        minWidth: 110,
         sortable: false,
         hideable: false,
         filterable: false,
