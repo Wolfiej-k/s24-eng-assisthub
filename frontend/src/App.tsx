@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react"
+import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
@@ -14,11 +15,12 @@ import axios from "axios"
 import { ConfirmProvider } from "material-ui-confirm"
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 
-import Logo from "./assets/assisthublogo.png"
-import SmallLogo from "./assets/assisthublogosmall.png"
+import Logo from "./assets/assisthublogo.svg"
+import SmallLogo from "./assets/assisthublogosmall.svg"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
+import Collapse from "./collapse"
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
 import DetailsPage from "./pages/details"
@@ -116,10 +118,12 @@ export default function App() {
               {
                 name: "cases",
                 list: "/",
+                icon: <CasesIcon />,
               },
               {
                 name: "analytics",
                 list: "/analytics",
+                icon: <AnalyticsIcon />,
               },
             ]}
             options={{
@@ -130,20 +134,19 @@ export default function App() {
           >
             <ThemeProvider theme={theme}>
               <ThemedLayoutV2
-                Title={({ collapsed }) => (
-                  <Link to="/">
-                    {collapsed && (
-                      <>
-                        <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
-                      </>
-                    )}
-                    {!collapsed && (
-                      <>
-                        <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
-                      </>
-                    )}
-                  </Link>
-                )}
+                Header={() => <></>}
+                Title={({ collapsed }) =>
+                  collapsed ? (
+                    <Collapse>
+                      <img src={SmallLogo} alt="AssistHub Logo" style={{ height: "40px" }} />
+                    </Collapse>
+                  ) : (
+                    <Link to="/">
+                      <img src={Logo} alt="AssistHub Logo" style={{ height: "50px" }} />
+                    </Link>
+                  )
+                }
+                initialSiderCollapsed={true}
               >
                 <ConfirmProvider
                   defaultOptions={{

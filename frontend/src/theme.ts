@@ -1,3 +1,6 @@
+import "@fontsource/poppins/300.css"
+import "@fontsource/poppins/400.css"
+import "@fontsource/poppins/500.css"
 import { createTheme } from "@mui/material/styles"
 
 const theme = createTheme({
@@ -12,18 +15,18 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Poppins, sans-serif",
+    fontFamily: "Poppins",
     h1: {
       fontSize: "31.5px",
-      fontWeight: "lighter",
+      fontWeight: 500,
     },
     h2: {
       fontSize: "18px",
-      fontWeight: "lighter",
+      fontWeight: 400,
     },
     body1: {
       fontSize: "12px",
-      fontWeight: "lighter",
+      fontWeight: 300,
     },
   },
 })
