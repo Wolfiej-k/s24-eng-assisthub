@@ -49,7 +49,7 @@ export default function CaseGrid() {
         field: "startTime",
         headerName: "Start Date",
         headerClassName: "column-header",
-        minWidth: 120,
+        minWidth: 160,
         type: "dateTime",
         valueGetter: (params) => new Date(params.row.startTime),
         renderCell: (params: GridRenderCellParams<object, Date>) => (
@@ -60,7 +60,7 @@ export default function CaseGrid() {
         field: "endTime",
         headerName: "End Date",
         headerClassName: "column-header",
-        minWidth: 120,
+        minWidth: 160,
         type: "dateTime",
         valueGetter: (params) => params.row.endTime && new Date(params.row.endTime),
         renderCell: (params: GridRenderCellParams<object, Date>) => (
@@ -71,7 +71,7 @@ export default function CaseGrid() {
         field: "daysOpen",
         headerName: "Days Open",
         headerClassName: "column-header",
-        minWidth: 120,
+        minWidth: 160,
         sortable: false,
         filterable: false,
         valueGetter: (params) => {
@@ -149,6 +149,9 @@ export default function CaseGrid() {
             backgroundColor: "rgb(255, 255, 255)",
             typography: "subtitle1",
             fontWeight: "bold",
+          },
+          ".MuiDataGrid-columnSeparator": {
+            display: "none",
           },
         }}
       >
