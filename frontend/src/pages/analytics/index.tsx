@@ -2,7 +2,7 @@ import { Card, CardContent, Grid, Typography, useTheme } from "@mui/material"
 import { BarChart, LineChart, pieArcLabelClasses, PieChart } from "@mui/x-charts"
 import { useList } from "@refinedev/core"
 import { type Case } from "../../types"
-import ChartContainer from "./downloadGraphs"
+import ChartContainer from "./chart-container"
 import zipCodes from "./zipcodes.json"
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -10,7 +10,12 @@ const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep
 export default function AnalyticsPage() {
   const theme = useTheme()
 
-  const { data, isLoading, error } = useList<Case>({ resource: "cases" })
+  const { data, isLoading, error } = useList<Case>({
+    resource: "cases",
+    pagination: {
+      mode: "off",
+    },
+  })
 
   if (isLoading || error) {
     return <div>Loading...</div>
@@ -49,14 +54,12 @@ export default function AnalyticsPage() {
 
   const caseLocations = new Map<string, number>()
   const casesCountPerCoach = new Map<string, number>()
-  const benefits = new Map<string, number>()
+  const casesCountPerBenefit = new Map<string, number>()
 
   cases.forEach((item) => {
     const startDate = new Date(item.startTime)
     const startMonth = monthsBetween(oldest, startDate) - 1
     monthCounts[startMonth]++
-
-
 
     const endDate = item.endTime ? new Date(item.endTime) : new Date()
     const endMonth = monthsBetween(oldest, endDate) - 1
@@ -72,7 +75,6 @@ export default function AnalyticsPage() {
     const zip = item.client.zip
     if (zip in zipCodes) {
       const location = zipCodes[zip as keyof typeof zipCodes].county
-      // increment the count for the county
       const currentCount = caseLocations.get(location) ?? 0
       caseLocations.set(location, currentCount + 1)
     }
@@ -83,9 +85,12 @@ export default function AnalyticsPage() {
         casesCountPerCoach.set(coach.name, currentCount + 1)
       })
     }
+
     if (item.benefits) {
-      const currentCount = benefits.get(item.benefits) ?? 0
-      benefits.set(item.benefits, currentCount + 1)
+      item.benefits.forEach((benefit) => {
+        const currentCount = casesCountPerBenefit.get(benefit) ?? 0
+        casesCountPerBenefit.set(benefit, currentCount + 1)
+      })
     }
   })
 
@@ -93,7 +98,7 @@ export default function AnalyticsPage() {
     return { label: name, value: count }
   })
 
-  const benefitsData = Array.from(benefits).map(([name, count]) => {
+  const benefitsData = Array.from(casesCountPerBenefit).map(([name, count]) => {
     return { label: name, value: count }
   })
 
@@ -106,7 +111,7 @@ export default function AnalyticsPage() {
           <ChartContainer>
             <CardContent>
               <Typography variant="h6" align="center">
-                Closed Cases Per Month
+                Opened Cases Per Month
               </Typography>
               <BarChart
                 series={[
@@ -124,9 +129,9 @@ export default function AnalyticsPage() {
                   },
                 ]}
                 margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
-                />
-          </CardContent>
-        </ChartContainer>
+              />
+            </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
@@ -150,7 +155,6 @@ export default function AnalyticsPage() {
                     color: theme.palette.secondary.main,
                   },
                 ]}
-                // this is such a funny way to just make the text white😭
                 sx={{
                   [`& .${pieArcLabelClasses.root}`]: {
                     fill: theme.palette.primary.light,
@@ -196,7 +200,6 @@ export default function AnalyticsPage() {
                     color: theme.palette.secondary.main,
                   },
                 ]}
-                // this is such a funny way to just make the text white😭
                 sx={{
                   [`& .${pieArcLabelClasses.root}`]: {
                     fill: theme.palette.primary.light,
@@ -265,9 +268,9 @@ export default function AnalyticsPage() {
                   },
                 ]}
                 margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
-                />
-          </CardContent>
-        </ChartContainer>
+              />
+            </CardContent>
+          </ChartContainer>
         </Card>
       </Grid>
       <Grid item xs={12} md={5}>
