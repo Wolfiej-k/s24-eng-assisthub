@@ -1,16 +1,14 @@
-import { DataGrid, type GridColDef, type GridRenderCellParams } from "@mui/x-data-grid"
+import { DataGrid, type GridColDef } from "@mui/x-data-grid"
+import { DeleteButton } from "@refinedev/antd"
 import { useDataGrid } from "@refinedev/mui"
 import { useMemo, useState } from "react"
 import { type Coach } from "../../types"
-import { DeleteButton } from "@refinedev/antd";
 
 export default function CoachGrid() {
   const [selectedCoach, setSelectedCoach] = useState<Coach | null>(null)
   const handleCloseDialog = () => setSelectedCoach(null)
 
-  const DeleteCoachButton = ({ _id }: { _id: string }) => (
-    <DeleteButton resource="coaches" recordItemId={_id} />
-  );
+  const DeleteCoachButton = ({ _id }: { _id: string }) => <DeleteButton resource="coaches" recordItemId={_id} />
 
   const columns = useMemo<GridColDef<Coach>[]>(
     () => [
@@ -42,7 +40,7 @@ export default function CoachGrid() {
         minWidth: 120,
         maxWidth: 300,
         flex: 1,
-        valueGetter: (params) => params.row.admin ? "YES" : "NO",
+        valueGetter: (params) => (params.row.admin ? "YES" : "NO"),
         renderCell: (params) => (
           <div style={{ overflow: "hidden", whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>
         ),
@@ -55,10 +53,8 @@ export default function CoachGrid() {
         sortable: false,
         hideable: false,
         filterable: false,
-        renderCell: (params) => (
-          <DeleteCoachButton _id={params.row._id} />
-        ),
-      }
+        renderCell: (params) => <DeleteCoachButton _id={params.row._id} />,
+      },
     ],
     [],
   )
