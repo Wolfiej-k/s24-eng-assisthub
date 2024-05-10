@@ -3,7 +3,7 @@ import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
+import { Authenticated, AuthProvider, Refine } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
   CatchAllNavigate,
@@ -33,7 +33,7 @@ export default function App() {
     return <span>Loading...</span>
   }
 
-  const authProvider: AuthBindings = {
+  const authProvider: AuthProvider = {
     login: () => {
       return Promise.resolve({
         success: true,
