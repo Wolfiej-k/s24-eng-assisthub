@@ -1,5 +1,5 @@
 import "express-serve-static-core"
-import { type CoachRes } from "../schemas/coach.js"
+import { type CoachRes } from "../schemas/coach"
 
 declare module "express-serve-static-core" {
   interface Request {
@@ -7,7 +7,7 @@ declare module "express-serve-static-core" {
       admin: boolean
       identity?: CoachRes
       payload?: {
-        email: string
+        sub: string
       }
     }
   }

@@ -3,7 +3,7 @@ import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Authenticated, Refine, type AuthBindings } from "@refinedev/core"
+import { Authenticated, type AuthProvider, Refine } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
   CatchAllNavigate,
@@ -17,10 +17,10 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 
 import Logo from "./assets/assisthublogo.svg"
 import SmallLogo from "./assets/assisthublogosmall.svg"
+import Collapse from "./collapse"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
-import Collapse from "./collapse"
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
 import DetailsPage from "./pages/details"
@@ -30,10 +30,10 @@ export default function App() {
   const { isLoading, user, logout, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
 
   if (isLoading) {
-    return <span>Loading...</span>
+    return <div>Loading...</div>
   }
 
-  const authProvider: AuthBindings = {
+  const authProvider: AuthProvider = {
     login: () => {
       return Promise.resolve({
         success: true,
@@ -45,11 +45,9 @@ export default function App() {
         success: true,
       })
     },
-    onError: (error: string) => {
+    onError: (error: Error) => {
       return Promise.resolve({
-        logout: true,
-        redirectTo: "/login",
-        error: new Error(error),
+        error: error,
       })
     },
     check: async () => {
@@ -86,9 +84,10 @@ export default function App() {
     getPermissions: () => Promise.resolve(null),
     getIdentity: async () => {
       if (user) {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/coaches/${user.sub?.substring(6)}`)
+
         return Promise.resolve({
-          ...user,
-          avatar: user.picture,
+          ...response.data,
         })
       }
       return Promise.resolve(null)

@@ -1,12 +1,11 @@
-import { Typography, useTheme } from "@mui/material"
 import { useOne } from "@refinedev/core"
 import { useParams } from "react-router-dom"
+import PageTitle from "../../page-title"
 import { type Case } from "../../types"
 import DetailedView from "./detailed-view"
 
 export default function DetailsPage() {
   const { id } = useParams()
-  const theme = useTheme()
 
   const { data, isLoading, isError } = useOne<Case>({
     resource: "cases",
@@ -23,9 +22,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <Typography variant="h1" color={theme.palette.primary.dark} mb={2}>
-        {data.data.client.name}
-      </Typography>
+      <PageTitle title={data.data.client.name} />
       <DetailedView item={data.data} />
     </>
   )
