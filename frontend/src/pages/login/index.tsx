@@ -1,14 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { useGo, useIsAuthenticated } from "@refinedev/core"
+import { useGo } from "@refinedev/core"
 
 export default function LoginPage() {
   const go = useGo()
-  const { data } = useIsAuthenticated()
-  const { loginWithRedirect } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, isLoading } = useAuth0()
 
-  if (data?.authenticated) {
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (isAuthenticated) {
     go({ to: "/" })
   }
 
-  return <button onClick={() => void loginWithRedirect()}>Log In</button>
+  void loginWithRedirect()
+
+  return <div>Loading...</div>
 }
