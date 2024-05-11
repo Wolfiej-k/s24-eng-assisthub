@@ -2,9 +2,9 @@ import cors from "cors"
 import "dotenv/config"
 import express, { type NextFunction, type Request, type Response } from "express"
 import { UnauthorizedError } from "express-oauth2-jwt-bearer"
-import cases from "./api/cases.js"
-import coaches from "./api/coaches.js"
-import "./database.js"
+import cases from "./api/cases"
+import coaches from "./api/coaches"
+import "./database"
 
 const app = express()
 const port = process.env.PORT ?? 3000

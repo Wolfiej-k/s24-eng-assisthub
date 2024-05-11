@@ -1,7 +1,7 @@
 import { Router } from "express"
 import { Error } from "mongoose"
-import { ensureAdmin, ensureLogin, getIdentity } from "../auth.js"
-import { CaseModel, type Case } from "../schemas/case.js"
+import { ensureAdmin, ensureLogin, getIdentity } from "../auth"
+import { CaseModel, type Case } from "../schemas/case"
 
 const router = Router()
 
