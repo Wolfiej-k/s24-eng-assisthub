@@ -1,6 +1,6 @@
 import { Box, Divider, Grid, Typography, useTheme } from "@mui/material"
 import { useGetIdentity } from "@refinedev/core"
-import { Coach } from "./types"
+import { type Coach } from "./types"
 
 export default function PageTitle({ title }: { title: string }) {
   const { data: identity } = useGetIdentity<Coach>()

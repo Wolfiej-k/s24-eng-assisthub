@@ -3,7 +3,7 @@ import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Authenticated, AuthProvider, Refine } from "@refinedev/core"
+import { Authenticated, type AuthProvider, Refine } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
   CatchAllNavigate,

@@ -1,7 +1,7 @@
 import { ManagementClient } from "auth0"
 import { type NextFunction, type Request, type Response } from "express"
 import { auth } from "express-oauth2-jwt-bearer"
-import { CoachModel, CoachRes } from "./schemas/coach"
+import { CoachModel, type CoachRes } from "./schemas/coach"
 
 const management = new ManagementClient({
   domain: process.env.AUTH0_DOMAIN ?? "",
