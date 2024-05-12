@@ -198,7 +198,7 @@ export default function AnalyticsCharts() {
                   {
                     arcLabel: (item) => item.label?.split(" ")[0] ?? "",
                     arcLabelMinAngle: 25,
-                    data: sortedCaseLocationsArray.slice(0, 5).map(([label, value]) => ({ label, value })),
+                    data: sortedCaseLocationsArray.map(([label, value]) => ({ label, value })),
                     paddingAngle: 1,
                     cornerRadius: 4,
                     innerRadius: 25,

@@ -1,8 +1,9 @@
-import CloseIcon from "@mui/icons-material/Close"
+import { Close, OpenInNew } from "@mui/icons-material"
 import { Dialog, DialogTitle, IconButton } from "@mui/material"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 import { type Case } from "../../types"
 import DetailedView from "./detailed-view"
 
@@ -31,9 +32,14 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
   return (
     <Dialog open={true} onClose={onClose}>
       <DialogTitle>
-        {item.client.name}
+        {"Case " + item._id}
+        <Link to={"/" + item._id}>
+          <IconButton aria-label="fullpage" sx={{ position: "absolute", right: 48, top: 12 }}>
+            <OpenInNew />
+          </IconButton>
+        </Link>
         <IconButton aria-label="close" onClick={onClose} sx={{ position: "absolute", right: 16, top: 12 }}>
-          <CloseIcon />
+          <Close />
         </IconButton>
       </DialogTitle>
       <div style={{ padding: "3%", paddingTop: "0%" }}>

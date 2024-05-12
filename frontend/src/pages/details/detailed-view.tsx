@@ -68,119 +68,116 @@ export default function DetailedView({
 
   return (
     <>
-      <Box>
-        <TextField
-          margin="dense"
-          id="id"
-          label="ID"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={item._id}
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          margin="dense"
-          id="clientEmail"
-          label="Email"
-          type="email"
-          fullWidth
-          variant="outlined"
-          value={values.client.email}
-          onChange={(e) => handleClientChange("email", e.target.value)}
-          InputProps={{ readOnly: !isEditing }}
-        />
-        <TextField
-          margin="dense"
-          id="clientPhone"
-          label="Phone"
-          type="tel"
-          fullWidth
-          variant="outlined"
-          value={values.client.phone}
-          onChange={(e) => handleClientChange("phone", e.target.value)}
-          InputProps={{ readOnly: !isEditing }}
-        />
-        <TextField
-          margin="dense"
-          id="clientZip"
-          label="ZIP Code"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={values.client.zip}
-          onChange={(e) => handleClientChange("zip", e.target.value)}
-          InputProps={{ readOnly: !isEditing }}
-        />
-        <TextField
-          margin="dense"
-          id="clientProfile"
-          label="Profile URL"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={
-            values.client.profile.startsWith("https://") ? values.client.profile : `https://${values.client.profile}`
-          }
-          onChange={(e) => handleClientChange("profile", e.target.value)}
-          InputProps={{ readOnly: !isEditing }}
-        />
-        <CoachDropdown
-          coaches={values.coaches}
-          updateCoaches={(update) => handleChange("coaches", update)}
-          editable={isEditing}
-        />
-        <TextField
-          margin="dense"
-          id="startTime"
-          label="Start Time"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={new Date(item.startTime).toLocaleString()}
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          margin="dense"
-          id="endTime"
-          label="End Time"
-          type="text"
-          fullWidth
-          variant="outlined"
-          value={item.endTime ? new Date(item.endTime).toLocaleString() : ""}
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          margin="dense"
-          id="notes"
-          label="Notes"
-          type="text"
-          fullWidth
-          variant="outlined"
-          multiline
-          rows={7}
-          value={values.notes}
-          onChange={(e) => handleChange("notes", e.target.value)}
-          InputProps={
-            !isEditing
-              ? {
-                  readOnly: true,
-                  inputComponent: () => (
-                    <div style={{ whiteSpace: "pre-wrap", height: 120, width: "100%", overflowY: "auto" }}>
-                      <Markdown>{values.notes ?? ""}</Markdown>
-                    </div>
-                  ),
-                }
-              : {}
-          }
-        />
-      </Box>
+      <TextField
+        margin="dense"
+        id="clientName"
+        label="Name"
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={item.client.name}
+        onChange={(e) => handleClientChange("name", e.target.value)}
+        InputProps={{ readOnly: !isEditing }}
+      />
+      <TextField
+        margin="dense"
+        id="clientEmail"
+        label="Email"
+        type="email"
+        fullWidth
+        variant="outlined"
+        value={values.client.email}
+        onChange={(e) => handleClientChange("email", e.target.value)}
+        InputProps={{ readOnly: !isEditing }}
+      />
+      <TextField
+        margin="dense"
+        id="clientPhone"
+        label="Phone"
+        type="tel"
+        fullWidth
+        variant="outlined"
+        value={values.client.phone}
+        onChange={(e) => handleClientChange("phone", e.target.value)}
+        InputProps={{ readOnly: !isEditing }}
+      />
+      <TextField
+        margin="dense"
+        id="clientZip"
+        label="ZIP Code"
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={values.client.zip}
+        onChange={(e) => handleClientChange("zip", e.target.value)}
+        InputProps={{ readOnly: !isEditing }}
+      />
+      <TextField
+        margin="dense"
+        id="clientProfile"
+        label="Profile URL"
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={
+          values.client.profile.startsWith("https://") ? values.client.profile : `https://${values.client.profile}`
+        }
+        onChange={(e) => handleClientChange("profile", e.target.value)}
+        InputProps={{ readOnly: !isEditing }}
+      />
+      <CoachDropdown
+        coaches={values.coaches}
+        updateCoaches={(update) => handleChange("coaches", update)}
+        editable={isEditing}
+      />
+      <TextField
+        margin="dense"
+        id="startTime"
+        label="Start Time"
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={new Date(item.startTime).toLocaleString()}
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      <TextField
+        margin="dense"
+        id="endTime"
+        label="End Time"
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={item.endTime ? new Date(item.endTime).toLocaleString() : ""}
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      <TextField
+        margin="dense"
+        id="notes"
+        label="Notes"
+        type="text"
+        fullWidth
+        variant="outlined"
+        multiline
+        rows={7}
+        value={values.notes}
+        onChange={(e) => handleChange("notes", e.target.value)}
+        InputProps={
+          !isEditing
+            ? {
+                readOnly: true,
+                inputComponent: () => (
+                  <div style={{ whiteSpace: "pre-wrap", height: 120, width: "100%", overflowY: "auto" }}>
+                    <Markdown>{values.notes ?? ""}</Markdown>
+                  </div>
+                ),
+              }
+            : {}
+        }
+      />
       <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
         {isEditing ? (
           <>

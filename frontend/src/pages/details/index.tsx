@@ -24,7 +24,6 @@ function DetailsWrapper({ item }: { item: Case }) {
 
 export default function DetailsPage() {
   const { id } = useParams()
-  const [refresh, setRefresh] = useState(0)
 
   const { data, isLoading, isError } = useOne<Case>({
     resource: "cases",
@@ -41,7 +40,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <PageTitle title={data.data.client.name} />
+      <PageTitle title={"Case " + data.data._id} />
       <DetailsWrapper item={data.data} />
     </>
   )
