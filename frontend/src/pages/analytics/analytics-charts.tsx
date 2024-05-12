@@ -1,6 +1,7 @@
 import { Card, CardContent, Grid, Typography, useTheme } from "@mui/material"
 import { BarChart, LineChart, pieArcLabelClasses, PieChart } from "@mui/x-charts"
 import { useList } from "@refinedev/core"
+import { Error, Loading } from "../../components/message"
 import { type Case } from "../../types"
 import ChartContainer from "./chart-container"
 import zipCodes from "./zipcodes.json"
@@ -18,11 +19,11 @@ export default function AnalyticsCharts() {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (isError) {
-    return <div>Something went wrong!</div>
+    return <Error />
   }
 
   const cases = data.data

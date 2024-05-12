@@ -1,11 +1,30 @@
 import { useOne } from "@refinedev/core"
+import { useState } from "react"
 import { useParams } from "react-router-dom"
-import PageTitle from "../../page-title"
+import { Error, Loading } from "../../components/message"
+import PageTitle from "../../components/page-title"
 import { type Case } from "../../types"
 import DetailedView from "./detailed-view"
 
+function DetailsWrapper({ item }: { item: Case }) {
+  const [values, setValues] = useState<Case>(item)
+  const [isEditing, setIsEditing] = useState(false)
+
+  return (
+    <DetailedView
+      item={item}
+      values={values}
+      setValues={setValues}
+      isEditing={isEditing}
+      setIsEditing={setIsEditing}
+      onEditingDone={() => window.location.reload()}
+    />
+  )
+}
+
 export default function DetailsPage() {
   const { id } = useParams()
+  const [refresh, setRefresh] = useState(0)
 
   const { data, isLoading, isError } = useOne<Case>({
     resource: "cases",
@@ -13,17 +32,17 @@ export default function DetailsPage() {
   })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (isError) {
-    return <div>Something went wrong!</div>
+    return <Error />
   }
 
   return (
     <>
       <PageTitle title={data.data.client.name} />
-      <DetailedView item={data.data} />
+      <DetailsWrapper item={data.data} />
     </>
   )
 }

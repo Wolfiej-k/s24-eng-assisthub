@@ -1,9 +1,10 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
+import { Box, CircularProgress } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
 import { ThemeProvider } from "@mui/material/styles"
-import { Authenticated, type AuthProvider, Refine } from "@refinedev/core"
+import { Authenticated, Refine, type AuthProvider } from "@refinedev/core"
 import { RefineSnackbarProvider, ThemedLayoutV2, useNotificationProvider } from "@refinedev/mui"
 import routerProvider, {
   CatchAllNavigate,
@@ -17,7 +18,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
 
 import Logo from "./assets/assisthublogo.svg"
 import SmallLogo from "./assets/assisthublogosmall.svg"
-import Collapse from "./collapse"
+import Collapse from "./components/collapse"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 
@@ -30,7 +31,11 @@ export default function App() {
   const { isLoading, user, logout, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return (
+      <Box sx={{ color: "#7f32cd" }}>
+        <CircularProgress color="inherit" />
+      </Box>
+    )
   }
 
   const authProvider: AuthProvider = {

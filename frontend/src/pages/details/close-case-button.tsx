@@ -15,44 +15,53 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
 
   const handleClick = () => {
     if (open) {
-      void confirm({ title: "Are you sure?" }).then(() => {
-        mutate(
-          {
-            resource: "cases",
-            id: item._id,
-            values: {
-              endTime: new Date(),
+      void confirm({ title: "Are you sure?" })
+        .then(() => {
+          mutate(
+            {
+              resource: "cases",
+              id: item._id,
+              values: {
+                endTime: new Date(),
+              },
+              errorNotification: {
+                message: "Error updating case",
+                type: "error",
+              },
+              successNotification: false,
             },
-            errorNotification: {
-              message: "Error updating case",
-              type: "error",
+            {
+              onSuccess: onClose,
             },
-            successNotification: false,
-          },
-          {
-            onSuccess: () => onClose(),
-          },
-        )
-      })
-    } else {
-      void confirm({ title: "Are you sure? This will discard the close date." }).then(() => {
-        item.endTime = undefined
-        mutate({
-          resource: "cases",
-          id: item._id,
-          values: {
-            ...item,
-          },
-          errorNotification: {
-            message: "Error updating case",
-            type: "error",
-          },
-          successNotification: false,
-          meta: {
-            method: "put",
-          },
+          )
         })
-      })
+        .catch(() => {})
+    } else {
+      void confirm({ title: "Are you sure? This will discard the close date." })
+        .then(() => {
+          item.endTime = undefined
+          mutate(
+            {
+              resource: "cases",
+              id: item._id,
+              values: {
+                ...item,
+              },
+              errorNotification: {
+                message: "Error updating case",
+                type: "error",
+              },
+              successNotification: false,
+              meta: {
+                method: "put",
+              },
+            },
+            {
+              onSuccess: onClose,
+            },
+          )
+        })
+        .catch(() => {})
     }
   }
 

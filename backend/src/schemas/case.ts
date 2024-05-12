@@ -7,7 +7,7 @@ const caseSchema = new Schema({
   data: { type: Map, of: String, required: true },
   startTime: { type: Date, default: Date.now },
   endTime: { type: Date },
-  notes: { type: String },
+  notes: { type: String, default: "" },
 })
 
 export type Case = InferSchemaType<typeof caseSchema>

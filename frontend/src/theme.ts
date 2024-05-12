@@ -28,6 +28,9 @@ const theme = createTheme({
       fontSize: "12px",
       fontWeight: 300,
     },
+    allVariants: {
+      color: "#000000",
+    },
   },
 })
 

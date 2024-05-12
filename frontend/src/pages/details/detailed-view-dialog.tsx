@@ -1,5 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close"
 import { Dialog, DialogTitle, IconButton } from "@mui/material"
+import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
 import { type Case } from "../../types"
@@ -16,10 +17,12 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
   const confirm = useConfirm()
 
   const onClose = () => {
-    if (isEditing && values != item) {
-      void confirm({ title: "Discard changes?" }).then(() => {
-        handleClose()
-      })
+    if (isEditing && !isEqual(values, item)) {
+      void confirm({ title: "Discard changes?" })
+        .then(() => {
+          handleClose()
+        })
+        .catch(() => {})
     } else {
       handleClose()
     }
@@ -36,9 +39,11 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
       <div style={{ padding: "3%", paddingTop: "0%" }}>
         <DetailedView
           item={item}
-          parentSetValues={setValues}
-          parentSetIsEditing={setIsEditing}
-          onEditingDone={onClose}
+          values={values}
+          setValues={setValues}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
+          onEditingDone={() => window.location.reload()}
         />
       </div>
     </Dialog>

@@ -17,7 +17,7 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
   const coachlist = data?.data ?? []
 
   if (isError) {
-    return <div>Something went wrong!</div>
+    return <div color="black">Something went wrong!</div>
   }
 
   return (

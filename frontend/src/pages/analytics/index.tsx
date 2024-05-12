@@ -1,4 +1,4 @@
-import PageTitle from "../../page-title"
+import PageTitle from "../../components/page-title"
 import AnalyticsCharts from "./analytics-charts"
 
 export default function AnalyticsPage() {
