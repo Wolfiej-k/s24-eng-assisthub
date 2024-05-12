@@ -35,7 +35,7 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
             },
           )
         })
-        .catch(() => {})
+        .catch(() => undefined)
     } else {
       void confirm({ title: "Are you sure? This will discard the close date." })
         .then(() => {
@@ -56,7 +56,7 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
             },
           })
         })
-        .catch(() => {})
+        .catch(() => undefined)
     }
   }
 

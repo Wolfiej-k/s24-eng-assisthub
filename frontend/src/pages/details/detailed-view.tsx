@@ -59,11 +59,11 @@ export default function DetailedView({
           setValues(item)
           setIsEditing(false)
         })
-        .catch(() => {})
+        .catch(() => undefined)
     }
   }
   const finishEditing = () => {
-    return onFinish(values)
+    void onFinish(values)
   }
 
   return (
@@ -185,7 +185,7 @@ export default function DetailedView({
               <Button variant="contained" onClick={finishEditing}>
                 Confirm
               </Button>{" "}
-              <CloseCaseButton item={item} open={true} onClose={() => finishEditing().then(onEditingDone)} />
+              <CloseCaseButton item={item} open={true} onClose={() => void onFinish(values).then(onEditingDone)} />
             </div>
             <Button variant="contained" color={"error"} onClick={cancelEditing}>
               Cancel
@@ -194,7 +194,7 @@ export default function DetailedView({
         ) : (
           <>
             {item.endTime ? (
-              <CloseCaseButton item={item} open={false} onClose={() => {}} />
+              <CloseCaseButton item={item} open={false} onClose={() => undefined} />
             ) : (
               <Button variant="contained" onClick={startEditing}>
                 Edit Case

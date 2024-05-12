@@ -23,7 +23,7 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
         .then(() => {
           handleClose()
         })
-        .catch(() => {})
+        .catch(() => undefined)
     } else {
       handleClose()
     }
