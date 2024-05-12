@@ -40,26 +40,21 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
       void confirm({ title: "Are you sure? This will discard the close date." })
         .then(() => {
           item.endTime = undefined
-          mutate(
-            {
-              resource: "cases",
-              id: item._id,
-              values: {
-                ...item,
-              },
-              errorNotification: {
-                message: "Error updating case",
-                type: "error",
-              },
-              successNotification: false,
-              meta: {
-                method: "put",
-              },
+          mutate({
+            resource: "cases",
+            id: item._id,
+            values: {
+              ...item,
             },
-            {
-              onSuccess: onClose,
+            errorNotification: {
+              message: "Error updating case",
+              type: "error",
             },
-          )
+            successNotification: false,
+            meta: {
+              method: "put",
+            },
+          })
         })
         .catch(() => {})
     }

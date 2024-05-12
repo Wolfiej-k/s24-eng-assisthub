@@ -188,13 +188,7 @@ export default function DetailedView({
               <Button variant="contained" onClick={finishEditing}>
                 Confirm
               </Button>{" "}
-              <CloseCaseButton
-                item={item}
-                open={true}
-                onClose={() => {
-                  finishEditing().then(onEditingDone)
-                }}
-              />
+              <CloseCaseButton item={item} open={true} onClose={() => finishEditing().then(onEditingDone)} />
             </div>
             <Button variant="contained" color={"error"} onClick={cancelEditing}>
               Cancel
