@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react"
+import { useAuth0, type User } from "@auth0/auth0-react"
 import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
 import { Box, CircularProgress } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -21,14 +21,19 @@ import SmallLogo from "./assets/assisthublogosmall.svg"
 import Collapse from "./components/collapse"
 import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
+import { type Coach } from "./types"
 
+import { useState } from "react"
+import Admin from "./components/admin"
+import { NotFound } from "./components/message"
 import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
 import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
 export default function App() {
-  const { isLoading, user, logout, getIdTokenClaims, getAccessTokenSilently } = useAuth0()
+  const { isLoading, user, logout, getAccessTokenSilently } = useAuth0<Coach & User>()
+  const [userState, setUserState] = useState(user)
 
   if (isLoading) {
     return (
@@ -57,8 +62,7 @@ export default function App() {
     },
     check: async () => {
       try {
-        const idToken = await getIdTokenClaims()
-        if (idToken) {
+        if (user) {
           const accessToken = await getAccessTokenSilently()
           axios.defaults.headers.common = {
             Authorization: `Bearer ${accessToken}`,
@@ -86,26 +90,43 @@ export default function App() {
         }
       }
     },
-    getPermissions: () => Promise.resolve(null),
+    getPermissions: async () => Promise.resolve(null),
     getIdentity: async () => {
-      if (user) {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/coaches/${user.sub?.substring(6)}`)
+      if (user && user.sub) {
+        if (!userState || !userState.name || !userState.email || !userState.admin) {
+          const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
+          if (response.status != 200) {
+            return Promise.resolve(null)
+          }
 
-        return Promise.resolve({
-          ...response.data,
-        })
+          setUserState({
+            ...userState,
+            name: response.data.name,
+            email: response.data.email,
+            admin: response.data.admin,
+          })
+        }
+
+        return Promise.resolve(userState)
       }
+
       return Promise.resolve(null)
     },
   }
 
-  void getAccessTokenSilently().then((token) => {
-    if (token) {
+  if (user) {
+    void getAccessTokenSilently().then((token) => {
       axios.defaults.headers.common = {
         Authorization: `Bearer ${token}`,
       }
-    }
-  })
+    })
+
+    void axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub?.substring(6)}`).then((response) => {
+      if (response.status == 200) {
+        setUserState({ ...userState, name: response.data.name, email: response.data.email, admin: response.data.admin })
+      }
+    })
+  }
 
   return (
     <BrowserRouter>
@@ -122,12 +143,18 @@ export default function App() {
               {
                 name: "cases",
                 list: "/",
-                icon: <CasesIcon />,
+                show: "/cases/:id",
+                meta: {
+                  icon: <CasesIcon />,
+                },
               },
               {
                 name: "analytics",
                 list: "/analytics",
-                icon: <AnalyticsIcon />,
+                meta: {
+                  icon: <AnalyticsIcon />,
+                  hide: !userState?.admin,
+                },
               },
             ]}
             options={{
@@ -170,12 +197,14 @@ export default function App() {
                       path="/analytics"
                       element={
                         <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
-                          <AnalyticsPage />
+                          <Admin>
+                            <AnalyticsPage />
+                          </Admin>
                         </Authenticated>
                       }
                     />
                     <Route
-                      path="/:id"
+                      path="/cases/:id"
                       element={
                         <Authenticated key="details" fallback={<CatchAllNavigate to="/login" />}>
                           <DetailsPage />
@@ -183,6 +212,7 @@ export default function App() {
                       }
                     />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="*" element={<NotFound />} />
                   </Routes>
                 </ConfirmProvider>
               </ThemedLayoutV2>
