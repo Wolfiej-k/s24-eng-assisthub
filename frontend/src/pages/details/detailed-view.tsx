@@ -135,7 +135,7 @@ export default function DetailedView({
         onChange={(e) => handleClientChange("profile", e.target.value)}
         InputProps={{ readOnly: !isEditing }}
       />
-      <Box sx={{ marginTop: 1.5 }}>
+      <Box sx={{ marginTop: 1 }}>
         <Divider
           variant="middle"
           sx={{
@@ -178,7 +178,7 @@ export default function DetailedView({
           editable={isEditing}
         />
       </Box>
-      <Box sx={{ marginTop: 1.5 }}>
+      <Box sx={{ marginTop: 1 }}>
         <Divider
           variant="middle"
           sx={{
@@ -215,7 +215,7 @@ export default function DetailedView({
         fullWidth
         variant="outlined"
         multiline
-        rows={7}
+        rows={6}
         value={values.notes}
         onChange={(e) => handleChange("notes", e.target.value)}
         InputProps={
@@ -223,7 +223,7 @@ export default function DetailedView({
             ? {
                 readOnly: true,
                 inputComponent: () => (
-                  <div style={{ whiteSpace: "pre-wrap", height: 120, width: "100%", overflowY: "auto" }}>
+                  <div style={{ whiteSpace: "pre-wrap", height: 114, width: "100%", overflowY: "auto" }}>
                     <Markdown>{values.notes ?? ""}</Markdown>
                   </div>
                 ),

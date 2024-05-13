@@ -168,7 +168,6 @@ export default function App() {
                     </Link>
                   )
                 }
-                initialSiderCollapsed={true}
               >
                 <ConfirmProvider
                   defaultOptions={{

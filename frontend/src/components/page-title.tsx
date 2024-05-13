@@ -31,7 +31,7 @@ export default function PageTitle({ title }: { title: string }) {
           </Grid>
         </Grid>
       </Grid>
-      <Box sx={{ height: 20 }} />
+      <Box sx={{ height: 8 }} />
     </>
   )
 }
