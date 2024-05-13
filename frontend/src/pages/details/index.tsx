@@ -40,7 +40,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <PageTitle title={data.data.client.name + "'s Case"} />
+      <PageTitle title={"Case " + data.data._id.toUpperCase()} />
       <DetailsWrapper item={data.data} />
     </>
   )
