@@ -1,4 +1,4 @@
-import { useAuth0, type User } from "@auth0/auth0-react"
+import { useAuth0 } from "@auth0/auth0-react"
 import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
 import { Box, CircularProgress } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
@@ -32,8 +32,8 @@ import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
 
 export default function App() {
-  const { isLoading, user, logout, getAccessTokenSilently } = useAuth0<Coach & User>()
-  const [userState, setUserState] = useState(user)
+  const { isLoading, user, logout, getAccessTokenSilently } = useAuth0()
+  const [userState, setUserState] = useState<Coach | undefined>()
 
   if (isLoading) {
     return (
@@ -100,11 +100,12 @@ export default function App() {
           }
 
           setUserState({
-            ...userState,
             name: response.data.name,
             email: response.data.email,
             admin: response.data.admin,
           })
+
+          return Promise.resolve(response.data)
         }
 
         return Promise.resolve(userState)
@@ -112,20 +113,6 @@ export default function App() {
 
       return Promise.resolve(null)
     },
-  }
-
-  if (user) {
-    void getAccessTokenSilently().then((token) => {
-      axios.defaults.headers.common = {
-        Authorization: `Bearer ${token}`,
-      }
-    })
-
-    void axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub?.substring(6)}`).then((response) => {
-      if (response.status == 200) {
-        setUserState({ ...userState, name: response.data.name, email: response.data.email, admin: response.data.admin })
-      }
-    })
   }
 
   return (
