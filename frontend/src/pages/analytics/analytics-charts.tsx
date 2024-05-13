@@ -191,53 +191,8 @@ export default function AnalyticsCharts() {
           </ChartContainer>
         </Card>
       </Grid>
-      {/* <Grid item xs={12} md={4}>
-        <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
-          <ChartContainer>
-            <CardContent>
-              <Typography variant="h6" align="center">
-                Cases Per Area
-              </Typography>
-              <PieChart
-                margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
-                height={430}
-                series={[
-                  {
-                    arcLabel: (item) => item.label?.split(" ")[0] ?? "",
-                    arcLabelMinAngle: 25,
-                    data: sortedCaseLocationsArray.map(([label, value]) => ({ label, value })),
-                    paddingAngle: 1,
-                    cornerRadius: 4,
-                    innerRadius: 25,
-                    color: theme.palette.secondary.main,
-                  },
-                ]}
-                sx={{
-                  [`& .${pieArcLabelClasses.root}`]: {
-                    fill: theme.palette.primary.light,
-                  },
-                }}
-                slotProps={{
-                  legend: {
-                    direction: "row",
-                    position: { vertical: "bottom", horizontal: "middle" },
-                    padding: 0,
-                    itemMarkWidth: 20,
-                    itemMarkHeight: 4,
-                    markGap: 5,
-                    itemGap: 12,
-                    labelStyle: {
-                      fontSize: 14,
-                    },
-                  },
-                }}
-              />
-            </CardContent>
-          </ChartContainer>
-        </Card>
-      </Grid> */}
       <Grid item xs={1} md={5}>
-      <Card sx={{ alignItems: "center" }}>
+        <Card sx={{ alignItems: "center" }}>
           <ChartContainer>
             <CardContent sx={{ justifyContent: "center" }}>
               <Typography variant="h6" align="center">
