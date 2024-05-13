@@ -92,8 +92,8 @@ export default function App() {
     },
     getPermissions: async () => Promise.resolve(null),
     getIdentity: async () => {
-      if (user && user.sub) {
-        if (!userState || !userState.name || !userState.email || !userState.admin) {
+      if (user?.sub) {
+        if (!userState?.name || !userState.email || !userState.admin) {
           try {
             const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
             if (response.status != 200) {
