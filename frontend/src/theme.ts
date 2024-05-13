@@ -13,6 +13,9 @@ const theme = createTheme({
     secondary: {
       main: "#13cdcd",
     },
+    info: {
+      main: "#eeeeee",
+    },
   },
   typography: {
     fontFamily: "Poppins",
@@ -25,8 +28,8 @@ const theme = createTheme({
       fontWeight: 400,
     },
     body1: {
-      fontSize: "12px",
-      fontWeight: 300,
+      fontSize: "14px",
+      fontWeight: 350,
     },
     allVariants: {
       color: "#000000",

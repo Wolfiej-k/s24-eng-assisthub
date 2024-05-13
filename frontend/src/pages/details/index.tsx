@@ -45,7 +45,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <PageTitle title={"Case " + data.data._id} />
+      <PageTitle title={"Case " + data.data._id.toUpperCase()} />
       <DetailsWrapper item={data.data} />
     </>
   )

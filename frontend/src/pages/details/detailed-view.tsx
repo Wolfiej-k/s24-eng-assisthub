@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material"
+import { Box, Button, Chip, Divider, TextField } from "@mui/material"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
@@ -68,6 +68,9 @@ export default function DetailedView({
 
   return (
     <>
+      <Divider variant="middle">
+        <Chip label="Client Information" size="medium" color="primary" />
+      </Divider>
       <TextField
         margin="dense"
         id="clientName"
@@ -125,11 +128,11 @@ export default function DetailedView({
         onChange={(e) => handleClientChange("profile", e.target.value)}
         InputProps={{ readOnly: !isEditing }}
       />
-      <CoachDropdown
-        coaches={values.coaches}
-        updateCoaches={(update) => handleChange("coaches", update)}
-        editable={isEditing}
-      />
+      <Box sx={{ marginTop: 1.5 }}>
+        <Divider variant="middle">
+          <Chip label="Case Information" size="medium" color="primary" />
+        </Divider>
+      </Box>
       <TextField
         margin="dense"
         id="startTime"
@@ -154,6 +157,35 @@ export default function DetailedView({
           readOnly: true,
         }}
       />
+      <Box sx={{ marginLeft: 0.25, marginRight: 0.25, marginBottom: 0.3 }}>
+        <CoachDropdown
+          coaches={values.coaches}
+          updateCoaches={(update) => handleChange("coaches", update)}
+          editable={isEditing}
+        />
+      </Box>
+      <Box sx={{ marginTop: 1.5 }}>
+        <Divider variant="middle">
+          <Chip label="Additional Information" size="medium" color="primary" />
+        </Divider>
+      </Box>
+      {Object.keys(item.data).map((field) => (
+        <TextField
+          margin="dense"
+          id={field}
+          label={field
+            .split(" ")
+            .map((word) => word[0]?.toUpperCase() + word.substring(1))
+            .join(" ")}
+          type="text"
+          fullWidth
+          variant="outlined"
+          value={item.data[field] ? item.data[field] : ""}
+          InputProps={{
+            readOnly: true,
+          }}
+        />
+      ))}
       <TextField
         margin="dense"
         id="notes"
