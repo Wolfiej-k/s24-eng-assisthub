@@ -108,6 +108,8 @@ export default function AnalyticsCharts() {
   })
 
   const sortedCaseLocationsArray = Array.from(caseLocations).sort(([, a], [, b]) => b - a)
+  const sortedCaseLocationsNum = sortedCaseLocationsArray.map(([label, value]) => (value))
+  const sortedCaseLocationsLabels = sortedCaseLocationsArray.map(([label, value]) => (label))
 
   return (
     <Grid container spacing={2} sx={{ padding: "12px" }}>
@@ -116,7 +118,7 @@ export default function AnalyticsCharts() {
           <ChartContainer>
             <CardContent>
               <Typography variant="h6" align="center">
-                Closed Cases Per Month
+                Open Cases Per Month
               </Typography>
               <BarChart
                 series={[
@@ -124,6 +126,11 @@ export default function AnalyticsCharts() {
                     label: "Opened Cases",
                     data: monthCounts,
                     color: theme.palette.primary.main,
+                  },
+                  {
+                    label: "Closed Cases",
+                    data: monthClosedCounts,
+                    color: theme.palette.secondary.main,
                   },
                 ]}
                 height={430}
@@ -184,7 +191,7 @@ export default function AnalyticsCharts() {
           </ChartContainer>
         </Card>
       </Grid>
-      <Grid item xs={12} md={4}>
+      {/* <Grid item xs={12} md={4}>
         <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
           <ChartContainer>
             <CardContent>
@@ -228,58 +235,9 @@ export default function AnalyticsCharts() {
             </CardContent>
           </ChartContainer>
         </Card>
-      </Grid>
-      <Grid item xs={12} md={8}>
-        <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
-          <ChartContainer>
-            <CardContent>
-              <Typography variant="h6" align="center">
-                Total Open Cases Per Month
-              </Typography>
-              <LineChart
-                height={430}
-                xAxis={[
-                  {
-                    data: monthLabels,
-                    scaleType: "band",
-                  },
-                ]}
-                series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
-              />
-            </CardContent>
-          </ChartContainer>
-        </Card>
-      </Grid>
-      <Grid item xs={1} md={7}>
-        <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
-          <ChartContainer>
-            <CardContent>
-              <Typography variant="h6" align="center">
-                Closed Cases Per Month
-              </Typography>
-              <BarChart
-                series={[
-                  {
-                    label: "Closed Cases",
-                    data: monthClosedCounts,
-                    color: theme.palette.secondary.main,
-                  },
-                ]}
-                height={430}
-                xAxis={[
-                  {
-                    data: monthLabels,
-                    scaleType: "band",
-                  },
-                ]}
-                margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
-              />
-            </CardContent>
-          </ChartContainer>
-        </Card>
-      </Grid>
-      <Grid item xs={12} md={5}>
-        <Card sx={{ alignItems: "center" }}>
+      </Grid> */}
+      <Grid item xs={1} md={5}>
+      <Card sx={{ alignItems: "center" }}>
           <ChartContainer>
             <CardContent sx={{ justifyContent: "center" }}>
               <Typography variant="h6" align="center">
@@ -318,6 +276,55 @@ export default function AnalyticsCharts() {
                     },
                   },
                 }}
+              />
+            </CardContent>
+          </ChartContainer>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={7}>
+        <Card sx={{ minHeight: "200px", marginBottom: "12px" }}>
+          <ChartContainer>
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Total Open Cases Per Month
+              </Typography>
+              <LineChart
+                height={430}
+                xAxis={[
+                  {
+                    data: monthLabels,
+                    scaleType: "band",
+                  },
+                ]}
+                series={[{ data: monthOpenCounts, color: theme.palette.primary.main }]}
+              />
+            </CardContent>
+          </ChartContainer>
+        </Card>
+      </Grid>
+      <Grid item xs={12} md={12}>
+        <Card sx={{ minHeight: "200px", marginBottom: "20px" }}>
+          <ChartContainer>
+            <CardContent>
+              <Typography variant="h6" align="center">
+                Cases by County
+              </Typography>
+              <BarChart
+                series={[
+                  {
+                    label: "Cases in County",
+                    data: sortedCaseLocationsNum,
+                    color: theme.palette.primary.main,
+                  },
+                ]}
+                height={430}
+                xAxis={[
+                  {
+                    data: sortedCaseLocationsLabels,
+                    scaleType: "band",
+                  },
+                ]}
+                margin={{ top: 60, bottom: 30, left: 40, right: 10 }}
               />
             </CardContent>
           </ChartContainer>
