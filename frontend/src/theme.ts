@@ -14,8 +14,8 @@ const theme = createTheme({
       main: "#13cdcd",
     },
     info: {
-      main: "#eeeeee"
-    }
+      main: "#eeeeee",
+    },
   },
   typography: {
     fontFamily: "Poppins",
