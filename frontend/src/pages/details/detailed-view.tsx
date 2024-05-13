@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material"
+import { Box, Button, TextField, Divider, Chip } from "@mui/material"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
@@ -67,7 +67,9 @@ export default function DetailedView({
   }
 
   return (
-    <>
+    <> 
+      <Divider variant="middle"><Chip label="Client Information" size="medium" color="primary"/></Divider>
+      {/* <Divider variant="middle"><Chip label="Client Information" size="medium" color="primary"/></Divider> */}
       <TextField
         margin="dense"
         id="clientName"
@@ -125,6 +127,9 @@ export default function DetailedView({
         onChange={(e) => handleClientChange("profile", e.target.value)}
         InputProps={{ readOnly: !isEditing }}
       />
+      <Box sx={{ marginTop: 1.5}}>
+        <Divider variant="middle"><Chip label="Case Information" size="medium" color="primary"/></Divider>
+      </Box>
       <CoachDropdown
         coaches={values.coaches}
         updateCoaches={(update) => handleChange("coaches", update)}
@@ -154,6 +159,24 @@ export default function DetailedView({
           readOnly: true,
         }}
       />
+      <Box sx={{ marginTop: 1.5}}>
+        <Divider variant="middle"><Chip label="Additional Information" size="medium" color="primary"/></Divider>
+      </Box>
+      {/* Add extra fields here */}
+      {Object.keys(item.data).map((field) => (
+        <TextField
+        margin="dense"
+        id={field}
+        label={field}
+        type="text"
+        fullWidth
+        variant="outlined"
+        value={item.data[field] ? item.data[field] : ""}
+        InputProps={{
+          readOnly: true,
+        }}
+      />
+      ))}
       <TextField
         margin="dense"
         id="notes"

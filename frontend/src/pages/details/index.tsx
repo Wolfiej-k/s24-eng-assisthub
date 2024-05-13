@@ -40,7 +40,7 @@ export default function DetailsPage() {
 
   return (
     <>
-      <PageTitle title={"Case " + data.data._id} />
+      <PageTitle title={data.data.client.name + "'s Case"} />
       <DetailsWrapper item={data.data} />
     </>
   )
