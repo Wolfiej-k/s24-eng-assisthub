@@ -22,6 +22,7 @@ app.get("*", (_req, res) => {
 
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof UnauthorizedError) {
+    console.log("fired")
     return res.status(401).json({ error: "Unauthorized" })
   }
 
