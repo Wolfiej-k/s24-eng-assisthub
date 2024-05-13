@@ -31,7 +31,7 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
       value={coaches}
       onChange={(_, value) => updateCoaches(value)}
       renderInput={(params) => <TextField {...params} variant="standard" label="Assigned Coaches" />}
-      style={{ paddingBottom: 4 }}
+      style={{ paddingBottom: 4, opacity: 0.8 }}
       readOnly={!editable}
     />
   )
