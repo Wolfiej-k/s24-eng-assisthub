@@ -1,7 +1,8 @@
 import { useOne } from "@refinedev/core"
+import { AxiosError } from "axios"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
-import { Error, Loading } from "../../components/message"
+import { Error, Loading, NotFound } from "../../components/message"
 import PageTitle from "../../components/page-title"
 import { type Case } from "../../types"
 import DetailedView from "./detailed-view"
@@ -25,7 +26,7 @@ function DetailsWrapper({ item }: { item: Case }) {
 export default function DetailsPage() {
   const { id } = useParams()
 
-  const { data, isLoading, isError } = useOne<Case>({
+  const { data, isLoading, error } = useOne<Case>({
     resource: "cases",
     id,
   })
@@ -34,13 +35,17 @@ export default function DetailsPage() {
     return <Loading />
   }
 
-  if (isError) {
+  if (error) {
+    if (error instanceof AxiosError && error.response?.status == 404) {
+      return <NotFound />
+    }
+
     return <Error />
   }
 
   return (
     <>
-      <PageTitle title={data.data.client.name + "'s Case"} />
+      <PageTitle title={"Case " + data.data._id.toUpperCase()} />
       <DetailsWrapper item={data.data} />
     </>
   )
