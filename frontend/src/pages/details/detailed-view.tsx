@@ -68,7 +68,14 @@ export default function DetailedView({
 
   return (
     <>
-      <Divider variant="middle">
+      <Divider
+        variant="middle"
+        sx={{
+          "&::before, &::after": {
+            borderColor: "primary.main",
+          },
+        }}
+      >
         <Chip label="Client Information" size="medium" color="primary" />
       </Divider>
       <TextField
@@ -78,7 +85,7 @@ export default function DetailedView({
         type="text"
         fullWidth
         variant="outlined"
-        value={item.client.name}
+        value={values.client.name}
         onChange={(e) => handleClientChange("name", e.target.value)}
         InputProps={{ readOnly: !isEditing }}
       />
@@ -129,7 +136,14 @@ export default function DetailedView({
         InputProps={{ readOnly: !isEditing }}
       />
       <Box sx={{ marginTop: 1.5 }}>
-        <Divider variant="middle">
+        <Divider
+          variant="middle"
+          sx={{
+            "&::before, &::after": {
+              borderColor: "primary.main",
+            },
+          }}
+        >
           <Chip label="Case Information" size="medium" color="primary" />
         </Divider>
       </Box>
@@ -165,7 +179,14 @@ export default function DetailedView({
         />
       </Box>
       <Box sx={{ marginTop: 1.5 }}>
-        <Divider variant="middle">
+        <Divider
+          variant="middle"
+          sx={{
+            "&::before, &::after": {
+              borderColor: "primary.main",
+            },
+          }}
+        >
           <Chip label="Additional Information" size="medium" color="primary" />
         </Divider>
       </Box>

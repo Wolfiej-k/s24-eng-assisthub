@@ -94,24 +94,28 @@ export default function App() {
     getIdentity: async () => {
       if (user && user.sub) {
         if (!userState || !userState.name || !userState.email || !userState.admin) {
-          const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
-          if (response.status != 200) {
-            return Promise.resolve(null)
+          try {
+            const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
+            if (response.status != 200) {
+              return Promise.resolve(null)
+            }
+
+            setUserState({
+              name: response.data.name,
+              email: response.data.email,
+              admin: response.data.admin,
+            })
+
+            return response.data
+          } catch (error) {
+            return null
           }
-
-          setUserState({
-            name: response.data.name,
-            email: response.data.email,
-            admin: response.data.admin,
-          })
-
-          return Promise.resolve(response.data)
         }
 
-        return Promise.resolve(userState)
+        return userState
       }
 
-      return Promise.resolve(null)
+      return null
     },
   }
 
