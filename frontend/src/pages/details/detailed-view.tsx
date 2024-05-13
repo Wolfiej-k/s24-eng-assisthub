@@ -4,6 +4,7 @@ import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
 import Markdown from "react-markdown"
 import { type Case } from "../../types"
+import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
 
@@ -171,13 +172,16 @@ export default function DetailedView({
           readOnly: true,
         }}
       />
-      <Box sx={{ marginLeft: 0.25, marginRight: 0.25, marginBottom: 0.3 }}>
-        <CoachDropdown
-          coaches={values.coaches}
-          updateCoaches={(update) => handleChange("coaches", update)}
-          editable={isEditing}
-        />
-      </Box>
+      <BenefitsDropdown
+        benefits={values.benefits}
+        updateBenefits={(update) => handleChange("benefits", update)}
+        editable={isEditing}
+      />
+      <CoachDropdown
+        coaches={values.coaches}
+        updateCoaches={(update) => handleChange("coaches", update)}
+        editable={isEditing}
+      />
       <Box sx={{ marginTop: 1 }}>
         <Divider
           variant="middle"

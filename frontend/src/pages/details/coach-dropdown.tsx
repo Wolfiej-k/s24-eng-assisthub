@@ -1,5 +1,4 @@
-import Autocomplete from "@mui/material/Autocomplete"
-import TextField from "@mui/material/TextField"
+import { Autocomplete, Box, TextField } from "@mui/material"
 import { useList } from "@refinedev/core"
 import { type Coach } from "../../types"
 
@@ -14,25 +13,27 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
     resource: "coaches",
   })
 
-  const coachlist = data?.data ?? []
-
   if (isError) {
     return <div color="black">Something went wrong!</div>
   }
 
+  const coachList = data?.data ?? []
+
   return (
-    <Autocomplete
-      multiple
-      id="coach-dropdown"
-      options={coachlist}
-      loading={isLoading}
-      getOptionLabel={(option) => option.name}
-      isOptionEqualToValue={(option, value) => option._id === value._id}
-      value={coaches}
-      onChange={(_, value) => updateCoaches(value)}
-      renderInput={(params) => <TextField {...params} variant="standard" label="Assigned Coaches" />}
-      style={{ paddingBottom: 4, opacity: 0.8 }}
-      readOnly={!editable}
-    />
+    <Box sx={{ marginLeft: 0.25, marginRight: 0.25, marginBottom: 0.3 }}>
+      <Autocomplete
+        multiple
+        id="coach-dropdown"
+        options={coachList}
+        loading={isLoading}
+        getOptionLabel={(option) => option.name}
+        isOptionEqualToValue={(option, value) => option._id === value._id}
+        value={coaches}
+        onChange={(_, value) => updateCoaches(value)}
+        renderInput={(params) => <TextField {...params} variant="standard" label="Coaches" />}
+        style={{ paddingBottom: 4, opacity: 0.8 }}
+        readOnly={!editable}
+      />
+    </Box>
   )
 }

@@ -17,9 +17,9 @@ export interface Case {
   _id: string
   client: Client
   coaches: Coach[]
+  benefits: string[]
   data: Record<string, string>
   startTime: Date
   endTime?: Date
   notes?: string
-  benefits: string[]
 }
