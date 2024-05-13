@@ -33,7 +33,7 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
     <Dialog open={true} onClose={onClose}>
       <DialogTitle>
         {"Case " + item._id}
-        <Link to={"/" + item._id}>
+        <Link to={"/cases/" + item._id}>
           <IconButton aria-label="fullpage" sx={{ position: "absolute", right: 48, top: 12 }}>
             <OpenInNew />
           </IconButton>
