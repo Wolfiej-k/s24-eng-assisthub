@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
+import { AccountCircle as CoachesIcon, DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
 import { Box, CircularProgress } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
@@ -30,6 +30,8 @@ import HomePage from "./pages"
 import AnalyticsPage from "./pages/analytics"
 import DetailsPage from "./pages/details"
 import LoginPage from "./pages/login"
+
+import CoachesPage from "./pages/coaches"
 
 export default function App() {
   const { isLoading, user, logout, getAccessTokenSilently } = useAuth0()
@@ -141,6 +143,14 @@ export default function App() {
                 },
               },
               {
+                name: "coaches",
+                list: "/coaches",
+                meta: {
+                  icon: <CoachesIcon />,
+                  hide: !userState?.admin,
+                },
+              },
+              {
                 name: "analytics",
                 list: "/analytics",
                 meta: {
@@ -190,6 +200,16 @@ export default function App() {
                         <Authenticated key="analytics" fallback={<CatchAllNavigate to="/login" />}>
                           <Admin>
                             <AnalyticsPage />
+                          </Admin>
+                        </Authenticated>
+                      }
+                    />
+                    <Route
+                      path="/coaches"
+                      element={
+                        <Authenticated key="coaches" fallback={<CatchAllNavigate to="/login" />}>
+                          <Admin>
+                            <CoachesPage />
                           </Admin>
                         </Authenticated>
                       }
