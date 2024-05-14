@@ -15,7 +15,8 @@ export default function PageTitle({ title, decorator }: PageTitleProps) {
       <Grid container sx={{ justifyContent: "space-between" }}>
         <Grid item>
           <Typography variant="h1" sx={{ color: "primary.dark", display: "inline" }}>
-            {title} {decorator}
+            {title}
+            {decorator}
           </Typography>
         </Grid>
         <Grid item>

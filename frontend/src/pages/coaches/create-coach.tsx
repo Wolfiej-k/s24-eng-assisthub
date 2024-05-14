@@ -10,7 +10,11 @@ const initialCoach = {
   admin: false,
 }
 
-export default function CreateCoachForm() {
+interface CreateCoachFormProps {
+  onClose: () => void
+}
+
+export default function CreateCoachForm({ onClose }: CreateCoachFormProps) {
   const [coach, setCoach] = useState(initialCoach)
   const confirm = useConfirm()
 
@@ -18,6 +22,7 @@ export default function CreateCoachForm() {
     resource: "coaches",
     action: "create",
     successNotification: false,
+    onMutationSuccess: onClose,
   })
 
   const handleChange = (field: keyof Coach, value: unknown) => {
@@ -37,6 +42,7 @@ export default function CreateCoachForm() {
       <Stack spacing={2}>
         <TextField
           required
+          margin="dense"
           name="name"
           label="Name"
           value={coach.name}
@@ -45,6 +51,7 @@ export default function CreateCoachForm() {
         />
         <TextField
           required
+          margin="dense"
           name="email"
           type="email"
           label="Email"
