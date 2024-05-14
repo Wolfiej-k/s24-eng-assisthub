@@ -26,6 +26,7 @@
     "@refinedev/react-router-v6": "^4.5.7",
     "@refinedev/simple-rest": "^5.0.4",
     "@types/react-window": "^1.8.8",
+    "@types/webfontloader": "^1.6.38",
     "date-fns": "^3.4.0",
     "lodash": "^4.17.21",
     "material-ui-confirm": "^3.0.11",
@@ -34,7 +35,8 @@
     "react-dom": "^18.0.0",
     "react-hook-form": "^7.30.0",
     "react-router-dom": "^6.8.1",
-    "react-window": "^1.8.10"
+    "react-window": "^1.8.10",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@total-typescript/ts-reset": "^0.5.1",

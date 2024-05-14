@@ -15,6 +15,7 @@ import dataProvider from "@refinedev/simple-rest"
 import axios from "axios"
 import { ConfirmProvider } from "material-ui-confirm"
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import WebFont from "webfontloader"
 
 import Logo from "./assets/assisthublogo.svg"
 import SmallLogo from "./assets/assisthublogosmall.svg"
@@ -23,7 +24,7 @@ import { ColorModeContextProvider } from "./contexts/color-mode"
 import { theme } from "./theme"
 import { type Coach } from "./types"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Admin from "./components/admin"
 import { NotFound } from "./components/message"
 import HomePage from "./pages"
@@ -36,6 +37,14 @@ import CoachesPage from "./pages/coaches"
 export default function App() {
   const { isLoading, user, logout, getAccessTokenSilently } = useAuth0()
   const [userState, setUserState] = useState<Coach | undefined>()
+
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: ["Poppins"],
+      },
+    })
+  }, [])
 
   if (isLoading) {
     return (
