@@ -28,7 +28,7 @@ export default function FileUpload({ onChange, editable }: FileUploadProps) {
       startIcon={<CloudUpload />}
       disabled={!editable}
     >
-      Upload File
+      File
       <VisuallyHiddenInput type="file" onChange={onChange} disabled={!editable} />
     </Button>
   )
