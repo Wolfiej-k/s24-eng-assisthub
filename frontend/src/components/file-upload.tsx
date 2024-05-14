@@ -23,12 +23,12 @@ export default function FileUpload({ onChange, editable }: FileUploadProps) {
     <Button
       component="label"
       role={undefined}
-      variant="contained"
+      variant="outlined"
       tabIndex={-1}
       startIcon={<CloudUpload />}
       disabled={!editable}
     >
-      Upload File
+      File
       <VisuallyHiddenInput type="file" onChange={onChange} disabled={!editable} />
     </Button>
   )

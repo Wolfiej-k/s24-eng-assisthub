@@ -1,4 +1,10 @@
-import { Box, Button, Chip, Divider, Grid, TextField } from "@mui/material"
+import DeleteIcon from "@mui/icons-material/Delete"
+import { Box, Button, Chip, Divider, Grid, TextField, Typography } from "@mui/material"
+import IconButton from "@mui/material/IconButton"
+import Link from "@mui/material/Link"
+import List from "@mui/material/List"
+import ListItem from "@mui/material/ListItem"
+import ListItemText from "@mui/material/ListItemText"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
@@ -258,17 +264,39 @@ export default function DetailedView({
         }
       />
       <Box marginTop={1} marginBottom={2}>
-        <FileUpload onChange={handleFileAdd} editable={isEditing} />
-        <Grid container spacing={2}>
-          {values.files.map((file, index) => (
-            <Grid item key={index}>
-              <a href={file.data} download={file.name}>
-                {file.name}
-              </a>
-              {isEditing && <button onClick={() => handleFileRemove(index)}>Remove</button>}
+        <Grid container>
+          <Grid item>
+            <Typography variant="h2" color="info" sx={{ paddingTop: "8px" }}>
+              {values.files.length > 0 ? "Uploaded files:" : "No uploaded files."}
+            </Typography>
+          </Grid>
+          <Grid item xs>
+            <Grid container direction="row-reverse">
+              <Grid item>
+                <FileUpload onChange={handleFileAdd} editable={isEditing} />
+              </Grid>
             </Grid>
-          ))}
+          </Grid>
         </Grid>
+        <List sx={{ paddingTop: "0px" }}>
+          {values.files.map((file, index) => (
+            <ListItem
+              key={index}
+              sx={{ paddingLeft: "2px" }}
+              secondaryAction={
+                isEditing ? (
+                  <IconButton edge="end" aria-label="delete">
+                    <DeleteIcon onClick={() => handleFileRemove(index)} />
+                  </IconButton>
+                ) : null
+              }
+            >
+              <Link href={file.data} download={file.name}>
+                <ListItemText primary={file.name} />
+              </Link>
+            </ListItem>
+          ))}
+        </List>
       </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
         {isEditing ? (
