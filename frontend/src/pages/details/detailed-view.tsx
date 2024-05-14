@@ -14,6 +14,7 @@ import { type Case } from "../../types"
 import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
+import React from "react"
 
 interface DetailedViewProps {
   item: Case
@@ -254,11 +255,11 @@ export default function DetailedView({
           !isEditing
             ? {
                 readOnly: true,
-                inputComponent: () => (
+                inputComponent: React.forwardRef((props, ref) => (
                   <div style={{ whiteSpace: "pre-wrap", height: 126, width: "100%", overflowY: "auto" }}>
-                    <Markdown>{values.notes ?? ""}</Markdown>
+                    <Markdown ref={ref}>{values.notes ?? ""}</Markdown>
                   </div>
-                ),
+                )),
               }
             : {}
         }
@@ -285,8 +286,8 @@ export default function DetailedView({
               sx={{ paddingLeft: "2px" }}
               secondaryAction={
                 isEditing ? (
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon onClick={() => handleFileRemove(index)} />
+                  <IconButton edge="end" aria-label="delete" onClick={() => handleFileRemove(index)}>
+                    <DeleteIcon  />
                   </IconButton>
                 ) : null
               }
