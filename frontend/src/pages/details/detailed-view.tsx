@@ -8,13 +8,13 @@ import ListItemText from "@mui/material/ListItemText"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
+import React from "react"
 import Markdown from "react-markdown"
 import FileUpload from "../../components/file-upload"
 import { type Case } from "../../types"
 import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
-import React from "react"
 
 interface DetailedViewProps {
   item: Case
@@ -287,7 +287,7 @@ export default function DetailedView({
               secondaryAction={
                 isEditing ? (
                   <IconButton edge="end" aria-label="delete" onClick={() => handleFileRemove(index)}>
-                    <DeleteIcon  />
+                    <DeleteIcon />
                   </IconButton>
                 ) : null
               }
