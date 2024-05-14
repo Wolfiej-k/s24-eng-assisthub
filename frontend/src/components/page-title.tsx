@@ -2,7 +2,12 @@ import { Box, Divider, Grid, Typography } from "@mui/material"
 import { useGetIdentity } from "@refinedev/core"
 import { type Coach } from "../types"
 
-export default function PageTitle({ title }: { title: string }) {
+interface PageTitleProps {
+  title: string
+  decorator?: JSX.Element
+}
+
+export default function PageTitle({ title, decorator }: PageTitleProps) {
   const { data: identity } = useGetIdentity<Coach>()
 
   return (
@@ -10,7 +15,7 @@ export default function PageTitle({ title }: { title: string }) {
       <Grid container sx={{ justifyContent: "space-between" }}>
         <Grid item>
           <Typography variant="h1" sx={{ color: "primary.dark", display: "inline" }}>
-            {title}
+            {title} {decorator}
           </Typography>
         </Grid>
         <Grid item>

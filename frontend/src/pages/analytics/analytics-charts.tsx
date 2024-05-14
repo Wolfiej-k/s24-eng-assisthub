@@ -108,8 +108,8 @@ export default function AnalyticsCharts() {
   })
 
   const sortedCaseLocationsArray = Array.from(caseLocations).sort(([, a], [, b]) => b - a)
-  const sortedCaseLocationsNum = sortedCaseLocationsArray.map(([label, value]) => (value))
-  const sortedCaseLocationsLabels = sortedCaseLocationsArray.map(([label, value]) => (label))
+  const sortedCaseLocationsNum = sortedCaseLocationsArray.map(([label, value]) => value)
+  const sortedCaseLocationsLabels = sortedCaseLocationsArray.map(([label, value]) => label)
 
   return (
     <Grid container spacing={2} sx={{ padding: "12px" }}>
@@ -118,17 +118,17 @@ export default function AnalyticsCharts() {
           <ChartContainer>
             <CardContent>
               <Typography variant="h6" align="center">
-                Open Cases Per Month
+                Cases by Month
               </Typography>
               <BarChart
                 series={[
                   {
-                    label: "Opened Cases",
+                    label: "Opened",
                     data: monthCounts,
                     color: theme.palette.primary.main,
                   },
                   {
-                    label: "Closed Cases",
+                    label: "Closed",
                     data: monthClosedCounts,
                     color: theme.palette.secondary.main,
                   },

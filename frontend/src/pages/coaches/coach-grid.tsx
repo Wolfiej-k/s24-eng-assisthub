@@ -1,22 +1,34 @@
+import { Box, Button } from "@mui/material"
 import { DataGrid, type GridColDef } from "@mui/x-data-grid"
-import { DeleteButton } from "@refinedev/mui"
+import { useDelete, useGetIdentity } from "@refinedev/core"
 import { useDataGrid } from "@refinedev/mui"
-import { useMemo, useState } from "react"
+import { useConfirm } from "material-ui-confirm"
+import { useMemo } from "react"
 import { type Coach } from "../../types"
 
 export default function CoachGrid() {
-  const [selectedCoach, setSelectedCoach] = useState<Coach | null>(null)
-  const handleCloseDialog = () => setSelectedCoach(null)
+  const { mutate } = useDelete()
+  const { data: identity } = useGetIdentity<Coach>()
+  const confirm = useConfirm()
 
-  const DeleteCoachButton = ({ _id }: { _id: string }) => <DeleteButton resource="coaches" recordItemId={_id} />
-
+  const handleDelete = (id: string) => {
+    void confirm({ title: "Are you sure?" })
+      .then(() => {
+        mutate(
+          { resource: "coaches", id: id, successNotification: false },
+          { onSuccess: () => window.location.reload() },
+        )
+      })
+      .catch(() => undefined)
+  }
   const columns = useMemo<GridColDef<Coach>[]>(
     () => [
       {
         field: "name",
         headerName: "Name",
-        minWidth: 180,
-        maxWidth: 260,
+        headerClassName: "column-header",
+        minWidth: 160,
+        maxWidth: 440,
         flex: 1,
         valueGetter: (params) => params.row.name,
         renderCell: (params) => (
@@ -26,8 +38,8 @@ export default function CoachGrid() {
       {
         field: "email",
         headerName: "Email",
-        minWidth: 120,
-        maxWidth: 300,
+        headerClassName: "column-header",
+        minWidth: 240,
         flex: 1,
         valueGetter: (params) => params.row.email,
         renderCell: (params) => (
@@ -37,10 +49,11 @@ export default function CoachGrid() {
       {
         field: "admin",
         headerName: "Admin",
-        minWidth: 120,
-        maxWidth: 300,
-        flex: 1,
-        valueGetter: (params) => (params.row.admin ? "YES" : "NO"),
+        headerClassName: "column-header",
+        width: 140,
+        hideable: false,
+        filterable: false,
+        valueGetter: (params) => (params.row.admin ? "Yes" : "No"),
         renderCell: (params) => (
           <div style={{ overflow: "hidden", whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>
         ),
@@ -48,12 +61,23 @@ export default function CoachGrid() {
       {
         field: "remove",
         headerName: "Remove",
-        minWidth: 200,
-        maxWidth: 300,
+        headerClassName: "column-header",
+        width: 90,
         sortable: false,
         hideable: false,
         filterable: false,
-        renderCell: (params) => <DeleteCoachButton _id={params.row._id} />,
+        renderCell: (params) => (
+          <Button
+            size="small"
+            variant="contained"
+            color="error"
+            onClick={() => handleDelete(params.row._id)}
+            sx={{ fontSize: "0.6rem" }}
+            disabled={params.row._id == identity?._id}
+          >
+            Delete
+          </Button>
+        ),
       },
     ],
     [],
@@ -64,6 +88,10 @@ export default function CoachGrid() {
     pagination: {
       current: 1,
       pageSize: 10,
+      mode: "client",
+    },
+    sorters: {
+      mode: "off",
     },
     filters: {
       mode: "off",
@@ -72,13 +100,28 @@ export default function CoachGrid() {
 
   return (
     <>
-      <DataGrid
-        {...dataGridProps}
-        getRowId={(row: Coach) => row._id}
-        columns={columns}
-        autoHeight
-        pageSizeOptions={[10, 20, 30, 50, 100]}
-      />
+      <Box
+        sx={{
+          height: 300,
+          width: "100%",
+          "& .column-header": {
+            backgroundColor: "rgb(255, 255, 255)",
+            typography: "subtitle1",
+            fontWeight: "bold",
+          },
+          ".MuiDataGrid-columnSeparator": {
+            display: "none",
+          },
+        }}
+      >
+        <DataGrid
+          {...dataGridProps}
+          getRowId={(row: Coach) => row._id}
+          columns={columns}
+          autoHeight
+          pageSizeOptions={[10, 20, 30, 50, 100]}
+        />
+      </Box>
     </>
   )
 }

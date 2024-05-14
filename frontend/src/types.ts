@@ -7,7 +7,7 @@ export interface Client {
 }
 
 export interface Coach {
-  _id?: string
+  _id: string
   name: string
   email: string
   admin: boolean

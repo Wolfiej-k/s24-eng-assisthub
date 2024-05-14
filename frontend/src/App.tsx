@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
+import { AccountCircle as CoachesIcon, DonutSmall as AnalyticsIcon, TableChart as CasesIcon } from "@mui/icons-material"
 import { Box, CircularProgress } from "@mui/material"
 import CssBaseline from "@mui/material/CssBaseline"
 import GlobalStyles from "@mui/material/GlobalStyles"
@@ -103,6 +103,7 @@ export default function App() {
             }
 
             setUserState({
+              _id: response.data._id,
               name: response.data.name,
               email: response.data.email,
               admin: response.data.admin,
@@ -142,16 +143,16 @@ export default function App() {
                 },
               },
               {
-                name: "analytics",
-                list: "/analytics",
+                name: "coaches",
+                list: "/coaches",
                 meta: {
-                  icon: <AnalyticsIcon />,
+                  icon: <CoachesIcon />,
                   hide: !userState?.admin,
                 },
               },
               {
-                name: "coaches",
-                list: "/coaches",
+                name: "analytics",
+                list: "/analytics",
                 meta: {
                   icon: <AnalyticsIcon />,
                   hide: !userState?.admin,
