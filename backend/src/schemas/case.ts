@@ -17,7 +17,7 @@ const caseSchema = new Schema({
   client: { type: clientSchema, required: true },
   coaches: { type: [{ type: Schema.Types.ObjectId, ref: "Coach" }], default: [] },
   benefits: { type: [{ type: String }], default: [] },
-  data: { type: Map, of: String, required: true },
+  data: { type: Map, of: String, default: {} },
   startTime: { type: Date, default: Date.now },
   endTime: { type: Date },
   notes: { type: String, default: "" },

@@ -73,7 +73,7 @@ router.post("/", ensureAdmin, async (req, res, next) => {
     startTime: startTime,
     endTime: endTime,
     notes: notes,
-    files: notes,
+    files: files,
   })
 
   try {

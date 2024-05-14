@@ -151,7 +151,7 @@ export default function AnalyticsCharts() {
           <ChartContainer>
             <CardContent sx={{ justifyContent: "center" }}>
               <Typography variant="h6" align="center">
-                Assigned Cases per Coach
+                Assigned Cases Per Coach
               </Typography>
               <PieChart
                 margin={{ top: 10, bottom: 60, left: 60, right: 60 }}
