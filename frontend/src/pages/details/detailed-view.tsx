@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
+import React from "react"
 import Markdown from "react-markdown"
 import FileUpload from "../../components/file-upload"
 import { type Case } from "../../types"
@@ -254,11 +255,11 @@ export default function DetailedView({
           !isEditing
             ? {
                 readOnly: true,
-                inputComponent: () => (
+                inputComponent: React.forwardRef((props, ref) => (
                   <div style={{ whiteSpace: "pre-wrap", height: 126, width: "100%", overflowY: "auto" }}>
-                    <Markdown>{values.notes ?? ""}</Markdown>
+                    <Markdown ref={ref}>{values.notes ?? ""}</Markdown>
                   </div>
-                ),
+                )),
               }
             : {}
         }
@@ -285,8 +286,8 @@ export default function DetailedView({
               sx={{ paddingLeft: "2px" }}
               secondaryAction={
                 isEditing ? (
-                  <IconButton edge="end" aria-label="delete">
-                    <DeleteIcon onClick={() => handleFileRemove(index)} />
+                  <IconButton edge="end" aria-label="delete" onClick={() => handleFileRemove(index)}>
+                    <DeleteIcon />
                   </IconButton>
                 ) : null
               }
