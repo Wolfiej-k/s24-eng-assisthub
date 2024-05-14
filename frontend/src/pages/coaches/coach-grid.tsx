@@ -11,11 +11,11 @@ export default function CoachGrid() {
   const { data: identity } = useGetIdentity<Coach>()
   const confirm = useConfirm()
 
-  const handleDelete = (id: string) => {
-    void confirm({ title: "Are you sure?" })
+  const handleDelete = (coach: Coach) => {
+    void confirm({ title: `Are you sure? This removes ${coach.name.split(" ")[0]} from all cases.` })
       .then(() => {
         mutate(
-          { resource: "coaches", id: id, successNotification: false },
+          { resource: "coaches", id: coach._id, successNotification: false },
           { onSuccess: () => window.location.reload() },
         )
       })
@@ -71,7 +71,7 @@ export default function CoachGrid() {
             size="small"
             variant="contained"
             color="error"
-            onClick={() => handleDelete(params.row._id)}
+            onClick={() => handleDelete(params.row)}
             sx={{ fontSize: "0.6rem" }}
             disabled={params.row._id == identity?._id}
           >

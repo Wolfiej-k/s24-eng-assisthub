@@ -1,6 +1,3 @@
-// import(/* webpackPreload: true */ "@fontsource/poppins/300.css")
-// import(/* webpackPreload: true */ "@fontsource/poppins/400.css")
-// import(/* webpackPreload: true */ "@fontsource/poppins/500.css")
 import { createTheme } from "@mui/material/styles"
 
 const theme = createTheme({

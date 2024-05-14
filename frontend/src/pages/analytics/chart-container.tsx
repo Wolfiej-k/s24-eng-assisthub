@@ -6,12 +6,15 @@ interface ChartContainerProps {
   children: React.ReactNode
 }
 
-const stringifyStylesheet = (stylesheet: CSSStyleSheet) =>
-  stylesheet.cssRules
-    ? Array.from(stylesheet.cssRules)
-        .map((rule) => rule.cssText || "")
-        .join("\n")
-    : ""
+const stringifyStylesheet = (stylesheet: CSSStyleSheet) => {
+  try {
+    return Array.from(stylesheet.cssRules)
+      .map((rule) => rule.cssText || "")
+      .join("\n")
+  } catch {
+    return ""
+  }
+}
 
 const getStyles = () =>
   Array.from(document.styleSheets)

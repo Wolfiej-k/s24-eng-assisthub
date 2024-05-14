@@ -22,7 +22,10 @@ export default function CreateCoachForm({ onClose }: CreateCoachFormProps) {
     resource: "coaches",
     action: "create",
     successNotification: false,
-    onMutationSuccess: onClose,
+    onMutationSuccess: () => {
+      onClose()
+      window.location.reload()
+    },
   })
 
   const handleChange = (field: keyof Coach, value: unknown) => {

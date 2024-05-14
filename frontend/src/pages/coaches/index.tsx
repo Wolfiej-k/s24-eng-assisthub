@@ -14,7 +14,6 @@ export default function CoachesPage() {
 
   const handleClose = () => {
     setOpen(false)
-    window.location.reload()
   }
 
   return (
