@@ -102,7 +102,7 @@ export default function CoachGrid() {
     <>
       <Box
         sx={{
-          height: 300,
+          height: "100%",
           width: "100%",
           "& .column-header": {
             backgroundColor: "rgb(255, 255, 255)",
