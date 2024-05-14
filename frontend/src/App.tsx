@@ -101,6 +101,7 @@ export default function App() {
             }
 
             setUserState({
+              _id: response.data._id,
               name: response.data.name,
               email: response.data.email,
               admin: response.data.admin,

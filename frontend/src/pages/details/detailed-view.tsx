@@ -1,8 +1,9 @@
-import { Box, Button, Chip, Divider, TextField } from "@mui/material"
+import { Box, Button, Chip, Divider, Grid, TextField } from "@mui/material"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
 import Markdown from "react-markdown"
+import FileUpload from "../../components/file-upload"
 import { type Case } from "../../types"
 import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
@@ -44,6 +45,27 @@ export default function DetailedView({
 
   const handleClientChange = (field: keyof Case["client"], value: unknown) => {
     setValues({ ...values, client: { ...values.client, [field]: value } })
+  }
+
+  const handleFileAdd = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null
+    const reader = new FileReader()
+
+    if (file) {
+      reader.onloadend = () => {
+        const base64 = reader.result as string
+        setValues({ ...values, files: [...values.files, { data: base64, name: file.name }] })
+      }
+
+      reader.readAsDataURL(file)
+    }
+  }
+
+  const handleFileRemove = (index: number) => {
+    setValues({
+      ...values,
+      files: values.files.filter((_, i) => i !== index),
+    })
   }
 
   const startEditing = () => {
@@ -227,7 +249,7 @@ export default function DetailedView({
             ? {
                 readOnly: true,
                 inputComponent: () => (
-                  <div style={{ whiteSpace: "pre-wrap", height: 114, width: "100%", overflowY: "auto" }}>
+                  <div style={{ whiteSpace: "pre-wrap", height: 126, width: "100%", overflowY: "auto" }}>
                     <Markdown>{values.notes ?? ""}</Markdown>
                   </div>
                 ),
@@ -235,6 +257,19 @@ export default function DetailedView({
             : {}
         }
       />
+      <Box marginTop={1} marginBottom={2}>
+        <FileUpload onChange={handleFileAdd} editable={isEditing} />
+        <Grid container spacing={2}>
+          {values.files.map((file, index) => (
+            <Grid item key={index}>
+              <a href={file.data} download={file.name}>
+                {file.name}
+              </a>
+              {isEditing && <button onClick={() => handleFileRemove(index)}>Remove</button>}
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
       <Box sx={{ display: "flex", justifyContent: "space-between", paddingTop: 2 }}>
         {isEditing ? (
           <>

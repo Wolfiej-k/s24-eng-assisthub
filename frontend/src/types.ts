@@ -7,10 +7,15 @@ export interface Client {
 }
 
 export interface Coach {
-  _id?: string
+  _id: string
   name: string
   email: string
   admin: boolean
+}
+
+interface File {
+  data: string
+  name: string
 }
 
 export interface Case {
@@ -21,5 +26,6 @@ export interface Case {
   data: Record<string, string>
   startTime: Date
   endTime?: Date
-  notes?: string
+  notes: string
+  files: File[]
 }

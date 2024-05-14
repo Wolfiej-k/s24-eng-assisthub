@@ -4,6 +4,14 @@ import { clientSchema } from "./client"
 
 const nanoid = customAlphabet("1234567890abcdef", 16)
 
+const fileSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    data: { type: String, required: true },
+  },
+  { _id: false },
+)
+
 const caseSchema = new Schema({
   _id: { type: String, default: () => nanoid() },
   client: { type: clientSchema, required: true },
@@ -13,6 +21,7 @@ const caseSchema = new Schema({
   startTime: { type: Date, default: Date.now },
   endTime: { type: Date },
   notes: { type: String, default: "" },
+  files: { type: [fileSchema], default: [] },
 })
 
 caseSchema.pre("save", function (next) {
