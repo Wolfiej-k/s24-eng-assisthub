@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, IconButton } from "@mui/material"
 import { useState } from "react"
 import PageTitle from "../../components/page-title"
 import CoachGrid from "./coach-grid"
-import CreateCoachForm from "./create-coach"
+import CreateCoachForm from "./create-coach-form"
 
 export default function CoachesPage() {
   const [open, setOpen] = useState(false)

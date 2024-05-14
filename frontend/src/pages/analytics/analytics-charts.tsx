@@ -108,8 +108,8 @@ export default function AnalyticsCharts() {
   })
 
   const sortedCaseLocationsArray = Array.from(caseLocations).sort(([, a], [, b]) => b - a)
-  const sortedCaseLocationsNum = sortedCaseLocationsArray.map(([label, value]) => value)
-  const sortedCaseLocationsLabels = sortedCaseLocationsArray.map(([label, value]) => label)
+  const sortedCaseLocationsNum = sortedCaseLocationsArray.map(([_label, value]) => value)
+  const sortedCaseLocationsLabels = sortedCaseLocationsArray.map(([label, _value]) => label)
 
   return (
     <Grid container spacing={2} sx={{ padding: "12px" }}>

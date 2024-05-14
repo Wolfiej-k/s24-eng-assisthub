@@ -8,9 +8,9 @@ import ListItemText from "@mui/material/ListItemText"
 import { useForm } from "@refinedev/core"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
-import React from "react"
+import { forwardRef } from "react"
 import Markdown from "react-markdown"
-import FileUpload from "../../components/file-upload"
+import FileUpload, { VisuallyHiddenInput } from "../../components/file-upload"
 import { type Case } from "../../types"
 import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
@@ -255,9 +255,10 @@ export default function DetailedView({
           !isEditing
             ? {
                 readOnly: true,
-                inputComponent: React.forwardRef((props, ref) => (
+                inputComponent: forwardRef((_props, _ref) => (
                   <div style={{ whiteSpace: "pre-wrap", height: 126, width: "100%", overflowY: "auto" }}>
-                    <Markdown ref={ref}>{values.notes ?? ""}</Markdown>
+                    <Markdown>{values.notes ?? ""}</Markdown>
+                    <VisuallyHiddenInput id="notes" />
                   </div>
                 )),
               }
@@ -280,7 +281,7 @@ export default function DetailedView({
           </Grid>
         </Grid>
         <List sx={{ paddingTop: "0px" }}>
-          {values.files.map((file, index) => (
+          {values.files.map((value, index) => (
             <ListItem
               key={index}
               sx={{ paddingLeft: "2px" }}
@@ -292,8 +293,8 @@ export default function DetailedView({
                 ) : null
               }
             >
-              <Link href={file.data} download={file.name}>
-                <ListItemText primary={file.name} />
+              <Link href={value.data} download={value.name}>
+                <ListItemText primary={value.name} />
               </Link>
             </ListItem>
           ))}

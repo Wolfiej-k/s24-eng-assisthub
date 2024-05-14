@@ -1,26 +1,15 @@
-import { Box, Button } from "@mui/material"
+import { Box } from "@mui/material"
 import { DataGrid, type GridColDef } from "@mui/x-data-grid"
-import { useDelete, useGetIdentity } from "@refinedev/core"
+import { useGetIdentity } from "@refinedev/core"
 import { useDataGrid } from "@refinedev/mui"
-import { useConfirm } from "material-ui-confirm"
 import { useMemo } from "react"
 import { type Coach } from "../../types"
+import DeleteCoachButton from "./delete-coach-button"
+import UpdateCoachCheckbox from "./update-coach-checkbox"
 
 export default function CoachGrid() {
-  const { mutate } = useDelete()
   const { data: identity } = useGetIdentity<Coach>()
-  const confirm = useConfirm()
 
-  const handleDelete = (coach: Coach) => {
-    void confirm({ title: `Are you sure? This removes ${coach.name.split(" ")[0]} from all cases.` })
-      .then(() => {
-        mutate(
-          { resource: "coaches", id: coach._id, successNotification: false },
-          { onSuccess: () => window.location.reload() },
-        )
-      })
-      .catch(() => undefined)
-  }
   const columns = useMemo<GridColDef<Coach>[]>(
     () => [
       {
@@ -53,10 +42,7 @@ export default function CoachGrid() {
         width: 140,
         hideable: false,
         filterable: false,
-        valueGetter: (params) => (params.row.admin ? "Yes" : "No"),
-        renderCell: (params) => (
-          <div style={{ overflow: "hidden", whiteSpace: "normal", wordWrap: "break-word" }}>{params.value}</div>
-        ),
+        renderCell: (params) => <UpdateCoachCheckbox coach={params.row} disabled={params.row._id == identity?._id} />,
       },
       {
         field: "remove",
@@ -66,21 +52,10 @@ export default function CoachGrid() {
         sortable: false,
         hideable: false,
         filterable: false,
-        renderCell: (params) => (
-          <Button
-            size="small"
-            variant="contained"
-            color="error"
-            onClick={() => handleDelete(params.row)}
-            sx={{ fontSize: "0.6rem" }}
-            disabled={params.row._id == identity?._id}
-          >
-            Delete
-          </Button>
-        ),
+        renderCell: (params) => <DeleteCoachButton coach={params.row} disabled={params.row._id == identity?._id} />,
       },
     ],
-    [],
+    [identity],
   )
 
   const { dataGridProps } = useDataGrid<Coach>({
