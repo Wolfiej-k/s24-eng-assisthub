@@ -31,7 +31,7 @@ export default function CoachesPage() {
       {open && (
         <Dialog open={true} onClose={handleClose} fullWidth>
           <DialogTitle>
-            {"Add Coach"}
+            {"Create Coach"}
             <IconButton aria-label="close" onClick={handleClose} sx={{ position: "absolute", right: 16, top: 12 }}>
               <Close />
             </IconButton>

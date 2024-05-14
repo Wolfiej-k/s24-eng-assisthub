@@ -31,7 +31,7 @@ export default function CreateCoachForm({ onClose }: CreateCoachFormProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    void confirm({ title: "Create new coach?" }).then(() => {
+    void confirm({ title: "Are you sure?" }).then(() => {
       setCoach(initialCoach)
       void onFinish(coach)
     })
@@ -62,7 +62,7 @@ export default function CreateCoachForm({ onClose }: CreateCoachFormProps) {
         <Stack direction="row" spacing={2} sx={{ justifyContent: "space-between" }}>
           {" "}
           <Button type="submit" variant="contained" color="primary">
-            Add Coach
+            Submit
           </Button>
           <FormControlLabel
             control={
