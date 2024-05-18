@@ -1,5 +1,5 @@
 import { Close, OpenInNew } from "@mui/icons-material"
-import { Dialog, DialogTitle, IconButton } from "@mui/material"
+import { Box, Dialog, DialogTitle, IconButton } from "@mui/material"
 import { isEqual } from "lodash"
 import { useConfirm } from "material-ui-confirm"
 import { useState } from "react"
@@ -42,7 +42,7 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
           <Close />
         </IconButton>
       </DialogTitle>
-      <div style={{ padding: "3%", paddingTop: "0%" }}>
+      <Box sx={{ padding: "3%", paddingTop: "0%", overflowY: "scroll" }}>
         <DetailedView
           item={item}
           values={values}
@@ -51,7 +51,7 @@ export default function DetailedViewDialog({ item, handleClose }: DetailedViewDi
           setIsEditing={setIsEditing}
           onEditingDone={() => window.location.reload()}
         />
-      </div>
+      </Box>
     </Dialog>
   )
 }
