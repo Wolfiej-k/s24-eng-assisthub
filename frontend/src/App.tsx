@@ -41,7 +41,7 @@ export default function App() {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ["Poppins"],
+        families: ["Poppins:350,400,500"],
       },
     })
   }, [])
