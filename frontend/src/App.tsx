@@ -103,31 +103,31 @@ export default function App() {
     },
     getPermissions: async () => Promise.resolve(null),
     getIdentity: async () => {
-      if (user?.sub) {
-        if (!userState?.name || !userState.email || !userState.admin) {
-          try {
-            const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
-            if (response.status != 200) {
-              return Promise.resolve(null)
-            }
-
-            setUserState({
-              _id: response.data._id,
-              name: response.data.name,
-              email: response.data.email,
-              admin: response.data.admin,
-            })
-
-            return response.data
-          } catch (error) {
-            return null
-          }
-        }
-
-        return userState
+      if (!user?.sub) {
+        return null
       }
 
-      return null
+      if (!userState) {
+        try {
+          const response = await axios.get<Coach>(`${import.meta.env.VITE_API_URL}/coaches/${user.sub.substring(6)}`)
+          if (response.status != 200) {
+            return null
+          }
+
+          setUserState({
+            _id: response.data._id,
+            name: response.data.name,
+            email: response.data.email,
+            admin: response.data.admin,
+          })
+
+          return response.data
+        } catch (error) {
+          return null
+        }
+      }
+
+      return userState
     },
   }
 
