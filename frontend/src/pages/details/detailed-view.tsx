@@ -75,6 +75,15 @@ export default function DetailedView({
     })
   }
 
+  const truncateFileName = (name: string) => {
+    const trunc = name.split("").slice(0, 50).join("")
+    if (trunc.length < name.length) {
+      return trunc + "..."
+    }
+
+    return name
+  }
+
   const startEditing = () => {
     setIsEditing(true)
   }
@@ -293,8 +302,8 @@ export default function DetailedView({
                 ) : null
               }
             >
-              <Link href={value.data} download={value.name}>
-                <ListItemText primary={value.name} />
+              <Link href={value.data} download={value.name} width="80%">
+                <ListItemText primary={truncateFileName(value.name)} />
               </Link>
             </ListItem>
           ))}
