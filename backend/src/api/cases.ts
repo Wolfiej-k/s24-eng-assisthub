@@ -9,6 +9,23 @@ router.use(ensureLogin)
 router.use(getIdentity)
 
 router.get("/", async (req, res) => {
+  /**
+  * Handles GET requests for a list of cases.
+  * Supports sorting, filtering, and returning a range of cases based on parameters.
+  *
+  * Parameters:
+  * - _sort: The field to sort by (optional).
+  * - _order: The order of sorting, 'asc' for ascending and 'desc' for descending (optional, default is ascending).
+  * - _start: The starting index (optional).
+  * - _end: The ending index (optional).
+  *
+  * Authorization:
+  * - If the user is not an admin, filters the cases to only include those associated with the user's identity.
+  *
+  * Returns:
+  * - A JSON array of case items with the applied sorting, filtering, and range if applicable.
+  * - Sets the response status to 200 if no issue is found.
+  */
   const { _sort, _order, _start, _end } = req.query
   const condition = new Array<[string, 1 | -1]>()
 
@@ -41,6 +58,18 @@ router.get("/", async (req, res) => {
 })
 
 router.get("/:id", async (req, res, next) => {
+  /**
+  * Handles GET requests to retrieve a specific case by its ID.
+  *
+  * Request Params:
+  * - id: The ID of the case to be retrieved.
+  *
+  * Authorization:
+  * - If the user is not an admin, ensures the user is one of the case's coaches.
+  *
+  * Returns:
+  * - The requested case item with a status of 200 if no issue occurs.
+  */
   try {
     let item = await CaseModel.findById(req.params.id)
 
@@ -64,6 +93,18 @@ router.get("/:id", async (req, res, next) => {
 })
 
 router.post("/", ensureAdmin, async (req, res, next) => {
+  /**
+  * Handles POST requests to create a new case.
+  *
+  * Request Body:
+  * - case: Case item with all fields
+  *
+  * Authorization:
+  * - Only accessible by admin.
+  *
+  * Returns:
+  * - The created case item with a status of 201 if no error occurs.
+  */
   const { client, coaches, benefits, data, startTime, endTime, notes, files } = req.body as Case
   const item = new CaseModel({
     client: client,
@@ -89,6 +130,21 @@ router.post("/", ensureAdmin, async (req, res, next) => {
 })
 
 router.patch("/:id", async (req, res, next) => {
+  /**
+  * Handles PATCH requests to update an existing case by its ID.
+  *
+  * Request Params:
+  * - id: The ID of the case to be updated.
+  *
+  * Request Body (Partial):
+  * - case: Can optionally contain any fields of a Case, which it will update with corresponding ID
+  *
+  * Authorization:
+  * - If the user is not an admin, ensures the user is one of the case's coaches.
+  *
+  * Returns:
+  * - The updated case item with a status of 201 if no issue occurs.
+  */
   try {
     let item = await CaseModel.findById(req.params.id)
 
@@ -127,6 +183,22 @@ router.patch("/:id", async (req, res, next) => {
 })
 
 router.put("/:id", async (req, res, next) => {
+  /**
+  * Handles PUT requests to update an existing case by its ID.
+  * Replaces the entire case with the provided data.
+  *
+  * Request Params:
+  * - id: The ID of the case to be updated.
+  *
+  * Request Body:
+  * - case: Case item with all fields
+  *
+  * Authorization:
+  * - If the user is not an admin, ensures the user is one of the case's coaches.
+  *
+  * Returns:
+  * - The updated case item with a status of 201 if no issue occurs.
+  */
   try {
     let item = await CaseModel.findById(req.params.id)
 
@@ -165,6 +237,18 @@ router.put("/:id", async (req, res, next) => {
 })
 
 router.delete("/:id", ensureAdmin, async (req, res, next) => {
+  /**
+  * Handles DELETE requests to remove a case by its ID.
+  *
+  * Request Params:
+  * - id: The ID of the case to be deleted.
+  *
+  * Authorization:
+  * - Only accessible by admin.
+  * 
+  * Returns:
+  * - A status of 204 if no issue occurs.
+  */
   try {
     await CaseModel.deleteOne({ _id: req.params.id })
     return res.status(204).json()
