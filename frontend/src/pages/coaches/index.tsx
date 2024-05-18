@@ -21,7 +21,7 @@ export default function CoachesPage() {
       <PageTitle
         title="Coaches"
         decorator={
-          <IconButton aria-label="addcoach" color="primary" onClick={handleClickOpen}>
+          <IconButton aria-label="add-coach" color="primary" onClick={handleClickOpen}>
             <AddCircle />
           </IconButton>
         }
@@ -30,7 +30,7 @@ export default function CoachesPage() {
       {open && (
         <Dialog open={true} onClose={handleClose} fullWidth>
           <DialogTitle>
-            {"Create Coach"}
+            {"Add Coach"}
             <IconButton aria-label="close" onClick={handleClose} sx={{ position: "absolute", right: 16, top: 12 }}>
               <Close />
             </IconButton>
