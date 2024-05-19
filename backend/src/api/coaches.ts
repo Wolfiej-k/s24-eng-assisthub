@@ -8,7 +8,7 @@ const router = Router()
 router.use(ensureLogin)
 router.use(getIdentity)
 
-router.get("/", async (_req, res) => {
+router.get("/", ensureAdmin, async (_req, res) => {
   const items = await CoachModel.find().sort([["name", 1]])
   return res.status(200).json(items)
 })
@@ -16,6 +16,10 @@ router.get("/", async (_req, res) => {
 router.get("/:id", async (req, res, next) => {
   if (!req.params.id) {
     return res.status(404).json({ error: "Not found" })
+  }
+
+  if (!req.auth.admin && req.auth.identity?._id.toString() != req.params.id) {
+    return res.status(403).json({ error: "Forbidden" })
   }
 
   try {
