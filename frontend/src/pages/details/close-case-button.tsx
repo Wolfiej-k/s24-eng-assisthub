@@ -1,4 +1,3 @@
-
 import { Button } from "@mui/material"
 import { useUpdate } from "@refinedev/core"
 import { useConfirm } from "material-ui-confirm"
@@ -18,7 +17,7 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
     if (open) {
       // If case is open, show confirmation dialog
       void confirm({ title: "Are you sure?" })
-      // If confirmed, update the case with end time
+        // If confirmed, update the case with end time
         .then(() => {
           mutate(
             {
@@ -34,13 +33,15 @@ export default function CloseCaseButton({ item, open, onClose }: CloseCaseButton
               },
               successNotification: false,
             },
-            { // Call onClose function on success
+            {
+              // Call onClose function on success
               onSuccess: onClose,
             },
           )
         }) // Handle rejection i.e. if user cancels confirmation
         .catch(() => undefined)
-    } else { // If the case is closed, show confirmation to reopen
+    } else {
+      // If the case is closed, show confirmation to reopen
       void confirm({ title: "Are you sure? This will discard the close date." })
         .then(() => {
           // Remove end time from case
