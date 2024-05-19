@@ -1,6 +1,7 @@
 import { ManagementClient } from "auth0"
 import { type NextFunction, type Request, type Response } from "express"
 import { auth } from "express-oauth2-jwt-bearer"
+import randomstring from "randomstring"
 import { CoachModel, type CoachRes } from "./schemas/coach"
 
 const management = new ManagementClient({
@@ -15,7 +16,7 @@ export async function createUser(user: CoachRes) {
       user_id: user._id.toString(),
       email: user.email,
       name: user.name,
-      password: "AssistHubDefault1",
+      password: randomstring.generate(),
       connection: "Username-Password-Authentication",
       user_metadata: { admin: user.admin },
     })

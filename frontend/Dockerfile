@@ -1,22 +1,23 @@
-# This Dockerfile uses `serve` npm package to serve the static files with node process.
-# You can find the Dockerfile for nginx in the following link:
-# https://github.com/refinedev/dockerfiles/blob/main/vite/Dockerfile.nginx
 FROM refinedev/node:18 AS base
+
+ARG VITE_API_URL
+ARG VITE_AUTH0_DOMAIN
+ARG VITE_AUTH0_AUDIENCE
+ARG VITE_AUTH0_CLIENTID
 
 FROM base as deps
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* .npmrc* ./
+COPY package.json package-lock.json* ./
 
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  elif [ -f package-lock.json ]; then npm ci; \
-  elif [ -f pnpm-lock.yaml ]; then yarn global add pnpm && pnpm i --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
+RUN npm ci
 
 FROM base as builder
 
 ENV NODE_ENV production
+ENV VITE_API_URL ${VITE_API_URL}
+ENV VITE_AUTH0_DOMAIN ${VITE_AUTH0_DOMAIN}
+ENV VITE_AUTH0_AUDIENCE ${VITE_AUTH0_AUDIENCE}
+ENV VITE_AUTH0_CLIENTID ${VITE_AUTH0_CLIENTID}
 
 COPY --from=deps /app/refine/node_modules ./node_modules
 
@@ -33,5 +34,7 @@ RUN npm install -g serve
 COPY --from=builder /app/refine/dist ./
 
 USER refine
+
+EXPOSE 3000
 
 CMD ["serve"]
