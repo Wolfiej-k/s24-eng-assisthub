@@ -1,4 +1,4 @@
-# AssistHub $\times$ T4SG
+# AssistHub × T4SG
 
 ## Structure
 
