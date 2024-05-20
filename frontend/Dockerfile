@@ -25,16 +25,12 @@ COPY . .
 
 RUN npm run build
 
-FROM base as runner
+FROM nginx:1.21.3-alpine as runner
 
 ENV NODE_ENV production
 
-RUN npm install -g serve
+COPY --from=builder /app/refine/dist /usr/share/nginx/html
 
-COPY --from=builder /app/refine/dist ./
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-USER refine
-
-EXPOSE 3000
-
-CMD ["serve"]
+CMD ["nginx", "-g", "daemon off;"]

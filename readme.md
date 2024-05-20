@@ -1,238 +1,49 @@
-# AssistHub
+# AssistHub $\times$ T4SG
 
-## API Documentation
+## Structure
 
-All API queries are of content-type `application/json`. In order to authorize a request, either set the `"Secret"` header to the admin secret (as specified in an environmental variable) or supply an Auth0-issued JWT in the `"Authorization"` header. In the following, we assume this has been done; otherwise, all routes return status `401` with body `{ error: "Unauthorized" }`. Lastly, unspecified errors (such as attempting to update a record in parallel with another requester) trigger status `500` with body `{ error: "Internal server error" }`; see log for more details.
+The [frontend](frontend) is a static [Refine](https://refine.dev/) application built on Vite. It is served independently using [nginx](https://nginx.org/en/), and requests data from the Node.js [backend](backend) via RESTful API routes. Lastly, a locally-hosted [MongoDB](https://www.mongodb.com/) database interfaces with the backend to store persistent data. All three of these components are containerized and production-ready:
 
-#### Client schema
-> | field      | data type               | description                                                           |
-> |------------|-------------------|-----------------------------------------------------------------------|
-> | name | `string` | Client name
-> | email | `string` | Client email address
-> | phone | `string` | Client phone number
-> | zip | `string` | Client ZIP code
-> | profile | `string` | Client profile URL
+```bash
+> docker-compose build
+> docker-compose up
+```
 
-#### Coach schema
-> | field      |data type               | description                                                           |
-> |------------|-------------------|-----------------------------------------------------------------------|
-> | name | `string` | Coach name
-> | email | `string` | Coach email address
-> | admin | `boolean` | Coach has admin privileges, i.e., may access all routes
+Throughout, environment variables refers to a root `.env` file:
+```env
+ADMIN_SECRET=""
+AUTH0_DOMAIN=""
+AUTH0_AUDIENCE=""
+AUTH0_APP_CLIENTID=""
+AUTH0_API_CLIENTID=""
+AUTH0_API_SECRET=""
+```
 
-#### Case schema
-> | field      |data type               | description                                                           |
-> |------------|-------------------|-----------------------------------------------------------------------|
-> | client | `Client` | Client associated with case
-> | coaches | `Coach[]` | Coaches assigned to case
-> | benefits | `string[]` | Benefits associated with case
-> | data | `Record<string, string>` | Case metadata, e.g., client form responses
-> | startTime | `Date` | Date case was opened
-> | endTime | `Date?` | Date case was closed, `undefined` if still open
-> | notes | `string` | Free-form notes about case
-> | files | `{ name: string, data: string }[]` | Files associated with case, where `name` is the filename and `data` is its base64 encoding
+To develop the frontend and backend, create `.env` files in the respective directories with the variables listed in [docker-compose.yml](docker-compose.yml) and `npm run dev`.
 
-#### Creating and updating cases
+## Auth0 Setup
 
-See [source](/backend/src/api/cases.ts).
+We use the [Auth0](https://auth0.com/) provider for authentication and authorization. Register an account (the free plan is generous, but they also have discounted plans for nonprofits), and create a production tenant. Choose a domain, such as `assisthub.auth0.com`, and save it in the `AUTH0_DOMAIN` env variable.
 
-<details>
-<summary><code>GET</code> <code>/cases/</code>: read all or many cases</summary>
+#### In Applications/Applications
 
-##### Queries
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | _sort | optional | `string` | Name of the case field (e.g., "client.name") to sort by |
-> | _order | optional | `"asc"` or `"desc"` | Sort in ascending or descending order
-> | _start | optional | `number` | Starting index of result in sorted order
-> | _end | optional | `number` | Ending index of result in sorted order, inclusive
+Create a new single page web application. In "Basic Information", record the "Client ID" and save it to the env variable `AUTH0_APP_CLIENTID`. In "Application Properties", provide an image URL for the sign-in page logo. In "Application URIs", set "Allowed Callback URLs" and "Allowed Logout URLs" to your site domain (e.g., `http://localhost` for testing), and set "Application Login URI" to the same URI plus `/login` (note that this must be a live page; leave it blank when testing). Disable "Cross-Origin Authentication". Navigate to the "Connections" tab and disable social.
 
-##### Response
-Always returns `200` status with array of `Case` documents that *the sender is assigned to*. Only admin-authorized requests (i.e., admin secret or account with admin privileges) see the entire list. Header `"X-Total-Count"` set to total number of documents.
-</details>
+#### In Applications/APIs
 
-<details>
-<summary><code>GET</code> <code>/cases/:id</code>: read one case</summary>
+Create a new API. Choose an arbitrary identifier, such as `https://assisthub/api/`, and save it to the env variable `AUTH0_AUDIENCE`. Ensure that "Signing Algorithm" is set to `RS256`.
 
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to query
+Return to the list of APIs, and navigate to "Auth0 Management API". In "API Explorer", click the button to create a test application. Then, in `Applications/Applications`, navigate to "API Explorer Application". Save the "Client ID" and "Client Secret" to the env variables `AUTH0_API_CLIENTID` and `AUTH0_API_SECRET`, respectively.
 
-##### Response
-Returns status `200` with `Case` document if found and authorized. If the requester is not admin and not assigned to the case, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`.
-</details>
+#### In Authentication/Database
 
-<details>
-<summary><code>POST</code> <code>/cases/</code>: create one case</summary>
+Navigate to the "Username-Password-Authentication" database and disable sign ups.
 
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | client | required | `Client` | Client associated with case
-> | coaches | optional | `string[]` | IDs of coaches assigned to case, default `[]`
-> | benefits | optional | `string[]` | Benefits associated with case, default `[]`
-> | data | optional | `Record<string, string>` | Case metadata, e.g., client form responses, default `{}`
-> | startTime | optional | `Date` | Date case was opened, default present
-> | endTime | optional | `Date` | Date case was closed
-> | notes | optional | `string` | Free-form notes about case, default `"`
-> | files | optional | `{ name: string, data: string }[]` | Files associated with case, where `name` is the filename and `data` is its base64 encoding, default `[]`
+## Admin Setup
 
-##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
+Set the env variable `ADMIN_SECRET` to a secure password for admin-authorized requests. Note that any individual with this code has complete access to all API routes; see the [API documentation](docs.md) for more information. Now **run the production app** with the Docker commands listed in [structure](readme.md#structure).
 
-<details>
-<summary><code>PATCH</code> <code>/cases/:id</code>: update one case (field-by-field)</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to update
-
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | client | optional | `Client` | Client associated with case
-> | coaches | optional | `string[]` | IDs of coaches assigned to case
-> | benefits | optional | `string[]` | Benefits associated with case
-> | data | optional | `Record<string, string>` | Case metadata, e.g., client form responses
-> | startTime | optional | `Date` | Date case was opened
-> | endTime | optional | `Date` | Date case was closed
-> | notes | optional | `string` | Free-form notes about case
-
-Any field not supplied defaults to the current entry in the database.
-
-##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin and not assigned to the case, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
-
-<details>
-<summary><code>PUT</code> <code>/cases/:id</code>: update one case (entire)</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to update
-
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | client | required | `Client` | Client associated with case
-> | coaches | optional | `string[]` | IDs of coaches assigned to case, default `[]`
-> | benefits | optional | `string[]` | Benefits associated with case, default `[]`
-> | data | optional | `Record<string, string>` | Case metadata, e.g., client form responses, default `{}`
-> | startTime | optional | `Date` | Date case was opened, default present
-> | endTime | optional | `Date?` | Date case was closed
-> | notes | optional | `string` | Free-form notes about case, default `"`
-
-Replaces document entirely with supplied data. When possible, `PATCH` is recommended.
-
-##### Response
-Returns status `201` with `Case` document (with populated `coaches`) if case is saved successfully. If the requester is not admin and not assigned to the case, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
-
-<details>
-<summary><code>DELETE</code> <code>/cases/:id</code>: delete one case</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to query
-
-##### Response
-Returns status `204` with empty body if removed. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`. 
-</details>
-
-
-
-#### Creating and updating coaches
-
-See [source](/backend/src/api/coaches.ts). All coach mutations are pushed-forward to the Auth0 database via the [management API](https://auth0.com/docs/api/management/v2). If these requests fail, returns status `500` with body `{ error: "Internal server error" }`; any changes to internal storage are undone.
-
-<details>
-<summary><code>GET</code> <code>/coaches/</code>: read all or many coaches</summary>
-
-##### Response
-Returns status `200` and array of `Coach` documents if authorized. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`.
-</details>
-
-<details>
-<summary><code>GET</code> <code>/coaches/:id</code>: read one coach</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to query
-
-##### Response
-Returns status `200` with `Coach` document if found authorized. If the requester is not admin and does not have ID equal to `id`, returns status `403` with body `{ error: "Forbidden }`. If the case cannot be found, returns status `404` with body `{ error: "Not found" }`.
-</details>
-
-<details>
-<summary><code>POST</code> <code>/coaches/</code>: create one coach</summary>
-
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | name | required | `string` | Coach name
-> | email | required | `string` | Coach email address
-> | admin | optional | `boolean` | Coach has admin privileges, i.e., may access all routes, default `false`
-
-##### Response
-Returns status `201` with `Coach` document if coach is saved successfully. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
-
-<details>
-<summary><code>PATCH</code> <code>/coaches/:id</code>: update one coach (field-by-field)</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of coach to update
-
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | name | optional | `string` | Coach name
-> | email | optional | `string` | Coach email address
-> | admin | optional | `boolean` | Coach has admin privileges
-
-Any field not supplied defaults to the current entry in the database.
-
-##### Response
-Returns status `201` with `Coach` document if coach is saved successfully. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If the coach cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
-
-<details>
-<summary><code>PUT</code> <code>/coaches/:id</code>: update one coach (entire)</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of coach to update
-
-##### Request
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | name | required | `string` | Coach name
-> | email | required | `string` | Coach email address
-> | admin | optional | `boolean` | Coach has admin privileges, default `false`
-
-Replaces document entirely with supplied data. When possible, `PATCH` is recommended.
-
-##### Response
-Returns status `201` with `Coach` document if coach is saved successfully. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If the coach cannot be found, returns status `404` with body `{ error: "Not found" }`. If there is an issue with saving, such as malformed input, returns staus `400` with body `{ error: "Validation failed" }`.
-</details>
-
-<details>
-<summary><code>DELETE</code> <code>/coaches/:id</code>: delete one coach</summary>
-
-##### Parameters
-> | name      |  type     | data type               | description                                                           |
-> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | id | required | `string` | ID of case to query
-
-##### Response
-Returns status `204` with empty body if removed. If the requester is not admin, returns status `403` with body `{ error: "Forbidden }`. If the coach cannot be found, returns status `404` with body `{ error: "Not found" }`. 
-</details>
+To create the first admin-level user, which can then add new coaches, use an HTTP API request. For example, in bash,
+```bash
+curl -XPOST -H 'Secret: [admin secret]' -H "Content-type: application/json" -d '{"name": [your name], "email": [your email], "admin": true}' '[domain]:5000/api/coaches'
+```
