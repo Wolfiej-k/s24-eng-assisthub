@@ -114,7 +114,7 @@ export default function AnalyticsCharts() {
 
     const zip = item.client.zip
     if (zip in zipCodes) {
-      const location = zipCodes[zip as keyof typeof zipCodes].county
+      const location = zipCodes[zip as keyof typeof zipCodes]
       const currentCount = caseLocations.get(location) ?? 0
       caseLocations.set(location, currentCount + 1)
     }

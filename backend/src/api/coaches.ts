@@ -169,7 +169,7 @@ router.delete("/:id", ensureAdmin, async (req, res, next) => {
     }
 
     await CoachModel.deleteOne({ _id: req.params.id })
-    const { error } = deleteUser(req.params.id)
+    const { error } = await deleteUser(req.params.id)
 
     if (error) {
       await oldItem.save()
