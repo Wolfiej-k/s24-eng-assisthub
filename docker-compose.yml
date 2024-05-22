@@ -23,7 +23,6 @@ services:
       - PORT=5000
       - DATABASE_URI=mongodb://mongo:27017/assisthub
       - ADMIN_SECRET=${ADMIN_SECRET}
-      - ADMIN_EMAIL=${ADMIN_EMAIL}
       - AUTH0_DOMAIN=${AUTH0_DOMAIN}
       - AUTH0_AUDIENCE=${AUTH0_AUDIENCE}
       - AUTH0_CLIENTID=${AUTH0_API_CLIENTID}
