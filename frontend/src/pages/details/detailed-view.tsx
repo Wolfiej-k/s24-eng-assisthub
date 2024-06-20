@@ -16,6 +16,7 @@ import BenefitsDropdown from "./benefits-dropdown"
 import CloseCaseButton from "./close-case-button"
 import CoachDropdown from "./coach-dropdown"
 
+// Defining props interface for DetailedView component
 interface DetailedViewProps {
   item: Case
   values: Case
@@ -25,6 +26,7 @@ interface DetailedViewProps {
   onEditingDone: () => void
 }
 
+// Main functional component for displaying detailed view
 export default function DetailedView({
   item,
   values,
@@ -35,6 +37,7 @@ export default function DetailedView({
 }: DetailedViewProps) {
   const confirm = useConfirm()
 
+  // Using the useForm hook to handle for submission
   const { onFinish } = useForm<Case>({
     resource: "cases",
     action: "edit",
@@ -46,14 +49,15 @@ export default function DetailedView({
     },
   })
 
+  // Function to handle changes in main case fields
   const handleChange = (field: keyof Case, value: unknown) => {
     setValues({ ...values, [field]: value })
   }
-
+  // Function to handle changes in client-specific fields
   const handleClientChange = (field: keyof Case["client"], value: unknown) => {
     setValues({ ...values, client: { ...values.client, [field]: value } })
   }
-
+  // Function to handle file upload and convert to base64
   const handleFileAdd = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files ? event.target.files[0] : null
     const reader = new FileReader()
@@ -67,14 +71,14 @@ export default function DetailedView({
       reader.readAsDataURL(file)
     }
   }
-
+  // Function to handle removal  of files
   const handleFileRemove = (index: number) => {
     setValues({
       ...values,
       files: values.files.filter((_, i) => i !== index),
     })
   }
-
+  // Funtion to truncate long file names
   const truncateFileName = (name: string) => {
     const trunc = name.split("").slice(0, 50).join("")
     if (trunc.length < name.length) {
@@ -87,7 +91,7 @@ export default function DetailedView({
   const startEditing = () => {
     setIsEditing(true)
   }
-
+  // Function to cancel editing
   const cancelEditing = () => {
     if (isEqual(values, item)) {
       setValues(item)
@@ -101,13 +105,14 @@ export default function DetailedView({
         .catch(() => undefined)
     }
   }
+  // Function to finish editing and save changes
   const finishEditing = () => {
     void onFinish(values)
   }
 
   return (
     <>
-      <Divider
+      <Divider /* Divider with "Client Information" label */
         variant="middle"
         sx={{
           "&::before, &::after": {
@@ -175,7 +180,7 @@ export default function DetailedView({
         InputProps={{ readOnly: !isEditing }}
       />
       <Box sx={{ marginTop: 1 }}>
-        <Divider
+        <Divider /* Divider with "Case Information" label */
           variant="middle"
           sx={{
             "&::before, &::after": {
@@ -186,7 +191,7 @@ export default function DetailedView({
           <Chip label="Case Information" size="medium" color="primary" />
         </Divider>
       </Box>
-      <TextField
+      <TextField /* Below: case information fields */
         margin="dense"
         id="startTime"
         label="Start Time"
@@ -221,7 +226,7 @@ export default function DetailedView({
         editable={isEditing}
       />
       <Box sx={{ marginTop: 1 }}>
-        <Divider
+        <Divider /* Divider with "Additional Information" label */
           variant="middle"
           sx={{
             "&::before, &::after": {
@@ -233,6 +238,7 @@ export default function DetailedView({
         </Divider>
       </Box>
       {Object.keys(item.data).map((field) => (
+        /* Additional information fields */
         <TextField
           margin="dense"
           id={field}
@@ -261,17 +267,18 @@ export default function DetailedView({
         value={values.notes}
         onChange={(e) => handleChange("notes", e.target.value)}
         InputProps={
-          !isEditing
+          !isEditing // If not in editing mode, apply read-only properties.
             ? {
                 readOnly: true,
                 inputComponent: forwardRef((_props, _ref) => (
+                  // Custom input component for rendering markdown, renders notes as markdown.
                   <div style={{ whiteSpace: "pre-wrap", height: 126, width: "100%", overflowY: "auto" }}>
                     <Markdown>{values.notes ?? ""}</Markdown>
                     <VisuallyHiddenInput id="notes" />
                   </div>
                 )),
               }
-            : {}
+            : {} // If in editing mode, no additional properties are applied.
         }
       />
       <Box marginTop={1} marginBottom={2}>

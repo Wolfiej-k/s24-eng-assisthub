@@ -3,12 +3,13 @@ import { useList } from "@refinedev/core"
 import { type Coach } from "../../types"
 
 interface CoachDropdownProps {
-  coaches: Coach[]
+  coaches: Coach[] // Array of selected coaches
   updateCoaches: (update: Coach[]) => void
-  editable: boolean
+  editable: boolean // Boolean to control if dropdown is editable
 }
 
 export default function CoachDropdown({ coaches, updateCoaches, editable }: CoachDropdownProps) {
+  // Fetch list of coaches using
   const { data, isLoading, isError } = useList<Coach>({
     resource: "coaches",
   })
@@ -17,9 +18,10 @@ export default function CoachDropdown({ coaches, updateCoaches, editable }: Coac
     return <div color="black">Something went wrong!</div>
   }
 
-  const coachList = data?.data ?? []
+  const coachList = data?.data ?? [] // Retrieve coach list from data or use empty array if undefined
 
   return (
+    // Render dropdown with coach list
     <Box sx={{ marginLeft: 0.25, marginRight: 0.25, marginBottom: 0.3 }}>
       <Autocomplete
         multiple
